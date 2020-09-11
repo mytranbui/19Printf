@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/11 12:39:42 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/11 12:45:34 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ void	convert_di(va_list ap, t_print *p)
 	s = ft_itoa_base(va_arg(ap, long long), 10, 'x');
 	n = ft_atoi(s);
 	len[0] = ft_intlen(ft_abs(n));
-	//printf("{len= %d}", len[0]);
+	printf("{len= %d}", len[0]);
 	//len[0] = ft_strlen(s);
 	(n < 0 || (p->flg.plus && n > 0)) ? len[0]++ : len[0];
 	len[1] = p->precis;
@@ -154,7 +154,7 @@ void	convert_di(va_list ap, t_print *p)
 			ft_putchar('+');
 		else if (n < 0)
 			ft_putchar('-');
-		while (p->precis-- - len[0] > 0)//-2)
+		while (p->precis-- - len[0] > -1)//-2)
 			ft_putchar('0');
 		ft_putnbr(ft_abs(n));
 	}
@@ -164,6 +164,7 @@ void	convert_di(va_list ap, t_print *p)
 			ft_putchar('+');
 		else if (n< 0)
 			ft_putchar('-');
+	    printf("LOL{len= %d}", len[0]);
 		while (p->precis-- - len[0] > -1)//-2) //why? -1 ??
 			ft_putchar('0');
 		ft_putnbr(ft_abs(n));
