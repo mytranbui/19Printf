@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/10 12:52:27 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/11 11:27:32 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,31 +74,34 @@ void	convert_s(va_list ap, t_print *p)
 void	convert_p(va_list ap, t_print *p)
 {
 	printf("\nconvert_p\n");
-	char		*s;
-	int			len[2];
+	char	*s;
+	int		len[2];
 
 	s = ft_itoa_base(va_arg(ap, long long), 16, 'x');
-	len[0] = ft_strlen(s);
+	len[0] = ft_strlen(s);//+2; //+0x
 	len[1] = p->precis;
 	(len[0] > p->precis) ? len[1] = len[0] : len[1];
 	if (p->flg.minus == 0)
 	{
-		while (p->width-- - len[1] > 2)
+		while (p->width-- - len[1] > 2)//0)
 			ft_putchar(' ');
 		ft_putstr("0x");
-		while (p->precis-- - len[0] > 0)
+		while (p->precis-- - len[0] > 0)//-2)
 			ft_putchar('0');
 		ft_putstr(s);
 	}
 	else
 	{
 		ft_putstr("0x");
-		while (p->precis-- - len[0] > 0 && p->width--)
+		while (p->precis-- - len[0] > 0)//-2)
 			ft_putchar('0');
 		ft_putstr(s);
-		while (p->width-- - len[0] > 2)
+		while (p->width-- - len[1]  > 2)// 0)
 			ft_putchar(' ');
 	}
+/*	printf("{len= %d}", len[0]);
+	printf("{len[1] = %d}", len[1]);
+	printf("{printed spaces=%d}\n", i);*/
 }
 
 /*
@@ -121,65 +124,35 @@ void	convert_di(va_list ap, t_print *p)
 	len[1] = p->precis;
 	(len[0] > p->precis) ? len[1] = len[0] : len[1];
 	printf("intlen=%d\n", len[0]);
-	printf("value=%s\n", s);
+	printf("value=%d\n", n);
 	if (p->flg.space && p->flg.plus == 0)
+	{
 			ft_putchar(' ');
+			len[1]++;
+	}
 	if (p->flg.minus == 0)
 	{
-		(p->flg.plus && n > 0) ? len[1]++ : len[1];
-		while (p->width-- - len[1] >  0)
+		while (p->width-- - len[1] > 0)//0)
 			ft_putchar(' ');
 		if (p->flg.plus && n > 0)
 			ft_putchar('+');
-		while (p->precis-- - len[0] > 0)
+		while (p->precis-- - len[0] > 0)//-2)
 			ft_putchar('0');
-		ft_putstr(s);
+		ft_putnbr(n);
 	}
 	else
 	{
 		if (p->flg.plus && n > 0)
+		{
 			ft_putchar('+');
-		while (p->precis-- - len[0] > 0 && p->width--)
+			len[1]++;
+		}
+		while (p->precis-- - len[0] > 0)//-2)
 			ft_putchar('0');
-		ft_putstr(s);
-		(p->flg.plus && n > 0) ? len[0]++ : len[0];
-		while (p->width-- - len[0] > 0)
-			ft_putchar(' ');
-	}
-	/*if (p->flg.zero && p->flg.plus && n > 0) //caca
-		ft_putchar('+');
-	while (p->width - len > 0)
-	{
-		if (p->flg.zero)
-			ft_putchar('0');
-		else
-			ft_putchar(' ');
-		p->width--;
-	}	
-	if (p->flg.zero == 0 && p->flg.plus && n > 0)
-		ft_putchar('+');
-	if (p->flg.minus)
 		ft_putnbr(n);
-	while (p->precis > len)
-	{
-		ft_putchar('0');
-		p->precis--;
+		while (p->width-- - len[1]  > 0)// 0)
+			ft_putchar(' ');
 	}
-	*//*ft_putnbr(n);
-	  len = ft_strlen(s);
-	  if (p->precis != -1 && p->precis < len)
-	  len = p->precis;
-	  if (p->flg.minus)
-	  write(1, s, len);
-	  while (p->width - len + 1 > 0)
-	  {
-	  ft_putchar(' ');
-	  p->width--;
-	  }	
-	  if (p->flg.minus == 0)
-	  write(1, s, len);*/
-	//if (p->flg.minus == 0)
-	//	ft_putnbr(n);
 }
 
 /*
