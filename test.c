@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/11 11:27:32 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/11 12:39:42 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,6 @@ void	convert_p(va_list ap, t_print *p)
 		while (p->width-- - len[1]  > 2)// 0)
 			ft_putchar(' ');
 	}
-/*	printf("{len= %d}", len[0]);
-	printf("{len[1] = %d}", len[1]);
-	printf("{printed spaces=%d}\n", i);*/
 }
 
 /*
@@ -111,7 +108,75 @@ void	convert_p(va_list ap, t_print *p)
 ** ' ' ignored when '+' is present
 */
 
+//floor?? floor(log10(abs(int))) + 1
+//should be added to libft
+int		ft_intlen(int n)
+{
+	int	log;
+
+	log = 0;
+	while (n >= 10)
+	{
+		n /= 10;
+		log++;
+	}
+	log++;
+	return (log);
+}
+
 void	convert_di(va_list ap, t_print *p)
+{
+	printf("\nconvert_di\n");
+	int		n;
+	int		len[2];
+	char	*s;
+
+	s = ft_itoa_base(va_arg(ap, long long), 10, 'x');
+	n = ft_atoi(s);
+	len[0] = ft_intlen(ft_abs(n));
+	//printf("{len= %d}", len[0]);
+	//len[0] = ft_strlen(s);
+	(n < 0 || (p->flg.plus && n > 0)) ? len[0]++ : len[0];
+	len[1] = p->precis;
+	(len[0] > p->precis) ? len[1] = len[0] : len[1];
+	printf("intlen=%d\n", len[0]);
+	printf("value=%d\n", n);
+	if (p->flg.space && p->flg.plus == 0 && n > 0)
+	{
+			ft_putchar(' ');
+			len[1]++;
+	}
+	if (p->flg.minus == 0)
+	{
+		while (p->width-- - len[1] > 0)//0)
+			ft_putchar(' ');
+		if (p->flg.plus && n > 0)
+			ft_putchar('+');
+		else if (n < 0)
+			ft_putchar('-');
+		while (p->precis-- - len[0] > 0)//-2)
+			ft_putchar('0');
+		ft_putnbr(ft_abs(n));
+	}
+	else
+	{
+		if (p->flg.plus && n > 0)
+			ft_putchar('+');
+		else if (n< 0)
+			ft_putchar('-');
+		while (p->precis-- - len[0] > -1)//-2) //why? -1 ??
+			ft_putchar('0');
+		ft_putnbr(ft_abs(n));
+		while (p->width-- - len[1]  > 0)// 0)
+			ft_putchar(' ');
+	}
+	printf("{len= %d}", len[0]);
+//	printf("{len[1] = %d}", len[1]);
+//	printf("{printed spaces=%d}\n", i);
+}
+
+//ok with positives only
+/*void	convert_di(va_list ap, t_print *p)
 {
 	printf("\nconvert_di\n");
 	int		n;
@@ -153,7 +218,7 @@ void	convert_di(va_list ap, t_print *p)
 		while (p->width-- - len[1]  > 0)// 0)
 			ft_putchar(' ');
 	}
-}
+}*/
 
 /*
 ** %x & %X: undefined behavior with + and ' '
