@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/13 14:20:55 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/13 14:47:44 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_putstr_len(const char *str)
 }
 
 /*
-** %c: undefined behavior with +, 0, ' ', # and precision
+** %c: undefined behavior with +, 0, ' ', # and presion
 ** '0' ignored when '-' is present
 */
 
@@ -56,8 +56,8 @@ void	convert_s(va_list ap, t_print *p)
 
 	s = va_arg(ap, char *);
 	len = ft_strlen(s);
-	if (p->precis != -1 && p->precis < len)
-		len = p->precis;
+	if (p->pres != -1 && p->pres < len)
+		len = p->pres;
 	if (p->flg.minus)
 		write(1, s, len);
 	while (p->width-- - len > 0)
@@ -67,7 +67,7 @@ void	convert_s(va_list ap, t_print *p)
 }
 
 /*
-** %p: undefined behavior with +, 0, ' ', # and precision
+** %p: undefined behavior with +, 0, ' ', # and presion
 ** '0' ignored when '-' is present
 */
 
@@ -79,21 +79,21 @@ void	convert_p(va_list ap, t_print *p)
 
 	s = ft_itoa_base(va_arg(ap, long long), 16, 'x');
 	len[0] = ft_strlen(s);//+2; //+0x
-	len[1] = p->precis;
-	(len[0] > p->precis) ? len[1] = len[0] : len[1];
+	len[1] = p->pres;
+	(len[0] > p->pres) ? len[1] = len[0] : len[1];
 	if (p->flg.minus == 0)
 	{
 		while (p->width-- - len[1] > 2)//0)
 			ft_putchar(' ');
 		ft_putstr("0x");
-		while (p->precis-- - len[0] > 0)//-2)
+		while (p->pres-- - len[0] > 0)//-2)
 			ft_putchar('0');
 		ft_putstr(s);
 	}
 	else
 	{
 		ft_putstr("0x");
-		while (p->precis-- - len[0] > 0)//-2)
+		while (p->pres-- - len[0] > 0)//-2)
 			ft_putchar('0');
 		ft_putstr(s);
 		while (p->width-- - len[1]  > 2)// 0)
@@ -132,7 +132,7 @@ void	convert_di(va_list ap, t_print *p)
 
 	n = ft_atoi(ft_itoa_base(va_arg(ap, long long), 10, 'x'));
 	len[0] = ft_intlen(ft_abs(n));
-	len[1] = p->precis;
+	len[1] = p->pres;
 	(n < 0 || (p->flg.plus && n > 0)) ? len[0]++ && len[1]++ : len[0];
 	(len[0] > len[1]) ? len[1] = len[0] : len[1];
 	(p->flg.plus == 0 && n > 0) ? len[0]++ : len[0]; //why ?0+
@@ -149,7 +149,7 @@ void	convert_di(va_list ap, t_print *p)
 			ft_putchar('+');
 		else if (n < 0)
 			ft_putchar('-');
-		while (p->precis-- - len[0] > -1)//-2)
+		while (p->pres-- - len[0] > -1)//-2)
 			ft_putchar('0');
 		ft_putnbr(ft_abs(n));
 	}
@@ -159,7 +159,7 @@ void	convert_di(va_list ap, t_print *p)
 			ft_putchar('+');
 		else if (n < 0)
 			ft_putchar('-');
-		while (p->precis-- - len[0] > -1)//-2) //why? -1 ??
+		while (p->pres-- - len[0] > -1)//-2) //why? -1 ??
 			ft_putchar('0');
 		ft_putnbr(ft_abs(n));
 		while (p->width-- - len[1] > 0)// 0)
@@ -183,16 +183,16 @@ void	convert_x(va_list ap, char c,  t_print *p)
 
 	s = ft_itoa_base(va_arg(ap, long long), 16, c);
 	len[0] = ft_strlen(s);
-	len[1] = p->precis;
+	len[1] = p->pres;
 	(len[0] > len[1]) ? len[1] = len[0] : len[1];
 	(p->flg.hash) ? len[1] +=2 : len[1];
 	if (p->flg.minus == 0)
 	{
 		while (p->width-- - len[1] > 0)
-			ft_putchar(' ');
+			(p->flg.zero && p->pres == -1) ? ft_putchar('0') : ft_putchar(' ');
 		if (p->flg.hash)
 			(c == 'x') ? ft_putstr("0x") : ft_putstr("0X");
-		while (p->precis-- - len[0] > 0)
+		while (p->pres-- - len[0] > 0)
 			ft_putchar('0');
 		ft_putstr(s);
 	}
@@ -200,7 +200,7 @@ void	convert_x(va_list ap, char c,  t_print *p)
 	{
 		if (p->flg.hash)
 			(c == 'x') ? ft_putstr("0x") : ft_putstr("0X");
-		while (p->precis-- - len[0] > 0)
+		while (p->pres-- - len[0] > 0)
 			ft_putchar('0');
 		ft_putstr(s);
 		while (p->width-- - len[1]  > 0)
@@ -236,8 +236,7 @@ int		conversion(va_list ap, char c, t_print *p)/*, char c, int i)*/
 		ft_putnbr(e);
 		}
 		if (c == 'f')
-		{
-
+		{ 
 		}*/
 	if (c == '%')
 		ft_putchar('%');
@@ -266,7 +265,7 @@ int		get_pres(t_print *p, int i)
 	if (p->fmt[i] == '.')
 	{
 		i++;
-		p->precis = ft_atoi(&p->fmt[i]);
+		p->pres = ft_atoi(&p->fmt[i]);
 		while (ft_isdigit(p->fmt[i]))
 			i++;
 	}
@@ -277,25 +276,25 @@ int		parse_flags(t_print *p/*,const char **fmt*/, int i)
 {
 	while (p->fmt[i] && istype(p->fmt[i]) == 0)
 	{
-		(p->fmt[i] == '+') ? p->flg.plus = 1 && i++: p->flg.plus;
-		(p->fmt[i] == '-') ? p->flg.minus = 1 && i++: p->flg.minus;
-		(p->fmt[i] == ' ') ? p->flg.space = 1 && i++: p->flg.space;
-		(p->fmt[i] == '0') ? p->flg.zero = 1 && i++: p->flg.zero;
-		(p->fmt[i] == '#') ? p->flg.hash = 1 && i++: p->flg.hash;
-	//	(ft_isdigit(p->fmt[i])) ? i = get_width(p, i): i;
-	//	(p->fmt[i] == '.') ? i = get_pres(p, i): i;
+		(p->fmt[i] == '+') ? p->flg.plus = 1 && i++ : p->flg.plus;
+		(p->fmt[i] == '-') ? p->flg.minus = 1 && i++ : p->flg.minus;
+		(p->fmt[i] == ' ') ? p->flg.space = 1 && i++ : p->flg.space;
+		(p->fmt[i] == '0') ? p->flg.zero = 1 && i++ : p->flg.zero;
+		(p->fmt[i] == '#') ? p->flg.hash = 1 && i++ : p->flg.hash;
+	//	(ft_isdigit(p->fmt[i])) ? i = get_width(p, i) : i;
+	//	(p->fmt[i] == '.') ? i = get_pres(p, i) : i;
 		i = get_width(p, i);
 		i = get_pres(p, i);
 	}
 	printf("\n---recap---\n");
-	printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->precis);
+	printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres);
 	return (i);
 }
 
 t_print	*init_flags(t_print *p)
 {
 	p->width = 0;
-	p->precis = -1;
+	p->pres = -1;
 	p->flg.plus = 0;
 	p->flg.minus = 0;
 	p->flg.space = 0;

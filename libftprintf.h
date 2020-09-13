@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 11:05:52 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/09 09:00:07 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/13 14:42:50 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct	s_print
 //	va_list		ap;
     const char	*fmt;
 	int			width;
-    int			precis;
+    int			pres;
     t_flag		flg;
 }				t_print;
 

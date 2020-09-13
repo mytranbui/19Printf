@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   created: 2020/01/20 09:26:22 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/13 14:22:02 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/13 14:42:20 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,7 +243,7 @@ int main(void)
 	ft_printf("%0-+# 12.2x||\n", nb);
 	printf("expected result:\n%0-+# 12.2x||\n", nb);
 	ft_printf("%015.x||\n", nb);
-	printf("expected result:\n%015.x||\n", nb);
+	printf("expected result:\n%015.x||\n", nb);//0->sp
 	ft_printf("%+- 011x||\n", nb);
 	printf("expected result:\n%+- 011x||\n", nb);
 	ft_printf("% -018.30x||\n", nb);
@@ -254,8 +254,10 @@ int main(void)
 	printf("expected result:\n%-0# 50X||\n", nb);
 	ft_printf("%0# 45X||\n", nb);
 	printf("expected result:\n%0# 45X||\n", nb);//kk
+	ft_printf("%0 18X||\n", nb);
+	printf("expected result:\n%0 18X||\n", nb);//kk
 	ft_printf("%0# 40.X||\n", nb);
-	printf("expected result:\n%0# 40.X||\n", nb);
+	printf("expected result:\n%0# 40.X||\n", nb);//0->sp
 	ft_printf("%0# 40.60X||\n", nb);
 	printf("expected result:\n%0# 40.60X||\n", nb);
 
