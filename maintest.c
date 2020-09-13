@@ -159,15 +159,17 @@ int main(void)
   	printf("%.50i||\n", i);
 	// multiple flags
 	ft_printf("%- 100.50i||\n", i);
-  	printf("expected result:\n%- 100.50i||\n", i);
+  	printf("expected result:\n%- 100.50i||\n", i);//0en trop
 	ft_printf("% 100.50i||\n", i);
-  	printf("expected result:\n% 100.50i||\n", i);
+  	printf("expected result:\n% 100.50i||\n", i);//o en trop
 	ft_printf("%-050i||\n", i);
   	printf("expected result:\n%-050i||\n", i);
 	ft_printf("%0+50.50i||\n", i);
-  	printf("expected result:\n%0+50.50i||\n", i);//1 0 en trop
+  	printf("expected result:\n%0+50.50i||\n", i);
 	ft_printf("%0-+050.5i||\n", i);
-  	printf("expected result:\n%0-+050.5i||\n", i);//miss 1 0 1sp en trop
+  	printf("expected result:\n%0-+050.5i||\n", i);//1sp en trop
+	ft_printf("%0-+050.8i||\n", i);
+  	printf("expected result:\n%0-+050.8i||\n", i);//1sp en trop
 	ft_printf("%-10i||\n", i);
 	printf("expected result:\n%-10i||\n", i);
 	ft_printf("%08.i||\n", i);
@@ -179,7 +181,7 @@ int main(void)
 	ft_printf("%-08.i||\n", i);
  	printf("expected result:\n%-08.i||\n", i);
 	ft_printf("%0-+18.60i||\n", i);
-	printf("expected result:\n%0-+18.60i||\n", i);//miss 1 0
+	printf("expected result:\n%0-+18.60i||\n", i);
 	ft_printf("%0-+ 12.2i||\n", i);
 	printf("expected result:\n%0-+ 12.2i||\n", i);
 	ft_printf("%015.i||\n", i);

@@ -134,7 +134,7 @@ void	convert_di(va_list ap, t_print *p)
 	s = ft_itoa_base(va_arg(ap, long long), 10, 'x');
 	n = ft_atoi(s);
 	len[0] = ft_intlen(ft_abs(n));
-	printf("{len= %d}", len[0]);
+//	printf("{len= %d}", len[0]);
 	//len[0] = ft_strlen(s);
 	(n < 0 || (p->flg.plus && n > 0)) ? len[0]++ : len[0];
 	len[1] = p->precis;
@@ -143,8 +143,9 @@ void	convert_di(va_list ap, t_print *p)
 	printf("value=%d\n", n);
 	if (p->flg.space && p->flg.plus == 0 && n > 0)
 	{
-			ft_putchar(' ');
+			ft_putchar('A');
 			len[1]++;
+			
 	}
 	if (p->flg.minus == 0)
 	{
@@ -164,14 +165,14 @@ void	convert_di(va_list ap, t_print *p)
 			ft_putchar('+');
 		else if (n< 0)
 			ft_putchar('-');
-	    printf("LOL{len= %d}", len[0]);
+//	    printf("LOL{len= %d}", len[0]);
 		while (p->precis-- - len[0] > -1)//-2) //why? -1 ??
 			ft_putchar('0');
 		ft_putnbr(ft_abs(n));
 		while (p->width-- - len[1]  > 0)// 0)
 			ft_putchar(' ');
 	}
-	printf("{len= %d}", len[0]);
+//	printf("{len= %d}", len[0]);
 //	printf("{len[1] = %d}", len[1]);
 //	printf("{printed spaces=%d}\n", i);
 }
