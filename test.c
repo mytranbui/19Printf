@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/13 12:48:47 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/13 13:19:26 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,26 +129,20 @@ void	convert_di(va_list ap, t_print *p)
 //	printf("\nconvert_di\n");
 	int		n;
 	int		len[2];
-	char	*s;
 
-	s = ft_itoa_base(va_arg(ap, long long), 10, 'x');
-	n = ft_atoi(s);
+	n = ft_atoi(ft_itoa_base(va_arg(ap, long long), 10, 'x'));
 	len[0] = ft_intlen(ft_abs(n));
 	len[1] = p->precis;
-//	printf("{len= %d}", len[0]);
 	(n < 0 || (p->flg.plus && n > 0)) ? len[0]++ && len[1]++ : len[0];
-	printf("{startlen[1] = %d}", len[1]);
 	(len[0] > len[1]) ? len[1] = len[0] : len[1];
-	printf("{secondlen[1] = %d}", len[1]);
-	printf("intlen=%d\n", len[0]);
+	(p->flg.plus == 0 && n > 0) ? len[0]++ : len[0];
+//	printf("intlen=%d\n", len[0]);
 //	printf("value=%d\n", n);
 	if (p->flg.space && p->flg.plus == 0 && n > 0)
 	{
 			ft_putchar(' ');
 			len[1]++;	
 	}
-	if (p->flg.plus == 0 && n > 0) // why
-			len[0]++;	
 	if (p->flg.minus == 0)
 	{
 		while (p->width-- - len[1] > 0)//0)
@@ -177,51 +171,6 @@ void	convert_di(va_list ap, t_print *p)
 //	printf("{len[1] = %d}", len[1]);
 //	printf("{printed spaces=%d}\n", i);
 }
-
-//ok with positives only
-/*void	convert_di(va_list ap, t_print *p)
-{
-	printf("\nconvert_di\n");
-	int		n;
-	int		len[2];
-	char	*s;
-
-	s = ft_itoa_base(va_arg(ap, long long), 10, 'x');
-	n = ft_atoi(s);
-	len[0] = ft_strlen(s);
-	len[1] = p->precis;
-	(len[0] > p->precis) ? len[1] = len[0] : len[1];
-	printf("intlen=%d\n", len[0]);
-	printf("value=%d\n", n);
-	if (p->flg.space && p->flg.plus == 0)
-	{
-			ft_putchar(' ');
-			len[1]++;
-	}
-	if (p->flg.minus == 0)
-	{
-		while (p->width-- - len[1] > 0)//0)
-			ft_putchar(' ');
-		if (p->flg.plus && n > 0)
-			ft_putchar('+');
-		while (p->precis-- - len[0] > 0)//-2)
-			ft_putchar('0');
-		ft_putnbr(n);
-	}
-	else
-	{
-		if (p->flg.plus && n > 0)
-		{
-			ft_putchar('+');
-			len[1]++;
-		}
-		while (p->precis-- - len[0] > 0)//-2)
-			ft_putchar('0');
-		ft_putnbr(n);
-		while (p->width-- - len[1]  > 0)// 0)
-			ft_putchar(' ');
-	}
-}*/
 
 /*
 ** %x & %X: undefined behavior with + and ' '
