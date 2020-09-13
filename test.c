@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/13 14:47:44 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/13 15:19:43 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,58 @@ int		ft_intlen(int n)
 void	convert_di(va_list ap, t_print *p)
 {
 //	printf("\nconvert_di\n");
+	int		n;
+	int		len[2];
+
+	n = ft_atoi(ft_itoa_base(va_arg(ap, long long), 10, 'x'));
+	len[0] = ft_intlen(ft_abs(n));
+	len[1] = p->pres;
+	(n < 0 || (p->flg.plus && n > 0)) ? len[0]++ && len[1]++ : len[0];
+	(len[0] > len[1]) ? len[1] = len[0] : len[1];
+	(p->flg.plus == 0 && n > 0) ? len[0]++ : len[0]; //why ?0+
+//	printf("intlen=%d\n", len[0]);
+//	printf("value=%d\n", n);
+	(p->flg.space && p->flg.plus == 0 && n > 0) ? len[1]++ : len[1];
+	if (p->flg.space && p->flg.plus == 0 && n > 0)
+			ft_putchar(' ');
+	if (p->flg.minus == 0)
+	{
+		while (p->width-- - len[1] > 0)//0)
+			ft_putchar(' ');
+		if (p->flg.plus && n > 0)
+			ft_putchar('+');
+		else if (n < 0)
+			ft_putchar('-');
+		while (p->pres-- - len[0] > -1)//-2)
+			ft_putchar('0');
+		ft_putnbr(ft_abs(n));
+	}
+	else
+	{
+		if (p->flg.plus && n > 0)
+			ft_putchar('+');
+		else if (n < 0)
+			ft_putchar('-');
+		while (p->pres-- - len[0] > -1)//-2) //why? -1 ??
+			ft_putchar('0');
+		ft_putnbr(ft_abs(n));
+		while (p->width-- - len[1] > 0)// 0)
+			ft_putchar(' ');
+	}
+//	printf("{len= %d}", len[0]);
+//	printf("{len[1] = %d}", len[1]);
+//	printf("{printed spaces=%d}\n", i);
+}
+
+/*
+** %o: undefined behavior with '+', ' '
+** '0' ignored when '-' is present
+** ' ' ignored when '+' is present
+*/
+
+void	convert_o(va_list ap, t_print *p)
+{
+//	printf("\nconvert_o\n");
 	int		n;
 	int		len[2];
 

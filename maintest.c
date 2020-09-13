@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   created: 2020/01/20 09:26:22 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/13 14:42:20 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/13 15:19:31 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,12 @@ int main(void)
 {
 	char	c = 'X';
 	char	*s = "bonjour j'ai faim";
-	int		i = 4252;
+	//int		i = 4252;
+	//int		i = -2147483648;
+	//int		i = 2147483648; //kk on that number + & -
 	int		*p = &i;
 	int 	nb = -1564312;
+
 
 	// Char (-, 0?, width)
 	// single flag
@@ -145,7 +148,7 @@ int main(void)
 */
 	// Signed Decimal Integer (+, - , ' ', 0 , width, pres)
 	// single flag
-/*	ft_printf("%+i||\n", i);
+	ft_printf("%+i||\n", i);
  	printf("%+i||\n", i);
 	ft_printf("%0i||\n", i);
   	printf("%0i||\n", i);
@@ -194,10 +197,76 @@ int main(void)
 	printf("expected result:\n%015.i||\n", i);
 	ft_printf("%+- 011i||\n", i);
 	printf("expected result:\n%+- 011i||\n", i);
+
+	// Unsigned octal integer//(-, 0, #, )
+	// single flag
+/*	ft_printf("%+o||\n", nb);
+	printf("%+o||\n", nb);
+	ft_printf("%0o||\n", nb);
+	printf("%0o||\n", nb);
+	ft_printf("% o||\n", nb);
+	printf("% o||\n", nb);
+	ft_printf("%#o||\n", nb);
+	printf("%#o||\n", nb);
+	ft_printf("%-o||\n", nb);
+	printf("%-o||\n", nb);
+	ft_printf("%5o||\n", nb);
+	printf("%5o||\n", nb);
+	ft_printf("%50o||\n", nb);
+	printf("%50o||\n", nb);
+	ft_printf("%.5o||\n", nb);
+	printf("%.5o||\n", nb);
+	ft_printf("%.50o||\n", nb);
+	printf("%.50o||\n", nb);
+	// multiple flags
+	ft_printf("%- 100.50o||\n", nb);
+  	printf("expected result:\n%- 100.50o||\n", nb);
+	ft_printf("% +100.50o||\n", nb);
+  	printf("expected result:\n% +100.50o||\n", nb);
+	ft_printf("%-050o||\n", nb);
+  	printf("expected result:\n%-050o||\n", nb);
+	ft_printf("%0+50.50o||\n", nb);
+  	printf("expected result:\n%0+50.50o||\n", nb);
+	ft_printf("%0-+050.5o||\n", nb);
+  	printf("expected result:\n%0-+050.5o||\n", nb);
+	ft_printf("%0-+050.8o||\n", nb);
+  	printf("expected result:\n%0-+050.8o||\n", nb);
+	ft_printf("%-10o||\n", nb);
+	printf("expected result:\n%-10o||\n", nb);
+	ft_printf("%08.o||\n", nb);
+  	printf("expected result:\n%08.o||\n", nb);
+	ft_printf("%8.o||\n", nb);
+ 	printf("expected result:\n%8.o||\n", nb);
+	ft_printf("%#018.o||\n", nb);
+ 	printf("expected result:\n%0#18.o||\n", nb);
+	ft_printf("%- 08.o||\n", nb);
+ 	printf("expected result:\n%- 08.o||\n", nb);
+	ft_printf("%0-+18.60o||\n", nb);
+	printf("expected result:\n%0-+18.60o||\n", nb);
+	ft_printf("%0-+# 12.2o||\n", nb);
+	printf("expected result:\n%0-+# 12.2o||\n", nb);
+	ft_printf("%015.o||\n", nb);
+	printf("expected result:\n%015.o||\n", nb);
+	ft_printf("%+- 011o||\n", nb);
+	printf("expected result:\n%+- 011o||\n", nb);
+	ft_printf("% -018.30o||\n", nb);
+	printf("expected result:\n% -018.30o||\n", nb);
+	ft_printf("%-050o||\n", nb);
+	printf("expected result:\n%-050o||\n", nb);
+	ft_printf("%-0# 50o||\n", nb);
+	printf("expected result:\n%-0# 50o||\n", nb);
+	ft_printf("%0# 45o||\n", nb);
+	printf("expected result:\n%0# 45o||\n", nb);
+	ft_printf("%0 18o||\n", nb);
+	printf("expected result:\n%0 18o||\n", nb);
+	ft_printf("%0# 40.o||\n", nb);
+	printf("expected result:\n%0# 40.o||\n", nb);
+	ft_printf("%0# 40.60o||\n", nb);
+	printf("expected result:\n%0# 40.60o||\n", nb);
 */
 	// Unsigned hexadecimal(-, 0, #, )
 	// single flag
-	ft_printf("%+x||\n", nb);
+/*	ft_printf("%+x||\n", nb);
 	printf("%+x||\n", nb);
 	ft_printf("%0x||\n", nb);
 	printf("%0x||\n", nb);
@@ -243,7 +312,7 @@ int main(void)
 	ft_printf("%0-+# 12.2x||\n", nb);
 	printf("expected result:\n%0-+# 12.2x||\n", nb);
 	ft_printf("%015.x||\n", nb);
-	printf("expected result:\n%015.x||\n", nb);//0->sp
+	printf("expected result:\n%015.x||\n", nb);
 	ft_printf("%+- 011x||\n", nb);
 	printf("expected result:\n%+- 011x||\n", nb);
 	ft_printf("% -018.30x||\n", nb);
@@ -253,13 +322,14 @@ int main(void)
 	ft_printf("%-0# 50X||\n", nb);
 	printf("expected result:\n%-0# 50X||\n", nb);
 	ft_printf("%0# 45X||\n", nb);
-	printf("expected result:\n%0# 45X||\n", nb);//kk
+	printf("expected result:\n%0# 45X||\n", nb);
 	ft_printf("%0 18X||\n", nb);
-	printf("expected result:\n%0 18X||\n", nb);//kk
+	printf("expected result:\n%0 18X||\n", nb);
 	ft_printf("%0# 40.X||\n", nb);
-	printf("expected result:\n%0# 40.X||\n", nb);//0->sp
+	printf("expected result:\n%0# 40.X||\n", nb);
 	ft_printf("%0# 40.60X||\n", nb);
 	printf("expected result:\n%0# 40.60X||\n", nb);
+*/
 
 /*	ft_printf("caca%0dpopo%+d", 45, 89);
 	 ft_printf("\n--string=%s\n--sign=%%\n--num=%d\n--num2=%d\n--sign2=%%\n--sign3=%%\n--numi=%i\n--char=%c\n--num3=%d\n--address=%p\n--hex=%x\n--HEX=%X\n",s,100,-7852,23534, 'c', 45, &c,4364873,61534);
