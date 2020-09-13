@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/13 11:59:30 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/13 12:48:47 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,10 +144,11 @@ void	convert_di(va_list ap, t_print *p)
 //	printf("value=%d\n", n);
 	if (p->flg.space && p->flg.plus == 0 && n > 0)
 	{
-			ft_putchar('A');
-			len[1]++;
-			
+			ft_putchar(' ');
+			len[1]++;	
 	}
+	if (p->flg.plus == 0 && n > 0) // why
+			len[0]++;	
 	if (p->flg.minus == 0)
 	{
 		while (p->width-- - len[1] > 0)//0)
@@ -351,7 +352,7 @@ int		parse_flags(t_print *p/*,const char **fmt*/, int i)
 		i = get_pres(p, i);
 	}
 	printf("\n---recap---\n");
-	printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width = %d | pres = %d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->precis);
+	printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->precis);
 	return (i);
 }
 

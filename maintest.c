@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   created: 2020/01/20 09:26:22 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/13 12:00:30 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/13 12:40:25 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(void)
 {
 	char	c = 'X';
 	char	*s = "bonjour j'ai faim";
-	int		i = -42528;
+	int		i = 4252;
 	int		*p = &i;
 	int 	nb = -1564312;
 
@@ -166,8 +166,8 @@ int main(void)
 	// multiple flags
 	ft_printf("%- 100.50i||\n", i);
   	printf("expected result:\n%- 100.50i||\n", i);//0+
-	ft_printf("% 100.50i||\n", i);
-  	printf("expected result:\n% 100.50i||\n", i);//0+
+	ft_printf("% +100.50i||\n", i);
+  	printf("expected result:\n% +100.50i||\n", i);//0+
 	ft_printf("%-050i||\n", i);
   	printf("expected result:\n%-050i||\n", i);
 	ft_printf("%0+50.50i||\n", i);
