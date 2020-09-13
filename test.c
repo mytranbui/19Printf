@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/13 13:19:26 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/13 14:20:55 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,14 +135,12 @@ void	convert_di(va_list ap, t_print *p)
 	len[1] = p->precis;
 	(n < 0 || (p->flg.plus && n > 0)) ? len[0]++ && len[1]++ : len[0];
 	(len[0] > len[1]) ? len[1] = len[0] : len[1];
-	(p->flg.plus == 0 && n > 0) ? len[0]++ : len[0];
+	(p->flg.plus == 0 && n > 0) ? len[0]++ : len[0]; //why ?0+
 //	printf("intlen=%d\n", len[0]);
 //	printf("value=%d\n", n);
+	(p->flg.space && p->flg.plus == 0 && n > 0) ? len[1]++ : len[1];
 	if (p->flg.space && p->flg.plus == 0 && n > 0)
-	{
 			ft_putchar(' ');
-			len[1]++;	
-	}
 	if (p->flg.minus == 0)
 	{
 		while (p->width-- - len[1] > 0)//0)
@@ -159,7 +157,7 @@ void	convert_di(va_list ap, t_print *p)
 	{
 		if (p->flg.plus && n > 0)
 			ft_putchar('+');
-		else if (n< 0)
+		else if (n < 0)
 			ft_putchar('-');
 		while (p->precis-- - len[0] > -1)//-2) //why? -1 ??
 			ft_putchar('0');
@@ -173,52 +171,41 @@ void	convert_di(va_list ap, t_print *p)
 }
 
 /*
-** %x & %X: undefined behavior with + and ' '
+** %x & %X: undefined behavior with +, '0' and ' '
 ** '0' ignored when '-' is present
 */
 
-// # : "0x" or "0X"
 void	convert_x(va_list ap, char c,  t_print *p)
 {
 	printf("\nconvert_x\n");
-	char		*s;
+	char	*s;
 	int		len[2];
 
 	s = ft_itoa_base(va_arg(ap, long long), 16, c);
 	len[0] = ft_strlen(s);
-	(p->flg.hash) ? len[0] += 2 : len[0];
 	len[1] = p->precis;
-	(len[0] > p->precis) ? len[1] = len[0] : len[1];
+	(len[0] > len[1]) ? len[1] = len[0] : len[1];
+	(p->flg.hash) ? len[1] +=2 : len[1];
 	if (p->flg.minus == 0)
 	{
-		printf("|NO MINUS|");
-		while (p->width-- - len[1] + 1 > 0 && p->flg.zero == 0)
+		while (p->width-- - len[1] > 0)
 			ft_putchar(' ');
 		if (p->flg.hash)
 			(c == 'x') ? ft_putstr("0x") : ft_putstr("0X");
-		while (p->precis-- - len[0] > 0 || (p->flg.zero && p->width-- - len[1] + 1 > 0))
+		while (p->precis-- - len[0] > 0)
 			ft_putchar('0');
 		ft_putstr(s);
 	}
-	/*while (p->width - len + 1 > 0)
-	{
-		(p->flg.zero && p->flg.minus == 0) ? ft_putchar('0') : ft_putchar(' ');
-		p->width--;
-	}*/
 	else
 	{
-		printf("|YES MINUS|");
 		if (p->flg.hash)
 			(c == 'x') ? ft_putstr("0x") : ft_putstr("0X");
-		while (p->precis-- - len[0] > 0 && p->width--)
+		while (p->precis-- - len[0] > 0)
 			ft_putchar('0');
-//		while (p->flg.zero && p->width-- - len[1] + 1 > 0)
-//			ft_putchar('0');
 		ft_putstr(s);
-		while (p->width-- - len[0] + 1 > 0)
+		while (p->width-- - len[1]  > 0)
 			ft_putchar(' ');
 	}
-	printf("{width=%d\n}", p->width);
 }
 
 int		conversion(va_list ap, char c, t_print *p)/*, char c, int i)*/
