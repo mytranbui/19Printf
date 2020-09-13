@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/11 12:45:34 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/13 11:59:30 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ int		ft_intlen(int n)
 
 void	convert_di(va_list ap, t_print *p)
 {
-	printf("\nconvert_di\n");
+//	printf("\nconvert_di\n");
 	int		n;
 	int		len[2];
 	char	*s;
@@ -134,13 +134,14 @@ void	convert_di(va_list ap, t_print *p)
 	s = ft_itoa_base(va_arg(ap, long long), 10, 'x');
 	n = ft_atoi(s);
 	len[0] = ft_intlen(ft_abs(n));
-//	printf("{len= %d}", len[0]);
-	//len[0] = ft_strlen(s);
-	(n < 0 || (p->flg.plus && n > 0)) ? len[0]++ : len[0];
 	len[1] = p->precis;
-	(len[0] > p->precis) ? len[1] = len[0] : len[1];
+//	printf("{len= %d}", len[0]);
+	(n < 0 || (p->flg.plus && n > 0)) ? len[0]++ && len[1]++ : len[0];
+	printf("{startlen[1] = %d}", len[1]);
+	(len[0] > len[1]) ? len[1] = len[0] : len[1];
+	printf("{secondlen[1] = %d}", len[1]);
 	printf("intlen=%d\n", len[0]);
-	printf("value=%d\n", n);
+//	printf("value=%d\n", n);
 	if (p->flg.space && p->flg.plus == 0 && n > 0)
 	{
 			ft_putchar('A');
@@ -165,11 +166,10 @@ void	convert_di(va_list ap, t_print *p)
 			ft_putchar('+');
 		else if (n< 0)
 			ft_putchar('-');
-//	    printf("LOL{len= %d}", len[0]);
 		while (p->precis-- - len[0] > -1)//-2) //why? -1 ??
 			ft_putchar('0');
 		ft_putnbr(ft_abs(n));
-		while (p->width-- - len[1]  > 0)// 0)
+		while (p->width-- - len[1] > 0)// 0)
 			ft_putchar(' ');
 	}
 //	printf("{len= %d}", len[0]);
@@ -351,13 +351,7 @@ int		parse_flags(t_print *p/*,const char **fmt*/, int i)
 		i = get_pres(p, i);
 	}
 	printf("\n---recap---\n");
-	printf("plus=%d\n", p->flg.plus);
-	printf("minus=%d\n", p->flg.minus);
-	printf("zero=%d\n", p->flg.zero);
-	printf("space=%d\n", p->flg.space);
-	printf("hash=%d\n", p->flg.hash);
-	printf("width = %d\n", p->width);
-	printf("pres = %d\n", p->precis);
+	printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width = %d | pres = %d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->precis);
 	return (i);
 }
 
@@ -397,7 +391,7 @@ int		ft_printf(const char *format, ...)
 			i++;
 			p = init_flags(p);
 			i = parse_flags(p, i);
-			printf("\n==where I am at :%c==\n", p->fmt[i]);
+			printf("\n=== where I am at : %c ===\n", p->fmt[i]);
 			conversion(ap, p->fmt[i], p);
 		}
 		//else

@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   created: 2020/01/20 09:26:22 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/11 12:38:14 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/13 12:00:30 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(void)
 {
 	char	c = 'X';
 	char	*s = "bonjour j'ai faim";
-	int		i = 4252;
+	int		i = -42528;
 	int		*p = &i;
 	int 	nb = -1564312;
 
@@ -136,6 +136,12 @@ int main(void)
 	printf("expected result:\n%0-+18.60p||\n", p);
 	ft_printf("%33.44p||\n", p);
 	printf("expected result:\n%33.44p||\n", p);
+	ft_printf("%0-+ 12.2p||\n", p);
+	printf("expected result:\n%0-+ 12.2p||\n", p);
+	ft_printf("%015.p||\n", p);
+	printf("expected result:\n%015.p||\n", p);
+	ft_printf("%+- 011p||\n", p);
+	printf("expected result:\n%+- 011p||\n", p);
 */
 	// Signed Decimal Integer (+, - , ' ', 0 , width, pres)
 	// single flag
@@ -153,23 +159,23 @@ int main(void)
   	printf("%5i||\n", i);
 	ft_printf("%50i||\n", i);
 	printf("%50i||\n", i);
-	ft_printf("%.5i||\n", i);
+	ft_printf("%.5i||\n", i); //0+
  	 printf("%.5i||\n", i);
-	ft_printf("%.50i||\n", i);
+	ft_printf("%.50i||\n", i); //0+
   	printf("%.50i||\n", i);
 	// multiple flags
 	ft_printf("%- 100.50i||\n", i);
-  	printf("expected result:\n%- 100.50i||\n", i);//0en trop
+  	printf("expected result:\n%- 100.50i||\n", i);//0+
 	ft_printf("% 100.50i||\n", i);
-  	printf("expected result:\n% 100.50i||\n", i);//o en trop
+  	printf("expected result:\n% 100.50i||\n", i);//0+
 	ft_printf("%-050i||\n", i);
   	printf("expected result:\n%-050i||\n", i);
 	ft_printf("%0+50.50i||\n", i);
-  	printf("expected result:\n%0+50.50i||\n", i);
+  	printf("expected result:\n%0+50.50i||\n", i);///0-
 	ft_printf("%0-+050.5i||\n", i);
-  	printf("expected result:\n%0-+050.5i||\n", i);//1sp en trop
+  	printf("expected result:\n%0-+050.5i||\n", i);///0-
 	ft_printf("%0-+050.8i||\n", i);
-  	printf("expected result:\n%0-+050.8i||\n", i);//1sp en trop
+  	printf("expected result:\n%0-+050.8i||\n", i);///0-
 	ft_printf("%-10i||\n", i);
 	printf("expected result:\n%-10i||\n", i);
 	ft_printf("%08.i||\n", i);
@@ -181,7 +187,7 @@ int main(void)
 	ft_printf("%-08.i||\n", i);
  	printf("expected result:\n%-08.i||\n", i);
 	ft_printf("%0-+18.60i||\n", i);
-	printf("expected result:\n%0-+18.60i||\n", i);
+	printf("expected result:\n%0-+18.60i||\n", i);///0-
 	ft_printf("%0-+ 12.2i||\n", i);
 	printf("expected result:\n%0-+ 12.2i||\n", i);
 	ft_printf("%015.i||\n", i);
