@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   created: 2020/01/20 09:26:22 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/14 09:01:41 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/14 10:49:53 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@ int main(void)
 {
 	char			c = 'X';
 	char			*s = "bonjour j'ai faim";
-	//unsigned int	nb = 4252;
+	//int	nb = 0;
+	unsigned int	nb = 4294967296;
 	//unsigned int	nb = 4294967295;
 	//unsigned int	nb = 4294967296;
-	unsigned int	nb = 0;
-	int		i = -2147483648;
+//	unsigned int	nb = -0;
+//	int		i = -2147483648;
 	//int		i = 2147483648; //kk on that number + & -
-	int		*p = &i;
+//	int		*p = &i;
 //	int 	nb = -1564312;
 
 
@@ -203,7 +204,7 @@ int main(void)
 */
 	// Unsigned octal integer//(-, 0, #, )
 	// single flag
-	ft_printf("%+o||\n", nb);
+/*	ft_printf("%+o||\n", nb);
 	printf("%+o||\n", nb);
 	ft_printf("%0o||\n", nb);
 	printf("%0o||\n", nb);
@@ -266,6 +267,72 @@ int main(void)
 	printf("expected result:\n%0# 40.o||\n", nb);
 	ft_printf("%0# 40.60o||\n", nb);
 	printf("expected result:\n%0# 40.60o||\n", nb);
+*/	
+	// Unsigned integer//(-, 0, #, )
+	// single flag
+	ft_printf("%+u||\n", nb);
+	printf("%+u||\n", nb);
+	ft_printf("%0u||\n", nb);
+	printf("%0u||\n", nb);
+	ft_printf("% u||\n", nb);
+	printf("% u||\n", nb);
+	ft_printf("%#u||\n", nb);
+	printf("%#u||\n", nb);
+	ft_printf("%-u||\n", nb);
+	printf("%-u||\n", nb);
+	ft_printf("%5u||\n", nb);
+	printf("%5u||\n", nb);
+	ft_printf("%50u||\n", nb);
+	printf("%50u||\n", nb);
+	ft_printf("%.5u||\n", nb);
+	printf("%.5u||\n", nb);
+	ft_printf("%.50u||\n", nb);
+	printf("%.50u||\n", nb);
+	// multiple flags
+	ft_printf("%- 100.50u||\n", nb);
+  	printf("expected result:\n%- 100.50u||\n", nb);
+	ft_printf("% +100.50u||\n", nb);
+  	printf("expected result:\n% +100.50u||\n", nb);
+	ft_printf("%-050u||\n", nb);
+  	printf("expected result:\n%-050u||\n", nb);
+	ft_printf("%0+50.50u||\n", nb);
+  	printf("expected result:\n%0+50.50u||\n", nb);
+	ft_printf("%0-+050.5u||\n", nb);
+  	printf("expected result:\n%0-+050.5u||\n", nb);
+	ft_printf("%0-+050.8u||\n", nb);
+  	printf("expected result:\n%0-+050.8u||\n", nb);
+	ft_printf("%-10u||\n", nb);
+	printf("expected result:\n%-10u||\n", nb);
+	ft_printf("%08.u||\n", nb);
+  	printf("expected result:\n%08.u||\n", nb);
+	ft_printf("%8.u||\n", nb);
+ 	printf("expected result:\n%8.u||\n", nb);
+	ft_printf("%#018.u||\n", nb);
+ 	printf("expected result:\n%0#18.u||\n", nb);
+	ft_printf("%- 08.u||\n", nb);
+ 	printf("expected result:\n%- 08.u||\n", nb);
+	ft_printf("%0-+18.60u||\n", nb);
+	printf("expected result:\n%0-+18.60u||\n", nb);
+	ft_printf("%0-+# 12.2u||\n", nb);
+	printf("expected result:\n%0-+# 12.2u||\n", nb);
+	ft_printf("%015.u||\n", nb);
+	printf("expected result:\n%015.u||\n", nb);
+	ft_printf("%+- 011u||\n", nb);
+	printf("expected result:\n%+- 011u||\n", nb);
+	ft_printf("% -018.30u||\n", nb);
+	printf("expected result:\n% -018.30u||\n", nb);
+	ft_printf("%-050u||\n", nb);
+	printf("expected result:\n%-050u||\n", nb);
+	ft_printf("%-0# 50u||\n", nb);
+	printf("expected result:\n%-0# 50u||\n", nb);
+	ft_printf("%0# 45u||\n", nb);
+	printf("expected result:\n%0# 45u||\n", nb);
+	ft_printf("%0 18u||\n", nb);
+	printf("expected result:\n%0 18u||\n", nb);
+	ft_printf("%0# 40.u||\n", nb);
+	printf("expected result:\n%0# 40.u||\n", nb);
+	ft_printf("%0# 40.60u||\n", nb);
+	printf("expected result:\n%0# 40.60u||\n", nb);
 
 	// Unsigned hexadecimal(-, 0, #, )
 	// single flag

@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/14 09:01:37 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/14 10:34:26 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,26 +185,71 @@ void	convert_o(va_list ap, t_print *p)
 	s = ft_itoa_base(va_arg(ap, long long), 8, 'x');
 	len[0] = ft_strlen(s);
 	len[1] = p->pres;
-	(p->flg.hash) ? len[0]++ : len[0];
+//	(p->flg.hash) ? len[0]++ : len[0];
+	(p->flg.hash && *s != '0') ? len[0]++ : len[0];
 	(len[0] > len[1]) ? len[1] = len[0] : len[1];
 	if (p->flg.minus == 0)
 	{
 		while (p->width-- - len[1] > 0)
 			(p->flg.zero && p->pres == -1) ? ft_putchar('0') : ft_putchar(' ');
-		if (p->flg.hash)
-			(*s != '0' && !p->flg.zero) ? ft_putchar('0') : ft_putchar(' ');
+		if (p->flg.hash && *s != '0')
+			ft_putchar('Z');
+		//if (p->flg.hash)
+		//	ft_putchar('0');
+		//	(*s != '0') ? ft_putchar('Z') : ft_putchar('B');
+		//	(*s == '0') ? ft_putchar('Z') : len[0]--;
+		while (p->pres-- - len[0] > 0)
+			ft_putchar('0');
+		(p->pres == 0 && *s == '0') ? ft_putchar(' ') : ft_putchar('T');
+	}
+	else
+	{
+		while (p->pres-- - len[0] > 0)
+			ft_putchar('0');
+		if (p->flg.hash && *s != '0')
+			ft_putchar('z');
+	//	if (p->flg.hash)
+		//	ft_putchar('0');
+		//	(*s != '0') ? ft_putchar('z') : len[1]--;
+		//	(*s == '0') ? ft_putchar('0') : ft_putchar('A');
+		(p->pres == 0 && *s == '0') ? ft_putchar(' ') : ft_putchar('t');
+	//	if (p->pres != 0)
+	//		ft_putstr(s);
+		while (p->width-- - len[1] > 0)
+			ft_putchar(' ');
+	}
+}
+
+/*
+** %u: undefined behavior with// '+', ' ', '#'
+** '#' has no effect on %u
+** '0' ignored when '-' is present
+** ' ' ignored when '+' is present
+*/
+
+void	convert_u(va_list ap, t_print *p)
+{
+	printf("\nconvert_u\n");
+	char	*s;
+	int		len[2];
+
+	s = ft_itoa_base(va_arg(ap, long long), 10, 'x');
+//	s = ft_itoa_base(va_arg(ap, unsigned int), 10, 'x');
+	len[0] = ft_strlen(s);
+	len[1] = p->pres;
+	(len[0] > len[1]) ? len[1] = len[0] : len[1];
+	if (p->flg.minus == 0)
+	{
+		while (p->width-- - len[1] > 0)
+			(p->flg.zero && p->pres == -1) ? ft_putchar('0') : ft_putchar(' ');
 		while (p->pres-- - len[0] > 0)
 			ft_putchar('0');
 		ft_putstr(s);
 	}
 	else
 	{
-	//		ft_putchar('0');
 		while (p->pres-- - len[0] > 0)
 			ft_putchar('0');
-		if (p->flg.hash)
-			(*s != '0' && !p->flg.zero) ? ft_putchar('0') : ft_putchar(' ');
-		//	(*s != '0') ? ft_putchar('0') : ft_putchar(' ');
 		ft_putstr(s);
 		while (p->width-- - len[1] > 0)
 			ft_putchar(' ');
@@ -251,10 +296,6 @@ void	convert_x(va_list ap, char c,  t_print *p)
 
 int		conversion(va_list ap, char c, t_print *p)/*, char c, int i)*/
 {
-	unsigned int	i;
-	//	double d;
-	//	void *p;
-
 	if (c == 'c')
 		convert_c(ap, p);
 	if (c == 's')
@@ -263,16 +304,12 @@ int		conversion(va_list ap, char c, t_print *p)/*, char c, int i)*/
 		convert_p(ap, p);
 	if (c == 'd' || c == 'i')
 		convert_di(ap, p);
-	if (c == 'x' || c == 'X')
-		convert_x(ap, c, p);
-	if (c == 'u')
-	{
-		i = va_arg(ap, unsigned int);
-		//e = (unsigned int)va_arg(ap, long long);
-		ft_putnbr(i);
-	}
 	if (c == 'o')
 		convert_o(ap, p);
+	if (c == 'u')
+		convert_u(ap, p);
+	if (c == 'x' || c == 'X')
+		convert_x(ap, c, p);
 /*	if (c == 'f')
 		{ 
 		}
