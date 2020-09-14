@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   created: 2020/01/20 09:26:22 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/13 15:19:31 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/14 09:01:41 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,16 @@ int ft_printf(const char *format, ...);
 
 int main(void)
 {
-	char	c = 'X';
-	char	*s = "bonjour j'ai faim";
-	//int		i = 4252;
-	//int		i = -2147483648;
+	char			c = 'X';
+	char			*s = "bonjour j'ai faim";
+	//unsigned int	nb = 4252;
+	//unsigned int	nb = 4294967295;
+	//unsigned int	nb = 4294967296;
+	unsigned int	nb = 0;
+	int		i = -2147483648;
 	//int		i = 2147483648; //kk on that number + & -
 	int		*p = &i;
-	int 	nb = -1564312;
+//	int 	nb = -1564312;
 
 
 	// Char (-, 0?, width)
@@ -148,7 +151,7 @@ int main(void)
 */
 	// Signed Decimal Integer (+, - , ' ', 0 , width, pres)
 	// single flag
-	ft_printf("%+i||\n", i);
+/*	ft_printf("%+i||\n", i);
  	printf("%+i||\n", i);
 	ft_printf("%0i||\n", i);
   	printf("%0i||\n", i);
@@ -197,10 +200,10 @@ int main(void)
 	printf("expected result:\n%015.i||\n", i);
 	ft_printf("%+- 011i||\n", i);
 	printf("expected result:\n%+- 011i||\n", i);
-
+*/
 	// Unsigned octal integer//(-, 0, #, )
 	// single flag
-/*	ft_printf("%+o||\n", nb);
+	ft_printf("%+o||\n", nb);
 	printf("%+o||\n", nb);
 	ft_printf("%0o||\n", nb);
 	printf("%0o||\n", nb);
@@ -263,7 +266,7 @@ int main(void)
 	printf("expected result:\n%0# 40.o||\n", nb);
 	ft_printf("%0# 40.60o||\n", nb);
 	printf("expected result:\n%0# 40.60o||\n", nb);
-*/
+
 	// Unsigned hexadecimal(-, 0, #, )
 	// single flag
 /*	ft_printf("%+x||\n", nb);
