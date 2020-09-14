@@ -139,7 +139,7 @@ void	convert_di(va_list ap, t_print *p)
 	len[0] = ft_intlen(ft_abs(n));
 	len[1] = p->pres;
 	(n < 0 || (p->flg.plus && n >= 0)) ? len[0]++ && len[1]++ : len[0];
-	(len[0] > len[1]) ? len[1] = len[0] : len[1];
+	(len[0] > len[1] && n != 0) ? len[1] = len[0] : len[1];
 	(p->flg.plus == 0 && n >= 0) ? len[0]++ : len[0]; //why ?0+
 //	printf("intlen=%d\n", len[0]);
 //	printf("value=%d\n", n);
@@ -156,7 +156,12 @@ void	convert_di(va_list ap, t_print *p)
 			ft_putchar('-');
 		while (p->pres-- - len[0] > -1)//-2)
 			ft_putchar('0');
-		ft_putnbr(ft_abs(n));
+	//	if (len[1]== 0 && n == 0)
+	//		ft_putchar(' ');
+	//	else
+		if (len[1] != 0 && n != 0)
+			ft_putchar('T');
+	//	ft_putnbr(ft_abs(n));
 	}
 	else
 	{
@@ -166,7 +171,12 @@ void	convert_di(va_list ap, t_print *p)
 			ft_putchar('-');
 		while (p->pres-- - len[0] > -1)//-2) //why? -1 ??
 			ft_putchar('0');
-		ft_putnbr(ft_abs(n));
+	//	if (len[1] == 0 && n == 0)
+	//		ft_putchar('p');
+	//	else
+		if (len[1]!= 0 && n != 0)
+			ft_putchar('t');
+	//	ft_putnbr(ft_abs(n));
 		while (p->width-- - len[1] > 0)// 0)
 			ft_putchar(' ');
 	}
@@ -371,7 +381,7 @@ int		parse_flags(t_print *p/*,const char **fmt*/, int i)
 		i = get_pres(p, i);
 	}
 //	printf("\n---recap---\n");
-	printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d| h=%d | l=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres, p->flg.plus, p->flg.minus);
+//	printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d| h=%d | l=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres, p->flg.plus, p->flg.minus);
 	return (i);
 }
 
