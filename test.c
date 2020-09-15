@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/15 13:19:46 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/15 13:26:47 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -406,7 +406,7 @@ int		get_pres(t_print *p, int i)
 	return (i);
 }
 
-int		parse_flags(t_print *p/*,const char **fmt*/, int i) //pb #0NO 0#OK
+int		parse_flags(t_print *p/*,const char **fmt*/, int i) //pb #0NO 0#OK lol
 {
 	while (p->fmt[i] && istype(p->fmt[i]) == 0)
 	{
