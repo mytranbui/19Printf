@@ -6,13 +6,13 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 09:23:45 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/15 12:49:13 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/15 12:56:47 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_abs(int i)
+unsigned int	ft_absu(int i)
 {
-	return (i < 0 ? -i : i);
+	return (i < 0 ? -((unsigned int)i) : (unsigned int)i);
 }

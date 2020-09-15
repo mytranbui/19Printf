@@ -6,12 +6,13 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/15 11:18:15 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/15 13:19:46 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdio.h>
+#include <limits.h>
 
 int	ft_putstr_len(const char *str)
 {
@@ -41,6 +42,20 @@ void	convert_c(va_list ap, t_print *p)
 		(p->flg.zero && p->flg.minus == 0) ? ft_putchar('0') : ft_putchar(' ');
 	if (!p->flg.minus)
 		ft_putchar(c);
+}
+
+void	convert_percent(va_list ap, t_print *p)
+{
+//	printf("\nconvert_percent\n");
+	long long	c;
+
+	c = (char)va_arg(ap, long long);
+	if (p->flg.minus)
+		ft_putchar('%');
+	while (p->width-- > 1)
+		(p->flg.zero && p->flg.minus == 0) ? ft_putchar('0') : ft_putchar(' ');
+	if (!p->flg.minus)
+		ft_putchar('%');
 }
 
 /*
@@ -137,7 +152,7 @@ int		ft_intlen(int n)
 void	convert_di(va_list ap, t_print *p)
 {
 //	printf("\nconvert_di\n");
-	int		n;
+	int	n;
 	int		len[3];
 
 	n = ft_atoi(ft_itoa_base(va_arg(ap, long long), 10, 'x'));
@@ -157,7 +172,7 @@ void	convert_di(va_list ap, t_print *p)
 			ft_putchar(' ');
 		if (p->flg.plus && n >= 0)
 			ft_putchar('+');
-		else if (n < 0 && n != -2147483648)
+		else if (n < 0)// && n != -2147483648)
 			ft_putchar('-');
 		while (p->pres-- - len[0] > -1)
 			ft_putchar('0');
@@ -167,7 +182,7 @@ void	convert_di(va_list ap, t_print *p)
 	{
 		if (p->flg.plus && n >= 0)
 			ft_putchar('+');
-		else if (n < 0 && n != -2147483648)
+		else if (n < 0)// && n != -2147483648)
 			ft_putchar('-');
 		while (p->pres-- - len[0] > -1) //why? -1 ??
 			ft_putchar('0');
@@ -177,6 +192,7 @@ void	convert_di(va_list ap, t_print *p)
 	}
 //	printf("{n =%d}", n);
 //	printf("{abs(n) =%d}", abs(n));
+	printf("{ft_absu(INT_MIN) =%d}", ft_absu(INT_MIN));
 //	printf("{len= %d}", len[0]);
 //	printf("{len[1] = %d}", len[1]);
 //	printf("{len[2] = %d}", len[2]);
@@ -269,7 +285,7 @@ void	convert_u(va_list ap, t_print *p)
 ** %x & %X: undefined behavior with +, '0' and ' '
 ** '0' ignored when '-' is present
 */
-
+//kko pb with 0x"  " or null?
 void	convert_x(va_list ap, char c,  t_print *p)
 {
 //	printf("\nconvert_x\n");
@@ -285,25 +301,57 @@ void	convert_x(va_list ap, char c,  t_print *p)
 	{
 		while (p->width-- - len[1] > 0)
 			(p->flg.zero && p->pres == -1) ? ft_putchar('0') : ft_putchar(' ');
-		if (p->flg.hash)
+		if (p->flg.hash && *s != '0')
 			(c == 'x') ? ft_putstr("0x") : ft_putstr("0X");
 		while (p->pres-- - len[0] > 0)
 			ft_putchar('0');
-		(len[2] == 0 && *s == '0') ? ft_putchar(' ') : ft_putchar('O'); //ft_putstr(s);
+		(len[2] == 0 && *s == '0') ? ft_putchar(' ') : ft_putstr(s);
+	//	(len[2] == 0 && *s == '0') ? ft_putchar(' ') : ft_putchar('O');
 	}
 	else
 	{
-		if (p->flg.hash)
+	//	if (p->flg.hash)
+		if (p->flg.hash && *s != '0')
 			(c == 'x') ? ft_putstr("0x") : ft_putstr("0X");
 		while (p->pres-- - len[0] > 0)
 			ft_putchar('0');
-		(len[2] == 0 && *s == '0') ? ft_putchar(' ') :  ft_putchar('O'); //ft_putstr(s);
+		(len[2] == 0 && *s == '0') ? ft_putchar(' ') : ft_putstr(s);
+	//	(len[2] == 0 && *s == '0') ? ft_putchar(' ') : ft_putchar('O');
 		while (p->width-- - len[1]  > 0)
 			ft_putchar(' ');
 	}
 }
 
-//%% with pres width!!
+//%% with pres width test!!
+
+void	convert_f(va_list ap, t_print *p)
+{
+//	printf("\nconvert_f\n");
+	char	*s;
+	int		len[3];
+
+	s = ft_itoa_base(va_arg(ap, long long), 10, 'x');
+//	s = ft_itoa_base(va_arg(ap, unsigned int), 10, 'x');
+	len[0] = ft_strlen(s);
+	len[1] = len[2] = p->pres;
+	(len[0] > len[1]) ? len[1] = len[0] : len[1];
+	if (p->flg.minus == 0)
+	{
+		while (p->width-- - len[1] > 0)
+			(p->flg.zero && p->pres == -1) ? ft_putchar('0') : ft_putchar(' ');
+		while (p->pres-- - len[0] > 0)
+			ft_putchar('0');
+		(len[2] == 0 && *s == '0') ? ft_putchar(' ') : ft_putstr(s);
+	}
+	else
+	{
+		while (p->pres-- - len[0] > 0)
+			ft_putchar('0');
+		(len[2] == 0 && *s == '0') ? ft_putchar(' ') : ft_putstr(s);
+		while (p->width-- - len[1] > 0)
+			ft_putchar(' ');
+	}
+}
 
 int		conversion(va_list ap, char c, t_print *p)/*, char c, int i)*/
 {
@@ -324,7 +372,8 @@ int		conversion(va_list ap, char c, t_print *p)/*, char c, int i)*/
 //	if (c == 'f')
 //		convert_f(ap, p);
 	if (c == '%')
-		ft_putchar('%');
+		convert_percent(ap, p);
+		//ft_putchar('%');
 	return (1);
 }
 
@@ -357,7 +406,7 @@ int		get_pres(t_print *p, int i)
 	return (i);
 }
 
-int		parse_flags(t_print *p/*,const char **fmt*/, int i)
+int		parse_flags(t_print *p/*,const char **fmt*/, int i) //pb #0NO 0#OK
 {
 	while (p->fmt[i] && istype(p->fmt[i]) == 0)
 	{
@@ -374,7 +423,7 @@ int		parse_flags(t_print *p/*,const char **fmt*/, int i)
 		i = get_pres(p, i);
 	}
 //	printf("\n---recap---\n");
-//	printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d| h=%d | l=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres, p->flg.plus, p->flg.minus);
+	printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d| h=%d | l=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres, p->flg.plus, p->flg.minus);
 	return (i);
 }
 

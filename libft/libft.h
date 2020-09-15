@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 12:53:43 by mbui              #+#    #+#             */
-/*   Updated: 2020/03/05 18:27:30 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/15 12:53:45 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int				ft_isspace(int c);
 int				ft_max(int a, int b);
 int				ft_min(int a, int b);
 int				ft_abs(int i);
+unsigned int	ft_absu(int i);
 int				ft_islower(int c);
 int				ft_isupper(int c);
 double			ft_sqrt(double nb);
