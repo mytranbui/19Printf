@@ -27,41 +27,45 @@ int main(void)
 //	int		i = -2147483648;
 	//int		i = 2147483648; //kk on that number + & -
 //	int		i = 2147483648;
-//	int		 =-0;
-//	int		*p = &i;
+	//int		i =-0;
+int		*p = &i;
 //	int 	nb = -1564312;
 
 	printf("\n-----CHAR-----\n"); //(-, 0?, width)
 	// single flag
-/*	ft_printf("||+c||\n", c);
-	printf("||+c||\n", c);
-	ft_printf("||% c||\n", c);
-	printf("||% c||\n", c);
-	ft_printf("||%#c||\n", c);
-	printf("||%#c||\n", c);
-	ft_printf("||%.5c||\n", c);
-	printf("||%.5c||\n", c);
-	ft_printf("||%0c||\n", c);
-	printf("||%0c||\n", c);
-	ft_printf("||%-c||\n", c);
-	printf("||%-c||\n", c);
-	ft_printf("||%10c||\n", c);
-	printf("||%10c||\n", c);
+/*	ft_printf("%+c||\n", c);
+	printf("%+c||\n", c);
+	ft_printf("% c||\n", c);
+	printf("% c||\n", c);
+	ft_printf("%#c||\n", c);
+	printf("%#c||\n", c);
+	ft_printf("%.5c||\n", c);
+	printf("%.5c||\n", c);
+	ft_printf("%0c||\n", c);
+	printf("%0c||\n", c);
+	ft_printf("%-c||\n", c);
+	printf("%-c||\n", c);
+	ft_printf("%10c||\n", c);
+	printf("%10c||\n", c);
 	// multiple flags
-	ft_printf("||%-10c||\n", c);
-	printf("expected result:\n%-10c||\n", c);
-	ft_printf("||%08.c||\n", c);
-	printf("expected result:\n%08.c||\n", c);
-	ft_printf("||%0-18.4c||\n", c);
-	printf("expected result:\n%0-18.4c||\n", c);
-	ft_printf("||%0-+18.60c||\n", c);
-	printf("expected result:\n%0-+18.60c||\n", c);
-*/	printf("||%0#5c||\n", c);
-	ft_printf("||%0#5c||\n", c);
-	printf("||%#05c||\n", c);
-	ft_printf("||%#05c||\n", c);
-	printf("||%0#05c||\n", c);
-	ft_printf("||%0#05c||\n", c);
+	ft_printf("%-10c||\n", c);
+	printf("%-10c||\n", c);
+	ft_printf("%08.c||\n", c);
+	printf("%08.c||\n", c);
+	ft_printf("%0-18.4c||\n", c);
+	printf("%0-18.4c||\n", c);
+	ft_printf("%0-+18.60c||\n", c);
+	printf("%0-+18.60c||\n", c);
+*/	printf("%0#5+c||\n", c);
+	ft_printf("%0#5+c||\n", c);
+	printf("%#05c||\n", c);
+	ft_printf("%#05c||\n", c);
+	printf("%0#05c||\n", c);
+	ft_printf("%0#05c||\n", c);
+	printf("%0#05c||\n", NULL);
+	ft_printf("%0#05c||\n", NULL);
+	printf("%c||\n", NULL);
+	ft_printf("%c||\n", NULL);
 
 /*	printf("\n-----STRING-----\n"); //(-, 0?, width, pres)
 	// single flag
@@ -102,62 +106,74 @@ int main(void)
 	printf("expected result:\n%0-+18.4s||\n", s);
 	ft_printf("||%0-+18.60s||\n", s);
 	printf("expected result:\n%0-+18.60s||\n", s);
+printf("%0#05s||\n", NULL);
+ft_printf("%0#05s||\n", NULL);
+printf("%s||\n", NULL);
+ft_printf("%s||\n", NULL);
 */
 /*	printf("\n-----POINTER-----\n"); //(-, width, pres?)
 	// single flag
-	ft_printf("||%+p||\n", p);
-	printf("||%+p||\n", p);
-	ft_printf("||%0p||\n", p);
-	printf("||%0p||\n", p);
-	ft_printf("||% p||\n", p);
-	printf("||% p||\n", p);
-	ft_printf("||%#p||\n", p);
-	printf("||%#p||\n", p);
-	ft_printf("||%-p||\n", p);
-	printf("||%-p||\n", p);
-	ft_printf("||%5p||\n", p);
-	printf("||%5p||\n", p);
-	ft_printf("||%50p||\n", p);
-	printf("||%50p||\n", p);
-	ft_printf("||%.5p||\n", p);
-	printf("||%.5p||\n", p);
-	ft_printf("||%.50p||\n", p);
-	printf("||%.50p||\n", p);
+	ft_printf("||%+p||\n", NULL);
+	printf("||%+p||\n", NULL);
+	ft_printf("||%0p||\n", NULL);
+	printf("||%0p||\n", NULL);
+	ft_printf("||% p||\n", NULL);
+	printf("||% p||\n", NULL);
+	ft_printf("||%#p||\n", NULL);
+	printf("||%#p||\n", NULL);
+	ft_printf("||%-p||\n", NULL);
+	printf("||%-p||\n", NULL);
+	ft_printf("||%5p||\n", NULL);
+	printf("||%5p||\n", NULL);
+	ft_printf("||%50p||\n", NULL);
+	printf("||%50p||\n", NULL);
+	ft_printf("||%.5p||\n", NULL);
+	printf("||%.5p||\n", NULL);
+	ft_printf("||%.50p||\n", NULL);
+	printf("||%.50p||\n", NULL);
 	// multiple flags
-	ft_printf("||%- 100.50p||\n", p);
-	printf("expected result:\n%- 100.50p||\n", p);
-	ft_printf("||% 100.50p||\n", p);
-	printf("expected result:\n% 100.50p||\n", p);
-	ft_printf("||%-050p||\n", p);
-	printf("expected result:\n%-050p||\n", p);
-	ft_printf("||%0+50.50p||\n", p);
-	printf("expected result:\n%0+50.50p||\n", p);
-	ft_printf("||%0-50.5p||\n", p);
-	printf("expected result:\n%0-50.5p||\n", p);
-	ft_printf("||%-10p||\n", p);
-	printf("expected result:\n%-10p||\n", p);
-	ft_printf("||%08.p||\n", p);
-	printf("expected result:\n%08.p||\n", p);
-	ft_printf("||%8.p||\n", p);
-	printf("expected result:\n%8.p||\n", p);
-	ft_printf("||%018.p||\n", p);
-	printf("expected result:\n%018.p||\n", p);
-	ft_printf("||%-08.p||\n", p);
-	printf("expected result:\n%-08.p||\n", p);
-	ft_printf("||%0-+18.4p||\n", p);
-	printf("expected result:\n%0-+18.4p||\n", p);
-	ft_printf("||%0-+18.60p||\n", p);
-	printf("expected result:\n%0-+18.60p||\n", p);
-	ft_printf("||%33.44p||\n", p);
-	printf("expected result:\n%33.44p||\n", p);
-	ft_printf("||%0-+ 12.2p||\n", p);
-	printf("expected result:\n%0-+ 12.2p||\n", p);
-	ft_printf("||%015.p||\n", p);
-	printf("expected result:\n%015.p||\n", p);
-	ft_printf("||%+- 011p||\n", p);
-	printf("expected result:\n%+- 011p||\n", p);
+	ft_printf("||%- 100.50p||\n", NULL);
+	printf("||%- 100.50p||\n", NULL);
+	ft_printf("||% 100.50p||\n", NULL);
+	printf("||% 100.50p||\n", NULL);
+	ft_printf("||%-050p||\n", NULL);
+	printf("||%-050p||\n", NULL);
+	ft_printf("||%0+50.50p||\n", NULL);
+	printf("||%0+50.50p||\n", NULL);
+	ft_printf("||%0-50.5p||\n", NULL);
+	printf("||%0-50.5p||\n", NULL);
+	ft_printf("||%-10p||\n", NULL);
+	printf("||%-10p||\n", NULL);
+	ft_printf("||%08.p||\n", NULL);
+	printf("||%08.p||\n", NULL);
+	ft_printf("||%8.p||\n", NULL);
+	printf("||%8.p||\n", NULL);
+	ft_printf("||%018.p||\n", NULL); //0-
+	printf("||%018.p||\n", NULL);
+	ft_printf("||%-08.p||\n", NULL); //0-
+	printf("||%-08.p||\n", NULL);
+	ft_printf("||%0-+18.4p||\n", NULL);
+	printf("||%0-+18.4p||\n", NULL);
+	ft_printf("||%0-+18.60p||\n", NULL);
+	printf("||%0-+18.60p||\n", NULL);
+	ft_printf("||%33.44p||\n", NULL);
+	printf("||%33.44p||\n", NULL);
+	ft_printf("||%0-+ 12.2p||\n", NULL);
+	printf("||%0-+ 12.2p||\n", NULL);
+	ft_printf("||%015.p||\n", NULL); //0-
+	printf("||%015.p||\n", NULL);
+	ft_printf("||%+- 011p||\n", NULL);
+	printf("||%+- 011p||\n", NULL);
+	ft_printf("%0#05p||\n", NULL);
+	printf("%0#05p||\n", NULL);
+	ft_printf("%0#5p||\n", NULL);
+	printf("%0#5p||\n", NULL);
+	ft_printf("%#05p||\n", NULL);
+	printf("%#05p||\n", NULL);
+	ft_printf("%p||\n", NULL);
+	printf("%p||\n", NULL);
 */
-/*	printf("\n-----SIGNED INT-----\n"); //(+, - , ' ', 0 , width, pres)
+	printf("\n-----SIGNED INT-----\n"); //(+, - , ' ', 0 , width, pres)
 	// single flag
 	printf("%+i||\n", i);
  	ft_printf("%+i||\n", i);
@@ -176,7 +192,7 @@ int main(void)
 	printf("%.5i||\n", i);
  	ft_printf("%.5i||\n", i);
 	printf("%.50i||\n", i);
-  	ft_printf("%.50i||\n", i);*/
+  	ft_printf("%.50i||\n", i);
 /*	printf("%hi||\n", i);
  	ft_printf("%hi`||\n", i);
 	printf("%hhi||\n", i);
@@ -186,7 +202,7 @@ int main(void)
 	printf("%lli||\n", i);
  	ft_printf("%lli||\n", i);
 */	// multiple flags
-/*	printf("%- 100.50i||\n", i);
+	printf("%- 100.50i||\n", i);
   	ft_printf("%- 100.50i||\n", i);
 	printf("% +100.50i||\n", i);
   	ft_printf("% +100.50i||\n", i);
@@ -216,7 +232,7 @@ int main(void)
 	ft_printf("%015.i||\n", i); //replace 0 by null // 0 width15 pres0
 	printf("%+- 011.i||\n", i);
 	ft_printf("%+- 011.i||\n", i);
-*/
+
 /*	printf("\n-----UNSIGNED OCTAL-----\n"); //(-, 0, #, )
 	printf("%+o||\n", nb);
 	ft_printf("%+o||\n", nb);
