@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/16 14:07:33 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/17 11:42:04 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -421,27 +421,62 @@ int		get_pres(t_print *p, int i)
 
 int		parse_flags(t_print *p/*,const char **fmt*/, int i)
 {
-	while (p->fmt[i] && istype(p->fmt[i]) == 0)
+	while (p->fmt[i] !='\0'&& istype(p->fmt[i]) == 0)
 	{
-		(p->fmt[i] == '+') ? p->flg.plus = 1 && i++ : p->flg.plus;
-		(p->fmt[i] == '-') ? p->flg.minus = 1 && i++ : p->flg.minus;
-		(p->fmt[i] == ' ') ? p->flg.space = 1 && i++ : p->flg.space;
-		(p->fmt[i] == '#') ? p->flg.hash = 1 && i++ : p->flg.hash;
-		(p->fmt[i] == '0') ? p->flg.zero = 1 && i++ : p->flg.zero;
-		(p->fmt[i] == 'h' && p->fmt[i + 1] == 'h') ? p->flg.h == 2 && i++ && i++ : p->flg.h;
-		(p->fmt[i] == 'l' && p->fmt[i + 1] == 'l') ? p->flg.l == 2 && i++ && i++ : p->flg.l;
-		(p->fmt[i] == 'l' && p->flg.l != 2 & p->flg.l != 0) ? p->flg.l == 1 && i++ : p->flg.l;
-		(p->fmt[i] == 'h' && p->flg.h != 2 & p->flg.h != 0) ? p->flg.h == 1 && i++ : p->flg.h;
-		(p->fmt[i] == 'L') ? p->flg.maj_l == 1  && i++ : p->flg.maj_l;
-	//	(ft_isdigit(p->fmt[i])) ? i = get_width(p, i) : i;
-	//	(p->fmt[i] == '.') ? i = get_pres(p, i) : i;
+		(p->fmt[i] == '+') ? p->flg.plus = 1 : p->flg.plus;
+		(p->fmt[i] == '-') ? p->flg.minus = 1 : p->flg.minus;
+		(p->fmt[i] == ' ') ? p->flg.space = 1 : p->flg.space;
+		(p->fmt[i] == '#') ? p->flg.hash = 1 : p->flg.hash;
+		(p->fmt[i] == '0') ? p->flg.zero = 1 : p->flg.zero;
 		i = get_width(p, i);
 		i = get_pres(p, i);
+		(p->fmt[i] == 'h' && p->fmt[i + 1] == 'h' && p->flg.h == 0) ? p->flg.h = 2 : p->flg.h;
+		(p->fmt[i] == 'l' && p->fmt[i + 1] == 'l' && p->flg.l == 0) ? p->flg.l = 2: p->flg.l;
+		(p->fmt[i] == 'h' && p->fmt[i + 1] != 'h' && p->flg.h == 0) ? p->flg.h = 1 : p->flg.h;
+		(p->fmt[i] == 'l' && p->fmt[i + 1] != 'l' && p->flg.l == 0) ? p->flg.l = 1 : p->flg.l;
+		(p->fmt[i] == 'L') ? p->flg.maj_l = 1 : p->flg.maj_l;
+		i++;
 	}
 //	printf("\n---recap---\n");
-//	printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d| h=%d | l=%d |L=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres, p->flg.plus, p->flg.minus);
+	printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d| h=%d | l=%d | L=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres, p->flg.h, p->flg.l, p->flg.maj_l);
 	return (i);
 }
+
+int		parse_flags2(t_print *p/*,const char **fmt*/, int i)
+{
+	while (p->fmt[i] !='\0'&& istype(p->fmt[i]) == 0)
+	{
+		if (p->fmt[i] == '+')
+			p->flg.plus = 1;
+		if (p->fmt[i] == '-')
+			p->flg.minus = 1;
+		if (p->fmt[i] == ' ')
+			p->flg.space = 1;
+		if (p->fmt[i] == '#')
+			p->flg.hash = 1;
+		if (p->fmt[i] == '0')
+			p->flg.zero = 1;
+	//	i = get_width(p, i);
+	//	i = get_pres(p, i);
+		(ft_isdigit(p->fmt[i])) ? i = get_width(p, i) : i;
+		(p->fmt[i] == '.') ? i = get_pres(p, i) : i;
+		if (p->fmt[i] == 'h' && p->fmt[i + 1] == 'h' && p->flg.h == 0)
+			p->flg.h = 2;
+		if (p->fmt[i] == 'l' && p->fmt[i + 1] == 'l' && p->flg.l == 0)
+			p->flg.l = 2;
+		if (p->fmt[i] == 'h' && p->fmt[i + 1] != 'h' && p->flg.h == 0)
+			p->flg.h = 1;
+		if (p->fmt[i] == 'l' && p->fmt[i + 1] != 'l' && p->flg.l == 0)
+			p->flg.l = 1;
+		if (p->fmt[i] == 'L')
+			p->flg.maj_l = 1;
+		i++;
+	}
+//	printf("\n---recap---\n");
+	printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d| h=%d | l=%d | L=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres, p->flg.h, p->flg.l, p->flg.maj_l);
+	return (i);
+}
+
 
 t_print	*init_flags(t_print *p)
 {
@@ -480,7 +515,8 @@ int		ft_printf(const char *format, ...)
 			p = init_flags(p);
 			i = parse_flags(p, i);
 		//	printf("\n=== where I am at : %c ===\n", p->fmt[i]);
-			conversion(ap, p->fmt[i], p);
+	//		convert_hhll(ap, p->fmt[i], p);
+		//	conversion(ap, p->fmt[i], p);
 		}
 		//else
 		//	ft_putendl("not implemented or undefined");
