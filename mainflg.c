@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mainflg.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 08:37:27 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/17 11:44:04 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/21 11:02:08 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(void)
 {
 	int		i = 42;
 
-	ft_printf("%hhLi", i);
+	ft_printf("%hhLilol", i);
 	ft_printf("\n");
 	ft_printf("%+- # 0i", i);
 	ft_printf("\n");
@@ -30,25 +30,25 @@ int	main(void)
 	ft_printf("\n");
 	ft_printf("%0 #-++hhLi", i);
 	ft_printf("\n");
-	ft_printf("%-43.53+i", i);
+	ft_printf("%-43.53i", i);
 	ft_printf("\n");
-	ft_printf("%hlhlli", i);
+//	ft_printf("%hlhlli", i);
 	ft_printf("\n");
 
 	ft_printf("%+- # 0 hhllLi", i);
 	ft_printf("\n");
 	ft_printf("%L53.0i", i);
 	ft_printf("\n");
-	ft_printf("%lL+i", i);
+//	ft_printf("%lL+i", i);
 	ft_printf("\n");
-	ft_printf("% - l4520-l+", i);
+//	ft_printf("% - l4520-l+", i);
 	ft_printf("\n");
 	ft_printf("%L35. i", i);
 	ft_printf("\n");
 	ft_printf("%0 #-++hhLi", i);
 	ft_printf("\n");
-	ft_printf("%-43.53+++i", i);
-	ft_printf("\n");
-	ft_printf("%hlhlli", i);
+	ft_printf("%-+43.53+i", i);
+	//ft_printf("\n");
+	//ft_printf("%7452hi", i);
 	return (0);
 }
