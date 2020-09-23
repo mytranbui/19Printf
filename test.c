@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/23 14:59:33 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/23 16:29:46 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,16 +135,21 @@ void	convert_p(va_list ap, t_print *p)
 //should be added to libft
 int		ft_intlen(int n)
 {
-	int	log;
+	int	len;
 
-	log = 0;
+	len = 0;
 	while (n >= 10)
 	{
 		n /= 10;
-		log++;
+		len++;
 	}
-	log++;
-	return (log);
+	len++;
+	return (len);
+}
+
+unsigned int ft_absu(int value)
+{
+    return (value < 0) ? -((unsigned int)value) : (unsigned int)value;
 }
 
 /*
@@ -155,13 +160,14 @@ int		ft_intlen(int n)
 void	convert_di(va_list ap, t_print *p)
 {
 	printf("\nconvert_di\n");
-	uintmax_t v;
+	intmax_t v;
 	int		n;
 	int		len[3];
 
 	v = va_arg(ap, long long);
 	n = ft_atoi(ft_itoa_base(v, 10, 'x'));
-	len[0] = ft_intlen(ft_abs(n));
+	len[0] = ft_intlen(ft_absu(v));
+//	printf("{len[0] = %d}", len[0]);
 	len[1] = len[2] = p->pres;
 	(n < 0 || (p->flg.plus && n >= 0)) ? len[0]++ && len[1]++ : len[0];
 	(len[0] > len[1]) ? len[1] = len[0] : len[1];
@@ -181,7 +187,7 @@ void	convert_di(va_list ap, t_print *p)
 			ft_putchar('-');
 		while (p->pres-- - len[0] > -1)
 			ft_putchar('0');
-		(len[2] == 0 && n == 0) ? ft_putchar(' ') : ft_putnbr(ft_abs(n));
+		(len[2] == 0 && n == 0) ? ft_putchar(' ') : ft_putnbr(ft_absu(v));
 	}
 	else
 	{
@@ -191,16 +197,19 @@ void	convert_di(va_list ap, t_print *p)
 			ft_putchar('-');
 		while (p->pres-- - len[0] > -1) //why? -1 ??
 			ft_putchar('0');
-		(len[2] == 0 && n == 0) ? ft_putchar(' ') : ft_putnbr(ft_abs(n));
+		(len[2] == 0 && n == 0) ? ft_putchar(' ') : ft_putnbr(ft_absu(v));
 	while (p->width-- - len[1] > 0)
 			ft_putchar(' ');
 	}
-	printf("{v =%ju}", v);
+//	v = v * (-1);
+	ft_putnbr(2147483647 + 1);
+//	ft_putnbr(n * -1);
+//	printf("{v =%ju}", v);
 //	printf("{n =%d}", n);
 //	printf("{abs(n) =%d}", abs(n));
 //	printf("{ft_absu(INT_MIN) =%d}", ft_absu(n));
 //	printf("{len= %d}", len[0]);
-//	printf("{len[1] = %d}", len[1]);
+//	printf("{len[0] = %d}", len[0]);
 //	printf("{len[2] = %d}", len[2]);
 //	printf("{printed spaces=%d}\n", i);
 }
