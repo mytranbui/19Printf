@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/21 14:45:26 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/23 12:25:11 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,38 +95,34 @@ void	convert_p(va_list ap, t_print *p)
 {
 	printf("\nconvert_p\n");
 	char	*s;
-	int		len[2];
+	int		len[3];
 
 	s = ft_itoa_base(va_arg(ap, long long), 16, 'x');
 	len[0] = ft_strlen(s);//+2; //+0x
-	len[1] = p->pres;
+	len[1] = len[2] = p->pres;
+	(!len[2]) ? p->width++ : p->width;
 	(len[0] > p->pres) ? len[1] = len[0] : len[1];
-	if (p->flg.minus == 0 && p->flg.zero == 0)
+	if (p->flg.minus == 0)// && p->flg.zero == 0)
 	{
-		while (p->width-- - len[1] > 2)//0)
-		//(p->flg.zero && p->flg.minus == 0) ? ft_putchar('0') : ft_putchar(' ');
+		while (p->width-- - len[1] > 2 && (p->flg.zero == 0||(p->pres == 0 && p->flg.zero)))
 			ft_putchar(' ');
-		ft_putstr("0x");
-		while (p->pres-- - len[0] > 0 && len[1] != 0)//-2)
-			ft_putchar('0');
-		ft_putstr(s);
-	}
-	else if (p->flg.minus == 0)
-	{
 		ft_putstr("OX");
-		while (p->width-- - len[1] > 2)//0)
-		//(p->flg.zero && p->flg.minus == 0) ? ft_putchar('0') : ft_putchar(' ');
-			ft_putchar('0');
+		while (p->width-- - len[1] > 1 && p->flg.zero && p->pres ==-1)
+			ft_putchar('G');
 		while (p->pres-- - len[0] > 0)//-2)
-			ft_putchar('A');
+			ft_putchar('U');
+	//	if (len[2] != 0 && *s != '0')
+		if (len[2] != 0)
 		ft_putstr(s);
 	}
 	else
 	{
 		ft_putstr("0x");
 		while (p->pres-- - len[0] > 0)//-2)
-			ft_putchar('0');
-		ft_putstr(s);
+			ft_putchar('u');
+	//	if (len[2] != 0 && *s != '0')
+		if (len[2] != 0)
+			ft_putstr(s);
 		while (p->width-- - len[1]  > 2)// 0)
 			ft_putchar(' ');
 	}
@@ -266,6 +262,7 @@ void	convert_o(va_list ap, t_print *p)
 ** ' ' ignored when '+' is present
 */
 //okok
+// long long == long long int
 void	convert_u(va_list ap, t_print *p)
 {
 	printf("\nconvert_u\n");
@@ -361,123 +358,5 @@ int		conversion(va_list ap, char c, t_print *p)/*, char c, int i)*/
 		convert_f(ap, p);
 	if (c == '%')
 		convert_percent(ap, p);
-	return (1);
-}
-
-int		istype(char c)
-{
-	return (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'o'
-			|| c == 'u' || c == 'x' || c == 'X' || c == 'f' || c == '%');
-}
-
-int		get_width(t_print *p, int i)
-{
-	if (ft_isdigit(p->fmt[i]))
-	{
-		p->width = ft_atoi(&p->fmt[i]);
-		while (ft_isdigit(p->fmt[i]))
-			i++;
-	}
-	return (i);
-}
-
-int		get_pres(t_print *p, int i)
-{
-	if (p->fmt[i] == '.')
-	{
-		i++;
-		p->pres = ft_atoi(&p->fmt[i]);
-		while (ft_isdigit(p->fmt[i]))
-			i++;
-	}
-	return (i);
-}
-
-int		parse_flags(t_print *p/*,const char **fmt*/, int i)
-{
-	while (p->fmt[i] !='\0'&& istype(p->fmt[i]) == 0)
-	{
-		(p->fmt[i] == '+') ? p->flg.plus = 1 && i++ : p->flg.plus;
-		(p->fmt[i] == '-') ? p->flg.minus = 1 && i++ : p->flg.minus;
-		(p->fmt[i] == ' ') ? p->flg.space = 1 && i++ : p->flg.space;
-		(p->fmt[i] == '#') ? p->flg.hash = 1 && i++ : p->flg.hash;
-		(p->fmt[i] == '0') ? p->flg.zero = 1 && i++ : p->flg.zero;
-		i = get_width(p, i);
-		i = get_pres(p, i);
-		if (p->fmt[i] == 'h' && p->fmt[i + 1] == 'h' && p->flg.h == 0)
-		{
-			p->flg.h = 2;
-			i += 2;
-		}
-		if (p->fmt[i] == 'l' && p->fmt[i + 1] == 'l' && p->flg.l == 0)
-		{
-			p->flg.l = 2;
-			i += 2;
-		}
-		(p->fmt[i] == 'h' && p->fmt[i + 1] != 'h' && p->flg.h == 0) ? p->flg.h = 1 && i++ : p->flg.h;
-		(p->fmt[i] == 'l' && p->fmt[i + 1] != 'l' && p->flg.l == 0) ? p->flg.l = 1 && i++ : p->flg.l;
-		(p->fmt[i] == 'L') ? p->flg.maj_l = 1 & i++: p->flg.maj_l;
-	}
-	printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d | h=%d | l=%d | L=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres, p->flg.h, p->flg.l, p->flg.maj_l);
-//	printf("{fmt[i]=%c}",p->fmt[i]);
-	return (i);
-}
-
-/*int		convert_hhll(t_print *p)
-{
-	if (p->flg.h == 1)
-}
-*/
-t_print	*init_flags(t_print *p)
-{
-	p->width = 0;
-	p->pres = -1;
-	p->flg.plus = 0;
-	p->flg.minus = 0;
-	p->flg.space = 0;
-	p->flg.zero = 0;
-	p->flg.hash = 0;
-	p->flg.h = 0;
-	p->flg.l = 0;
-	p->flg.maj_l = 0;
-	return (p);
-}
-
-int		ft_printf(const char *format, ...)
-{
-	va_list	ap;
-	t_print	*p;
-	int		i;
-	//	int l;
-	//	char c;
-	i = 0;
-	if (!(p = (t_print*)ft_memalloc(sizeof(t_print))))
-		return (-1);
-	p = init_flags(p);
-	va_start(ap, format);
-	p->fmt = format;
-	//parse(ap, );
-	while (p->fmt[i])
-	{
-		if (p->fmt[i] == '%')
-		{
-			i++;
-			p = init_flags(p);
-			i = parse_flags(p, i);
-		//	i = parse_type(p,i);
-		//	printf("\n=== where I am at : %c ===\n", p->fmt[i]);
-	//		convert_hhll(ap, p->fmt[i], p);
-			conversion(ap, p->fmt[i], p);
-		}
-		//else
-		//	ft_putendl("not implemented or undefined");
-		else
-		{
-			i += ft_putstr_len(&p->fmt[i]);
-			i--;
-		}
-		i++;
-	}
-	va_end(ap);
 	return (1);
 }
