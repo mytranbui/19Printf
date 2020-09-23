@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/23 16:29:46 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/23 16:57:24 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,7 +242,7 @@ void	convert_o(va_list ap, t_print *p)
 		//	(*s == '0') ? ft_putchar('Z') : len[0]--;
 		while (p->pres-- - len[0] > 0)
 			ft_putchar('0');
-		(len[2] == 0 && *s == '0') ? ft_putchar(' ') : ft_putstr(s);
+		(len[2] == 0 && *s == '0') ? ft_putchar(' ') : ft_putchar('N');// ft_putstr(s);
 	}
 	else
 	{
@@ -252,7 +252,7 @@ void	convert_o(va_list ap, t_print *p)
 			ft_putchar('#');
 		//	(*s != '0') ? ft_putchar('z') : len[1]--;
 		//	(*s == '0') ? ft_putchar('0') : ft_putchar('A');
-		(len[2] == 0 && *s == '0') ? ft_putchar(' ') : ft_putstr(s);
+		(len[2] == 0 && *s == '0') ? ft_putchar(' ') : ft_putchar('n');//ft_putstr(s);
 	//	if (p->pres != 0)
 	//		ft_putstr(s);
 		while (p->width-- - len[1] > 0)

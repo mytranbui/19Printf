@@ -22,7 +22,7 @@ int main(void)
 //	int	i = -2147483648; //kkdi
 //	int	i = -43125345; //4294967295
 	//unsigned int	nb = 4294967296; //kkx kko
-	unsigned int	nb = 87; //kko kkx
+	unsigned int	nb = 0; //kko kkx
 	//unsigned int	nb = 4294967296;
 //	unsigned int	nb = 458;
 	int		i = -2147483648;
@@ -187,7 +187,7 @@ printf("%s||\n", NULL);
 	ft_printf("%p||\n", p);
 	printf("%p||\n", p);
 */
-	printf("\n-----SIGNED INT-----\n"); //(+, - , ' ', 0 , width, pres)
+/*	printf("\n-----SIGNED INT-----\n"); //(+, - , ' ', 0 , width, pres)
 	// single flag
 	ft_printf("%+i||\n", i);
  	printf("%+i||\n", i);
@@ -207,7 +207,7 @@ printf("%s||\n", NULL);
  	printf("%.5i||\n", i);
 	ft_printf("%.50i||\n", i);
   	printf("%.50i||\n", i);
-/*	ft_printf("%hi||\n", i);
+*//*	ft_printf("%hi||\n", i);
  	printf("%hi`||\n", i);
 	ft_printf("%hhi||\n", i);
  	printf("%hhi||\n", i);
@@ -216,7 +216,7 @@ printf("%s||\n", NULL);
 	ft_printf("%lli||\n", i);
  	printf("%lli||\n", i);
 */	// multiple flags
-	ft_printf("%- 100.50i||\n", i);
+/*	ft_printf("%- 100.50i||\n", i);
   	printf("%- 100.50i||\n", i);
 	ft_printf("% +100.50i||\n", i);
   	printf("% +100.50i||\n", i);
@@ -246,76 +246,76 @@ printf("%s||\n", NULL);
 	printf("%015.i||\n", i); //replace 0 by null // 0 width15 pres0
 	ft_printf("%+- 011.i||\n", i);
 	printf("%+- 011.i||\n", i);
-
-/*	printf("\n-----UNSIGNED OCTAL-----\n"); //(-, 0, #, )
-	printf("%+o||\n", nb);
-	arintf("%+o||\n", nb);
-	printf("%0o||\n", nb);
-	ft_printf("%0o||\n", nb);
-	printf("% o||\n", nb);
-	ft_printf("% o||\n", nb);
-	printf("%#o||\n", nb);
-	ft_printf("%#o||\n", nb);
-	printf("%-o||\n", nb);
-	ft_printf("%-o||\n", nb);
-	printf("%5o||\n", nb);
-	ft_printf("%5o||\n", nb);
-	printf("%50o||\n", nb);
-	ft_printf("%50o||\n", nb);
-	printf("%.5o||\n", nb);
-	ft_printf("%.5o||\n", nb);
-	printf("%.50o||\n", nb);
-	ft_printf("%.50o||\n", nb);
-	// multiple flags
-	printf("%- 100.50o||\n", nb);
-  	ft_printf("%- 100.50o||\n", nb);
-	printf("% +100.50o||\n", nb);
-  	ft_printf("% +100.50o||\n", nb);
-	printf("%-050o||\n", nb);
-  	ft_printf("%-050o||\n", nb);
-	printf("%0+50.50o||\n", nb);
-  	ft_printf("%0+50.50o||\n", nb);
-	printf("%0-+050.5o||\n", nb);
-  	ft_printf("%0-+050.5o||\n", nb);
-	printf("%0-+050.8o||\n", nb);
-  	ft_printf("%0-+050.8o||\n", nb);
-	printf("%-10o||\n", nb);
-	ft_printf("%-10o||\n", nb);
-	printf("%08.o||\n", nb);
-  	ft_printf("%08.o||\n", nb);
-	printf("%8.o||\n", nb);
- 	ft_printf("%8.o||\n", nb);
-	printf("%#018.o||\n", nb);
- 	ft_printf("%0#18.o||\n", nb); //0-
-	printf("%- 08.o||\n", nb);
- 	ft_printf("%- 08.o||\n", nb);
-	printf("%0-+18.60o||\n", nb);
-	ft_printf("%0-+18.60o||\n", nb);
-	printf("%0-+# 12.2o||\n", nb);
-	ft_printf("%0-+# 12.2o||\n", nb); //0-
-	printf("%015.o||\n", nb);
-	ft_printf("%015.o||\n", nb);
-	printf("%+- 011o||\n", nb);
-	ft_printf("%+- 011o||\n", nb);
-	printf("% -018.30o||\n", nb);
-	ft_printf("% -018.30o||\n", nb);
-	printf("%-050o||\n", nb);
-	ft_printf("%-050o||\n", nb);
-	printf("%-0# 50o||\n", nb);
-	ft_printf("%-0# 50o||\n", nb); //sp-
-	printf("%0# 45o||\n", nb);
-	ft_printf("%0# 45o||\n", nb); //0-
-	printf("%0 18o||\n", nb);
-	ft_printf("%0 18o||\n", nb);
-	printf("%0# 40.o||\n", nb);
-	ft_printf("%0# 40.o||\n", nb); //0-
-	printf("%0# 40.60o||\n", nb);
-	ft_printf("%0# 40.60o||\n", nb); //0-
 */
+	printf("\n-----UNSIGNED OCTAL-----\n"); //(-, 0, #, )
+	ft_printf("%+o||\n", nb);
+	printf("%+o||\n", nb);
+	ft_printf("%0o||\n", nb);
+	printf("%0o||\n", nb);
+	ft_printf("% o||\n", nb);
+	printf("% o||\n", nb);
+	ft_printf("%#o||\n", nb);
+	printf("%#o||\n", nb);
+	ft_printf("%-o||\n", nb);
+	printf("%-o||\n", nb);
+	ft_printf("%5o||\n", nb);
+	printf("%5o||\n", nb);
+	ft_printf("%50o||\n", nb);
+	printf("%50o||\n", nb);
+	ft_printf("%.5o||\n", nb);
+	printf("%.5o||\n", nb);
+	ft_printf("%.50o||\n", nb);
+	printf("%.50o||\n", nb);
+	// multiple flags
+	ft_printf("%- 100.50o||\n", nb);
+  	printf("%- 100.50o||\n", nb);
+	ft_printf("% +100.50o||\n", nb);
+  	printf("% +100.50o||\n", nb);
+	ft_printf("%-050o||\n", nb);
+  	printf("%-050o||\n", nb);
+	ft_printf("%0+50.50o||\n", nb);
+  	printf("%0+50.50o||\n", nb);
+	ft_printf("%0-+050.5o||\n", nb);
+  	printf("%0-+050.5o||\n", nb);
+	ft_printf("%0-+050.8o||\n", nb);
+  	printf("%0-+050.8o||\n", nb);
+	ft_printf("%-10o||\n", nb);
+	printf("%-10o||\n", nb);
+	ft_printf("%08.o||\n", nb);
+  	printf("%08.o||\n", nb);
+	ft_printf("%8.o||\n", nb);
+ 	printf("%8.o||\n", nb);
+	ft_printf("%#018.o||\n", nb);
+ 	printf("%0#18.o||\n", nb); //0-
+	ft_printf("%- 08.o||\n", nb);
+ 	printf("%- 08.o||\n", nb);
+	ft_printf("%0-+18.60o||\n", nb);
+	printf("%0-+18.60o||\n", nb);
+	ft_printf("%0-+# 12.2o||\n", nb);
+	printf("%0-+# 12.2o||\n", nb); //0-
+	ft_printf("%015.o||\n", nb);
+	printf("%015.o||\n", nb);
+	ft_printf("%+- 011o||\n", nb);
+	printf("%+- 011o||\n", nb);
+	ft_printf("% -018.30o||\n", nb);
+	printf("% -018.30o||\n", nb);
+	ft_printf("%-050o||\n", nb);
+	printf("%-050o||\n", nb);
+	ft_printf("%-0# 50o||\n", nb);
+	printf("%-0# 50o||\n", nb); //sp-
+	ft_printf("%0# 45o||\n", nb);
+	printf("%0# 45o||\n", nb); //0-
+	ft_printf("%0 18o||\n", nb);
+	printf("%0 18o||\n", nb);
+	ft_printf("%0# 40.o||\n", nb);
+	printf("%0# 40.o||\n", nb); //0-
+	ft_printf("%0# 40.60o||\n", nb);
+	printf("%0# 40.60o||\n", nb); //0-
+
 /*	printf("\n-----UNSIGNED INT-----\n"); //(-, 0, #, )
 	// single flag
 	printf("%+u||\n", nb);
-	ft_printf("%+u||\n", nb);
+	arintf("%+u||\n", nb);
 	printf("%0u||\n", nb);
 	ft_printf("%0u||\n", nb);
 	printf("% u||\n", nb);
