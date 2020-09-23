@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 12:41:38 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/21 15:09:40 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/23 14:16:20 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ double	ft_pow(double x, double y)
 
 	while (y != 0)
 	{
-		x = x * tmp; 
+		x = x * tmp;
 		y--;
 	}
 	return (x);
@@ -29,7 +29,7 @@ void	convert_f(va_list ap, t_print *p)
 {
 	printf("\nconvert_f\n");
 	uintmax_t	v;
-	uintmax_t	n;
+	float	n;
 	int		len[3];
 
 	n = va_arg(ap, double);

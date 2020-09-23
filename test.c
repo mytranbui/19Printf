@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/23 12:25:11 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/23 14:59:33 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,29 +100,25 @@ void	convert_p(va_list ap, t_print *p)
 	s = ft_itoa_base(va_arg(ap, long long), 16, 'x');
 	len[0] = ft_strlen(s);//+2; //+0x
 	len[1] = len[2] = p->pres;
-	(!len[2]) ? p->width++ : p->width;
+	(len[2] == 0 && *s == '0') ? p->width++ : p->width;
 	(len[0] > p->pres) ? len[1] = len[0] : len[1];
-	if (p->flg.minus == 0)// && p->flg.zero == 0)
+	if (p->flg.minus == 0)
 	{
 		while (p->width-- - len[1] > 2 && (p->flg.zero == 0||(p->pres == 0 && p->flg.zero)))
 			ft_putchar(' ');
-		ft_putstr("OX");
+		ft_putstr("0x");
 		while (p->width-- - len[1] > 1 && p->flg.zero && p->pres ==-1)
-			ft_putchar('G');
+			ft_putchar('0');
 		while (p->pres-- - len[0] > 0)//-2)
-			ft_putchar('U');
-	//	if (len[2] != 0 && *s != '0')
-		if (len[2] != 0)
-		ft_putstr(s);
+			ft_putchar('0');
+		(*s == '0' && len[2] == 0) ? s = NULL : ft_putstr(s);
 	}
 	else
 	{
 		ft_putstr("0x");
 		while (p->pres-- - len[0] > 0)//-2)
-			ft_putchar('u');
-	//	if (len[2] != 0 && *s != '0')
-		if (len[2] != 0)
-			ft_putstr(s);
+			ft_putchar('0');
+		(*s == '0' && len[2] == 0) ? s = NULL : ft_putstr(s);
 		while (p->width-- - len[1]  > 2)// 0)
 			ft_putchar(' ');
 	}

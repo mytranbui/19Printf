@@ -118,71 +118,73 @@ printf("%s||\n", NULL);
 */
 	printf("\n-----POINTER-----\n"); //(-, width, pres?) //ok
 	// single flag
-	ft_printf("%+p||\n", NULL);
-	printf("%+p||\n", NULL);
-	ft_printf("%0p||\n", NULL);
-	printf("%0p||\n", NULL);
-	ft_printf("% p||\n", NULL);
-	printf("% p||\n", NULL);
-	ft_printf("%#p||\n", NULL);
-	printf("%#p||\n", NULL);
-	ft_printf("%-p||\n", NULL);
-	printf("%-p||\n", NULL);
-	ft_printf("%5p||\n", NULL);
-	printf("%5p||\n", NULL);
-	ft_printf("%50p||\n", NULL);
-	printf("%50p||\n", NULL);
-	ft_printf("%.5p||\n", NULL);
-	printf("%.5p||\n", NULL);
-	ft_printf("%.50p||\n", NULL);
-	printf("%.50p||\n", NULL);
+	ft_printf("%+p||\n", p);
+	printf("%+p||\n", p);
+	ft_printf("%0p||\n", p);
+	printf("%0p||\n", p);
+	ft_printf("% p||\n", p);
+	printf("% p||\n", p);
+	ft_printf("%#p||\n", p);
+	printf("%#p||\n", p);
+	ft_printf("%-p||\n", p);
+	printf("%-p||\n", p);
+	ft_printf("%5p||\n", p);
+	printf("%5p||\n", p);
+	ft_printf("%50p||\n", p);
+	printf("%50p||\n", p);
+	ft_printf("%.5p||\n", p);
+	printf("%.5p||\n", p);
+	ft_printf("%.50p||\n", p);
+	printf("%.50p||\n", p);
 	// multiple flags
-	ft_printf("%- 100.50p||\n", NULL);
-	printf("%- 100.50p||\n", NULL);
-	ft_printf("% 100.50p||\n", NULL);
-	printf("% 100.50p||\n", NULL);
-	ft_printf("%-050p||\n", NULL);
-	printf("%-050p||\n", NULL);
-	ft_printf("%0+50.50p||\n", NULL);
-	printf("%0+50.50p||\n", NULL);
-	ft_printf("%0-50.5p||\n", NULL);
-	printf("%0-50.5p||\n", NULL);
-	ft_printf("%-10p||\n", NULL);
-	printf("%-10p||\n", NULL);
-	ft_printf("%08.p||\n", NULL); //0-
-	printf("%08.p||\n", NULL);
-	ft_printf("%8.p||\n", NULL); //0-
-	printf("%8.p||\n", NULL);
-	ft_printf("%018p||\n", NULL);
-	printf("%018p||\n", NULL);
-	ft_printf("%-08.p||\n", NULL); //0-
-	printf("%-08.p||\n", NULL);
-	ft_printf("%0-+18.4p||\n", NULL);
-	printf("%0-+18.4p||\n", NULL);
-	ft_printf("%0-+18.60p||\n", NULL);
-	printf("%0-+18.60p||\n", NULL);
-	ft_printf("%33.44p||\n", NULL);
-	printf("%33.44p||\n", NULL);
-	ft_printf("%0-+ 12.2p||\n", NULL);
-	printf("%0-+ 12.2p||\n", NULL);
-	ft_printf("%015.p||\n", NULL); //0-
-	printf("%015.p||\n", NULL);
-	ft_printf("%15.p||\n", NULL);//0-
-	printf("%15.p||\n", NULL);
-	ft_printf("%015p||\n", NULL);
-	printf("%015p||\n", NULL);
-	ft_printf("%15p||\n", NULL);
-	printf("%15p||\n", NULL);
-	ft_printf("%+- 011p||\n", NULL);
-	printf("%+- 011p||\n", NULL);
-	ft_printf("%0#05p||\n", NULL);
-	printf("%0#05p||\n", NULL);
-	ft_printf("%0#5p||\n", NULL);
-	printf("%0#5p||\n", NULL);
-	ft_printf("%#05p||\n", NULL);
-	printf("%#05p||\n", NULL);
-	ft_printf("%p||\n", NULL);
-	printf("%p||\n", NULL);
+	ft_printf("%- 100.50p||\n", p);
+	printf("%- 100.50p||\n", p);
+	ft_printf("% 100.50p||\n", p);
+	printf("% 100.50p||\n", p);
+	ft_printf("%-050p||\n", p);
+	printf("%-050p||\n", p);
+	ft_printf("%0+50.50p||\n", p);
+	printf("%0+50.50p||\n", p);
+	ft_printf("%0-50.5p||\n", p);
+	printf("%0-50.5p||\n", p);
+	ft_printf("%-10p||\n", p);
+	printf("%-10p||\n", p);
+	ft_printf("%08.p||\n", p); //0-
+	printf("%08.p||\n", p);
+	ft_printf("%8.p||\n", p); //0-
+	printf("%8.p||\n", p);
+	ft_printf("%018p||\n", p);
+	printf("%018p||\n", p);
+	ft_printf("%-08.p||\n", p); ///sp miss
+	printf("%-08.p||\n", p);
+	ft_printf("%08.p||\n", p); ///sp miss
+	printf("%08.p||\n", p);
+	ft_printf("%0-+18.4p||\n", p);
+	printf("%0-+18.4p||\n", p);
+	ft_printf("%0-+18.60p||\n", p);
+	printf("%0-+18.60p||\n", p);
+	ft_printf("%33.44p||\n", p);
+	printf("%33.44p||\n", p);
+	ft_printf("%0-+ 12.2p||\n", p);
+	printf("%0-+ 12.2p||\n", p);
+	ft_printf("%015.p||\n", p); //0-
+	printf("%015.p||\n", p);
+	ft_printf("%15.p||\n", p);//0-
+	printf("%15.p||\n", p);
+	ft_printf("%015p||\n", p);
+	printf("%015p||\n", p);
+	ft_printf("%15p||\n", p);
+	printf("%15p||\n", p);
+	ft_printf("%+- 011p||\n", p);
+	printf("%+- 011p||\n", p);
+	ft_printf("%0#05p||\n", p);
+	printf("%0#05p||\n", p);
+	ft_printf("%0#5p||\n", p);
+	printf("%0#5p||\n", p);
+	ft_printf("%#05p||\n", p);
+	printf("%#05p||\n", p);
+	ft_printf("%p||\n", p);
+	printf("%p||\n", p);
 
 	printf("\n-----SIGNED INT-----\n"); //(+, - , ' ', 0 , width, pres)
 	// single flag
