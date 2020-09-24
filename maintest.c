@@ -25,15 +25,19 @@ int main(void)
 //	unsigned int	nb = 4294967296; //kko kkx
 unsigned int	nb = 67296;
 //	unsigned int	nb = 458;
-	int		i = 83648;
+	int		i = 42;
 	//int		i = 2147483648; //kk on that number + & -
 //	int		i = 2147483648;
 	//int		i =-0;
 	float f = 5323.1468;
 int		*p = &i;
+	short		h = 42;
+	long		l = 42;
+	long long	m = 42;
+
 //	int 	nb = -1564312;
 
-	printf("\n-----CHAR-----\n"); //(-, 0?, width) ok nullok
+/*	printf("\n-----CHAR-----\n"); //(-, 0?, width) ok nullok
 	// single flag
 	ft_printf("%+c%-5c||\n", c, 'g');
 	printf("%+c%-5c||\n", c, 'g');
@@ -186,10 +190,10 @@ printf("%s||\n", NULL);
 	printf("%#05p||\n", p);
 	ft_printf("%p||\n", p);
 	printf("%p||\n", p);
-
+*/
 	printf("\n-----SIGNED INT-----\n"); //(+, - , ' ', 0 , width, pres)
 	// single flag
-	ft_printf("%+i||\n", i);
+/*	ft_printf("%+i||\n", i);
  	printf("%+i||\n", i);
 	ft_printf("%0i||\n", i);
   	printf("%0i||\n", i);
@@ -207,7 +211,7 @@ printf("%s||\n", NULL);
  	printf("%.5i||\n", i);
 	ft_printf("%.50i||\n", i);
   	printf("%.50i||\n", i);
-/*	ft_printf("%hi||\n", i);
+*//*	ft_printf("%hi||\n", i);
  	printf("%hi`||\n", i);
 	ft_printf("%hhi||\n", i);
  	printf("%hhi||\n", i);
@@ -216,7 +220,7 @@ printf("%s||\n", NULL);
 	ft_printf("%lli||\n", i);
  	printf("%lli||\n", i);
 */	// multiple flags
-	ft_printf("%- 100.50i||\n", i);
+/*	ft_printf("%- 100.50i||\n", i);
   	printf("%- 100.50i||\n", i);
 	ft_printf("% +100.50i||\n", i);
   	printf("% +100.50i||\n", i);
@@ -246,8 +250,9 @@ printf("%s||\n", NULL);
 	printf("%015.i||\n", i); //replace 0 by null // 0 width15 pres0
 	ft_printf("%+- 011.i||\n", i);
 	printf("%+- 011.i||\n", i);
+*/
 
-	printf("\n-----UNSIGNED OCTAL-----\n"); //(-, 0, #, )
+/*	printf("\n-----UNSIGNED OCTAL-----\n"); //(-, 0, #, )
 	ft_printf("%+o||\n", nb);
 	printf("%+o||\n", nb);
 	ft_printf("%0o||\n", nb);
@@ -515,7 +520,7 @@ printf("%s||\n", NULL);
 	printf("%0# 45.40%||\n"); //no width > pres
 	ft_printf("%0# 0.30%||\n");
 	printf("%0# 0.30%||\n"); //ok
-
+*/
 		printf("\n-----FLOAT-----\n"); //(-, 0, #, )
 		// single flag
 	/*	printf("%+f||\n", f);
@@ -586,6 +591,12 @@ printf("%s||\n", NULL);
 		printf("%0# 30.30f||\n", f);
 		ft_printf("%0# 30.30f||\n", f);
 */
+
+printf("%i||\n", i);
+printf("%hi||\n", h);
+printf("%hhi||\n", c);
+printf("%li||\n", l);
+printf("%lli||\n", m);
 /*	ft_printf("caca%0dpopo%+d", 45, 89);
 	 ft_printf("\n--string=%s\n--sign=%%\n--num=%d\n--num2=%d\n--sign2=%%\n--sign3=%%\n--numi=%i\n--char=%c\n--num3=%d\n--address=%p\n--hex=%x\n--HEX=%X\n",s,100,-7852,23534, 'c', 45, &c,4364873,61534);
 	 printf("SOLUTION:\n--string=%s--sign=%%--num=%d--num2=%d--sign2=%%--sign3=%%--numi=%i--char=%c--num3=%d--address=%p--hex=%x--HEX=%X\n",s,100,-7852,23534, 'c', 45, &c,4364873,61534);
