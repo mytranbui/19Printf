@@ -378,7 +378,7 @@ printf("%s||\n", NULL);
 	ft_printf("%0# 40.60u||\n", nb);
 	printf("%0# 40.60u||\n", nb);
 
-*/	printf("\n-----UNSIGNED HEX-----\n"); //(-, 0, #, )
+*//*	printf("\n-----UNSIGNED HEX-----\n"); //(-, 0, #, )
 	// single flag
 	ft_printf("%+x||\n", nb);
 	printf("%+x||\n", nb);
@@ -450,80 +450,80 @@ printf("%s||\n", NULL);
 	ft_printf("%0# 40.45X||\n", nb);
 	printf("%0# 40.45X||\n", nb);
 
-	printf("\n-----PERCENTS-----\n"); //(-,0,width) xpres x# x' '?
+*/	printf("\n-----PERCENTS-----\n"); //(-,0,width) xpres x# x' '?
 	// single flag
-/*	printf("%+%||\n");
 	ft_printf("%+%||\n");
-	printf("%0%||\n");
+	printf("%+%||\n");
 	ft_printf("%0%||\n");
-	printf("% %||\n");
+	printf("%0%||\n");
 	ft_printf("% %||\n");
-	printf("%#%||\n");
-	ft_printf("%#%||\n"); //ok
-	printf("%-%||\n");
+	printf("% %||\n");
+	ft_printf("%#%||\n");
+	printf("%#%||\n"); //ok
 	ft_printf("%-%||\n");
-*/	printf("%#0 5%||\n");
+	printf("%-%||\n");
 	ft_printf("%#0 5%||\n");
-/*	printf("%.5%||\n");
+	printf("%#0 5%||\n");
 	ft_printf("%.5%||\n");
+	printf("%.5%||\n");
 	// multiple flags
-	printf("%- 100.50%||\n");
 	ft_printf("%- 100.50%||\n");
-	printf("% +100.50%||\n");
+	printf("%- 100.50%||\n");
 	ft_printf("% +100.50%||\n");
-	printf("%-050%||\n");
+	printf("% +100.50%||\n");
 	ft_printf("%-050%||\n");
-	printf("%0+50.50%||\n");
+	printf("%-050%||\n");
 	ft_printf("%0+50.50%||\n");
-	printf("%0-+050.5%||\n");
+	printf("%0+50.50%||\n");
 	ft_printf("%0-+050.5%||\n");
-	printf("%0-+050.8%||\n");
+	printf("%0-+050.5%||\n");
 	ft_printf("%0-+050.8%||\n");
-	printf("%-10%||\n");
+	printf("%0-+050.8%||\n");
 	ft_printf("%-10%||\n");
-	printf("%08.%||\n");
+	printf("%-10%||\n");
 	ft_printf("%08.%||\n");
-	printf("%8.%||\n");
+	printf("%08.%||\n");
 	ft_printf("%8.%||\n");
-	printf("%#018.%||\n");
-	ft_printf("%0#18.%||\n"); //no
-	printf("%- 08.%||\n");
+	printf("%8.%||\n");
+	ft_printf("%#018.%||\n");
+	printf("%0#18.%||\n"); //no
 	ft_printf("%- 08.%||\n");
-	printf("%0-+18.60%||\n");
+	printf("%- 08.%||\n");
 	ft_printf("%0-+18.60%||\n");
-	printf("%0-+# 12.2%||\n");
-	ft_printf("%0-+# 12.2%||\n"); //no
-	printf("%015.%||\n");
+	printf("%0-+18.60%||\n");
+	ft_printf("%0-+# 12.2%||\n");
+	printf("%0-+# 12.2%||\n"); //no
 	ft_printf("%015.%||\n");
-	printf("%+- 011%||\n");
+	printf("%015.%||\n");
 	ft_printf("%+- 011%||\n");
-	printf("% -018.30%||\n");
+	printf("%+- 011%||\n");
 	ft_printf("% -018.30%||\n");
-	printf("%-050%||\n");
+	printf("% -018.30%||\n");
 	ft_printf("%-050%||\n");
-	printf("%-0# 50%||\n");
-	ft_printf("%-0# 50%||\n"); //no
-	printf("%0# 45%||\n");
+	printf("%-050%||\n");
+	ft_printf("%-0# 50%||\n");
+	printf("%-0# 50%||\n"); //no
 	ft_printf("%0# 45%||\n");
-	printf("%0 18%||\n");
+	printf("%0# 45%||\n");
 	ft_printf("%0 18%||\n");
-	printf("%0# 40.%||\n");
-	ft_printf("%0# 40.%||\n"); //no
-	printf("%0# 40.60%||\n");
-	ft_printf("%0# 40.60%||\n"); //ok
-	printf("%0# 45.40%||\n");
-	ft_printf("%0# 45.40%||\n"); //no width > pres
-	printf("%0# 30.30%||\n");
-	ft_printf("%0# 30.30%||\n"); //ok*/
+	printf("%0 18%||\n");
+	ft_printf("%0# 40.%||\n");
+	printf("%0# 40.%||\n"); //no
+	ft_printf("%0# 40.60%||\n");
+	printf("%0# 40.60%||\n"); //ok
+	ft_printf("%0# 45.40%||\n");
+	printf("%0# 45.40%||\n"); //no width > pres
+	ft_printf("%0# 0.30%||\n");
+	printf("%0# 0.30%||\n"); //ok
 
 		printf("\n-----FLOAT-----\n"); //(-, 0, #, )
 		// single flag
 	/*	printf("%+f||\n", f);
-		ft_printf("%+f||\n", f);
+		arintf("%+f||\n", f);
 		printf("%0f||\n", f);
-		ft_printf("%0f||\n", f);
+		arintf("%0f||\n", f);
 		printf("% f||\n", f);
-		ft_printf("% f||\n", f);
+		arintf("% f||\n", f);
 		printf("%#f||\n", f);
 		ft_printf("%#f||\n", f); //ok
 		printf("%-f||\n", f);
