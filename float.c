@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 12:41:38 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/23 14:16:20 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/24 15:27:45 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	convert_f(va_list ap, t_print *p)
 	int		len[3];
 
 	n = va_arg(ap, double);
-//	printf("{n=%ju}", n);
-//	v = ft_itoa_base(n, 2, 'x');
-//	printf("{v=%ju}", v);
+	//	printf("{n=%ju}", n);
+	//	v = ft_itoa_base(n, 2, 'x');
+	//	printf("{v=%ju}", v);
 	len[0] = ft_intlen(ft_abs(n));
 	len[1] = len[2] = p->pres;
 	(n < 0 || (p->flg.plus && n >= 0)) ? len[0]++ && len[1]++ : len[0];

@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 09:39:00 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/23 10:12:25 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/24 15:27:21 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int		get_width_pres(t_print *p, int i)
 		p->width = ft_atoi(&p->fmt[i]);
 		while (ft_isdigit(p->fmt[i]))
 			i++;
-    //    if (p->fmt[i++] == '*')
-      //      p->width = (va_arg(ap, int);
+		//    if (p->fmt[i++] == '*')
+		//      p->width = (va_arg(ap, int);
 	}
 	if (p->fmt[i] == '.')
 	{
@@ -35,8 +35,8 @@ int		get_width_pres(t_print *p, int i)
 		p->pres = ft_atoi(&p->fmt[i]);
 		while (ft_isdigit(p->fmt[i]))
 			i++;
-        //if (p->fmt[i++] == '*')
-          //  p->pres = (va_arg(ap, int);
+		//if (p->fmt[i++] == '*')
+		//  p->pres = (va_arg(ap, int);
 	}
 	return (i);
 }
@@ -61,20 +61,22 @@ int		parse_flags(t_print *p/*,const char **fmt*/, int i)
 			p->flg.l = 2;
 			i += 2;
 		}
-		(p->fmt[i] == 'h' && p->fmt[i + 1] != 'h' && p->flg.h == 0) ? p->flg.h = 1 && i++ : p->flg.h;
-		(p->fmt[i] == 'l' && p->fmt[i + 1] != 'l' && p->flg.l == 0) ? p->flg.l = 1 && i++ : p->flg.l;
-		(p->fmt[i] == 'L') ? p->flg.maj_l = 1 & i++: p->flg.maj_l;
+		(p->fmt[i] == 'h' && p->fmt[i + 1] != 'h' && p->flg.h == 0) ?
+		p->flg.h = 1 && i++ : p->flg.h;
+		(p->fmt[i] == 'l' && p->fmt[i + 1] != 'l' && p->flg.l == 0) ?
+		p->flg.l = 1 && i++ : p->flg.l;
+		(p->fmt[i] == 'L') ? p->flg.maj_l = 1 & i++ : p->flg.maj_l;
 	}
 	printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d | h=%d | l=%d | L=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres, p->flg.h, p->flg.l, p->flg.maj_l);
-//	printf("{fmt[i]=%c}",p->fmt[i]);
+	//	printf("{fmt[i]=%c}",p->fmt[i]);
 	return (i);
 }
 
 /*int		convert_hhll(t_print *p)
-{
-	if (p->flg.h == 1)
-}
-*/
+  {
+  if (p->flg.h == 1)
+  }
+  */
 t_print	*init_flags(t_print *p)
 {
 	p->width = 0;
@@ -90,41 +92,25 @@ t_print	*init_flags(t_print *p)
 	return (p);
 }
 
-int		ft_printf(const char *format, ...)
+int		conversion(va_list ap, char c, t_print *p)/*, char c, int i)*/
 {
-	va_list	ap;
-	t_print	*p;
-	int		i;
-	//	int l;
-	//	char c;
-	i = 0;
-	if (!(p = (t_print*)ft_memalloc(sizeof(t_print)))) //protect not needed?
-		return (-1);
-	p = init_flags(p);
-	va_start(ap, format);
-	p->fmt = format;
-	//parse(ap, );
-	while (p->fmt[i])
-	{
-		if (p->fmt[i] == '%')
-		{
-			i++;
-			p = init_flags(p);
-			i = parse_flags(p, i);
-		//	i = parse_type(p,i);
-		//	printf("\n=== where I am at : %c ===\n", p->fmt[i]);
-	//		convert_hhll(ap, p->fmt[i], p);
-			conversion(ap, p->fmt[i], p);
-		}
-		//else
-		//	ft_putendl("not implemented or undefined");
-		else
-		{
-			i += ft_putstr_len(&p->fmt[i]);
-			i--;
-		}
-		i++;
-	}
-	va_end(ap);
+	if (c == 'c')
+		convert_c(ap, p);
+	if (c == 's')
+		convert_s(ap, p);
+	if (c == 'p')
+		convert_p(ap, p);
+	if (c == 'd' || c == 'i')
+		convert_di(ap, p);
+	if (c == 'o')
+		convert_o(ap, p);
+	if (c == 'u')
+		convert_u(ap, p);
+	if (c == 'x' || c == 'X')
+		convert_x(ap, c, p);
+	if (c == 'f')
+		convert_f(ap, p);
+	if (c == '%')
+		convert_percent(ap, p);
 	return (1);
 }

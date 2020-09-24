@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 12:53:43 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/15 12:53:45 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/24 15:36:37 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,10 @@ void			ft_lstadd(t_list **alst, t_list *new);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int				ft_isspace(int c);
+int				ft_intlen(int n);
 int				ft_max(int a, int b);
 int				ft_min(int a, int b);
 int				ft_abs(int i);
-unsigned int	ft_absu(int i);
 int				ft_islower(int c);
 int				ft_isupper(int c);
 double			ft_sqrt(double nb);

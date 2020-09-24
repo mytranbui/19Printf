@@ -18,14 +18,14 @@ int ft_printf(const char *format, ...);
 int main(void)
 {
 	char			c = 'X';
-	char			*s = "bonjour j'ai faim";
+	char			*s = "sandwiches are unexpectedly good when you're hungry";
 //	int	i = -2147483648; //kkdi
 //	int	i = -43125345; //4294967295
 	//unsigned int	nb = 4294967296; //kkx kko
 //	unsigned int	nb = 4294967296; //kko kkx
-unsigned int	nb = 4294967296;
+unsigned int	nb = 67296;
 //	unsigned int	nb = 458;
-	int		i = -2147483648;
+	int		i = 83648;
 	//int		i = 2147483648; //kk on that number + & -
 //	int		i = 2147483648;
 	//int		i =-0;
@@ -33,7 +33,7 @@ unsigned int	nb = 4294967296;
 int		*p = &i;
 //	int 	nb = -1564312;
 
-/*	printf("\n-----CHAR-----\n"); //(-, 0?, width) ok nullok
+	printf("\n-----CHAR-----\n"); //(-, 0?, width) ok nullok
 	// single flag
 	ft_printf("%+c%-5c||\n", c, 'g');
 	printf("%+c%-5c||\n", c, 'g');
@@ -72,8 +72,8 @@ int		*p = &i;
 	printf("%c||\n", NULL);
 	ft_printf("%c||\n", nan);
 	printf("%c||\n", nan);
-*/
-/*	printf("\n-----STRING-----\n"); //(-, 0?, width, pres) //ok null ok
+
+	printf("\n-----STRING-----\n"); //(-, 0?, width, pres) //ok null ok
 	// single flag
 	ft_printf("%+s||\n", s);
 	printf("%+s||\n", s);
@@ -116,8 +116,8 @@ ft_printf("%0#05s||\n", NULL);
 printf("%0#05s||\n", NULL);
 ft_printf("%s||\n", NULL);
 printf("%s||\n", NULL);
-*/
-/*	printf("\n-----POINTER-----\n"); //(-, width, pres?) //ok null ok
+
+	printf("\n-----POINTER-----\n"); //(-, width, pres?) //ok null ok
 	// single flag
 	ft_printf("%+p||\n", p);
 	printf("%+p||\n", p);
@@ -186,8 +186,8 @@ printf("%s||\n", NULL);
 	printf("%#05p||\n", p);
 	ft_printf("%p||\n", p);
 	printf("%p||\n", p);
-*/
-/*	printf("\n-----SIGNED INT-----\n"); //(+, - , ' ', 0 , width, pres)
+
+	printf("\n-----SIGNED INT-----\n"); //(+, - , ' ', 0 , width, pres)
 	// single flag
 	ft_printf("%+i||\n", i);
  	printf("%+i||\n", i);
@@ -207,7 +207,7 @@ printf("%s||\n", NULL);
  	printf("%.5i||\n", i);
 	ft_printf("%.50i||\n", i);
   	printf("%.50i||\n", i);
-*//*	ft_printf("%hi||\n", i);
+/*	ft_printf("%hi||\n", i);
  	printf("%hi`||\n", i);
 	ft_printf("%hhi||\n", i);
  	printf("%hhi||\n", i);
@@ -216,7 +216,7 @@ printf("%s||\n", NULL);
 	ft_printf("%lli||\n", i);
  	printf("%lli||\n", i);
 */	// multiple flags
-/*	ft_printf("%- 100.50i||\n", i);
+	ft_printf("%- 100.50i||\n", i);
   	printf("%- 100.50i||\n", i);
 	ft_printf("% +100.50i||\n", i);
   	printf("% +100.50i||\n", i);
@@ -246,8 +246,8 @@ printf("%s||\n", NULL);
 	printf("%015.i||\n", i); //replace 0 by null // 0 width15 pres0
 	ft_printf("%+- 011.i||\n", i);
 	printf("%+- 011.i||\n", i);
-*/
-/*	printf("\n-----UNSIGNED OCTAL-----\n"); //(-, 0, #, )
+
+	printf("\n-----UNSIGNED OCTAL-----\n"); //(-, 0, #, )
 	ft_printf("%+o||\n", nb);
 	printf("%+o||\n", nb);
 	ft_printf("%0o||\n", nb);
@@ -311,8 +311,8 @@ printf("%s||\n", NULL);
 	printf("%0# 40.o||\n", nb); //0-
 	ft_printf("%0# 40.60o||\n", nb);
 	printf("%0# 40.60o||\n", nb); //0-
-*/
-/*	printf("\n-----UNSIGNED INT-----\n"); //(-, 0, #, )
+
+	printf("\n-----UNSIGNED INT-----\n"); //(-, 0, #, )
 	// single flag
 	ft_printf("%+u||\n", nb);
 	printf("%+u||\n", nb);
@@ -378,7 +378,7 @@ printf("%s||\n", NULL);
 	ft_printf("%0# 40.60u||\n", nb);
 	printf("%0# 40.60u||\n", nb);
 
-*//*	printf("\n-----UNSIGNED HEX-----\n"); //(-, 0, #, )
+	printf("\n-----UNSIGNED HEX-----\n"); //(-, 0, #, )
 	// single flag
 	ft_printf("%+x||\n", nb);
 	printf("%+x||\n", nb);
@@ -450,7 +450,7 @@ printf("%s||\n", NULL);
 	ft_printf("%0# 40.45X||\n", nb);
 	printf("%0# 40.45X||\n", nb);
 
-*/	printf("\n-----PERCENTS-----\n"); //(-,0,width) xpres x# x' '?
+	printf("\n-----PERCENTS-----\n"); //(-,0,width) xpres x# x' '?
 	// single flag
 	ft_printf("%+%||\n");
 	printf("%+%||\n");

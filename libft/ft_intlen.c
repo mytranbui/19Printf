@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   ft_intlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/29 09:23:45 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/15 12:56:47 by mbui             ###   ########.fr       */
+/*   Created: 2019/04/07 11:52:37 by mbui              #+#    #+#             */
+/*   Updated: 2020/09/24 15:37:56 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-unsigned int	ft_absu(int i)
+int	ft_intlen(int n)
 {
-	return (i < 0 ? -((unsigned int)i) : (unsigned int)i);
+	int	len;
+
+	len = 1;
+	while (n >= 10)
+	{
+		n /= 10;
+		len++;
+	}
+	return (len);
 }
