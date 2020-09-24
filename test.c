@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/23 16:57:24 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/24 10:35:09 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,31 +230,25 @@ void	convert_o(va_list ap, t_print *p)
 	len[0] = ft_strlen(s);
 	len[1] = len[2] = p->pres;
 	(p->flg.hash) ? len[0]++ : len[0];
-//	(p->flg.hash && *s != '0') ? len[0]++ : len[0];
+	(p->flg.hash && *s == '0') ? len[0]-- : len[0];
 	(len[0] > len[1]) ? len[1] = len[0] : len[1];
 	if (p->flg.minus == 0)
 	{
 		while (p->width-- - len[1] > 0)
-			(p->flg.zero && p->pres == -1) ? ft_putchar('0') : ft_putchar(' ');
+			(p->flg.zero && p->pres == -1 ) ? ft_putchar('0') : ft_putchar(' ');
 		if (p->flg.hash && *s != '0')
-			ft_putchar('#');
-		//	(*s != '0') ? ft_putchar('Z') : ft_putchar('B');
-		//	(*s == '0') ? ft_putchar('Z') : len[0]--;
+			ft_putchar('0');
 		while (p->pres-- - len[0] > 0)
 			ft_putchar('0');
-		(len[2] == 0 && *s == '0') ? ft_putchar(' ') : ft_putchar('N');// ft_putstr(s);
+		(len[2] == 0 && *s == '0' && !p->flg.hash) ? ft_putchar(' ') : ft_putstr(s);
 	}
 	else
 	{
 		while (p->pres-- - len[0] > 0)
 			ft_putchar('0');
 		if (p->flg.hash && *s != '0')
-			ft_putchar('#');
-		//	(*s != '0') ? ft_putchar('z') : len[1]--;
-		//	(*s == '0') ? ft_putchar('0') : ft_putchar('A');
-		(len[2] == 0 && *s == '0') ? ft_putchar(' ') : ft_putchar('n');//ft_putstr(s);
-	//	if (p->pres != 0)
-	//		ft_putstr(s);
+			ft_putchar('0');
+		(len[2] == 0 && *s == '0'&& !p->flg.hash) ? ft_putchar(' ') : ft_putstr(s);
 		while (p->width-- - len[1] > 0)
 			ft_putchar(' ');
 	}

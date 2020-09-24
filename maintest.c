@@ -22,7 +22,7 @@ int main(void)
 //	int	i = -2147483648; //kkdi
 //	int	i = -43125345; //4294967295
 	//unsigned int	nb = 4294967296; //kkx kko
-	unsigned int	nb = 0; //kko kkx
+	unsigned int	nb = 4294967296; //kko kkx
 	//unsigned int	nb = 4294967296;
 //	unsigned int	nb = 458;
 	int		i = -2147483648;
@@ -285,8 +285,8 @@ printf("%s||\n", NULL);
   	printf("%08.o||\n", nb);
 	ft_printf("%8.o||\n", nb);
  	printf("%8.o||\n", nb);
-	ft_printf("%#018.o||\n", nb);
- 	printf("%0#18.o||\n", nb); //0-
+	ft_printf("%-0#18.o||\n", nb);
+	printf("%-0#18.o||\n", nb); //0-
 	ft_printf("%- 08.o||\n", nb);
  	printf("%- 08.o||\n", nb);
 	ft_printf("%0-+18.60o||\n", nb);
