@@ -22,8 +22,8 @@ int main(void)
 //	int	i = -2147483648; //kkdi
 //	int	i = -43125345; //4294967295
 	//unsigned int	nb = 4294967296; //kkx kko
-	//unsigned int	nb = 4294967296; //kko kkx
-unsigned int	nb = 0;
+//	unsigned int	nb = 4294967296; //kko kkx
+unsigned int	nb = 4294967296;
 //	unsigned int	nb = 458;
 	int		i = -2147483648;
 	//int		i = 2147483648; //kk on that number + & -
@@ -417,14 +417,10 @@ printf("%s||\n", NULL);
   	printf("%08.x||\n", nb);
 	ft_printf("%8.x||\n", nb);
  	printf("%8.x||\n", nb);
-	ft_printf("%#018.x||\n", nb);
- 	printf("%0#18.x||\n", nb); //no
 	ft_printf("%- 08.x||\n", nb);
  	printf("%- 08.x||\n", nb);
 	ft_printf("%0-+18.60x||\n", nb);
 	printf("%0-+18.60x||\n", nb);
-	ft_printf("%0-+# 12.2x||\n", nb);
-	printf("%0-+# 12.2x||\n", nb); //no
 	ft_printf("%015.x||\n", nb);
 	printf("%015.x||\n", nb);
 	ft_printf("%+- 011x||\n", nb);
@@ -433,20 +429,26 @@ printf("%s||\n", NULL);
 	printf("% -018.30x||\n", nb);
 	ft_printf("%-050x||\n", nb);
 	printf("%-050x||\n", nb);
-	ft_printf("%-0# 50X||\n", nb);
-	printf("%-0# 50X||\n", nb); //no
 	ft_printf("%0 18X||\n", nb);
 	printf("%0 18X||\n", nb);
 	ft_printf("%0# 40.60X||\n", nb);
 	printf("%0# 40.60X||\n", nb); //ok
-	ft_printf("%0# 45.40X||\n", nb);
-	printf("%0# 45.40X||\n", nb); //no width > pres
 	ft_printf("%0# 30.30X||\n", nb);
 	printf("%0# 30.30X||\n", nb); //ok
 	ft_printf("%0# 45X||\n", nb);
 	printf("%0# 45X||\n", nb);      //0x not in the right place
 	ft_printf("%0# 40.X||\n", nb);
 	printf("%0# 40.X||\n", nb); //no
+	ft_printf("%#018.x||\n", nb);
+ 	printf("%0#18.x||\n", nb); //no
+	ft_printf("%0-+# 12.2x||\n", nb);
+	printf("%0-+# 12.2x||\n", nb); //no
+	ft_printf("%-0# 50X||\n", nb);
+	printf("%-0# 50X||\n", nb); //no
+	ft_printf("%0# 45.40X||\n", nb);
+	printf("%0# 45.40X||\n", nb); //no width > pres
+	ft_printf("%0# 40.45X||\n", nb);
+	printf("%0# 40.45X||\n", nb);
 
 	printf("\n-----PERCENTS-----\n"); //(-,0,width) xpres x# x' '?
 	// single flag

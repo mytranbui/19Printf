@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/24 13:18:14 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/24 14:30:32 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -328,7 +328,7 @@ void	convert_u(va_list ap, t_print *p)
 /*
 ** %x & %X: undefined behavior with +, '0' and ' '
 */
-//kko pb with 0x"  " or null?
+
 void	convert_x(va_list ap, char c,  t_print *p)
 {
 	printf("\nconvert_x\n");
@@ -339,8 +339,7 @@ void	convert_x(va_list ap, char c,  t_print *p)
 	len[0] = ft_strlen(s);
 	len[1] = len[2] = p->pres;
 	(len[0] > len[1]) ? len[1] = len[0] : len[1];
-	(p->flg.hash) ? len[1] +=2 : len[1];
-	
+	(p->flg.hash && *s != '0') ? len[1] +=2 : len[1];
 	if (p->flg.minus == 0 && p->pres == -1 && p->flg.hash)
 	{
 		if (p->flg.hash && *s != '0')
@@ -354,23 +353,20 @@ void	convert_x(va_list ap, char c,  t_print *p)
 		while (p->width-- - len[1] > 0)// && !p->flg.hash)
 			(p->flg.zero && p->pres == -1) ? ft_putchar('0') : ft_putchar(' ');
 		if (p->flg.hash && *s != '0')
-			(c == 'x') ? ft_putstr("0x") : ft_putstr("AA");
+			(c == 'x') ? ft_putstr("0x") : ft_putstr("0X");
 	//	while (p->width-- - len[1] > -1 && p->pres == -1)
 	//		ft_putchar('o');
 		while (p->pres-- - len[0] > 0)
-			ft_putchar('O');
+			ft_putchar('0');
 		(len[2] == 0 && *s == '0') ? ft_putchar(' ') : ft_putstr(s);
-	//	(len[2] == 0 && *s == '0') ? ft_putchar(' ') : ft_putchar('O');
 	}
 	else
 	{
-	//	if (p->flg.hash)
 		if (p->flg.hash && *s != '0')
-			(c == 'x') ? ft_putstr("0x") : ft_putstr("BB");
+			(c == 'x') ? ft_putstr("0x") : ft_putstr("0X");
 		while (p->pres-- - len[0] > 0)
 			ft_putchar('0');
 		(len[2] == 0 && *s == '0') ? ft_putchar(' ') : ft_putstr(s);
-	//	(len[2] == 0 && *s == '0') ? ft_putchar(' ') : ft_putchar('O');
 		while (p->width-- - len[1]  > 0)
 			ft_putchar(' ');
 	}
