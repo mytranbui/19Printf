@@ -12,6 +12,7 @@
 
 //#include "libftprintf.h"
 #include <stdio.h>
+#include <limits.h>
 
 int ft_printf(const char *format, ...);
 
@@ -23,7 +24,7 @@ int main(void)
 //	int	i = -43125345; //4294967295
 	//unsigned int	nb = 4294967296; //kkx kko
 //	unsigned int	nb = 4294967296; //kko kkx
-unsigned int	nb = 67296;
+long	nb = 922337203685477580;
 //	unsigned int	nb = 458;
 	int		i = 42;
 	//int		i = 2147483648; //kk on that number + & -
@@ -317,7 +318,7 @@ printf("%s||\n", NULL);
 	ft_printf("%0# 40.60o||\n", nb);
 	printf("%0# 40.60o||\n", nb); //0-
 
-	printf("\n-----UNSIGNED INT-----\n"); //(-, 0, #, )
+*/	printf("\n-----UNSIGNED INT-----\n"); //(-, 0, #, )
 	// single flag
 	ft_printf("%+u||\n", nb);
 	printf("%+u||\n", nb);
@@ -383,7 +384,7 @@ printf("%s||\n", NULL);
 	ft_printf("%0# 40.60u||\n", nb);
 	printf("%0# 40.60u||\n", nb);
 
-	printf("\n-----UNSIGNED HEX-----\n"); //(-, 0, #, )
+/*	printf("\n-----UNSIGNED HEX-----\n"); //(-, 0, #, )
 	// single flag
 	ft_printf("%+x||\n", nb);
 	printf("%+x||\n", nb);
@@ -592,27 +593,45 @@ printf("%s||\n", NULL);
 		ft_printf("%0# 30.30f||\n", f);
 */
 
-printf("%i||\n", i);
-printf("%hi||\n", h);
-printf("%hhi||\n", c);
-printf("%li||\n", l);
-printf("%lli||\n", m);
-ft_printf("xSalut %08.4x et %#08x %.1x %#5.11x %5.17x %#.4x\n", 0, 0, 0, 0, 0, 0));
-printf("xSalut %08.4x et %#08x %.1x %#5.11x %5.17x %#.4x\n", 0, 0, 0, 0, 0, 0));
+// printf("%i||\n", i);
+// printf("%hi||\n", h);
+// printf("%hhi||\n", c);
+// printf("%li||\n", l);
+// printf("%lli||\n", m);
+ft_printf("%0-+ .o|\n", 0);
+printf("%0-+ .o|\n", 0);
+ft_printf("%#.o|\n",0);
+printf("%#.o|\n",0);
+ft_printf("|%-o|%-#o|%-#o|%#-5o|%#-5.2o|%-.o|\n", 42, 42, 0, 42, 0, 0);
+printf("|%-o|%-#o|%-#o|%#-5o|%#-5.2o|%-.o|\n", 42, 42, 0, 42, 0, 0);
+ft_printf("|%-0#5.o|%-0#5.3o|%-.o|%-.0o|%-#.o|\n",   0,0,0,0,0);
+printf("|%-0#5.o|%-0#5.3o|%-.o|%-.0o|%-#.o|\n", 0,0,0,0,0);
+printf("\nUNSIGNED\n");
+ft_printf ("%+5.1u|\n", LONG_MAX);
+printf ("%+5.1u|\n", LONG_MAX);
+ft_printf ("%-+5.1u|\n",LONG_MAX);
+printf ("%-+5.1u|\n", LONG_MAX);
+ft_printf ("%+5.1u|\n", 922337203685477580);
+printf ("%+5.1u|\n", 922337203685477580);
+printf("\nHEXA\n");
+ft_printf("Salxt %08.4x et  %.1x %#5.11x %5.17x %#.4x\n", 11, 12, 13, 14, 14);
+printf("Salxt %08.4x et  %.1x %#5.11x %5.17x %#.4x\n", 11, 12, 13, 14, 14);
+ft_printf("xSalut %08.4x et %#08x %.1x %#5.11x %5.17x %#.4x\n", 0, 0, 0, 0, 0, 0);
+printf("xSalut %08.4x et %#08x %.1x %#5.11x %5.17x %#.4x\n", 0, 0, 0, 0, 0, 0);
 ft_printf("xSalxt %-10.4x %#08x %-#5.20x %-5.30x %-#.4x %#8x\n", 0, 5, 0, 0, 0, 60000000);
 printf("xSalxt %-10.4x %#08x %-#5.20x %-5.30x %-#.4x %#8x\n", 0, 5, 0, 0, 0, 60000000);
-ft_printf ("|%#5x|%#5.3x|%#5.1x|%#5.0x|%#5.x|\n", 0,0,0,10,0);
-printf ("|%#5x|%#5.3x|%#5.1x|%#5.0x|%#5.x|\n", 0,0,0,10,0);
+ft_printf("%#5x|\n", 0);
+printf ("%#5x|\n",0);
 ft_printf ("printf2     :|%#5x|%#5.3x|%#5.1x|%#5.0x|%#5.x|\n", 1,1,1,1,1);
 printf ("ft_printf2  :|%#5x|%#5.3x|%#5.1x|%#5.0x|%#5.x|\n", 1,1,1,1,1);
 ft_printf ("printf2     :|%#5x|%#5.3x|%#5.1x|%#5.0x|%#5.x|\n", 0,0,0,0,0);
 printf ("ft_printf2  :|%#5x|%#5.3x|%#5.1x|%#5.0x|%#5.x|\n", 0,0,0,0,0);
-ft_printf("SalXt %-#.3X %#-8.4X et  %-.1X %-#5.11X %-5.17X %-#.4X\n", 10, 11, 12, 13, 14, 14));
-printf("SalXt %-#.3X %#-8.4X et  %-.1X %-#5.11X %-5.17X %-#.4X\n", 10, 11, 12, 13, 14, 14));
-ft_printf("ici ici XSalXt %-10.4X %#08X %-#5.20X %-5.30X %-#.4X %#8X %#08X\n", 0, 5, 0, 0, 0, 42, 42));
-printf("ici ici XSalXt %-10.4X %#08X %-#5.20X %-5.30X %-#.4X %#8X %#08X\n", 0, 5, 0, 0, 0, 42, 42));
-ft_printf("%10d\n", -42);
-printf("%10d\n", -42);
+ft_printf("SalXt %-#.3X %#-8.4X et  %-.1X %-#5.11X %-5.17X %-#.4X\n", 10, 11, 12, 13, 14, 14);
+printf("SalXt %-#.3X %#-8.4X et  %-.1X %-#5.11X %-5.17X %-#.4X\n", 10, 11, 12, 13, 14, 14);
+ft_printf("ici ici XSalXt %-10.4X %#08X %-#5.20X %-5.30X %-#.4X %#8X %#08X\n", 0, 5, 0, 0, 0, 42, 42);
+printf("ici ici XSalXt %-10.4X %#08X %-#5.20X %-5.30X %-#.4X %#8X %#08X\n", 0, 5, 0, 0, 0, 42, 42);
+ft_printf("%010d\n", -42);
+printf("%010d\n", -42);
 /*	ft_printf("caca%0dpopo%+d", 45, 89);
 	 ft_printf("\n--string=%s\n--sign=%%\n--num=%d\n--num2=%d\n--sign2=%%\n--sign3=%%\n--numi=%i\n--char=%c\n--num3=%d\n--address=%p\n--hex=%x\n--HEX=%X\n",s,100,-7852,23534, 'c', 45, &c,4364873,61534);
 	 printf("SOLUTION:\n--string=%s--sign=%%--num=%d--num2=%d--sign2=%%--sign3=%%--numi=%i--char=%c--num3=%d--address=%p--hex=%x--HEX=%X\n",s,100,-7852,23534, 'c', 45, &c,4364873,61534);

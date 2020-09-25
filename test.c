@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/25 12:10:50 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/25 14:32:44 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,6 +199,7 @@ void	convert_di(va_list ap, t_print *p)
 	//	//printf("{len[0] = %d}", len[0]);
 	//	//printf("{len[2] = %d}", len[2]);
 	//	//printf("{printed spaces=%d}\n", i);
+		//printf("{pres = %d}", p->pres);
 }
 
 /*
@@ -218,6 +219,8 @@ void	convert_o(va_list ap, t_print *p)
 	(p->flg.hash) ? len[0]++ : len[0];
 	(p->flg.hash && *s == '0') ? len[0]-- : len[0];
 	(len[0] > len[1]) ? len[1] = len[0] : len[1];
+	if (*s == '0' && p->pres == 0 && !p->width && !p->flg.hash)
+		return ;
 	if (p->flg.minus == 0)
 	{
 		while (p->width-- - len[1] > 0)
@@ -287,7 +290,7 @@ void	convert_u(va_list ap, t_print *p)
 
 	//	n = va_arg(ap, unsigned long long);
 	//	s = ft_itoa_base(n, 10, 'x');
-	s = ft_itoa_base(va_arg(ap, unsigned long long), 10, 'x');
+	s = ft_itoa_base(va_arg(ap, unsigned int), 10, 'x');
 	len[0] = ft_strlen(s);
 	len[1] = p->pres;
 	len[2] = p->pres;

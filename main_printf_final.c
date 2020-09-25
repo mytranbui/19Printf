@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_printf_final.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuzen <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: tjuzen <tjuzen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 15:50:50 by tjuzen            #+#    #+#             */
-/*   Updated: 2020/09/14 11:57:41 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/25 13:30:46 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -711,12 +711,12 @@ f +=  	printf("|%-0#5.o|%-0#5.3o|%-.o|%-.0o|%-#.o|\n",   0,0,0,0,0);
 f +=  	printf("|%-o|%-#032o|\n", 54, 54);
  e += ft_printf("|%-o|%-#032o|\n", 54, 54);
 
-f +=      printf("|%llo|%lo|%o|%ho|%hho\n", test_conv, test_conv, test_conv, test_conv, test_conv);
- e += ft_printf("|%llo|%lo|%o|%ho|%hho\n", test_conv, test_conv, test_conv, test_conv, test_conv);
-f +=      printf("|%llo|%lo|%o|%ho|%hho\n", test_conv_neg, test_conv_neg, test_conv_neg, test_conv_neg, test_conv_neg);
-e +=  ft_printf("|%llo|%lo|%o|%ho|%hho\n", test_conv_neg, test_conv_neg, test_conv_neg, test_conv_neg, test_conv_neg);
-f +=      printf("|%llo|%lo|%o|%ho|%hho\n", test_conv_u, test_conv_u, test_conv_u, test_conv_u, test_conv_u);
-e +=  ft_printf("|%llo|%lo|%o|%ho|%hho\n", test_conv_u, test_conv_u, test_conv_u, test_conv_u, test_conv_u);
+// f +=      printf("|%llo|%lo|%o|%ho|%hho\n", test_conv, test_conv, test_conv, test_conv, test_conv);
+//  e += ft_printf("|%llo|%lo|%o|%ho|%hho\n", test_conv, test_conv, test_conv, test_conv, test_conv);
+// f +=      printf("|%llo|%lo|%o|%ho|%hho\n", test_conv_neg, test_conv_neg, test_conv_neg, test_conv_neg, test_conv_neg);
+// e +=  ft_printf("|%llo|%lo|%o|%ho|%hho\n", test_conv_neg, test_conv_neg, test_conv_neg, test_conv_neg, test_conv_neg);
+// f +=      printf("|%llo|%lo|%o|%ho|%hho\n", test_conv_u, test_conv_u, test_conv_u, test_conv_u, test_conv_u);
+// e +=  ft_printf("|%llo|%lo|%o|%ho|%hho\n", test_conv_u, test_conv_u, test_conv_u, test_conv_u, test_conv_u);
 
  printf("--------------------\n");
  printf("OCTAL\n");
@@ -881,12 +881,12 @@ f +=  	printf ("printf4     :|%0+5u|%0+5.3u|%0+5.1u|%0+5.0u|%0+5.u|\n", 999,999,
 	e += ft_printf("|%- 03u|\n", 0);
 
 	//DECIMAL CONV U
-	 f +=    printf("|%llu|%lu|%u|%hu|%hhu\n", test_conv, test_conv, test_conv, test_conv, test_conv);
-	e += ft_printf("|%llu|%lu|%u|%hu|%hhu\n", test_conv, test_conv, test_conv, test_conv, test_conv);
-	 f +=    printf("|%llu|%lu|%u|%hu|%hhu\n", test_conv_neg, test_conv_neg, test_conv_neg, test_conv_neg, test_conv_neg);
-	e += ft_printf("|%llu|%lu|%u|%hu|%hhu\n", test_conv_neg, test_conv_neg, test_conv_neg, test_conv_neg, test_conv_neg);
-	 f +=    printf("|%llu|%lu|%u|%hu|%hhu\n", test_conv_u, test_conv_u, test_conv_u, test_conv_u, test_conv_u);
-	e += ft_printf("|%llu|%lu|%u|%hu|%hhu\n", test_conv_u, test_conv_u, test_conv_u, test_conv_u, test_conv_u);
+	//  f +=    printf("|%llu|%lu|%u|%hu|%hhu\n", test_conv, test_conv, test_conv, test_conv, test_conv);
+	// e += ft_printf("|%llu|%lu|%u|%hu|%hhu\n", test_conv, test_conv, test_conv, test_conv, test_conv);
+	//  f +=    printf("|%llu|%lu|%u|%hu|%hhu\n", test_conv_neg, test_conv_neg, test_conv_neg, test_conv_neg, test_conv_neg);
+	// e += ft_printf("|%llu|%lu|%u|%hu|%hhu\n", test_conv_neg, test_conv_neg, test_conv_neg, test_conv_neg, test_conv_neg);
+	//  f +=    printf("|%llu|%lu|%u|%hu|%hhu\n", test_conv_u, test_conv_u, test_conv_u, test_conv_u, test_conv_u);
+	// e += ft_printf("|%llu|%lu|%u|%hu|%hhu\n", test_conv_u, test_conv_u, test_conv_u, test_conv_u, test_conv_u);
 
 
 	printf("--------------------\n");
@@ -920,8 +920,7 @@ f +=  	printf ("printf4     :|%0+5u|%0+5.3u|%0+5.1u|%0+5.0u|%0+5.u|\n", 999,999,
 	printf("--------------------\n");
 
 printf("\n");
-	e += (ft_printf("xSalut %08.4x et %#08x %.1x %#5.11x %5.17x %#.4x\n", 0, 0, 0, 0, 0, 0));
-	f +=    (printf("xSalut %08.4x et %#08x %.1x %#5.11x %5.17x %#.4x\n", 0, 0, 0, 0, 0, 0));
+	
 	printf("\n");
 	e += (ft_printf("Salxt %08.4x et  %.1x %#5.11x %5.17x %#.4x\n", 11, 12, 13, 14, 14));
 	f +=    (printf("Salxt %08.4x et  %.1x %#5.11x %5.17x %#.4x\n", 11, 12, 13, 14, 14));
