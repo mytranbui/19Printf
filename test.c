@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/24 15:38:17 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/25 12:10:50 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_putstr_len(const char *str)
 
 void	convert_c(va_list ap, t_print *p)
 {
-	printf("\nconvert_c\n");
+	//printf("\nconvert_c\n");
 	long long	c;
 
 	c = va_arg(ap, long long);
@@ -50,7 +50,7 @@ void	convert_c(va_list ap, t_print *p)
 
 void	convert_percent(va_list ap, t_print *p)
 {
-	printf("\nconvert_percent\n");
+	//printf("\nconvert_percent\n");
 	long long	c;
 
 	c = (char)va_arg(ap, long long);
@@ -68,7 +68,7 @@ void	convert_percent(va_list ap, t_print *p)
 
 void	convert_s(va_list ap, t_print *p)
 {
-	printf("\nconvert_s\n");
+	//printf("\nconvert_s\n");
 	char	*s;
 	int		len;
 
@@ -95,7 +95,7 @@ void	convert_s(va_list ap, t_print *p)
 
 void	convert_p(va_list ap, t_print *p)
 {
-	printf("\nconvert_p\n");
+	//printf("\nconvert_p\n");
 	char	*s;
 	int		len[3];
 
@@ -132,13 +132,12 @@ void	convert_p(va_list ap, t_print *p)
 /*
 ** %d & %i: undefined behavior with # (no effect)
 */
-
 //kk
-unsigned int	ft_absu(int value)
+/*unsigned int	ft_absu(int value)
 {
 	return (value < 0) ? -((unsigned int)value) : (unsigned int)value;
 }
-
+*/
 /*
 ** Since 2147483648 is greater than INT_MAX, then abs(-2147483648) is undefined
 */
@@ -146,22 +145,22 @@ unsigned int	ft_absu(int value)
 //all ok except 2147483648
 void	convert_di(va_list ap, t_print *p)
 {
-	printf("\nconvert_di\n");
+	//printf("\nconvert_di\n");
 	intmax_t v;
 	int		n;
 	int		len[3];
 
 	v = va_arg(ap, long long);
 	n = ft_atoi(ft_itoa_base(v, 10, 'x'));
-	len[0] = ft_intlen(ft_absu(v));
-	//	printf("{len[0] = %d}", len[0]);
+	len[0] = ft_intlen(ft_abs(v));
+	//	//printf("{len[0] = %d}", len[0]);
 	len[1] = p->pres;
 	len[2] = p->pres;
 	(n < 0 || (p->flg.plus && n >= 0)) ? len[0]++ && len[1]++ : len[0];
 	(len[0] > len[1]) ? len[1] = len[0] : len[1];
 	(p->flg.plus == 0 && n >= 0) ? len[0]++ : len[0]; //why ?0+
-	//	printf("intlen=%d\n", len[0]);
-	//	printf("value=%d\n", n);
+	//	//printf("intlen=%d\n", len[0]);
+	//	//printf("value=%d\n", n);
 	(p->flg.space && p->flg.plus == 0 && n >= 0) ? len[1]++ : len[1];
 	if (p->flg.space && p->flg.plus == 0 && n >= 0)
 		ft_putchar(' ');
@@ -175,7 +174,7 @@ void	convert_di(va_list ap, t_print *p)
 			ft_putchar('-');
 		while (p->pres-- - len[0] > -1)
 			ft_putchar('0');
-		(len[2] == 0 && n == 0) ? ft_putchar(' ') : ft_putnbr(ft_absu(v));
+		(len[2] == 0 && n == 0) ? ft_putchar(' ') : ft_putnbr(ft_abs(v));
 	}
 	else
 	{
@@ -185,21 +184,21 @@ void	convert_di(va_list ap, t_print *p)
 			ft_putchar('-');
 		while (p->pres-- - len[0] > -1) //why? -1 ??
 			ft_putchar('0');
-		(len[2] == 0 && n == 0) ? ft_putchar(' ') : ft_putnbr(ft_absu(v));
+		(len[2] == 0 && n == 0) ? ft_putchar(' ') : ft_putnbr(ft_abs(v));
 		while (p->width-- - len[1] > 0)
 			ft_putchar(' ');
 	}
 	//	v = v * (-1);
-	ft_putnbr(2147483647 + 1);
+//	ft_putnbr(2147483647 + 1);
 	//	ft_putnbr(n * -1);
-	//	printf("{v =%ju}", v);
-	//	printf("{n =%d}", n);
-	//	printf("{abs(n) =%d}", abs(n));
-	//	printf("{ft_absu(INT_MIN) =%d}", ft_absu(n));
-	//	printf("{len= %d}", len[0]);
-	//	printf("{len[0] = %d}", len[0]);
-	//	printf("{len[2] = %d}", len[2]);
-	//	printf("{printed spaces=%d}\n", i);
+	//	//printf("{v =%ju}", v);
+	//	//printf("{n =%d}", n);
+	//	//printf("{abs(n) =%d}", abs(n));
+	//	//printf("{ft_absu(INT_MIN) =%d}", ft_absu(n));
+	//	//printf("{len= %d}", len[0]);
+	//	//printf("{len[0] = %d}", len[0]);
+	//	//printf("{len[2] = %d}", len[2]);
+	//	//printf("{printed spaces=%d}\n", i);
 }
 
 /*
@@ -208,7 +207,7 @@ void	convert_di(va_list ap, t_print *p)
 
 void	convert_o(va_list ap, t_print *p)
 {
-	printf("\nconvert_o\n");
+	//printf("\nconvert_o\n");
 	char	*s;
 	int		len[3];
 
@@ -239,7 +238,7 @@ void	convert_o(va_list ap, t_print *p)
 		while (p->width-- - len[1] > 0)
 			ft_putchar(' ');
 	}
-	ft_strdel(&s);
+//	ft_strdel(&s);
 }
 
 /*
@@ -250,7 +249,7 @@ void	convert_o(va_list ap, t_print *p)
 /*with uintmax_t but doesn't work for neg?
  * void	convert_u(va_list ap, t_print *p)
  {
- printf("\nconvert_u\n");
+ //printf("\nconvert_u\n");
  uintmax_t	n;
  int			len[3];
 
@@ -281,7 +280,7 @@ void	convert_o(va_list ap, t_print *p)
 //protect itoa_base ?
 void	convert_u(va_list ap, t_print *p)
 {
-	printf("\nconvert_u\n");
+	//printf("\nconvert_u\n");
 	char	*s;
 	int		len[3];
 	//	uintmax_t n;
@@ -319,7 +318,7 @@ void	convert_u(va_list ap, t_print *p)
 
 void	convert_x(va_list ap, char c, t_print *p)
 {
-	printf("\nconvert_x\n");
+	//printf("\nconvert_x\n");
 	char	*s;
 	int		len[3];
 

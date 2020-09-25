@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 09:39:00 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/24 15:27:21 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/25 12:10:09 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int		parse_flags(t_print *p/*,const char **fmt*/, int i)
 		p->flg.l = 1 && i++ : p->flg.l;
 		(p->fmt[i] == 'L') ? p->flg.maj_l = 1 & i++ : p->flg.maj_l;
 	}
-	printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d | h=%d | l=%d | L=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres, p->flg.h, p->flg.l, p->flg.maj_l);
+	//printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d | h=%d | l=%d | L=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres, p->flg.h, p->flg.l, p->flg.maj_l);
 	//	printf("{fmt[i]=%c}",p->fmt[i]);
 	return (i);
 }
