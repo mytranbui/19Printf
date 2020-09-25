@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/25 14:32:44 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/25 17:55:17 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ void	convert_di(va_list ap, t_print *p)
 	len[1] = p->pres;
 	len[2] = p->pres;
 	(n < 0 || (p->flg.plus && n >= 0)) ? len[0]++ && len[1]++ : len[0];
-	(len[0] > len[1]) ? len[1] = len[0] : len[1];
+	(len[0] > p->pres) ? len[1] = len[0] : len[1];
 	(p->flg.plus == 0 && n >= 0) ? len[0]++ : len[0]; //why ?0+
 	//	//printf("intlen=%d\n", len[0]);
 	//	//printf("value=%d\n", n);
@@ -218,7 +218,7 @@ void	convert_o(va_list ap, t_print *p)
 	len[2] = p->pres;
 	(p->flg.hash) ? len[0]++ : len[0];
 	(p->flg.hash && *s == '0') ? len[0]-- : len[0];
-	(len[0] > len[1]) ? len[1] = len[0] : len[1];
+	(len[0] > p->pres) ? len[1] = len[0] : len[1];
 	if (*s == '0' && p->pres == 0 && !p->width && !p->flg.hash)
 		return ;
 	if (p->flg.minus == 0)
@@ -241,7 +241,8 @@ void	convert_o(va_list ap, t_print *p)
 		while (p->width-- - len[1] > 0)
 			ft_putchar(' ');
 	}
-//	ft_strdel(&s);
+	if (*s != '0')
+		ft_strdel(&s);
 }
 
 /*
@@ -294,7 +295,7 @@ void	convert_u(va_list ap, t_print *p)
 	len[0] = ft_strlen(s);
 	len[1] = p->pres;
 	len[2] = p->pres;
-	(len[0] > len[1]) ? len[1] = len[0] : len[1];
+	(len[0] > p->pres) ? len[1] = len[0] : len[1];
 	if (p->flg.minus == 0)
 	{
 		while (p->width-- - len[1] > 0)
@@ -311,14 +312,19 @@ void	convert_u(va_list ap, t_print *p)
 		while (p->width-- - len[1] > 0)
 			ft_putchar(' ');
 	}
-	//	if (s)
-	//		ft_strdel(&s);
+	if (*s != '0')
+		ft_strdel(&s);
 }
 
 /*
 ** %x & %X: undefined behavior with +, '0' and ' '
 */
 
+/*
+**len[0] = length of the va_arg
+**len[1] = p->pres (or length of va_arg if bigger than p->pres)
+**len[2] = tmp of p->pres
+*/
 void	convert_x(va_list ap, char c, t_print *p)
 {
 	//printf("\nconvert_x\n");
@@ -329,14 +335,14 @@ void	convert_x(va_list ap, char c, t_print *p)
 	len[0] = ft_strlen(s);
 	len[1] = p->pres;
 	len[2] = p->pres;
-	(len[0] > len[1]) ? len[1] = len[0] : len[1];
+	(len[0] > p->pres) ? len[1] = len[0] : len[1];
 	(p->flg.hash && *s != '0') ? len[1] += 2 : len[1];
 	if (p->flg.minus == 0 && p->pres == -1 && p->flg.hash)
 	{
 		if (p->flg.hash && *s != '0')
 			(c == 'x') ? ft_putstr("0x") : ft_putstr("0X");
 		while (p->width-- - len[1] > 0)
-			ft_putchar('0');
+			(p->flg.zero) ? ft_putchar('0') : ft_putchar(' ');
 		(len[2] == 0 && *s == '0') ? ft_putchar(' ') : ft_putstr(s);
 	}
 	else if (p->flg.minus == 0)
@@ -361,5 +367,6 @@ void	convert_x(va_list ap, char c, t_print *p)
 		while (p->width-- - len[1] > 0)
 			ft_putchar(' ');
 	}
-	//	ft_strdel(&s);
+	if (*s != '0')
+		ft_strdel(&s);
 }
