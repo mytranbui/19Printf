@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 12:41:38 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/28 16:25:29 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/28 16:30:34 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ double	ft_pow(double x, double y)
 
 /*double	ft_round(double x)
 {
+	double round;
+
+	round = 0.1;
 
 }
 */
