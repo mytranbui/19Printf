@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   created: 2020/01/20 09:26:22 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/15 10:45:46 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/28 16:03:02 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ long	nb = 0;
 	//int		i = 2147483648; //kk on that number + & -
 //	int		i = 2147483648;
 	//int		i =-0;
-	float f = 5323.1468;
+//	float f = 5323.1468;
 int		*p = &i;
 	short		h = 42;
 	long		l = 42;
 	long long	m = 42;
+	float		f = 12.123456789;
 
 //	int 	nb = -1564312;
 
@@ -318,7 +319,7 @@ printf("%s||\n", NULL);
 	ft_printf("%0# 40.60o||\n", nb);
 	printf("%0# 40.60o||\n", nb); //0-
 
-*/	printf("\n-----UNSIGNED INT-----\n"); //(-, 0, #, )
+*//*	printf("\n-----UNSIGNED INT-----\n"); //(-, 0, #, )
 	// single flag
 	ft_printf("%+u||\n", nb);
 	printf("%+u||\n", nb);
@@ -455,7 +456,7 @@ printf("%s||\n", NULL);
 	printf("%0# 45.40X||\n", nb); //no width > pres
 	ft_printf("%0# 40.45X||\n", nb);
 	printf("%0# 40.45X||\n", nb);
-
+*/
 /*	printf("\n-----PERCENTS-----\n"); //(-,0,width) xpres x# x' '?
 	// single flag
 	ft_printf("%+%||\n");
@@ -524,8 +525,8 @@ printf("%s||\n", NULL);
 */
 		printf("\n-----FLOAT-----\n"); //(-, 0, #, )
 		// single flag
-	/*	printf("%+f||\n", f);
-		arintf("%+f||\n", f);
+		ft_printf("%f||\n", f);
+	/*	arintf("%+f||\n", f);
 		printf("%0f||\n", f);
 		arintf("%0f||\n", f);
 		printf("% f||\n", f);
@@ -598,7 +599,7 @@ printf("%s||\n", NULL);
 // printf("%hhi||\n", c);
 // printf("%li||\n", l);
 // printf("%lli||\n", m);
-ft_printf("%0-+ .o|\n", 0);
+/*ft_printf("%0-+ .o|\n", 0);
 printf("%0-+ .o|\n", 0);
 ft_printf("%#.o|\n",0);
 printf("%#.o|\n",0);
@@ -635,7 +636,7 @@ printf("ici ici XSalXt %-10.4X %#08X %-#5.20X %-5.30X %-#.4X %#8X %#08X\n", 0, 5
 ft_printf("%010d\n", -42);
 printf("%010d\n", -42);
 printf("%15f",1.123456);
-/*	ft_printf("caca%0dpopo%+d", 45, 89);
+*//*	ft_printf("caca%0dpopo%+d", 45, 89);
 	 ft_printf("\n--string=%s\n--sign=%%\n--num=%d\n--num2=%d\n--sign2=%%\n--sign3=%%\n--numi=%i\n--char=%c\n--num3=%d\n--address=%p\n--hex=%x\n--HEX=%X\n",s,100,-7852,23534, 'c', 45, &c,4364873,61534);
 	 printf("SOLUTION:\n--string=%s--sign=%%--num=%d--num2=%d--sign2=%%--sign3=%%--numi=%i--char=%c--num3=%d--address=%p--hex=%x--HEX=%X\n",s,100,-7852,23534, 'c', 45, &c,4364873,61534);
 	 printf("uint=%ld\n",4294967295);
