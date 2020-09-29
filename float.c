@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 12:41:38 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/29 19:17:44 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/29 19:30:58 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ double	get_decimal(double n, t_print *p)
 	}
 //	printf("{dec=%.15f}\n", dec);
 	dec = ft_round(dec);
-//	printf("{dec=%.15f}\n", dec);
+	printf("{dec=%.15f}\n", dec);
 //	printf("{n=%.15f}\n", n);
 //	printf("{round=%.15f}\n", round);
 	return (dec);
@@ -70,8 +70,12 @@ void	convert_f(va_list ap, t_print *p)
 	printf("\nconvert_f\n");
 	double	n;
 	double	dec;
+	int		len_dec;
 
 	n = va_arg(ap, double);
+	dec = get_decimal(n, p);
+	len_dec = ft_intlen(dec);
+	printf("{len_dec=%d}\n", len_dec);
 }
 
 /*void	convert_f(va_list ap, t_print *p)
