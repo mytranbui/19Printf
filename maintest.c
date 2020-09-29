@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   created: 2020/01/20 09:26:22 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/28 16:30:40 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/29 18:59:12 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		*p = &i;
 	short		h = 42;
 	long		l = 42;
 	long long	m = 42;
-	float		f = 12.123456789;
+	float		f = 12.1234565;
 
 //	int 	nb = -1564312;
 
@@ -526,7 +526,9 @@ printf("%s||\n", NULL);
 		printf("\n-----FLOAT-----\n"); //(-, 0, #, )
 		// single flag
 		ft_printf("%f||\n", f);
-	/*	arintf("%+f||\n", f);
+		printf("%f||\n", f);
+	/*	ft_printf("%f||\n", f);
+		arintf("%+f||\n", f);
 		printf("%0f||\n", f);
 		arintf("%0f||\n", f);
 		printf("% f||\n", f);

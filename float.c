@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 12:41:38 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/28 16:30:34 by mbui             ###   ########.fr       */
+/*   Updated: 2020/09/29 19:17:44 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,31 +25,56 @@ double	ft_pow(double x, double y)
 	return (x);
 }
 
-/*double	ft_round(double x)
+double	ft_round(double x)
 {
-	double round;
-
-	round = 0.1;
-
+	return (x - (int)x >= 0.5 ? (int)x + 1 : (int)x);
 }
-*/
 
-void	get_float(double n)
+//should be added to libft
+double	ft_fabs(double x)
 {
+	return (x < 0) ? x * -1 : x;
+}
+
+double	get_decimal(double n, t_print *p)
+{
+	printf("\nget_decimal\n");
 	double	dec;
 	double	tmp;
+//	int		len;
+	double	round;//necessary?
 
+	round = 0.1;
+//	printf("{n=%.15f}", n);
 	dec = n - (int)n;
-	printf("{dec=%f}", dec);
-	(p->pres == -1) ? p->pres == 6 : p->pres;
-	while (dec)
+//	printf("{dec=%.15f}", dec);
+	(p->pres == -1) ? p->pres = 6 : p->pres;
+//	tmp = dec;
+	while (p->pres--)
 	{
+//		printf("\nloop\n");
 		tmp = dec;
 		dec = tmp * 10;
+		round /= 10;
 	}
+//	printf("{dec=%.15f}\n", dec);
+	dec = ft_round(dec);
+//	printf("{dec=%.15f}\n", dec);
+//	printf("{n=%.15f}\n", n);
+//	printf("{round=%.15f}\n", round);
+	return (dec);
 }
 
 void	convert_f(va_list ap, t_print *p)
+{
+	printf("\nconvert_f\n");
+	double	n;
+	double	dec;
+
+	n = va_arg(ap, double);
+}
+
+/*void	convert_f(va_list ap, t_print *p)
 {
 	printf("\nconvert_f\n");
 	uintmax_t	v;
@@ -57,7 +82,7 @@ void	convert_f(va_list ap, t_print *p)
 	int		len[3];
 
 	n = va_arg(ap, double);
-	get_float(n);
+	get_float(n, p);
 	printf("{n=%f}", n);
 	//	v = ft_itoa_base(n, 2, 'x');
 	//	printf("{v=%ju}", v);
@@ -96,4 +121,4 @@ void	convert_f(va_list ap, t_print *p)
 		while (p->width-- - len[1] > 0)
 			ft_putchar(' ');
 	}
-}
+}*/
