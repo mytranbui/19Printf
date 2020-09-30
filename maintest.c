@@ -545,7 +545,7 @@ printf("%s||\n", NULL);
 		printf("%.5f||\n", f);
 		ft_printf("%.50f||\n", f);
 		printf("%.50f||\n", f);
-		// multiple flags lol
+		// multiple flags
 		ft_printf("%- 100.50f||\n", f);
 	  	printf("%- 100.50f||\n", f);
 		ft_printf("% +100.50f||\n", f);
