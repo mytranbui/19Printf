@@ -525,76 +525,76 @@ printf("%s||\n", NULL);
 */
 		printf("\n-----FLOAT-----\n"); //(-, 0, #, )
 		// single flag
-		ft_printf("%.4f||\n", f);
-		printf("%.4f||\n", f);
-	/*	ft_printf("%f||\n", f);
-		arintf("%+f||\n", f);
+		ft_printf("%.10 f||\n", f);
+		printf("%.10 f||\n", f);
+		ft_printf("%+f||\n", f);
+		printf("%+f||\n", f);
+		ft_printf("%0f||\n", f);
 		printf("%0f||\n", f);
-		arintf("%0f||\n", f);
+		ft_printf("% f||\n", f);
 		printf("% f||\n", f);
-		arintf("% f||\n", f);
-		printf("%#f||\n", f);
-		ft_printf("%#f||\n", f); //ok
-		printf("%-f||\n", f);
+		ft_printf("%#f||\n", f);
+		printf("%#f||\n", f); //ok
 		ft_printf("%-f||\n", f);
-		printf("%5f||\n", f);
+		printf("%-f||\n", f);
 		ft_printf("%5f||\n", f);
-		printf("%50f||\n", f);
+		printf("%5f||\n", f);
 		ft_printf("%50f||\n", f);
-		printf("%.5f||\n", f);
+		printf("%50f||\n", f);
 		ft_printf("%.5f||\n", f);
-		printf("%.50f||\n", f);
+		printf("%.5f||\n", f);
 		ft_printf("%.50f||\n", f);
+		printf("%.50f||\n", f);
 		// multiple flags
-		printf("%- 100.50f||\n", f);
-	  	ft_printf("%- 100.50f||\n", f);
-		printf("% +100.50f||\n", f);
-	  	ft_printf("% +100.50f||\n", f);
-		printf("%-050f||\n", f);
-	  	ft_printf("%-050f||\n", f);
-		printf("%0+50.50f||\n", f);
-	  	ft_printf("%0+50.50f||\n", f);
-		printf("%0-+050.5f||\n", f);
-	  	ft_printf("%0-+050.5f||\n", f);
-		printf("%0-+050.8f||\n", f);
-	  	ft_printf("%0-+050.8f||\n", f);
-		printf("%-10f||\n", f);
-		ft_printf("%-10f||\n", f);
-		printf("%08.f||\n", f);
-	  	ft_printf("%08.f||\n", f);
-		printf("%8.f||\n", f);
-	 	ft_printf("%8.f||\n", f);
-		printf("%#018.f||\n", f);
-	 	ft_printf("%0#18.f||\n", f); //no
-		printf("%- 08.f||\n", f);
-	 	ft_printf("%- 08.f||\n", f);
-		printf("%0-+18.60f||\n", f);
-		ft_printf("%0-+18.60f||\n", f);
-		printf("%0-+# 12.2f||\n", f);
-		ft_printf("%0-+# 12.2f||\n", f); //no
-		printf("%015.f||\n", f);
-		ft_printf("%015.f||\n", f);
-		printf("%+- 011f||\n", f);
-		ft_printf("%+- 011f||\n", f);
-		printf("% -018.30f||\n", f);
-		ft_printf("% -018.30f||\n", f);
-		printf("%-050f||\n", f);
+		ft_printf("%- 100.50f||\n", f);
+	  	printf("%- 100.50f||\n", f);
+		ft_printf("% +100.50f||\n", f);
+	  	printf("% +100.50f||\n", f);
 		ft_printf("%-050f||\n", f);
-		printf("%-0# 50f||\n", f);
-		ft_printf("%-0# 50f||\n", f); //no
-		printf("%0# 45f||\n", f);
+	  	printf("%-050f||\n", f);
+		ft_printf("%0+50.50f||\n", f);
+	  	printf("%0+50.50f||\n", f);
+		ft_printf("%0-+050.5f||\n", f);
+	  	printf("%0-+050.5f||\n", f);
+		ft_printf("%0-+050.8f||\n", f);
+	  	printf("%0-+050.8f||\n", f);
+		ft_printf("%-10f||\n", f);
+		printf("%-10f||\n", f);
+		ft_printf("%08.f||\n", f);
+	  	printf("%08.f||\n", f);
+		ft_printf("%8.f||\n", f);
+	 	printf("%8.f||\n", f);
+		ft_printf("%#018.f||\n", f);
+	 	printf("%0#18.f||\n", f); //no
+		ft_printf("%- 08.f||\n", f);
+	 	printf("%- 08.f||\n", f);
+		ft_printf("%0-+18.60f||\n", f);
+		printf("%0-+18.60f||\n", f);
+		ft_printf("%0-+# 12.2f||\n", f);
+		printf("%0-+# 12.2f||\n", f); //no
+		ft_printf("%015.f||\n", f);
+		printf("%015.f||\n", f);
+		ft_printf("%+- 011f||\n", f);
+		printf("%+- 011f||\n", f);
+		ft_printf("% -018.30f||\n", f);
+		printf("% -018.30f||\n", f);
+		ft_printf("%-050f||\n", f);
+		printf("%-050f||\n", f);
+		ft_printf("%-0# 50f||\n", f);
+		printf("%-0# 50f||\n", f); //no
 		ft_printf("%0# 45f||\n", f);
-		printf("%0 18f||\n", f);
+		printf("%0# 45f||\n", f);
 		ft_printf("%0 18f||\n", f);
-		printf("%0# 40.f||\n", f);
-		ft_printf("%0# 40.f||\n", f); //no
-		printf("%0# 40.60f||\n", f);
-		ft_printf("%0# 40.60f||\n", f); //ok
-		printf("%0# 45.40f||\n", f);
-		ft_printf("%0# 45.40f||\n", f); //no width > pres
-		printf("%0# 30.30f||\n", f);
+		printf("%0 18f||\n", f);
+		ft_printf("%0# 40.f||\n", f);
+		printf("%0# 40.f||\n", f); //no
+		ft_printf("%0# 40.60f||\n", f);
+		printf("%0# 40.60f||\n", f); //ok
+		ft_printf("%0# 45.40f||\n", f);
+		printf("%0# 45.40f||\n", f); //no width > pres
 		ft_printf("%0# 30.30f||\n", f);
-*/
+		printf("%0# 30.30f||\n", f);
+
 
 // printf("%i||\n", i);
 // printf("%hi||\n", h);
