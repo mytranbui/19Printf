@@ -67,11 +67,18 @@ double	get_decimal(double n, t_print *p)
 
 void ft_putflt(double	n, double dec)
 {
-	ft_putnbr(n);
+	char	*s;
+	char	*d;
+
+	s = ft_itoa_base(n, 10, 'x');
+	ft_putstr(s);
+	//ft_putnbr(n);
 	if (dec != 0)
 	{
 		ft_putchar('.');
-		ft_putnbr(dec);
+		d = ft_itoa_base(dec, 10, 'x');
+//ft_putstr(d);
+		//ft_putnbr(dec);
 	}
 }
 
