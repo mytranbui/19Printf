@@ -77,10 +77,20 @@ void ft_putflt(double	n, double dec)
 	{
 		ft_putchar('.');
 		d = ft_itoa_base(dec, 10, 'x');
-//ft_putstr(d);
+ft_putstr(d);
 		//ft_putnbr(dec);
 	}
 }
+
+/*while (p->precision > 0)
+{
+	ptr->num *= 10;
+	ptr->d = (unsigned long long)ptr->num;
+	ptr->num -= ptr->d;
+	ptr->d %= 10;
+	pointer->counter += ft_putchar_len(ptr->d + 48);
+	p->precision--;
+}*/
 
 /*void	convert_f(va_list ap, t_print *p)
 {
