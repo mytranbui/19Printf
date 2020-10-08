@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <limits.h>
 
-int	ft_putstr_len(const char *str)
+int	ft_putstr_len_percent(const char *str)
 {
 	int i;
 

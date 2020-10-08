@@ -35,7 +35,7 @@ int		*p = &i;
 	short		h = 42;
 	long		l = 42;
 	long long	m = 42;
-	float		f = 12.1234565;
+	float		f = 12.15;
 
 //	int 	nb = -1564312;
 
@@ -594,6 +594,8 @@ printf("%s||\n", NULL);
 		printf("%0# 45.40f||\n", f); //no width > pres
 		ft_printf("%0# 30.30f||\n", f);
 		printf("%0# 30.30f||\n", f);
+		ft_printf("%.f||\n", 12);
+		printf("%.f||\n", 12);
 
 
 // printf("%i||\n", i);

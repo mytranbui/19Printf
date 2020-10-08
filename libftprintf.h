@@ -52,5 +52,5 @@ void	convert_x(va_list ap, char c, t_print *p);
 void	convert_f(va_list ap, t_print *p);
 void	convert_percent(va_list ap, t_print *p);
 
-int     ft_putstr_len(const char *str);
+int     ft_putstr_len_percent(const char *str);
 #endif

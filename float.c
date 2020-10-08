@@ -39,7 +39,7 @@ double	ft_fabs(double x)
 double	get_decimal(double n, t_print *p)
 {
 	printf("\nget_decimal\n");
-	double	dec;
+	int	dec;
 	double	tmp;
 //	int		len;
 	double	round;//necessary?
@@ -50,47 +50,144 @@ double	get_decimal(double n, t_print *p)
 //	printf("{dec=%.15f}", dec);
 	(p->pres == -1) ? p->pres = 6 : p->pres;
 //	tmp = dec;
-	while (p->pres--)
+	/*while (p->pres--)
 	{
 //		printf("\nloop\n");
 		tmp = dec;
 		dec = tmp * 10;
+	//	ft_putnbr(dec);
 		round /= 10;
+	}*/while (p->pres > 0)
+	{
+		n *= 10;
+		dec = (unsigned long long)n;
+		n -= dec;
+		dec %= 10;
+		//dec = ft_round(dec);
+	//	ft_putnbr(dec);
+		ft_putchar(dec + 48);
+		//pointer->counter += ft_putchar_len(ptr->d + 48);
+		p->pres--;
 	}
-//	printf("{dec=%.15f}\n", dec);
-	dec = ft_round(dec);
+	/*while (p->precision > 0)
+	{
+		ptr->num *= 10;
+		ptr->d = (unsigned long long)ptr->num;
+		ptr->num -= ptr->d;
+		ptr->d %= 10;
+		pointer->counter += ft_putchar_len(ptr->d + 48);
+		p->precision--;
+	}*/
+//	dec = ft_round(dec);
 	printf("{dec=%.15f}\n", dec);
 //	printf("{n=%.15f}\n", n);
 //	printf("{round=%.15f}\n", round);
 	return (dec);
 }
 
-void ft_putflt(double	n, double dec)
+int		ft_putchar_len(char c, int len)
 {
+//	int	len;
+
+//	len = 0;
+	ft_putchar(c);
+	len++;
+	return (len);
+}
+
+int		ft_putstr_len(char *s)//, int len)
+{
+	int len;
+
+	len = 0;
+	while (s != '\0')
+	{
+		//len = ft_putchar_len(s[len],len);
+		ft_putchar(s[len]);
+		//s[len]++;
+		len++;
+	}
+	return (len);
+}
+
+char	*ft_roundup(char *d, char last, int i)
+{
+ int boolean;
+
+ boolean = 0;
+ i--;
+	if (last >= '5')
+	{
+		while (boolean == 0)
+		{
+			if (d[i] == '9')
+			 d[i] = '0';
+			else
+			{
+		  	d[i]++;
+				boolean = 1;
+			}
+			i--;
+		}
+	}
+	return (d);
+}
+
+int		ft_putflt(double	n, t_print *p)
+{
+	int	len;
+	int dec;
 	char	*s;
 	char	*d;
+	double round;
+	int i;
+	char last;
 
+	i = 0;
+	round = 0.1;
+	len = 0;
 	s = ft_itoa_base(n, 10, 'x');
 	ft_putstr(s);
+	len = ft_strlen(s);
+//	len = ft_putstr_len(s);//, len);
 	//ft_putnbr(n);
 	if (dec != 0)
 	{
 		ft_putchar('.');
-		d = ft_itoa_base(dec, 10, 'x');
-ft_putstr(d);
-		//ft_putnbr(dec);
+		len++;
+//		d = ft_itoa_base(dec, 10, 'x');
+//		ft_putstr(d);
+//		ft_putnbr(dec);
 	}
+	(p->pres == -1) ? p->pres = 6 : p->pres;
+	if (!(d = ft_strnew(p->pres + 1)))
+		return (0);
+	while (p->pres > 0)
+	{
+		n *= 10;
+		dec = (unsigned long long)n;
+		n -= dec;
+		dec %= 10;
+		printf("{decdec=%.15d}\n", dec);
+		d[i] = dec + 48;
+		printf("{res=%d}", dec + 48);
+		len++;
+		i++;
+		round /= 10;
+		p->pres--;
+	}
+	n *= 10;
+	dec = (unsigned long long)n;
+	n -= dec;
+	dec %= 10;
+	last = dec + 48;
+	d[i] = '\0';
+	d = ft_roundup(d, last, i);
+	ft_putstr(d);
+	return (len);
 }
 
-/*while (p->precision > 0)
-{
-	ptr->num *= 10;
-	ptr->d = (unsigned long long)ptr->num;
-	ptr->num -= ptr->d;
-	ptr->d %= 10;
-	pointer->counter += ft_putchar_len(ptr->d + 48);
-	p->precision--;
-}*/
+
 
 /*void	convert_f(va_list ap, t_print *p)
 {
@@ -121,15 +218,17 @@ void	convert_f(va_list ap, t_print *p)
 {
 	printf("\nconvert_f\n");
 	double	n;
-	double	dec;
+	int	dec;
 	int		len_dec;
 	int		len_int;
-	int		len[3];
+	int		leno[3];
+	int		len;
 
 	n = va_arg(ap, double);
-	dec = get_decimal(n, p);
-	len_dec = ft_intlen(dec) + 1; // +1 for the decimal point
-	len_int = ft_intlen(ft_fabs(n));
+	len = ft_putflt(ft_fabs(n), p);
+	printf("{len=%d}\n", len);
+	//dec = get_decimal(n, p);
+/*	len_int = ft_intlen(ft_fabs(n));
 	len[0] = len_int + len_dec;
 	len[1] = p->pres;
 	len[2] = p->pres;
@@ -151,7 +250,7 @@ void	convert_f(va_list ap, t_print *p)
 			ft_putchar('-');
 		while (p->pres-- - len[0] > -1)
 			ft_putchar('0');
-		(len[2] == 0 && n == 0) ? ft_putchar(' ') : ft_putflt(ft_fabs(n), dec);
+		(len[2] == 0 && n == 0) ? ft_putchar(' ') : ft_putflt(ft_fabs(n), p);
 	}
 	else
 	{
@@ -161,8 +260,8 @@ void	convert_f(va_list ap, t_print *p)
 			ft_putchar('-');
 		while (p->pres-- - len[0] > -1) //why? -1 ??
 			ft_putchar('0');
-		(len[2] == 0 && n == 0) ? ft_putchar(' ') : ft_putflt(ft_fabs(n), dec);
+		(len[2] == 0 && n == 0) ? ft_putchar(' ') : ft_putflt(ft_fabs(n), p);
 		while (p->width-- - len[1] > 0)
 			ft_putchar(' ');
-	}
+		}*/
 }

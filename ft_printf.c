@@ -43,7 +43,7 @@ int ft_printf(const char *format, ...)
 		//	ft_putendl("not implemented or undefined");
 		else
 		{
-			i += ft_putstr_len(&p->fmt[i]);
+			i += ft_putstr_len_percent(&p->fmt[i]);
 			i--;
 		}
 		i++;
