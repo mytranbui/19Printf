@@ -35,7 +35,7 @@ int		*p = &i;
 	short		h = 42;
 	long		l = 42;
 	long long	m = 42;
-	float		f = 12.15;
+	float		f = -12.15;
 
 //	int 	nb = -1564312;
 

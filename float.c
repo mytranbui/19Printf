@@ -232,12 +232,14 @@ void	convert_f(va_list ap, t_print *p)
 		ft_putchar(' ');
 	if (p->flg.minus == 0)
 	{
+		if (n < 0 && p->flg.zero)
+			ft_putchar('-');
 		while (p->width-- - len[1] > 0)
 		(p->flg.zero) ? ft_putchar('0') : ft_putchar(' ');
 		//	ft_putchar(' ');
 		if (p->flg.plus && n >= 0)
 			ft_putchar('+');
-		else if (n < 0)// && n != -2147483648)
+		else if (n < 0 && p->flg.zero == 0)// && n != -2147483648)
 			ft_putchar('-');
 		while (p->pres-- - len[0] > -1)
 			ft_putchar('0');
