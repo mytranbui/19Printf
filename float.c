@@ -40,33 +40,21 @@ double	get_decimal(double n, t_print *p)
 {
 	printf("\nget_decimal\n");
 	int	dec;
-	double	tmp;
+//	double	tmp;
 //	int		len;
-	double	round;//necessary?
-
-	round = 0.1;
-//	printf("{n=%.15f}", n);
+//	double	round;//necessary?
+//	round = 0.1;
 	dec = n - (int)n;
-//	printf("{dec=%.15f}", dec);
 	(p->pres == -1) ? p->pres = 6 : p->pres;
-//	tmp = dec;
-	/*while (p->pres--)
-	{
-//		printf("\nloop\n");
-		tmp = dec;
-		dec = tmp * 10;
-	//	ft_putnbr(dec);
-		round /= 10;
-	}*/while (p->pres > 0)
+	while (p->pres > 0)
 	{
 		n *= 10;
 		dec = (unsigned long long)n;
 		n -= dec;
 		dec %= 10;
 		//dec = ft_round(dec);
-	//	ft_putnbr(dec);
+		//ft_putnbr(dec);
 		ft_putchar(dec + 48);
-		//pointer->counter += ft_putchar_len(ptr->d + 48);
 		p->pres--;
 	}
 	/*while (p->precision > 0)
@@ -133,19 +121,20 @@ char	*ft_roundup(char *d, char last, int i)
 	return (d);
 }
 
-int		ft_putflt(double	n, t_print *p)
+char		*get_flt(double	n, t_print *p)
 {
 	int	len;
 	int dec;
 	char	*s;
 	char	*d;
-	double round;
+	char* str_dot;
+//	double round;
 	int i;
 	char last;
+	char *flt;
 
 	i = 0;
-	round = 0.1;
-	len = 0;
+//	round = 0.1;
 	s = ft_itoa_base(n, 10, 'x');
 	ft_putstr(s);
 	len = ft_strlen(s);
@@ -153,11 +142,14 @@ int		ft_putflt(double	n, t_print *p)
 	//ft_putnbr(n);
 	if (dec != 0)
 	{
-		ft_putchar('.');
-		len++;
-//		d = ft_itoa_base(dec, 10, 'x');
-//		ft_putstr(d);
-//		ft_putnbr(dec);
+		if (!(str_dot = ft_strnew(len + 1)))
+			return (0);
+		str_dot = ft_strcpy(str_dot, s);
+		str_dot[len] = '.';
+		str_dot[len + 1] = '\0';
+		//ft_putchar('.');
+		printf("{strdot=%s}", str_dot);
+//		len++;
 	}
 	(p->pres == -1) ? p->pres = 6 : p->pres;
 	if (!(d = ft_strnew(p->pres + 1)))
@@ -168,12 +160,12 @@ int		ft_putflt(double	n, t_print *p)
 		dec = (unsigned long long)n;
 		n -= dec;
 		dec %= 10;
-		printf("{decdec=%.15d}\n", dec);
+	//	printf("{decdec=%.15d}\n", dec);
 		d[i] = dec + 48;
-		printf("{res=%d}", dec + 48);
-		len++;
+	//	printf("{res=%d}", dec + 48);
+//len++;
 		i++;
-		round /= 10;
+//		round /= 10;
 		p->pres--;
 	}
 	n *= 10;
@@ -184,10 +176,14 @@ int		ft_putflt(double	n, t_print *p)
 	d[i] = '\0';
 	d = ft_roundup(d, last, i);
 	ft_putstr(d);
-	return (len);
+	if (!str_dot)
+		flt = ft_strjoin_free(s, d, 2);
+	else
+		flt = ft_strjoin_free(str_dot, d, 2);
+	printf("{flt=%s}", flt);
+//	return (len);
+	return (flt);
 }
-
-
 
 /*void	convert_f(va_list ap, t_print *p)
 {
@@ -209,7 +205,6 @@ int		ft_putflt(double	n, t_print *p)
 	printf("{len_dec=%d}\n", len_dec);
 	printf("{len_int=%d}\n", len_int);
 	printf("{len=%d}\n", len);
-
 }*/
 
 
@@ -219,18 +214,21 @@ void	convert_f(va_list ap, t_print *p)
 	printf("\nconvert_f\n");
 	double	n;
 	int	dec;
-	int		len_dec;
-	int		len_int;
-	int		leno[3];
-	int		len;
+//	int		len_dec;
+//	int		len_int;
+	int		len[3];
+	//int		len;
+	char	*str_flt;
 
 	n = va_arg(ap, double);
-	len = ft_putflt(ft_fabs(n), p);
-	printf("{len=%d}\n", len);
+	//len = ft_putflt(ft_fabs(n), p);
+	str_flt = get_flt(ft_fabs(n), p);
+	len[0] = ft_strlen(str_flt);
+	printf("{len[0]=%d}\n", len[0]);
 	//dec = get_decimal(n, p);
 /*	len_int = ft_intlen(ft_fabs(n));
 	len[0] = len_int + len_dec;
-	len[1] = p->pres;
+*/len[1] = p->pres;
 	len[2] = p->pres;
 	(n < 0 || (p->flg.plus && n >= 0)) ? len[0]++ && len[1]++ : len[0];
 	(len[0] > len[1]) ? len[1] = len[0] : len[1];
@@ -250,7 +248,7 @@ void	convert_f(va_list ap, t_print *p)
 			ft_putchar('-');
 		while (p->pres-- - len[0] > -1)
 			ft_putchar('0');
-		(len[2] == 0 && n == 0) ? ft_putchar(' ') : ft_putflt(ft_fabs(n), p);
+		(len[2] == 0 && n == 0) ? ft_putchar(' ') : ft_putstr(str_flt);
 	}
 	else
 	{
@@ -260,8 +258,8 @@ void	convert_f(va_list ap, t_print *p)
 			ft_putchar('-');
 		while (p->pres-- - len[0] > -1) //why? -1 ??
 			ft_putchar('0');
-		(len[2] == 0 && n == 0) ? ft_putchar(' ') : ft_putflt(ft_fabs(n), p);
+		(len[2] == 0 && n == 0) ? ft_putchar(' ') : ft_putstr(str_flt);
 		while (p->width-- - len[1] > 0)
 			ft_putchar(' ');
-		}*/
+		}
 }
