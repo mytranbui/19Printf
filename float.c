@@ -141,7 +141,7 @@ char		*get_flt(double	n, t_print *p)
 	str_dot = NULL;
 //	len = ft_putstr_len(s);//, len);
 	//ft_putnbr(n);
-	if (p->pres != 0)// || p->flg.hash != 1)
+	if (p->pres != 0 || p->flg.hash != 0)
 {
 		if (!(str_dot = ft_strnew(len + 1)))
 			return (0);
