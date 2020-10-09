@@ -121,35 +121,34 @@ char	*ft_roundup(char *d, char last, int i)
 	return (d);
 }
 
+//divide fct in 2 :get_int and get_dec
+
 char		*get_flt(double	n, t_print *p)
 {
 	int	len;
 	int dec;
 	char	*s;
 	char	*d;
-	char* str_dot;
-//	double round;
+	char	*str_dot;
 	int i;
 	char last;
 	char *flt;
 
 	i = 0;
-//	round = 0.1;
 	s = ft_itoa_base(n, 10, 'x');
 	ft_putstr(s);
 	len = ft_strlen(s);
+	str_dot = NULL;
 //	len = ft_putstr_len(s);//, len);
 	//ft_putnbr(n);
-	if (dec != 0)
-	{
+	if (p->pres != 0)// || p->flg.hash != 1)
+{
 		if (!(str_dot = ft_strnew(len + 1)))
 			return (0);
 		str_dot = ft_strcpy(str_dot, s);
 		str_dot[len] = '.';
 		str_dot[len + 1] = '\0';
-		//ft_putchar('.');
 		printf("{strdot=%s}", str_dot);
-//		len++;
 	}
 	(p->pres == -1) ? p->pres = 6 : p->pres;
 	if (!(d = ft_strnew(p->pres + 1)))
@@ -160,12 +159,8 @@ char		*get_flt(double	n, t_print *p)
 		dec = (unsigned long long)n;
 		n -= dec;
 		dec %= 10;
-	//	printf("{decdec=%.15d}\n", dec);
 		d[i] = dec + 48;
-	//	printf("{res=%d}", dec + 48);
-//len++;
 		i++;
-//		round /= 10;
 		p->pres--;
 	}
 	n *= 10;
@@ -176,12 +171,11 @@ char		*get_flt(double	n, t_print *p)
 	d[i] = '\0';
 	d = ft_roundup(d, last, i);
 	ft_putstr(d);
-	if (!str_dot)
-		flt = ft_strjoin_free(s, d, 2);
-	else
+	if (str_dot)
 		flt = ft_strjoin_free(str_dot, d, 2);
+	else
+		flt = ft_strjoin_free(s, d, 2);
 	printf("{flt=%s}", flt);
-//	return (len);
 	return (flt);
 }
 
@@ -206,8 +200,6 @@ char		*get_flt(double	n, t_print *p)
 	printf("{len_int=%d}\n", len_int);
 	printf("{len=%d}\n", len);
 }*/
-
-
 
 void	convert_f(va_list ap, t_print *p)
 {
@@ -241,7 +233,8 @@ void	convert_f(va_list ap, t_print *p)
 	if (p->flg.minus == 0)
 	{
 		while (p->width-- - len[1] > 0)
-			ft_putchar(' ');
+		(p->flg.zero) ? ft_putchar('0') : ft_putchar(' ');
+		//	ft_putchar(' ');
 		if (p->flg.plus && n >= 0)
 			ft_putchar('+');
 		else if (n < 0)// && n != -2147483648)
