@@ -72,7 +72,7 @@ double	get_decimal(double n, t_print *p)
 //	printf("{round=%.15f}\n", round);
 	return (dec);
 }
-
+/*
 int		ft_putchar_len(char c, int len)
 {
 //	int	len;
@@ -96,23 +96,30 @@ int		ft_putstr_len(char *s)//, int len)
 		len++;
 	}
 	return (len);
-}
+}*/
 
 char	*ft_roundup(char *d, char last, int i)
 {
  int boolean;
 
  boolean = 0;
+ printf("{d[i] = %c}", d[i]);
  i--;
+ printf("{d[i] = %c}", d[i]);
+ printf("{last = %c}", last);
 	if (last >= '5')
 	{
 		while (boolean == 0)
 		{
+			if (d[i] == '.')
+				i--;
 			if (d[i] == '9')
 			 d[i] = '0';
 			else
 			{
+				printf("YOYO");
 		  	d[i]++;
+				printf("{d[i] = %c}", d[i]);
 				boolean = 1;
 			}
 			i--;
@@ -136,7 +143,7 @@ char		*get_flt(double	n, t_print *p)
 
 	i = 0;
 	s = ft_itoa_base(n, 10, 'x');
-	ft_putstr(s);
+//	ft_putstr(s);
 	len = ft_strlen(s);
 	str_dot = NULL;
 //	len = ft_putstr_len(s);//, len);
@@ -148,7 +155,7 @@ char		*get_flt(double	n, t_print *p)
 		str_dot = ft_strcpy(str_dot, s);
 		str_dot[len] = '.';
 		str_dot[len + 1] = '\0';
-		printf("{strdot=%s}", str_dot);
+//		printf("{strdot=%s}", str_dot);
 	}
 	(p->pres == -1) ? p->pres = 6 : p->pres;
 	if (!(d = ft_strnew(p->pres + 1)))
@@ -169,12 +176,12 @@ char		*get_flt(double	n, t_print *p)
 	dec %= 10;
 	last = dec + 48;
 	d[i] = '\0';
-	d = ft_roundup(d, last, i);
-	ft_putstr(d);
 	if (str_dot)
 		flt = ft_strjoin_free(str_dot, d, 2);
 	else
 		flt = ft_strjoin_free(s, d, 2);
+	flt = ft_roundup(flt, last, ft_strlen(flt));
+//	ft_putstr(d);
 	printf("{flt=%s}", flt);
 	return (flt);
 }

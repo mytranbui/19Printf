@@ -36,7 +36,7 @@ int		*p = &i;
 	long		l = 42;
 	long long	m = 42;
 	//float		f = 12548645487.15; kk on first dec '6' instead of '0'
-	float		f = -3666.815757948;
+	float		f = -3666.8889166;
 
 //	int 	nb = -1564312;
 
@@ -595,6 +595,8 @@ printf("%s||\n", NULL);
 		printf("%0# 45.40f||\n", f); //no width > pres
 		ft_printf("%0# 30.30f||\n", f);
 		printf("%0# 30.30f||\n", f);
+		ft_printf("%.f||\n", f);
+		printf("%.f||\n", f);
 		ft_printf("%.f||\n", 12);
 		printf("%.f||\n", 12);
 
