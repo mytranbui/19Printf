@@ -35,8 +35,8 @@ int		*p = &i;
 	short		h = 42;
 	long		l = 42;
 	long long	m = 42;
-	//float		f = 12548645487.15; kk on first dec '6' instead of '0'
-	float		f = -3666.8889166;
+//	float		f = 12548645487.15; //kk on first dec '6' instead of '0'
+	float		f = -4295;
 
 //	int 	nb = -1564312;
 

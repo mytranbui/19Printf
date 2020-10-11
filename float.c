@@ -105,6 +105,7 @@ char	*ft_roundup(char *d, char last, int i)
  boolean = 0;
  printf("{d[i] = %c}", d[i]);
  i--;
+// i--;
  printf("{d[i] = %c}", d[i]);
  printf("{last = %c}", last);
 	if (last >= '5')
