@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 12:41:38 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/12 15:39:02 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/12 16:14:48 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,59 +18,7 @@ double	ft_dabs(double x)
 	return (x < 0) ? x * -1 : x;
 }
 
-/*
-   int		ft_putchar_len(char c, int len)
-   {
-//	int	len;
-
-//	len = 0;
-ft_putchar(c);
-len++;
-return (len);
-}
-
-int		ft_putstr_len(char *s)//, int len)
-{
-int len;
-
-len = 0;
-while (s != '\0')
-{
-//len = ft_putchar_len(s[len],len);
-ft_putchar(s[len]);
-//s[len]++;
-len++;
-}
-return (len);
-}*/
-
-/*char	*ft_roundup(char *d, char last, int i)
-  {
-  int boolean;
-
-  boolean = 0;
-  i--;
-  if (last >= '5')
-  {
-  while (boolean == 0)
-  {
-  if (d[i] == '.')
-  i--;
-  if (d[i] == '9')
-  d[i] = '0';
-  else
-  {
-  d[i]++;
-  boolean = 1;
-  }
-  i--;
-  }
-  }
-  return (d);
-  }
-  */
-
-char	*ft_roundup(double n, char *str_flt)
+char	*roundup(double n, char *str_flt)
 {
 	char	last_num;
 	int		dec;
@@ -80,16 +28,13 @@ char	*ft_roundup(double n, char *str_flt)
 	boolean = 0;
 	n *= 10;
 	dec = (unsigned long long)n;
-//	n -= dec;
 	dec %= 10;
 	last_num = dec + 48;
 	i = ft_strlen(str_flt) - 1;
 	if (last_num >= '5')
-	{
 		while (boolean == 0 && str_flt[i])
 		{
-			if (str_flt[i] == '.')
-				i--;
+			(str_flt[i] == '.') ? i-- : i;
 			if (str_flt[i] == '9')
 				str_flt[i] = '0';
 			else
@@ -99,7 +44,6 @@ char	*ft_roundup(double n, char *str_flt)
 			}
 			i--;
 		}
-	}
 	return (str_flt);
 }
 
@@ -109,7 +53,8 @@ char	*get_int(double n, t_print *p)
 	char	*str_dot;
 	int		len;
 
-	s = ft_itoa_base(n, 10, 'x');
+	if (!(s = ft_itoa_base(n, 10, 'x')))
+		return (0);
 	len = ft_strlen(s);
 	str_dot = NULL;
 	if (p->pres != 0 || p->flg.hash != 0)
@@ -132,8 +77,9 @@ char	*get_flt(double n, t_print *p)
 	int		i;
 
 	i = 0;
-	str_int = get_int(n, p);
 	(p->pres == -1) ? p->pres = 6 : p->pres;
+	if (!(str_int = get_int(n, p)))
+		return (0);
 	if (!(str_dec = ft_strnew(p->pres + 1)))
 		return (0);
 	while (p->pres > 0)
@@ -147,7 +93,7 @@ char	*get_flt(double n, t_print *p)
 		p->pres--;
 	}
 	str_flt = ft_strjoin_free(str_int, str_dec, 2);
-	str_flt = ft_roundup(n, str_flt);
+	str_flt = roundup(n, str_flt);
 	return (str_flt);
 }
 
@@ -155,16 +101,16 @@ void	convert_f(va_list ap, t_print *p)
 {
 	printf("\nconvert_f\n");
 	double	n;
-	int	dec;
-	int		len[3];
+	int		dec;
+	int		len[2];
+	int		tmp_pres;
 	char	*str_flt;
 
 	n = va_arg(ap, double);
 	str_flt = get_flt(ft_dabs(n), p);
 	len[0] = ft_strlen(str_flt);
-	printf("{len[0]=%d}\n", len[0]);
 	len[1] = p->pres;
-	len[2] = p->pres;
+	tmp_pres = p->pres;
 	(n < 0 || (p->flg.plus && n >= 0)) ? len[0]++ && len[1]++ : len[0];
 	(len[0] > len[1]) ? len[1] = len[0] : len[1];
 	(p->flg.plus == 0 && n >= 0) ? len[0]++ : len[0];
@@ -183,17 +129,14 @@ void	convert_f(va_list ap, t_print *p)
 			ft_putchar('-');
 		while (p->pres-- - len[0] > -1)
 			ft_putchar('0');
-		(len[2] == 0 && n == 0) ? ft_putchar(' ') : ft_putstr(str_flt);
+		(tmp_pres == 0 && n == 0) ? ft_putchar(' ') : ft_putstr(str_flt);
 	}
 	else
 	{
-		if (p->flg.plus && n >= 0)
-			ft_putchar('+');
-		else if (n < 0)
-			ft_putchar('-');
+		putsign(n, p);
 		while (p->pres-- - len[0] > -1)
 			ft_putchar('0');
-		(len[2] == 0 && n == 0) ? ft_putchar(' ') : ft_putstr(str_flt);
+		(tmp_pres == 0 && n == 0) ? ft_putchar(' ') : ft_putstr(str_flt);
 		while (p->width-- - len[1] > 0)
 			ft_putchar(' ');
 	}

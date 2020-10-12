@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/29 15:29:13 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/12 16:14:46 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,20 +168,18 @@ void	convert_di(va_list ap, t_print *p)
 	{
 		while (p->width-- - len[1] > 0)
 			ft_putchar(' ');
-		if (p->flg.plus && n >= 0)
-			ft_putchar('+');
-		else if (n < 0)// && n != -2147483648)
-			ft_putchar('-');
+		putsign(n, p);
+	//	else if (n < 0)// && n != -2147483648)
+	//		ft_putchar('-');
 		while (p->pres-- - len[0] > -1)
 			ft_putchar('0');
 		(len[2] == 0 && n == 0) ? ft_putchar(' ') : ft_putnbr(ft_abs(v));
 	}
 	else
 	{
-		if (p->flg.plus && n >= 0)
-			ft_putchar('+');
-		else if (n < 0)// && n != -2147483648)
-			ft_putchar('-');
+		putsign(n, p);
+	//	else if (n < 0)// && n != -2147483648)
+	//		ft_putchar('-');
 		while (p->pres-- - len[0] > -1) //why? -1 ??
 			ft_putchar('0');
 		(len[2] == 0 && n == 0) ? ft_putchar(' ') : ft_putnbr(ft_abs(v));
