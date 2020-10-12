@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   created: 2020/01/20 09:26:22 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/29 19:27:09 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/12 15:38:32 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		*p = &i;
 	long		l = 42;
 	long long	m = 42;
 //	float		f = 12548645487.15; //kk on first dec '6' instead of '0'
-	float		f = -4295;
+	float		f = -435.44;
 
 //	int 	nb = -1564312;
 
@@ -597,6 +597,8 @@ printf("%s||\n", NULL);
 		printf("%0# 30.30f||\n", f);
 		ft_printf("%.f||\n", f);
 		printf("%.f||\n", f);
+		ft_printf("%.2f||\n", f);
+		printf("%.2f||\n", f);
 		ft_printf("%.f||\n", 12);
 		printf("%.f||\n", 12);
 
