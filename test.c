@@ -104,7 +104,7 @@ void	convert_p(va_list ap, t_print *p)
 	len[0] = ft_strlen(s);//+2; //+0x
 	len[1] = p->pres;
 	tmp_pres = p->pres;
-	(tmp_pres == 0 && *s == '0') ? p->width++ : p->width;
+	(*s == '0' && tmp_pres == 0) ? p->width++ : p->width;
 	(len[0] > p->pres) ? len[1] = len[0] : len[1];
 	if (p->flg.minus == 0)
 	{
@@ -290,40 +290,37 @@ void	convert_x(va_list ap, char c, t_print *p)
 	//printf("\nconvert_x\n");
 	char	*s;
 	int		len;
+	int		bigger_len;
 	int		tmp_pres;
 	int		leno[2];
 
 	s = ft_itoa_base(va_arg(ap, unsigned long long), 16, c);
 	len = ft_strlen(s);
-	leno[0] = ft_strlen(s);
-	leno[1] = p->pres;
 	tmp_pres = p->pres;
-	(leno[0] > p->pres) ? leno[1] = leno[0] : leno[1];
-	(p->flg.hash && *s != '0') ? leno[1] += 2 : leno[1];
+	bigger_len = p->pres;
+	(len > p->pres) ? bigger_len = len : bigger_len;
+	(p->flg.hash && *s != '0') ? bigger_len += 2 : bigger_len;
 	if (p->flg.minus == 0 && p->pres == -1 && p->flg.hash)
 	{
-		if (p->flg.hash && *s != '0')
-			(c == 'x') ? ft_putstr("0x") : ft_putstr("0X");
-		while (p->width-- - leno[1] > 0)
+		putprefix(c, s, p);
+		while (p->width-- - bigger_len > 0)
 			(p->flg.zero) ? ft_putchar('0') : ft_putchar(' ');
 		(tmp_pres == 0 && *s == '0') ? ft_putchar(' ') : ft_putstr(s);
 	}
 	else if (p->flg.minus == 0)
 	{
-		while (p->width-- - leno[1] > 0)// && !p->flg.hash)
+		while (p->width-- - bigger_len > 0)// && !p->flg.hash)
 			(p->flg.zero && p->pres == -1) ? ft_putchar('0') : ft_putchar(' ');
-		if (p->flg.hash && *s != '0')
-			(c == 'x') ? ft_putstr("0x") : ft_putstr("0X");
+		putprefix(c, s, p);
 		padding_zero(len, p);
 		(tmp_pres == 0 && *s == '0') ? ft_putchar(' ') : ft_putstr(s);
 	}
 	else
 	{
-		if (p->flg.hash && *s != '0')
-			(c == 'x') ? ft_putstr("0x") : ft_putstr("0X");
+		putprefix(c, s, p);
 		padding_zero(len, p);
 		(tmp_pres == 0 && *s == '0') ? ft_putchar(' ') : ft_putstr(s);
-		while (p->width-- - leno[1] > 0)
+		while (p->width-- - bigger_len > 0)
 			ft_putchar(' ');
 	}
 	if (*s != '0')

@@ -58,4 +58,5 @@ void	putsign(int n, t_print	*p);
 //void	padding_zero(char *s, t_print *p);
 void	padding_space(int str_len, t_print *p);
 void	padding_zero(int str_len, t_print *p);
+void	putprefix(char c, char *s, t_print *p);
 #endif

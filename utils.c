@@ -38,3 +38,9 @@ void	padding_space(int str_len, t_print *p)
 	while (p->width-- - len > 0)
 		ft_putchar(' ');
 }
+
+void	putprefix(char c, char *s, t_print *p)
+{
+	if (p->flg.hash && *s != '0')
+		(c == 'x') ? ft_putstr("0x") : ft_putstr("0X");
+}
