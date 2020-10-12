@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 11:05:52 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/12 16:01:45 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/12 16:58:20 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,7 @@ void	convert_percent(va_list ap, t_print *p);
 int     ft_putstr_len_percent(const char *str);
 
 void	putsign(int n, t_print	*p);
+//void	padding_zero(char *s, t_print *p);
+void	padding_space(int str_len, t_print *p);
+void	padding_zero(int str_len, t_print *p);
 #endif

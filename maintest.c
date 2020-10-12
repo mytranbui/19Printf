@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   created: 2020/01/20 09:26:22 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/12 15:42:08 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/12 17:29:56 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 int ft_printf(const char *format, ...);
 
+//hex kk when negative nb
+
 int main(void)
 {
 	char			c = 'X';
@@ -24,7 +26,7 @@ int main(void)
 //	int	i = -43125345; //4294967295
 	//unsigned int	nb = 4294967296; //kkx kko
 //	unsigned int	nb = 4294967296; //kko kkx
-long	nb = 0;
+unsigned int	nb = 135;
 //	unsigned int	nb = 458;
 	int		i = 42;
 	//int		i = 2147483648; //kk on that number + & -
@@ -386,7 +388,7 @@ printf("%s||\n", NULL);
 	ft_printf("%0# 40.60u||\n", nb);
 	printf("%0# 40.60u||\n", nb);
 
-	printf("\n-----UNSIGNED HEX-----\n"); //(-, 0, #, )
+*/	printf("\n-----UNSIGNED HEX-----\n"); //(-, 0, #, )
 	// single flag
 	ft_printf("%+x||\n", nb);
 	printf("%+x||\n", nb);
@@ -457,7 +459,7 @@ printf("%s||\n", NULL);
 	printf("%0# 45.40X||\n", nb); //no width > pres
 	ft_printf("%0# 40.45X||\n", nb);
 	printf("%0# 40.45X||\n", nb);
-*/
+
 /*	printf("\n-----PERCENTS-----\n"); //(-,0,width) xpres x# x' '?
 	// single flag
 	ft_printf("%+%||\n");
