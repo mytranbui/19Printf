@@ -199,7 +199,7 @@ printf("%s||\n", NULL);
 */
 	printf("\n-----SIGNED INT-----\n"); //(+, - , ' ', 0 , width, pres)
 	// single flag
-	ft_printf("%+i||\n", i);
+/*	ft_printf("%+i||\n", i);
  	printf("%+i||\n", i);
 	ft_printf("%0i||\n", i);
   	printf("%0i||\n", i);
@@ -217,15 +217,7 @@ printf("%s||\n", NULL);
  	printf("%.5i||\n", i);
 	ft_printf("%.50i||\n", i);
   	printf("%.50i||\n", i);
-/*	ft_printf("%hi||\n", i);
- 	printf("%hi`||\n", i);
-	ft_printf("%hhi||\n", i);
- 	printf("%hhi||\n", i);
-	ft_printf("%li||\n", i);
- 	printf("%li||\n", i);
-	ft_printf("%lli||\n", i);
- 	printf("%lli||\n", i);
-*/	// multiple flags
+	// multiple flags
 	ft_printf("%- 100.50i||\n", i);
   	printf("%- 100.50i||\n", i);
 	ft_printf("% +100.50i||\n", i);
@@ -256,7 +248,7 @@ printf("%s||\n", NULL);
 	printf("%015.i||\n", i); //replace 0 by null // 0 width15 pres0
 	ft_printf("%+- 011.i||\n", i);
 	printf("%+- 011.i||\n", i);
-
+*/
 
 /*	printf("\n-----UNSIGNED OCTAL-----\n"); //(-, 0, #, )
 	ft_printf("%+o||\n", nb);
@@ -527,7 +519,7 @@ printf("%s||\n", NULL);
 	ft_printf("%0# 0.30%||\n");
 	printf("%0# 0.30%||\n"); //ok
 */
-		printf("\n-----FLOAT-----\n"); //(-, 0, #, )
+/*		printf("\n-----FLOAT-----\n"); //(-, 0, #, )
 		// single flag
 		ft_printf("%.10 f||\n", f);
 		printf("%.10 f||\n", f);
@@ -604,12 +596,19 @@ printf("%s||\n", NULL);
 		printf("%.2f||\n", f);
 		ft_printf("%.f||\n", 12);
 		printf("%.f||\n", 12);
-
-// printf("%i||\n", i);
-// printf("%hi||\n", h);
-// printf("%hhi||\n", c);
-// printf("%li||\n", l);
-// printf("%lli||\n", m);
+*/
+ ft_printf("%i||\n", i);
+ printf("%i||\n", i);
+ ft_printf("%hi||\n", h);
+ printf("%hi||\n", h);
+ ft_printf("%hhi||\n", c);
+ printf("%hhi||\n", c);
+ ft_printf("%li||\n", l);
+ printf("%li||\n", l);
+ ft_printf("%llli||\n", m);
+ printf("%llli||\n", m);
+ ft_printf("%2L25li||\n", m);
+ printf("%2L25li||\n", m);
 /*ft_printf("%0-+ .o|\n", 0);
 printf("%0-+ .o|\n", 0);
 ft_printf("%#.o|\n",0);
