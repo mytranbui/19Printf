@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 11:05:52 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/12 16:58:20 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/13 11:14:19 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ typedef struct	s_flag
 typedef struct	s_print
 {
 //	va_list		ap;
-    const char	*fmt;
+    const char	*fmt; //unused
 	int			width;
     int			pres;
-    char        type;
+    char        type; //unused
     t_flag		flg;
+    //int         len;
 }				t_print;
 
 int	    ft_printf(const char *format, ...);
@@ -53,10 +54,9 @@ void	convert_f(va_list ap, t_print *p);
 void	convert_percent(va_list ap, t_print *p);
 
 int     ft_putstr_len_percent(const char *str);
-
 void	putsign(int n, t_print	*p);
 //void	padding_zero(char *s, t_print *p);
-void	padding_space(int str_len, t_print *p);
-void	padding_zero(int str_len, t_print *p);
+void	padding_space(int len, t_print *p);
+void	padding_zero(int len, t_print *p);
 void	putprefix(char c, char *s, t_print *p);
 #endif

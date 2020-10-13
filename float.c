@@ -6,17 +6,12 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 12:41:38 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/12 16:14:48 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/13 11:04:58 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdio.h>
-
-double	ft_dabs(double x)
-{
-	return (x < 0) ? x * -1 : x;
-}
 
 char	*roundup(double n, char *str_flt)
 {
@@ -101,43 +96,40 @@ void	convert_f(va_list ap, t_print *p)
 {
 	printf("\nconvert_f\n");
 	double	n;
-	int		dec;
-	int		len[2];
+	int		len;
+	int		bigger_len;
 	int		tmp_pres;
 	char	*str_flt;
 
 	n = va_arg(ap, double);
 	str_flt = get_flt(ft_dabs(n), p);
-	len[0] = ft_strlen(str_flt);
-	len[1] = p->pres;
+	len = ft_strlen(str_flt);
 	tmp_pres = p->pres;
-	(n < 0 || (p->flg.plus && n >= 0)) ? len[0]++ && len[1]++ : len[0];
-	(len[0] > len[1]) ? len[1] = len[0] : len[1];
-	(p->flg.plus == 0 && n >= 0) ? len[0]++ : len[0];
-	(p->flg.space && p->flg.plus == 0 && n >= 0) ? len[1]++ : len[1];
+	bigger_len = p->pres;
+	(n < 0 || (p->flg.plus && n >= 0)) ? len++ && bigger_len++ : len;
+	(len > bigger_len) ? bigger_len = len : bigger_len;
+	(p->flg.plus == 0 && n >= 0) ? len++ : len;
+	(p->flg.space && p->flg.plus == 0 && n >= 0) ? bigger_len++ : bigger_len;
 	if (p->flg.space && p->flg.plus == 0 && n >= 0)
 		ft_putchar(' ');
 	if (p->flg.minus == 0)
 	{
 		if (n < 0 && p->flg.zero)
 			ft_putchar('-');
-		while (p->width-- - len[1] > 0)
+		while (p->width-- - bigger_len > 0)
 			(p->flg.zero) ? ft_putchar('0') : ft_putchar(' ');
 		if (p->flg.plus && n >= 0)
 			ft_putchar('+');
 		else if (n < 0 && p->flg.zero == 0)
 			ft_putchar('-');
-		while (p->pres-- - len[0] > -1)
-			ft_putchar('0');
-		(tmp_pres == 0 && n == 0) ? ft_putchar(' ') : ft_putstr(str_flt);
+		padding_zero(len, p);
+		(n == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(str_flt);
 	}
 	else
 	{
 		putsign(n, p);
-		while (p->pres-- - len[0] > -1)
-			ft_putchar('0');
-		(tmp_pres == 0 && n == 0) ? ft_putchar(' ') : ft_putstr(str_flt);
-		while (p->width-- - len[1] > 0)
-			ft_putchar(' ');
+		padding_zero(len, p);
+		(n == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(str_flt);
+		padding_space(bigger_len, p);
 	}
 }

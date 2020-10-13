@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 12:53:43 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/24 15:36:37 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/13 10:54:50 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,5 @@ char			**tabcpy(char **map, size_t size);
 int				nbwords(char const *s, char c);
 t_list			*lstdel_tlist(t_list **head);
 int				ft_listsize(t_list *head);
-
+double			ft_dabs(double x);
 #endif
