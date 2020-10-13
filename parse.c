@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 09:39:00 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/13 12:00:59 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/13 14:33:09 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,48 @@ int		parse_flags2(t_print *p, int i)
 	return (i);
 }
 
-/*int		convert_hhll(t_print *p)
-  {
-  if (p->flg.h == 1)
-  }
-  */
+/* For diouxX
+** h	>>	short (unsigned) int
+** hh	>>	(unsigned) char
+** l	>>	long (unsigned) int
+** ll	>>	long long (unsigned) int
+** for f
+** l	>>	no diff in printf but scanf it's a double
+** L	>>	long (unsigned) double
+*/
+
+type	convert_hhll(va_list ap, t_print *p)
+{
+	//type	s;
+	int64_t	s;
+
+	if (p->type == 'd' || p->type == 'i')
+	{
+		if (p->flg.h == 1)
+			s = (short int)va_arg(ap, short int);
+		if (p->flg.h == 2)
+			s = (char)va_arg(ap, char);
+		if (p->flg.l == 1)
+			s = (long int)va_arg(ap, long int);
+		if (p->flg.l == 2)
+			s = (long long int)va_arg(ap, long long int);
+	}
+	if (p->type == 'o' || p->type == 'u' || p->type == 'x' || p->type == 'X')
+	{
+		if (p->flg.h == 1)
+			s = (unsigned short int)va_arg(ap, unsigned short int);
+		if (p->flg.h == 2)
+			s = (unsigned char)va_arg(ap, unsigned char);
+		if (p->flg.l == 1)
+			s = (unsigned long int)va_arg(ap, unsigned long int);
+		if (p->flg.l == 2)
+			s = (unsigned long long int)va_arg(ap, unsigned long long int);
+	}
+	if (p->flg.maj_l == 1 && p->type = 'f')
+		s = va_arg(ap, long double);
+	return (s);
+}
+
 t_print	*init_flags(t_print *p)
 {
 	p->width = 0;
