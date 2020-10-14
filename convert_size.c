@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:22:40 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/14 16:48:49 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/14 18:44:57 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ uintmax_t	convert_hhll_ouxx(va_list ap, t_print *p)
 	}
 	if (p->flg.maj_l == 1 && p->type == 'f')
 		s = va_arg(ap, long double);
-    else if (p->type == 'f')
-        s = va_arg(ap, double);
+	else if (p->type == 'f')
+		s = va_arg(ap, double);
 	return (s);
 }
