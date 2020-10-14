@@ -397,9 +397,9 @@ printf("%s||\n", NULL);
 	printf("%5x||\n", nb);
 	ft_printf("%50x||\n", nb);
 	printf("%50x||\n", nb);
-	ft_printf("%.5x||\n", nb); //000
+	ft_printf("%.5x||\n", nb);
 	printf("%.5x||\n", nb);
-	ft_printf("%.50x||\n", nb); //000
+	ft_printf("%.50x||\n", nb);
 	printf("%.50x||\n", nb);
 	// multiple flags
 	ft_printf("%- 100.50x||\n", nb);

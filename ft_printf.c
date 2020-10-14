@@ -6,48 +6,57 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 14:59:34 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/13 14:33:13 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/14 16:36:07 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-//memalloc protect needed?
-int ft_printf(const char *format, ...)
+t_print	*init_flags(t_print *p)
+{
+	p->width = 0;
+	p->pres = -1;
+	p->flg.plus = 0;
+	p->flg.minus = 0;
+	p->flg.space = 0;
+	p->flg.zero = 0;
+	p->flg.hash = 0;
+	p->flg.h = 0;
+	p->flg.l = 0;
+	p->flg.maj_l = 0;
+	return (p);
+}
+
+int		ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	t_print	*p;
 	int		i;
-	//	int l;
-	//	char c;
+
 	i = 0;
 	if (!(p = (t_print*)ft_memalloc(sizeof(t_print))))
 		return (-1);
-	p = init_flags(p);
 	va_start(ap, format);
 	p->fmt = format;
-	//parse(ap, );
 	while (p->fmt[i])
 	{
 		if (p->fmt[i] == '%')
 		{
 			i++;
 			p = init_flags(p);
-			i = parse_flags(p, i);
-			//	i = parse_type(p,i);
-			//	printf("\n=== where I am at : %c ===\n", p->fmt[i]);
-			//		convert_hhll(ap, p->fmt[i], p);
+			i = parse_flags(ap, p, i);
 			conversion(ap, p->fmt[i], p);
 		}
-		//else
-		//	ft_putendl("not implemented or undefined");
 		else
-		{
 			i += ft_putstr_len_percent(&p->fmt[i]);
-			i--;
-		}
 		i++;
 	}
 	va_end(ap);
 	return (1);
 }
+//memalloc protect needed?
+//else
+//	ft_putendl("not implemented or undefined");
+
+//free p bwtween %
+//fail itoa -> free p then exit

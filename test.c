@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/14 16:05:37 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/14 16:51:34 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 //all ok except 2147483648
 void	convert_di(va_list ap, t_print *p)
 {
-	//printf("\nconvert_di\n");
 	intmax_t	v;
 	int			n;
 	int			len;
@@ -83,7 +82,6 @@ void	convert_di(va_list ap, t_print *p)
 
 void	convert_o(va_list ap, t_print *p)
 {
-	//printf("\nconvert_o\n");
 	char	*s;
 	int		len;
 	int		bigger_len;
@@ -101,7 +99,7 @@ void	convert_o(va_list ap, t_print *p)
 	if (p->flg.minus == 0)
 	{
 		while (p->width-- - bigger_len > 0)
-			(p->flg.zero && p->pres == -1) ? ft_putchar('0') : ft_putchar(' ');
+			ft_putchar((p->flg.zero && p->pres == -1) ? '0' : ' ');
 		if (p->flg.hash && *s != '0')
 			ft_putchar('0');
 		padding_zero(len, p);
@@ -125,7 +123,6 @@ void	convert_o(va_list ap, t_print *p)
 
 void	convert_u(va_list ap, t_print *p)
 {
-	//printf("\nconvert_u\n");
 	char	*s;
 	int		len;
 	int		bigger_len;
@@ -139,7 +136,7 @@ void	convert_u(va_list ap, t_print *p)
 	if (p->flg.minus == 0)
 	{
 		while (p->width-- - bigger_len > 0)
-			(p->flg.zero && p->pres == -1) ? ft_putchar('0') : ft_putchar(' ');
+			ft_putchar((p->flg.zero && p->pres == -1) ? '0' : ' ');
 		padding_zero(len, p);
 		(*s == '0' && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(s);
 	}
@@ -157,14 +154,8 @@ void	convert_u(va_list ap, t_print *p)
 ** %x & %X: undefined behavior with +, '0' and ' '
 */
 
-/*
-**len[0] = length of the va_arg
-**len[1] = p->pres (or length of va_arg if bigger than p->pres)
-**len[2] = tmp of p->pres
-*/
 void	convert_x(va_list ap, char c, t_print *p)
 {
-	//printf("\nconvert_x\n");
 	char	*s;
 	int		len;
 	int		bigger_len;
@@ -188,7 +179,7 @@ void	convert_x(va_list ap, char c, t_print *p)
 	{
 		while (p->width-- - bigger_len > 0)// && !p->flg.hash)
 			ft_putchar((p->flg.zero && p->pres == -1) ? '0' : ' ');
-			//(p->flg.zero && p->pres == -1) ? ft_putchar('0') : ft_putchar(' ');
+			//(ft_putchar((p->flg.zero&& p->pres == -1) ? '0' : ' ');
 		putprefix(c, s, p);
 		padding_zero(len, p);
 		(*s == '0' && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(s);

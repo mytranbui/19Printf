@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 16:11:13 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/13 10:47:14 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/14 16:34:02 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	ft_putstr_len_percent(const char *str)
 	while (str[i] && str[i] != '%')
 		i++;
 	write(1, str, i);
+	i--;
 	return (i);
 }
 
