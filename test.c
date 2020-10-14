@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/14 17:08:54 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/14 18:43:24 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,12 +154,13 @@ void	convert_u(va_list ap, t_print *p)
 ** %x & %X: undefined behavior with +, '0' and ' '
 */
 
-void	convert_x(va_list ap, t_print *p)
+void	convert_x(intmax_t arg, t_print *p)
 {
-	char	*s;
-	int		len;
-	int		bigger_len;
-	int		tmp_pres;
+	char		*s;
+	int			len;
+	int			bigger_len;
+	int			tmp_pres;
+	intmax_t	arg;
 
 	s = ft_itoa_base(va_arg(ap, unsigned long long), 16, p->type);
 	len = ft_strlen(s);
