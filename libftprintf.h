@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 11:05:52 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/14 16:45:10 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/14 17:07:59 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void		convert_p(va_list ap, t_print *p);
 void		convert_di(va_list ap, t_print *p);
 void		convert_o(va_list ap, t_print *p);
 void		convert_u(va_list ap, t_print *p);
-void		convert_x(va_list ap, char c, t_print *p);
+void		convert_x(va_list ap, t_print *p);
 void		convert_f(va_list ap, t_print *p);
 void		convert_percent(va_list ap, t_print *p);
 
@@ -63,5 +63,5 @@ void		putsign(int n, t_print	*p);
 //void	padding_zero(char *s, t_print *p);
 void		padding_space(int len, t_print *p);
 void		padding_zero(int len, t_print *p);
-void		putprefix(char c, char *s, t_print *p);
+void		putprefix(char *s, t_print *p);
 #endif

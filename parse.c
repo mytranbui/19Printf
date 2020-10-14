@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 09:39:00 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/14 16:31:15 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/14 17:08:37 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int		conversion(va_list ap, char c, t_print *p)
 	if (c == 'u')
 		convert_u(ap, p);
 	if (c == 'x' || c == 'X')
-		convert_x(ap, c, p);
+		convert_x(ap, p);
 	if (c == 'f')
 		convert_f(ap, p);
 	if (c == '%')

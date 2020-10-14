@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/14 16:51:34 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/14 17:08:54 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,18 @@ void	convert_di(va_list ap, t_print *p)
 		padding_space(bigger_len, p);
 	}
 }
-	//	v = v * (-1);
-	//	ft_putnbr(2147483647 + 1);
-	//	ft_putnbr(n * -1);
-	//	//printf("{v =%ju}", v);
-	//	//printf("{n =%d}", n);
-	//	//printf("{abs(n) =%d}", abs(n));
-	//	//printf("{ft_absu(INT_MIN) =%d}", ft_absu(n));
-	//	//printf("{len= %d}", len[0]);
-	//	//printf("{len[0] = %d}", len[0]);
-	//	//printf("{len[2] = %d}", len[2]);
-	//	//printf("{printed spaces=%d}\n", i);
-	//printf("{pres = %d}", p->pres);
+//	v = v * (-1);
+//	ft_putnbr(2147483647 + 1);
+//	ft_putnbr(n * -1);
+//	//printf("{v =%ju}", v);
+//	//printf("{n =%d}", n);
+//	//printf("{abs(n) =%d}", abs(n));
+//	//printf("{ft_absu(INT_MIN) =%d}", ft_absu(n));
+//	//printf("{len= %d}", len[0]);
+//	//printf("{len[0] = %d}", len[0]);
+//	//printf("{len[2] = %d}", len[2]);
+//	//printf("{printed spaces=%d}\n", i);
+//printf("{pres = %d}", p->pres);
 
 /*
 ** %o: undefined behavior with '+', ' '
@@ -154,14 +154,14 @@ void	convert_u(va_list ap, t_print *p)
 ** %x & %X: undefined behavior with +, '0' and ' '
 */
 
-void	convert_x(va_list ap, char c, t_print *p)
+void	convert_x(va_list ap, t_print *p)
 {
 	char	*s;
 	int		len;
 	int		bigger_len;
 	int		tmp_pres;
 
-	s = ft_itoa_base(va_arg(ap, unsigned long long), 16, c);
+	s = ft_itoa_base(va_arg(ap, unsigned long long), 16, p->type);
 	len = ft_strlen(s);
 	tmp_pres = p->pres;
 	bigger_len = p->pres;
@@ -169,9 +169,8 @@ void	convert_x(va_list ap, char c, t_print *p)
 	(*s != '0' && p->flg.hash) ? bigger_len += 2 : bigger_len;
 	if (p->flg.minus == 0 && p->pres == -1 && p->flg.hash)
 	{
-		putprefix(c, s, p);
+		putprefix(s, p);
 		while (p->width-- - bigger_len > 0)
-			//(p->flg.zero) ? ft_putchar('0') : ft_putchar(' ');
 			ft_putchar((p->flg.zero) ? '0' : ' ');
 		(*s == '0' && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(s);
 	}
@@ -179,14 +178,13 @@ void	convert_x(va_list ap, char c, t_print *p)
 	{
 		while (p->width-- - bigger_len > 0)// && !p->flg.hash)
 			ft_putchar((p->flg.zero && p->pres == -1) ? '0' : ' ');
-			//(ft_putchar((p->flg.zero&& p->pres == -1) ? '0' : ' ');
-		putprefix(c, s, p);
+		putprefix(s, p);
 		padding_zero(len, p);
 		(*s == '0' && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(s);
 	}
 	else
 	{
-		putprefix(c, s, p);
+		putprefix(s, p);
 		padding_zero(len, p);
 		(*s == '0' && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(s);
 		padding_space(bigger_len, p);

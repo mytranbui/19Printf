@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 16:11:13 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/14 16:34:02 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/14 17:10:02 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ void	padding_ze_sp(int len, t_print *p)
 {
 	if (p->flg.minus == 0)
 		while (p->width-- - len > 0)
-			(p->flg.zero && p->pres == -1) ? ft_putchar('0') : ft_putchar(' ');
+			ft_putchar((p->flg.zero && p->pres == -1) ? '0' : ' ');
 }
 
-void	putprefix(char c, char *s, t_print *p)
+void	putprefix(char *s, t_print *p)
 {
 	if (p->flg.hash && *s != '0')
-		(c == 'x') ? ft_putstr("0x") : ft_putstr("0X");
+		(p->type == 'x') ? ft_putstr("0x") : ft_putstr("0X");
 }
 
 //kk
