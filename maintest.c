@@ -381,7 +381,7 @@ printf("%s||\n", NULL);
 	ft_printf("%0# 40.60u||\n", nb);
 	printf("%0# 40.60u||\n", nb);
 
-*//*	printf("\n-----UNSIGNED HEX-----\n"); //(-, 0, #, )
+*/	printf("\n-----UNSIGNED HEX-----\n"); //(-, 0, #, )
 	// single flag
 	ft_printf("%+x||\n", nb);
 	printf("%+x||\n", nb);
@@ -397,9 +397,9 @@ printf("%s||\n", NULL);
 	printf("%5x||\n", nb);
 	ft_printf("%50x||\n", nb);
 	printf("%50x||\n", nb);
-	ft_printf("%.5x||\n", nb);
+	ft_printf("%.5x||\n", nb); //000
 	printf("%.5x||\n", nb);
-	ft_printf("%.50x||\n", nb);
+	ft_printf("%.50x||\n", nb); //000
 	printf("%.50x||\n", nb);
 	// multiple flags
 	ft_printf("%- 100.50x||\n", nb);
@@ -452,7 +452,7 @@ printf("%s||\n", NULL);
 	printf("%0# 45.40X||\n", nb); //no width > pres
 	ft_printf("%0# 40.45X||\n", nb);
 	printf("%0# 40.45X||\n", nb);
-*/
+
 /*	printf("\n-----PERCENTS-----\n"); //(-,0,width) xpres x# x' '?
 	// single flag
 	ft_printf("%+%||\n");

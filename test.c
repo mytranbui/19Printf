@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/13 10:52:06 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/14 15:40:19 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,26 +178,78 @@ void	convert_x(va_list ap, char c, t_print *p)
 	(*s != '0' && p->flg.hash) ? bigger_len += 2 : bigger_len;
 	if (p->flg.minus == 0 && p->pres == -1 && p->flg.hash)
 	{
+		printf("here\n");
 		putprefix(c, s, p);
 		while (p->width-- - bigger_len > 0)
 			(p->flg.zero) ? ft_putchar('0') : ft_putchar(' ');
+			//ft_putchar((p->flg.zero) ? '0' : ' ');
 		(*s == '0' && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(s);
 	}
 	else if (p->flg.minus == 0)
 	{
+		printf("nanana\n");
 		while (p->width-- - bigger_len > 0)// && !p->flg.hash)
 			(p->flg.zero && p->pres == -1) ? ft_putchar('0') : ft_putchar(' ');
 		putprefix(c, s, p);
 		padding_zero(len, p);
+		//ft_putchar(*s == '0' && tmp_pres == 0) ? '0' : ' ');
 		(*s == '0' && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(s);
 	}
 	else
 	{
+	//	printf("MM");
 		putprefix(c, s, p);
 		padding_zero(len, p);
+		//ft_putchar(*s == '0' && tmp_pres == 0) ? '0' : ' ');
 		(*s == '0' && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(s);
 		padding_space(bigger_len, p);
 	}
 	if (*s != '0')
 		ft_strdel(&s);
 }
+
+/*void	convert_x(va_list ap, char c, t_print *p)
+{
+	//printf("\nconvert_x\n");
+	char	*s;
+	int		len[3];
+
+	s = ft_itoa_base(va_arg(ap, unsigned long long), 16, c);
+	len[0] = ft_strlen(s);
+	len[1] = p->pres;
+	len[2] = p->pres;
+	(len[0] > p->pres) ? len[1] = len[0] : len[1];
+	(p->flg.hash && *s != '0') ? len[1] += 2 : len[1];
+	if (p->flg.minus == 0 && p->pres == -1 && p->flg.hash)
+	{
+		if (p->flg.hash && *s != '0')
+			(c == 'x') ? ft_putstr("0x") : ft_putstr("0X");
+		while (p->width-- - len[1] > 0)
+			(p->flg.zero) ? ft_putchar('0') : ft_putchar(' ');
+		(len[2] == 0 && *s == '0') ? ft_putchar(' ') : ft_putstr(s);
+	}
+	else if (p->flg.minus == 0)
+	{
+		while (p->width-- - len[1] > 0)// && !p->flg.hash)
+			(p->flg.zero && p->pres == -1) ? ft_putchar('0') : ft_putchar(' ');
+		if (p->flg.hash && *s != '0')
+			(c == 'x') ? ft_putstr("0x") : ft_putstr("0X");
+		//	while (p->width-- - len[1] > -1 && p->pres == -1)
+		//		ft_putchar('o');
+		while (p->pres-- - len[0] > 0)
+			ft_putchar('0');
+		(len[2] == 0 && *s == '0') ? ft_putchar(' ') : ft_putstr(s);
+	}
+	else
+	{
+		if (p->flg.hash && *s != '0')
+			(c == 'x') ? ft_putstr("0x") : ft_putstr("0X");
+		while (p->pres-- - len[0] > 0)
+			ft_putchar('0');
+		(len[2] == 0 && *s == '0') ? ft_putchar(' ') : ft_putstr(s);
+		while (p->width-- - len[1] > 0)
+			ft_putchar(' ');
+	}
+	if (*s != '0')
+		ft_strdel(&s);
+}*/
