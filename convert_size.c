@@ -44,6 +44,8 @@ intmax_t	convert_hhll_di(va_list ap, t_print *p)
 
 uintmax_t	convert_hhll_ouxx(va_list ap, t_print *p)
 {
+	uintmax_t	s;
+
 	if (p->type == 'o' || p->type == 'u' || p->type == 'x' || p->type == 'X')
 	{
 		if (p->flg.h == 1)

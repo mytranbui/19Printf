@@ -154,15 +154,16 @@ void	convert_u(va_list ap, t_print *p)
 ** %x & %X: undefined behavior with +, '0' and ' '
 */
 
-void	convert_x(intmax_t arg, t_print *p)
+void	convert_x(uintmax_t arg, t_print *p)
 {
 	char		*s;
 	int			len;
 	int			bigger_len;
 	int			tmp_pres;
-	intmax_t	arg;
+	//intmax_t	arg;
 
-	s = ft_itoa_base(va_arg(ap, unsigned long long), 16, p->type);
+	//s = ft_itoa_base(va_arg(ap, unsigned long long), 16, p->type);
+	s = ft_itoa_base(arg, 16, p->type);
 	len = ft_strlen(s);
 	tmp_pres = p->pres;
 	bigger_len = p->pres;

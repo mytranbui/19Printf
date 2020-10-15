@@ -46,7 +46,7 @@ int			parse_size(t_print *p, int i);
 int			get_width_pres(va_list ap, t_print *p, int i);
 intmax_t	convert_hhll_di(va_list ap, t_print *p);
 uintmax_t   convert_hhll_ouxx(va_list ap, t_print *p);
-int			conversion(va_list ap, char c, t_print *p);
+int			conversion(va_list ap, t_print *p);
 
 void		convert_c(va_list ap, t_print *p);
 void		convert_s(va_list ap, t_print *p);
@@ -54,7 +54,7 @@ void		convert_p(va_list ap, t_print *p);
 void		convert_di(va_list ap, t_print *p);
 void		convert_o(va_list ap, t_print *p);
 void		convert_u(va_list ap, t_print *p);
-void		convert_x(va_list ap, t_print *p);
+void		convert_x(uintmax_t arg, t_print *p);
 void		convert_f(va_list ap, t_print *p);
 void		convert_percent(va_list ap, t_print *p);
 

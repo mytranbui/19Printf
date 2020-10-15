@@ -45,7 +45,7 @@ int		ft_printf(const char *format, ...)
 			i++;
 			p = init_flags(p);
 			i = parse_flags(ap, p, i);
-			conversion(ap, p->fmt[i], p);
+			conversion(ap, p);
 		}
 		else
 			i += ft_putstr_len_percent(&p->fmt[i]);

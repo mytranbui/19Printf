@@ -452,6 +452,8 @@ printf("%s||\n", NULL);
 	printf("%0# 45.40X||\n", nb); //no width > pres
 	ft_printf("%0# 40.45X||\n", nb);
 	printf("%0# 40.45X||\n", nb);
+	ft_printf("%hx||\n", 587);
+	printf("%hx||\n", 587);
 
 /*	printf("\n-----PERCENTS-----\n"); //(-,0,width) xpres x# x' '?
 	// single flag
@@ -607,8 +609,14 @@ printf("%s||\n", NULL);
  printf("%li||\n", l);
  ft_printf("%llli||\n", m);
  printf("%llli||\n", m);
+ ft_printf("%lli||\n", m);
+ printf("%lli||\n", m);
  ft_printf("%2L25li||\n", m);
  printf("%2L25li||\n", m);
+ ft_printf("%hx||\n", 587);
+ printf("%hx||\n", 587);
+ ft_printf("%hx||\n", h);
+ printf("%hx||\n", h);
 /*ft_printf("%0-+ .o|\n", 0);
 printf("%0-+ .o|\n", 0);
 ft_printf("%#.o|\n",0);
