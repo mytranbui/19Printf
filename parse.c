@@ -92,7 +92,7 @@ int		parse_flags(va_list ap, t_print *p, int i)
 		i++;
 	}
 	i = get_width_pres(ap, p, i);
-	printf("{fmt[i]=%c}",p->fmt[i]);
+//	printf("{fmt[i]=%c}",p->fmt[i]);
 //	if (p->fmt[i] == 'h' || p->fmt[i] == 'l' || p->fmt[i] == 'L')
 	i = parse_size(p, i);
 	printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d | h=%d | l=%d | L=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres, p->flg.h, p->flg.l, p->flg.maj_l);
