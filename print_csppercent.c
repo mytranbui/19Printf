@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 09:38:25 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/13 11:11:40 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/16 16:11:09 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ void	convert_p(va_list ap, t_print *p)
     int     bigger_len;
 	int		tmp_pres;
 
+	// if (!(s = ft_itoa_base(va_arg(ap, long long), 16, 'x')))
+	// 	free_print(&p);
 	s = ft_itoa_base(va_arg(ap, long long), 16, 'x');
 	len = ft_strlen(s);
 	bigger_len = p->pres;
@@ -117,5 +119,6 @@ void	convert_p(va_list ap, t_print *p)
 		(*s == '0' && tmp_pres == 0) ? s = NULL : ft_putstr(s);
 		padding_space(bigger_len, p);
 	}
-	ft_strdel(&s);
+	free_strprint(&s);
+	//free_print(&p);
 }

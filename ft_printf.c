@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 14:59:34 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/14 18:43:29 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/16 16:09:42 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int		ft_printf(const char *format, ...)
 		i++;
 	}
 	va_end(ap);
+	//free_print(&p);
 	return (1);
 }
 //memalloc protect needed?

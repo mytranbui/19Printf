@@ -6,7 +6,7 @@
 /*   By: tjuzen <tjuzen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 15:50:50 by tjuzen            #+#    #+#             */
-/*   Updated: 2020/09/25 13:30:46 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/16 14:50:18 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,8 @@ int	main()
 	i += (ft_printf("Coucou = %5.5s %5.6s %5.7s %6.6s %6.5s %7.s %1.s %5.15s %30.s, coucou\n", "Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou"));
 	j +=    (printf("Coucou = %5.5s %5.6s %5.7s %6.6s %6.5s %7.s %1.s %5.15s %30.s, coucou\n", "Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou"));
 	printf("\n");
-//	i += (ft_printf("Coucou = %*.*s, coucou\n", 20, 0, "Coucou"));
-//	j +=    (printf("Coucou = %*.*s, coucou\n", 20, 0, "Coucou"));
+	i += (ft_printf("Coucou = %*.*s, coucou\n", 20, 0, "Coucou"));
+	j +=    (printf("Coucou = %*.*s, coucou\n", 20, 0, "Coucou"));
 	printf("\n");
 	i += (ft_printf("Coucou =  coucou\n"));
 	j +=    (printf("Coucou =  coucou\n"));
@@ -206,17 +206,17 @@ int	main()
 	a += (ft_printf("Coucou = %4c\n", 'w'));
 	b +=    (printf("Coucou = %4c\n", 'w'));
 	printf("\n");
-//	a += (ft_printf("^.^/%+0hhi^.^/\n", 1457223722));
-//	b +=    (printf("^.^/%+0hhi^.^/\n", 1457223722));
+	a += (ft_printf("^.^/%+0hhi^.^/\n", 1457223722));
+	b +=    (printf("^.^/%+0hhi^.^/\n", 1457223722));
 	printf("\n");
-//	a += (ft_printf("Coucou = %0+hhi\n", 1592161129));
-//	b +=    (printf("Coucou = %0+hhi\n", 1592161129));
+	a += (ft_printf("Coucou = %0+hhi\n", 1592161129));
+	b +=    (printf("Coucou = %0+hhi\n", 1592161129));
 	printf("\n");
-//	a += (ft_printf("Coucou = %----24p et %2p et aussi %12p\n", &a, &b, NULL));
-//	b +=    (printf("Coucou = %----24p et %2p et aussi %12p\n", &a, &b, NULL));
+	a += (ft_printf("Coucou = %----24p et %2p et aussi %12p\n", &a, &b, NULL));
+	b +=    (printf("Coucou = %----24p et %2p et aussi %12p\n", &a, &b, NULL));
 	printf("\n");
-//	a += (ft_printf("Coucou = %#% % .5% %----24p et %5% %2p et aussi %12p %%%%%%\n", &a, &b, NULL));
-//	b +=    (printf("Coucou = %#% % .5% %----24p et %5% %2p et aussi %12p %%%%%%\n", &a, &b, NULL));
+	a += (ft_printf("Coucou = %#% % .5% %----24p et %5% %2p et aussi %12p %%%%%%\n", &a, &b, NULL));
+	b +=    (printf("Coucou = %#% % .5% %----24p et %5% %2p et aussi %12p %%%%%%\n", &a, &b, NULL));
 	printf("\n");
 
 	display_return(a, b, "C, P AND %%");

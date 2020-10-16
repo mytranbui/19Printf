@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:22:40 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/14 18:44:57 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/16 15:47:09 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,45 +23,46 @@
 ** L	>>	long (unsigned) double
 */
 
-intmax_t	convert_hhll_di(va_list ap, t_print *p)
+intmax_t	convert_arg_di(va_list ap, t_print *p)
 {
-	intmax_t	s;
+	intmax_t	arg;
 
 	if (p->type == 'd' || p->type == 'i')
 	{
 		if (p->flg.h == 1)
-			s = (short int)va_arg(ap, short int);
+			arg = (short int)va_arg(ap, short int);
 		else if (p->flg.h == 2)
-			s = (char)va_arg(ap, int);
+			arg = (char)va_arg(ap, int);
 		else if (p->flg.l == 1)
-			s = (long int)va_arg(ap, long int);
+			arg = (long int)va_arg(ap, long int);
 		else if (p->flg.l == 2)
-			s = (long long int)va_arg(ap, long long int);
+			arg = (long long int)va_arg(ap, long long int);
 		else
-			s = (int)va_arg(ap, int);
+			arg = (int)va_arg(ap, int);
 	}
+	return (arg);
 }
 
-uintmax_t	convert_hhll_ouxx(va_list ap, t_print *p)
+uintmax_t	convert_arg_ouxxf(va_list ap, t_print *p)
 {
-	uintmax_t	s;
+	uintmax_t	arg;
 
 	if (p->type == 'o' || p->type == 'u' || p->type == 'x' || p->type == 'X')
 	{
 		if (p->flg.h == 1)
-			s = (unsigned short int)va_arg(ap, unsigned short int);
+			arg = (unsigned short int)va_arg(ap, unsigned short int);
 		else if (p->flg.h == 2)
-			s = (unsigned char)va_arg(ap, unsigned char);
+			arg = (unsigned char)va_arg(ap, unsigned char);
 		else if (p->flg.l == 1)
-			s = (unsigned long int)va_arg(ap, unsigned long int);
+			arg = (unsigned long int)va_arg(ap, unsigned long int);
 		else if (p->flg.l == 2)
-			s = (unsigned long long int)va_arg(ap, unsigned long long int);
+			arg = (unsigned long long int)va_arg(ap, unsigned long long int);
 		else
-			s = (unsigned long long int)va_arg(ap, unsigned long long);
+			arg = (unsigned long long int)va_arg(ap, unsigned long long);
 	}
 	if (p->flg.maj_l == 1 && p->type == 'f')
-		s = va_arg(ap, long double);
+		arg = va_arg(ap, long double);
 	else if (p->type == 'f')
-		s = va_arg(ap, double);
-	return (s);
+		arg = va_arg(ap, double);
+	return (arg);
 }

@@ -6,11 +6,12 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 16:11:13 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/14 17:10:02 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/16 16:30:41 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include <stdio.h>
 
 int	ft_putstr_len_percent(const char *str)
 {
@@ -55,6 +56,25 @@ void	putprefix(char *s, t_print *p)
 {
 	if (p->flg.hash && *s != '0')
 		(p->type == 'x') ? ft_putstr("0x") : ft_putstr("0X");
+}
+
+void free_print(t_print **p)//, char **s)
+{
+	//if (s != '0')
+	//	ft_strdel(s);
+	if (p)
+	{
+		free(*p);
+		*p = NULL;
+	}
+	exit(0);
+}
+//hhmmm?
+void free_strprint(char **s)
+{
+	if (**s != '0')
+		ft_strdel(s);
+	s = NULL;
 }
 
 //kk

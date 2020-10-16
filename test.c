@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/14 18:43:24 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/16 16:12:37 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,22 @@
 */
 
 //all ok except 2147483648
-void	convert_di(va_list ap, t_print *p)
+void	convert_di(intmax_t arg, t_print *p)
 {
-	intmax_t	v;
+	char		*s;
+	//intmax_t	v;
 	int			n;
 	int			len;
 	int			bigger_len;
 	int			tmp_pres;
 
-	v = va_arg(ap, long long);
-	n = ft_atoi(ft_itoa_base(v, 10, 'x'));
-	len = ft_intlen(ft_abs(v));
+	//v = va_arg(ap, long long);
+	//n = ft_atoi(ft_itoa_base(arg, 10, 'x'));
+	// if (!(s = ft_itoa_base(arg, 10, 'x')))
+	// 	free_print(&p);
+	s = ft_itoa_base(arg, 10, 'x');
+	n = ft_atoi(s);
+	len = ft_intlen(ft_abs(arg));
 	bigger_len = p->pres;
 	tmp_pres = p->pres;
 	(n < 0 || (p->flg.plus && n >= 0)) ? len++ && bigger_len++ : len;
@@ -53,15 +58,19 @@ void	convert_di(va_list ap, t_print *p)
 		padding_space(bigger_len, p);
 		putsign(n, p);
 		padding_zero(len, p);
-		(n == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbr(ft_abs(v));
+		//(n == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbr(ft_abs(arg));
+		(n == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbr(ft_dabs(arg));
 	}
 	else
 	{
 		putsign(n, p);
 		padding_zero(len, p);
-		(n == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbr(ft_abs(v));
+		//(n == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbr(ft_abs(arg));
+		(n == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbr(ft_dabs(arg));
 		padding_space(bigger_len, p);
 	}
+	free_strprint(&s);
+	//free_print(&p);
 }
 //	v = v * (-1);
 //	ft_putnbr(2147483647 + 1);
@@ -80,14 +89,17 @@ void	convert_di(va_list ap, t_print *p)
 ** %o: undefined behavior with '+', ' '
 */
 
-void	convert_o(va_list ap, t_print *p)
+void	convert_o(uintmax_t arg, t_print *p)
 {
 	char	*s;
 	int		len;
 	int		bigger_len;
 	int		tmp_pres;
 
-	s = ft_itoa_base(va_arg(ap, unsigned long long), 8, 'x');
+	//s = ft_itoa_base(va_arg(ap, unsigned long long), 8, 'x');
+	// if (!(s = ft_itoa_base(arg, 8, 'x')))
+	// 	free_print(&p);
+	s = ft_itoa_base(arg, 8, 'x');
 	len = ft_strlen(s);
 	bigger_len = p->pres;
 	tmp_pres = p->pres;
@@ -113,22 +125,25 @@ void	convert_o(va_list ap, t_print *p)
 		(*s == '0' && !tmp_pres && !p->flg.hash) ? ft_putchar(' ') : ft_putstr(s);
 		padding_space(bigger_len, p);
 	}
-	if (*s != '0')
-		ft_strdel(&s);
+	free_strprint(&s);
+	//free_print(&p);
 }
 
 /*
 ** %u: undefined behavior with// '+', ' ', '#' ('#' has no effect)
 */
 
-void	convert_u(va_list ap, t_print *p)
+void	convert_u(uintmax_t arg, t_print *p)
 {
 	char	*s;
 	int		len;
 	int		bigger_len;
 	int		tmp_pres;
 
-	s = ft_itoa_base(va_arg(ap, unsigned int), 10, 'x');
+	//s = ft_itoa_base(va_arg(ap, unsigned int), 10, 'x');
+	// if (!(s = ft_itoa_base(arg, 10, 'x')))
+	// 	free_print(&p);
+	s = ft_itoa_base(arg, 10, 'x');
 	len = ft_strlen(s);
 	tmp_pres = p->pres;
 	bigger_len = p->pres;
@@ -146,8 +161,8 @@ void	convert_u(va_list ap, t_print *p)
 		(*s == '0' && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(s);
 		padding_space(bigger_len, p);
 	}
-	if (*s != '0')
-		ft_strdel(&s);
+	free_strprint(&s);
+	//free_print(&p);
 }
 
 /*
@@ -163,6 +178,8 @@ void	convert_x(uintmax_t arg, t_print *p)
 	//intmax_t	arg;
 
 	//s = ft_itoa_base(va_arg(ap, unsigned long long), 16, p->type);
+	// if (!(s = ft_itoa_base(arg, 16, p->type)))
+	// 	free_print(&p);
 	s = ft_itoa_base(arg, 16, p->type);
 	len = ft_strlen(s);
 	tmp_pres = p->pres;
@@ -191,6 +208,6 @@ void	convert_x(uintmax_t arg, t_print *p)
 		(*s == '0' && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(s);
 		padding_space(bigger_len, p);
 	}
-	if (*s != '0')
-		ft_strdel(&s);
+	free_strprint(&s);
+	//free_print(&p);
 }

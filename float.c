@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 12:41:38 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/13 11:04:58 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/16 14:45:32 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,44 +92,44 @@ char	*get_flt(double n, t_print *p)
 	return (str_flt);
 }
 
-void	convert_f(va_list ap, t_print *p)
+void	convert_f(intmax_t arg, t_print *p)
 {
 	printf("\nconvert_f\n");
-	double	n;
+	//double	n;
 	int		len;
 	int		bigger_len;
 	int		tmp_pres;
 	char	*str_flt;
 
-	n = va_arg(ap, double);
-	str_flt = get_flt(ft_dabs(n), p);
+	//n = va_arg(ap, double);
+	str_flt = get_flt(ft_dabs(arg), p);
 	len = ft_strlen(str_flt);
 	tmp_pres = p->pres;
 	bigger_len = p->pres;
-	(n < 0 || (p->flg.plus && n >= 0)) ? len++ && bigger_len++ : len;
+	(arg < 0 || (p->flg.plus && arg >= 0)) ? len++ && bigger_len++ : len;
 	(len > bigger_len) ? bigger_len = len : bigger_len;
-	(p->flg.plus == 0 && n >= 0) ? len++ : len;
-	(p->flg.space && p->flg.plus == 0 && n >= 0) ? bigger_len++ : bigger_len;
-	if (p->flg.space && p->flg.plus == 0 && n >= 0)
+	(p->flg.plus == 0 && arg >= 0) ? len++ : len;
+	(p->flg.space && p->flg.plus == 0 && arg >= 0) ? bigger_len++ : bigger_len;
+	if (p->flg.space && p->flg.plus == 0 && arg >= 0)
 		ft_putchar(' ');
 	if (p->flg.minus == 0)
 	{
-		if (n < 0 && p->flg.zero)
+		if (arg < 0 && p->flg.zero)
 			ft_putchar('-');
 		while (p->width-- - bigger_len > 0)
 			(p->flg.zero) ? ft_putchar('0') : ft_putchar(' ');
-		if (p->flg.plus && n >= 0)
+		if (p->flg.plus && arg >= 0)
 			ft_putchar('+');
-		else if (n < 0 && p->flg.zero == 0)
+		else if (arg < 0 && p->flg.zero == 0)
 			ft_putchar('-');
 		padding_zero(len, p);
-		(n == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(str_flt);
+		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(str_flt);
 	}
 	else
 	{
-		putsign(n, p);
+		putsign(arg, p);
 		padding_zero(len, p);
-		(n == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(str_flt);
+		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(str_flt);
 		padding_space(bigger_len, p);
 	}
 }
