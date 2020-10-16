@@ -52,7 +52,17 @@ int		ft_printf(const char *format, ...)
 		i++;
 	}
 	va_end(ap);
-	//free_print(&p);
+	/*if (p)
+	{
+		printf("EXISTK");
+		free(p);
+		p = NULL;
+		if (p)
+		printf("STILLs");
+	}*/
+	free_print(&p);
+	if (p)
+	printf("STILLs");
 	return (1);
 }
 //memalloc protect needed?

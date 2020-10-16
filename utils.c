@@ -67,7 +67,10 @@ void free_print(t_print **p)//, char **s)
 		free(*p);
 		*p = NULL;
 	}
-	exit(0);
+	p = NULL;
+	if(p)
+		printf("LOL");
+//	exit(0);
 }
 //hhmmm?
 void free_strprint(char **s)
