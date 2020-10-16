@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/16 16:12:37 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/16 17:19:57 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	convert_di(intmax_t arg, t_print *p)
 	// 	free_print(&p);
 	s = ft_itoa_base(arg, 10, 'x');
 	n = ft_atoi(s);
-	len = ft_intlen(ft_abs(arg));
+	len = ft_intlen(ft_dabs(arg));
 	bigger_len = p->pres;
 	tmp_pres = p->pres;
 	(n < 0 || (p->flg.plus && n >= 0)) ? len++ && bigger_len++ : len;

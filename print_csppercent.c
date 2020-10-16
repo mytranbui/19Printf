@@ -6,12 +6,12 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 09:38:25 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/16 16:11:09 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/16 17:49:57 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
+#include <stdio.h>
 /*
 ** '0' ignored when '-' is present
 ** ' ' ignored when '+' is present
@@ -99,21 +99,26 @@ void	convert_p(va_list ap, t_print *p)
 	bigger_len = p->pres;
 	tmp_pres = p->pres;
 	(*s == '0' && tmp_pres == 0) ? p->width++ : p->width;
-    p->width -= 2;
+    //p->width -= 2;
 	(len > p->pres) ? bigger_len = len : bigger_len;
+	bigger_len += 2;
 	if (p->flg.minus == 0)
 	{
+		//printf("HIHI");
+	//	printf("{width= %d & len =%d}", p->width, bigger_len);
 		while (p->width-- - bigger_len > 0 && (p->flg.zero == 0 ||
 					(p->pres == 0 && p->flg.zero)))
 			ft_putchar(' ');
 		ft_putstr("0x");
-		while (p->width-- - bigger_len > 1 && p->flg.zero && p->pres == -1)
+	//	printf("{width= %d & len =%d}", p->width, bigger_len);
+		while (p->width-- - bigger_len > -1 && p->flg.zero && p->pres == -1)
 			ft_putchar('0');
 		padding_zero(len, p);
 		(*s == '0' && tmp_pres == 0) ? s = NULL : ft_putstr(s);
 	}
 	else
 	{
+		//printf("LOL");
 		ft_putstr("0x");
 		padding_zero(len, p);
 		(*s == '0' && tmp_pres == 0) ? s = NULL : ft_putstr(s);

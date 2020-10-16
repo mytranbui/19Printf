@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 12:41:38 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/16 14:45:32 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/16 17:25:02 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ char	*get_flt(double n, t_print *p)
 
 void	convert_f(intmax_t arg, t_print *p)
 {
-	printf("\nconvert_f\n");
 	//double	n;
 	int		len;
 	int		bigger_len;

@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:22:40 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/16 15:47:09 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/16 17:02:45 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,11 @@ intmax_t	convert_arg_di(va_list ap, t_print *p)
 {
 	intmax_t	arg;
 
+	arg = 0;
 	if (p->type == 'd' || p->type == 'i')
 	{
 		if (p->flg.h == 1)
-			arg = (short int)va_arg(ap, short int);
+			arg = (short int)va_arg(ap, int);
 		else if (p->flg.h == 2)
 			arg = (char)va_arg(ap, int);
 		else if (p->flg.l == 1)
@@ -47,12 +48,13 @@ uintmax_t	convert_arg_ouxxf(va_list ap, t_print *p)
 {
 	uintmax_t	arg;
 
+	arg = 0;
 	if (p->type == 'o' || p->type == 'u' || p->type == 'x' || p->type == 'X')
 	{
 		if (p->flg.h == 1)
-			arg = (unsigned short int)va_arg(ap, unsigned short int);
+			arg = (unsigned short int)va_arg(ap, unsigned int);
 		else if (p->flg.h == 2)
-			arg = (unsigned char)va_arg(ap, unsigned char);
+			arg = (unsigned char)va_arg(ap, unsigned int);
 		else if (p->flg.l == 1)
 			arg = (unsigned long int)va_arg(ap, unsigned long int);
 		else if (p->flg.l == 2)
