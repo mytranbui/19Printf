@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include <stdio.h>
 
 t_print	*init_flags(t_print *p)
 {
@@ -52,17 +53,7 @@ int		ft_printf(const char *format, ...)
 		i++;
 	}
 	va_end(ap);
-	/*if (p)
-	{
-		printf("EXISTK");
-		free(p);
-		p = NULL;
-		if (p)
-		printf("STILLs");
-	}*/
-	free_print(&p);
-	if (p)
-	printf("STILLs");
+	free_print(&p, 1);
 	return (1);
 }
 //memalloc protect needed?

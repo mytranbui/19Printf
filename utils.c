@@ -58,20 +58,18 @@ void	putprefix(char *s, t_print *p)
 		(p->type == 'x') ? ft_putstr("0x") : ft_putstr("0X");
 }
 
-void free_print(t_print **p)//, char **s)
+void free_print(t_print **p, int n)
 {
-	//if (s != '0')
-	//	ft_strdel(s);
-	if (p)
-	{
-		free(*p);
-		*p = NULL;
-	}
-	p = NULL;
-	if(p)
-		printf("LOL");
-//	exit(0);
+		if (p)
+		{
+			free(*p);
+			*p = NULL;
+		}
+		p = NULL;
+	if (n == 2)
+		exit(EXIT_FAILURE);
 }
+
 //hhmmm?
 void free_strprint(char **s)
 {

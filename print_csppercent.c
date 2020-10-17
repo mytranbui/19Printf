@@ -92,9 +92,9 @@ void	convert_p(va_list ap, t_print *p)
     int     bigger_len;
 	int		tmp_pres;
 
-	// if (!(s = ft_itoa_base(va_arg(ap, long long), 16, 'x')))
-	// 	free_print(&p);
-	s = ft_itoa_base(va_arg(ap, long long), 16, 'x');
+	if (!(s = ft_itoa_base(va_arg(ap, long long), 16, 'x')))
+	 		free_print(&p, 2);
+	//s = ft_itoa_base(va_arg(ap, long long), 16, 'x');
 	len = ft_strlen(s);
 	bigger_len = p->pres;
 	tmp_pres = p->pres;
@@ -125,5 +125,4 @@ void	convert_p(va_list ap, t_print *p)
 		padding_space(bigger_len, p);
 	}
 	free_strprint(&s);
-	//free_print(&p);
 }

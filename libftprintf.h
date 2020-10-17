@@ -33,7 +33,7 @@ typedef struct	s_print
 	const char	*fmt;
 	int			width;
 	int			pres;
-	char        type; //unused
+	char        type;
 	t_flag		flg;
 	//int         len;
 }				t_print;
@@ -64,6 +64,6 @@ void		putsign(int n, t_print	*p);
 void		padding_space(int len, t_print *p);
 void		padding_zero(int len, t_print *p);
 void		putprefix(char *s, t_print *p);
-void		free_print(t_print **p);
+void		free_print(t_print **p, int n);
 void		free_strprint(char **s);
 #endif

@@ -39,9 +39,8 @@ void	convert_di(intmax_t arg, t_print *p)
 
 	//v = va_arg(ap, long long);
 	//n = ft_atoi(ft_itoa_base(arg, 10, 'x'));
-	// if (!(s = ft_itoa_base(arg, 10, 'x')))
-	// 	free_print(&p);
-	s = ft_itoa_base(arg, 10, 'x');
+	if (!(s = ft_itoa_base(arg, 10, 'x')))
+		free_print(&p, 2);
 	n = ft_atoi(s);
 	len = ft_intlen(ft_dabs(arg));
 	bigger_len = p->pres;
@@ -70,7 +69,6 @@ void	convert_di(intmax_t arg, t_print *p)
 		padding_space(bigger_len, p);
 	}
 	free_strprint(&s);
-	//free_print(&p);
 }
 //	v = v * (-1);
 //	ft_putnbr(2147483647 + 1);
@@ -97,9 +95,8 @@ void	convert_o(uintmax_t arg, t_print *p)
 	int		tmp_pres;
 
 	//s = ft_itoa_base(va_arg(ap, unsigned long long), 8, 'x');
-	// if (!(s = ft_itoa_base(arg, 8, 'x')))
-	// 	free_print(&p);
-	s = ft_itoa_base(arg, 8, 'x');
+	if (!(s = ft_itoa_base(arg, 8, 'x')))
+		free_print(&p, 2);
 	len = ft_strlen(s);
 	bigger_len = p->pres;
 	tmp_pres = p->pres;
@@ -126,7 +123,6 @@ void	convert_o(uintmax_t arg, t_print *p)
 		padding_space(bigger_len, p);
 	}
 	free_strprint(&s);
-	//free_print(&p);
 }
 
 /*
@@ -141,9 +137,8 @@ void	convert_u(uintmax_t arg, t_print *p)
 	int		tmp_pres;
 
 	//s = ft_itoa_base(va_arg(ap, unsigned int), 10, 'x');
-	// if (!(s = ft_itoa_base(arg, 10, 'x')))
-	// 	free_print(&p);
-	s = ft_itoa_base(arg, 10, 'x');
+	if (!(s = ft_itoa_base(arg, 10, 'x')))
+		free_print(&p, 2);
 	len = ft_strlen(s);
 	tmp_pres = p->pres;
 	bigger_len = p->pres;
@@ -162,7 +157,6 @@ void	convert_u(uintmax_t arg, t_print *p)
 		padding_space(bigger_len, p);
 	}
 	free_strprint(&s);
-	//free_print(&p);
 }
 
 /*
@@ -175,12 +169,10 @@ void	convert_x(uintmax_t arg, t_print *p)
 	int			len;
 	int			bigger_len;
 	int			tmp_pres;
-	//intmax_t	arg;
 
 	//s = ft_itoa_base(va_arg(ap, unsigned long long), 16, p->type);
-	// if (!(s = ft_itoa_base(arg, 16, p->type)))
-	// 	free_print(&p);
-	s = ft_itoa_base(arg, 16, p->type);
+	if (!(s = ft_itoa_base(arg, 16, p->type)))
+		free_print(&p, 2);
 	len = ft_strlen(s);
 	tmp_pres = p->pres;
 	bigger_len = p->pres;
@@ -209,5 +201,4 @@ void	convert_x(uintmax_t arg, t_print *p)
 		padding_space(bigger_len, p);
 	}
 	free_strprint(&s);
-	//free_print(&p);
 }
