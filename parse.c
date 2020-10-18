@@ -123,7 +123,7 @@ int		conversion(va_list ap, t_print *p)
 	else if (p->type == 'x' || p->type == 'X')
 		convert_x(convert_arg_ouxxf(ap, p), p);
 	else if (p->type == 'f')
-		convert_f(convert_arg_ouxxf(ap, p), p);
+		convert_f(convert_arg_di(ap, p), p);
 	else if (p->type == '%')
 		convert_percent(ap, p);
 	return (1);

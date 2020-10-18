@@ -39,6 +39,7 @@ void	convert_di(intmax_t arg, t_print *p)
 
 	//v = va_arg(ap, long long);
 	//n = ft_atoi(ft_itoa_base(arg, 10, 'x'));
+//	printf("{arg=%ji}", arg);
 	if (!(s = ft_itoa_base(arg, 10, 'x')))
 		free_print(&p, 2);
 	n = ft_atoi(s);
@@ -94,8 +95,9 @@ void	convert_o(uintmax_t arg, t_print *p)
 	int		bigger_len;
 	int		tmp_pres;
 
+// printf("{arg=%ji}", arg);
 	//s = ft_itoa_base(va_arg(ap, unsigned long long), 8, 'x');
-	if (!(s = ft_itoa_base(arg, 8, 'x')))
+	if (!(s = ft_utoa_base(arg, 8, 'x')))
 		free_print(&p, 2);
 	len = ft_strlen(s);
 	bigger_len = p->pres;
@@ -136,7 +138,7 @@ void	convert_u(uintmax_t arg, t_print *p)
 	int		tmp_pres;
 
 	//s = ft_itoa_base(va_arg(ap, unsigned int), 10, 'x');
-	if (!(s = ft_itoa_base(arg, 10, 'x')))
+	if (!(s = ft_utoa_base(arg, 10, 'x')))
 		free_print(&p, 2);
 	len = ft_strlen(s);
 	tmp_pres = p->pres;
@@ -169,7 +171,7 @@ void	convert_x(uintmax_t arg, t_print *p)
 	int			tmp_pres;
 
 	//s = ft_itoa_base(va_arg(ap, unsigned long long), 16, p->type);
-	if (!(s = ft_itoa_base(arg, 16, p->type)))
+	if (!(s = ft_utoa_base(arg, 16, p->type)))
 		free_print(&p, 2);
 	len = ft_strlen(s);
 	tmp_pres = p->pres;

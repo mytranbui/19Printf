@@ -24,10 +24,10 @@ SRC = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 	  ft_strrchr.c ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c \
 	  ft_tolower.c ft_toupper.c
 BONUS = ft_abs.c ft_isspace.c ft_max.c ft_min.c ft_islower.c ft_isupper.c \
-		ft_sqrt.c ft_strndup.c ft_isprime.c ft_itoa_base.c ft_strspn.c \
-		ft_strpbrk.c ft_strjoin_free.c free_tab.c tablen.c get_next_line.c \
-		ft_swap.c sort_int_tab.c tabcpy.c nbwords.c lstdel_tlist.c \
-		ft_listsize.c ft_intlen.c ft_dabs.c
+		ft_sqrt.c ft_strndup.c ft_isprime.c ft_itoa_base.c ft_utoa_base.c \
+		 ft_strspn.c ft_strpbrk.c ft_strjoin_free.c free_tab.c tablen.c \
+		get_next_line.c ft_swap.c sort_int_tab.c tabcpy.c nbwords.c \
+		lstdel_tlist.c ft_listsize.c ft_intlen.c ft_dabs.c
 
 
 OBJ = $(SRC:.c=.o) $(BONUS:.c=.o)

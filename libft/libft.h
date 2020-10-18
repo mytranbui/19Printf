@@ -97,6 +97,7 @@ double			ft_sqrt(double nb);
 char			*ft_strndup(const char *s1, size_t n);
 int				ft_isprime(int n);
 char			*ft_itoa_base(long long value, int base, char x);
+char			*ft_utoa_base(unsigned long long value, int base, char x);
 size_t			ft_strspn(const char *s1, const char *s2);
 char			*ft_strpbrk(const char *s1, const char *s2);
 char			*ft_strjoin_free(char *s1, char *s2, int free);

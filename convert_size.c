@@ -41,6 +41,16 @@ intmax_t	convert_arg_di(va_list ap, t_print *p)
 		else
 			arg = (int)va_arg(ap, int);
 	}
+	if (p->flg.maj_l == 1 && p->type == 'f')
+	{
+	//	printf("F");
+		arg = va_arg(ap, long double);
+	}
+	else if (p->type == 'f')
+	{
+		printf("f");
+		arg = va_arg(ap, double);
+	}
 	return (arg);
 }
 
@@ -52,19 +62,31 @@ uintmax_t	convert_arg_ouxxf(va_list ap, t_print *p)
 	if (p->type == 'o' || p->type == 'u' || p->type == 'x' || p->type == 'X')
 	{
 		if (p->flg.h == 1)
+		{
+			printf("A");
 			arg = (unsigned short int)va_arg(ap, unsigned int);
+		}
 		else if (p->flg.h == 2)
-			arg = (unsigned char)va_arg(ap, unsigned int);
+		{
+printf("B");
+arg = (unsigned char)va_arg(ap, unsigned int);
+}
 		else if (p->flg.l == 1)
-			arg = (unsigned long int)va_arg(ap, unsigned long int);
+		{
+printf("C");
+arg = (unsigned long int)va_arg(ap, unsigned long int);
+}
 		else if (p->flg.l == 2)
-			arg = (unsigned long long int)va_arg(ap, unsigned long long int);
+		{
+printf("D");
+arg = (unsigned long long int)va_arg(ap, unsigned long long int);
+}
 		else
-			arg = (unsigned long long int)va_arg(ap, unsigned long long);
+		{
+//printf("E");
+// arg = (unsigned long long int)va_arg(ap, unsigned long long);
+arg = va_arg(ap, unsigned long long);
+		}
 	}
-	if (p->flg.maj_l == 1 && p->type == 'f')
-		arg = va_arg(ap, long double);
-	else if (p->type == 'f')
-		arg = va_arg(ap, double);
 	return (arg);
 }
