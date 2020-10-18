@@ -12,10 +12,12 @@
 
 #include "libft.h"
 
-static unsigned long long	find_size(unsigned long long value, int base)
+static	unsigned long long	find_size(unsigned long long value, int base)
 {
-	int	len;
+	int		len;
 
+	if (value == 0)
+		return (1);
 	len = 0;
 	while (value)
 	{
