@@ -30,7 +30,8 @@ void	convert_c(va_list ap, t_print *p)
 	if (p->flg.minus)
 		ft_putchar(c);
 	while (p->width-- - 1 > 0)
-		(p->flg.zero && !p->flg.minus) ? ft_putchar('0') : ft_putchar(' ');
+		//(p->flg.zero && !p->flg.minus) ? ft_putchar('0') : ft_putchar(' ');
+		ft_putchar((p->flg.zero && !p->flg.minus) ? '0' : ' ');
 	if (!p->flg.minus)
 		ft_putchar(c);
 }
@@ -44,7 +45,8 @@ void	convert_percent(va_list ap, t_print *p)
 	if (p->flg.minus)
 		ft_putchar('%');
 	while (p->width-- - 1 > 0)
-		(p->flg.zero && !p->flg.minus) ? ft_putchar('0') : ft_putchar(' ');
+	//(p->flg.zero && !p->flg.minus) ? ft_putchar('0') : ft_putchar(' ');
+	ft_putchar((p->flg.zero && !p->flg.minus) ? '0' : ' ');
 	if (!p->flg.minus)
 		ft_putchar('%');
 }
@@ -70,7 +72,8 @@ void	convert_s(va_list ap, t_print *p)
 		if (p->flg.minus)
 			write(1, s, len);
 		while (p->width-- - len > 0)
-			(p->flg.zero && !p->flg.minus) ? ft_putchar('0') : ft_putchar(' ');
+		//(p->flg.zero && !p->flg.minus) ? ft_putchar('0') : ft_putchar(' ');
+			ft_putchar((p->flg.zero && !p->flg.minus) ? '0' : ' ');
 		if (!p->flg.minus)
 			write(1, s, len);
 	}
@@ -104,7 +107,6 @@ void	convert_p(va_list ap, t_print *p)
 	bigger_len += 2;
 	if (p->flg.minus == 0)
 	{
-		//printf("HIHI");
 	//	printf("{width= %d & len =%d}", p->width, bigger_len);
 		while (p->width-- - bigger_len > 0 && (p->flg.zero == 0 ||
 					(p->pres == 0 && p->flg.zero)))
@@ -118,7 +120,6 @@ void	convert_p(va_list ap, t_print *p)
 	}
 	else
 	{
-		//printf("LOL");
 		ft_putstr("0x");
 		padding_zero(len, p);
 		(*s == '0' && tmp_pres == 0) ? s = NULL : ft_putstr(s);

@@ -92,5 +92,7 @@ int main(void)
 
 	ft_printf("%04p||\n", 0);
 	printf("%04p||\n", 0);
+	ft_printf("|%o|%#o|%#o|%#5o|%#5.2o|%.o|\n", 42, 42, 0, 42, 0, 0);
+	printf("|%o|%#o|%#o|%#5o|%#5.2o|%.o|\n", 42, 42, 0, 42, 0, 0);
 	return (0);
 }

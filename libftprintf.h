@@ -63,6 +63,7 @@ void		putsign(int n, t_print	*p);
 //void	padding_zero(char *s, t_print *p);
 void		padding_space(int len, t_print *p);
 void		padding_zero(int len, t_print *p);
+void    padding_ze_sp(int len, t_print *p);
 void		putprefix(char *s, t_print *p);
 void		free_print(t_print **p, int n);
 void		free_strprint(char **s);

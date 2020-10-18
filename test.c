@@ -107,8 +107,7 @@ void	convert_o(uintmax_t arg, t_print *p)
 		return ;
 	if (p->flg.minus == 0)
 	{
-		while (p->width-- - bigger_len > 0)
-			ft_putchar((p->flg.zero && p->pres == -1) ? '0' : ' ');
+		padding_ze_sp(bigger_len, p);
 		if (p->flg.hash && *s != '0')
 			ft_putchar('0');
 		padding_zero(len, p);
@@ -145,8 +144,7 @@ void	convert_u(uintmax_t arg, t_print *p)
 	(len > p->pres) ? bigger_len = len : bigger_len;
 	if (p->flg.minus == 0)
 	{
-		while (p->width-- - bigger_len > 0)
-			ft_putchar((p->flg.zero && p->pres == -1) ? '0' : ' ');
+		padding_ze_sp(bigger_len, p);
 		padding_zero(len, p);
 		(*s == '0' && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(s);
 	}
@@ -178,17 +176,17 @@ void	convert_x(uintmax_t arg, t_print *p)
 	bigger_len = p->pres;
 	(len > p->pres) ? bigger_len = len : bigger_len;
 	(*s != '0' && p->flg.hash) ? bigger_len += 2 : bigger_len;
-	if (p->flg.minus == 0 && p->pres == -1 && p->flg.hash)
+/*	if (p->flg.minus == 0 && p->pres == -1 && p->flg.hash)
 	{
 		putprefix(s, p);
-		while (p->width-- - bigger_len > 0)
-			ft_putchar((p->flg.zero) ? '0' : ' ');
+		padding_ze_sp(bigger_len, p);
 		(*s == '0' && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(s);
 	}
-	else if (p->flg.minus == 0)
+	else*/ if (p->flg.minus == 0)
 	{
-		while (p->width-- - bigger_len > 0)// && !p->flg.hash)
-			ft_putchar((p->flg.zero && p->pres == -1) ? '0' : ' ');
+		padding_ze_sp(bigger_len, p);
+		// while (p->width-- - bigger_len > 0)// && !p->flg.hash)
+		// 	ft_putchar((p->flg.zero && p->pres == -1) ? '0' : ' ');
 		putprefix(s, p);
 		padding_zero(len, p);
 		(*s == '0' && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(s);

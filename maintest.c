@@ -126,8 +126,8 @@ ft_printf("%0#05s||\n", NULL);
 printf("%0#05s||\n", NULL);
 ft_printf("%s||\n", NULL);
 printf("%s||\n", NULL);
-*/
-/*	printf("\n-----POINTER-----\n"); //(-, width, pres?) //ok null ok
+
+	printf("\n-----POINTER-----\n"); //(-, width, pres?) //ok null ok
 	// single flag
 	ft_printf("%+p||\n", p);
 	printf("%+p||\n", p);
@@ -196,10 +196,10 @@ printf("%s||\n", NULL);
 	printf("%#05p||\n", p);
 	ft_printf("%p||\n", p);
 	printf("%p||\n", p);
-*/
+
 	printf("\n-----SIGNED INT-----\n"); //(+, - , ' ', 0 , width, pres)
 	// single flag
-/*	ft_printf("%+i||\n", i);
+	ft_printf("%+i||\n", i);
  	printf("%+i||\n", i);
 	ft_printf("%0i||\n", i);
   	printf("%0i||\n", i);
@@ -248,9 +248,9 @@ printf("%s||\n", NULL);
 	printf("%015.i||\n", i); //replace 0 by null // 0 width15 pres0
 	ft_printf("%+- 011.i||\n", i);
 	printf("%+- 011.i||\n", i);
-*/
 
-/*	printf("\n-----UNSIGNED OCTAL-----\n"); //(-, 0, #, )
+
+	printf("\n-----UNSIGNED OCTAL-----\n"); //(-, 0, #, )
 	ft_printf("%+o||\n", nb);
 	printf("%+o||\n", nb);
 	ft_printf("%0o||\n", nb);
@@ -315,7 +315,7 @@ printf("%s||\n", NULL);
 	ft_printf("%0# 40.60o||\n", nb);
 	printf("%0# 40.60o||\n", nb); //0-
 
-*//*	printf("\n-----UNSIGNED INT-----\n"); //(-, 0, #, )
+	printf("\n-----UNSIGNED INT-----\n"); //(-, 0, #, )
 	// single flag
 	ft_printf("%+u||\n", nb);
 	printf("%+u||\n", nb);
@@ -380,8 +380,8 @@ printf("%s||\n", NULL);
 	printf("%0# 40.u||\n", nb);
 	ft_printf("%0# 40.60u||\n", nb);
 	printf("%0# 40.60u||\n", nb);
-
-*/	printf("\n-----UNSIGNED HEX-----\n"); //(-, 0, #, )
+*/
+	printf("\n-----UNSIGNED HEX-----\n"); //(-, 0, #, )
 	// single flag
 	ft_printf("%+x||\n", nb);
 	printf("%+x||\n", nb);
@@ -520,8 +520,8 @@ printf("%s||\n", NULL);
 	printf("%0# 45.40%||\n"); //no width > pres
 	ft_printf("%0# 0.30%||\n");
 	printf("%0# 0.30%||\n"); //ok
-*/
-/*		printf("\n-----FLOAT-----\n"); //(-, 0, #, )
+
+		printf("\n-----FLOAT-----\n"); //(-, 0, #, )
 		// single flag
 		ft_printf("%.10 f||\n", f);
 		printf("%.10 f||\n", f);
@@ -617,7 +617,7 @@ printf("%s||\n", NULL);
  printf("%hx||\n", 587);
  ft_printf("%hx||\n", h);
  printf("%hx||\n", h);
-/*ft_printf("%0-+ .o|\n", 0);
+ft_printf("%0-+ .o|\n", 0);
 printf("%0-+ .o|\n", 0);
 ft_printf("%#.o|\n",0);
 printf("%#.o|\n",0);
@@ -654,7 +654,7 @@ printf("ici ici XSalXt %-10.4X %#08X %-#5.20X %-5.30X %-#.4X %#8X %#08X\n", 0, 5
 ft_printf("%010d\n", -42);
 printf("%010d\n", -42);
 printf("%15f",1.123456);
-*//*	ft_printf("caca%0dpopo%+d", 45, 89);
+	ft_printf("caca%0dpopo%+d", 45, 89);
 	 ft_printf("\n--string=%s\n--sign=%%\n--num=%d\n--num2=%d\n--sign2=%%\n--sign3=%%\n--numi=%i\n--char=%c\n--num3=%d\n--address=%p\n--hex=%x\n--HEX=%X\n",s,100,-7852,23534, 'c', 45, &c,4364873,61534);
 	 printf("SOLUTION:\n--string=%s--sign=%%--num=%d--num2=%d--sign2=%%--sign3=%%--numi=%i--char=%c--num3=%d--address=%p--hex=%x--HEX=%X\n",s,100,-7852,23534, 'c', 45, &c,4364873,61534);
 	 printf("uint=%ld\n",4294967295);
@@ -664,5 +664,7 @@ printf("%15f",1.123456);
 	printf("\n%-25p||\n", p);
 		ft_printf("%14+d||\n", 123456789);
 		printf("%14+d||\n", 123456789);
-*/	return (0);
+		ft_printf ("ft_printf2:|%#5x||\n", 1);
+		printf ("printf2   :|%#5x||\n", 1);
+	return (0);
 }
