@@ -29,9 +29,7 @@ void	convert_c(va_list ap, t_print *p)
 	c = va_arg(ap, long long);
 	if (p->flg.minus)
 		ft_putchar(c);
-	while (p->width-- - 1 > 0)
-		//(p->flg.zero && !p->flg.minus) ? ft_putchar('0') : ft_putchar(' ');
-		ft_putchar((p->flg.zero && !p->flg.minus) ? '0' : ' ');
+	padding_ze_sp(1, p);
 	if (!p->flg.minus)
 		ft_putchar(c);
 }
@@ -44,9 +42,7 @@ void	convert_percent(va_list ap, t_print *p)
 	c = (char)va_arg(ap, long long);
 	if (p->flg.minus)
 		ft_putchar('%');
-	while (p->width-- - 1 > 0)
-	//(p->flg.zero && !p->flg.minus) ? ft_putchar('0') : ft_putchar(' ');
-	ft_putchar((p->flg.zero && !p->flg.minus) ? '0' : ' ');
+	padding_ze_sp(1, p);
 	if (!p->flg.minus)
 		ft_putchar('%');
 }
@@ -71,9 +67,7 @@ void	convert_s(va_list ap, t_print *p)
 			len = p->pres;
 		if (p->flg.minus)
 			write(1, s, len);
-		while (p->width-- - len > 0)
-		//(p->flg.zero && !p->flg.minus) ? ft_putchar('0') : ft_putchar(' ');
-			ft_putchar((p->flg.zero && !p->flg.minus) ? '0' : ' ');
+		padding_ze_sp(len, p);
 		if (!p->flg.minus)
 			write(1, s, len);
 	}
@@ -105,7 +99,7 @@ void	convert_p(va_list ap, t_print *p)
     //p->width -= 2;
 	(len > p->pres) ? bigger_len = len : bigger_len;
 	bigger_len += 2;
-	if (p->flg.minus == 0)
+	if (!p->flg.minus)
 	{
 	//	printf("{width= %d & len =%d}", p->width, bigger_len);
 		while (p->width-- - bigger_len > 0 && (p->flg.zero == 0 ||

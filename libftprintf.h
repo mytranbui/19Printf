@@ -44,8 +44,9 @@ t_print		*init_flags(t_print *p);
 int			parse_flags(va_list ap, t_print *p, int i);
 int			parse_size(t_print *p, int i);
 int			get_width_pres(va_list ap, t_print *p, int i);
-intmax_t	convert_arg_di(va_list ap, t_print *p);
-uintmax_t   convert_arg_ouxxf(va_list ap, t_print *p);
+intmax_t	convert_arg_dif(va_list ap, t_print *p);
+uintmax_t   convert_arg_ouxx(va_list ap, t_print *p);
+long double convert_arg_f(va_list ap, t_print *p);
 int			conversion(va_list ap, t_print *p);
 
 void		convert_c(va_list ap, t_print *p);
@@ -55,7 +56,7 @@ void		convert_di(intmax_t arg, t_print *p);
 void		convert_o(uintmax_t arg, t_print *p);
 void		convert_u(uintmax_t arg, t_print *p);
 void		convert_x(uintmax_t arg, t_print *p);
-void		convert_f(intmax_t arg, t_print *p);
+void		convert_f(long double arg, t_print *p);
 void		convert_percent(va_list ap, t_print *p);
 
 int			ft_putstr_len_percent(const char *str);

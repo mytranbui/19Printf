@@ -58,7 +58,6 @@ char	*get_int(double n, t_print *p)
 			return (0);
 		str_dot = ft_strcpy(str_dot, s);
 		str_dot[len] = '.';
-		//		str_dot[len + 1] = '\0';
 	}
 	return (!str_dot ? s : str_dot);
 }
@@ -92,15 +91,22 @@ char	*get_flt(double n, t_print *p)
 	return (str_flt);
 }
 
-void	convert_f(intmax_t arg, t_print *p)
+void	convert_f2(long double arg, int bigger_len, int len, t_print *p)
 {
-	//double	n;
+	if (arg < 0 && p->flg.zero)
+		ft_putchar('-');
+	padding_ze_sp(bigger_len, p);
+	putsign(arg, p);
+	padding_zero(len, p);
+}
+
+void	convert_f(long double arg, t_print *p)
+{
 	int		len;
 	int		bigger_len;
 	int		tmp_pres;
 	char	*str_flt;
 
-	//n = va_arg(ap, double);
 	str_flt = get_flt(ft_dabs(arg), p);
 	len = ft_strlen(str_flt);
 	tmp_pres = p->pres;
@@ -113,15 +119,7 @@ void	convert_f(intmax_t arg, t_print *p)
 		ft_putchar(' ');
 	if (p->flg.minus == 0)
 	{
-		if (arg < 0 && p->flg.zero)
-			ft_putchar('-');
-		while (p->width-- - bigger_len > 0)
-			(p->flg.zero) ? ft_putchar('0') : ft_putchar(' ');
-		if (p->flg.plus && arg >= 0)
-			ft_putchar('+');
-		else if (arg < 0 && p->flg.zero == 0)
-			ft_putchar('-');
-		padding_zero(len, p);
+		convert_f2(arg, bigger_len, len, p);
 		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(str_flt);
 	}
 	else
@@ -132,3 +130,6 @@ void	convert_f(intmax_t arg, t_print *p)
 		padding_space(bigger_len, p);
 	}
 }
+
+//printf("{ARGG=%ji}", arg);
+//	printf("{darg=%f}", ft_dabs(arg));

@@ -43,8 +43,7 @@ unsigned int *p= &nb;
 
 //	int 	nb = -1564312;
 
-/*	printf("\n-----CHAR-----\n"); //(-, 0?, width) ok nullok
-	// single flag
+/*	// single flag
 	ft_printf("%+c%-5c||\n", c, 'g');
 	printf("%+c%-5c||\n", c, 'g');
 	ft_printf("%+c||\n", c);
@@ -380,7 +379,7 @@ printf("%s||\n", NULL);
 	printf("%0# 40.u||\n", nb);
 	ft_printf("%0# 40.60u||\n", nb);
 	printf("%0# 40.60u||\n", nb);
-*/
+
 	printf("\n-----UNSIGNED HEX-----\n"); //(-, 0, #, )
 	// single flag
 	ft_printf("%+x||\n", nb);
@@ -455,7 +454,7 @@ printf("%s||\n", NULL);
 	ft_printf("%hx||\n", 587);
 	printf("%hx||\n", 587);
 
-/*	printf("\n-----PERCENTS-----\n"); //(-,0,width) xpres x# x' '?
+	printf("\n-----PERCENTS-----\n"); //(-,0,width) xpres x# x' '?
 	// single flag
 	ft_printf("%+%||\n");
 	printf("%+%||\n");
@@ -548,14 +547,9 @@ printf("%s||\n", NULL);
 	  	printf("%- 100.50f||\n", f);
 		ft_printf("% +100.50f||\n", f);
 	  	printf("% +100.50f||\n", f);
-		ft_printf("%-050f||\n", f);
-	  	printf("%-050f||\n", f);
 		ft_printf("%0+50.50f||\n", f);
 	  	printf("%0+50.50f||\n", f);
-		ft_printf("%0-+050.5f||\n", f);
-	  	printf("%0-+050.5f||\n", f);
-		ft_printf("%0-+050.8f||\n", f);
-	  	printf("%0-+050.8f||\n", f);
+
 		ft_printf("%-10f||\n", f);
 		printf("%-10f||\n", f);
 		ft_printf("%08.f||\n", f);
@@ -564,22 +558,11 @@ printf("%s||\n", NULL);
 	 	printf("%8.f||\n", f);
 		ft_printf("%#018.f||\n", f);
 	 	printf("%0#18.f||\n", f); //no
-		ft_printf("%- 08.f||\n", f);
-	 	printf("%- 08.f||\n", f);
-		ft_printf("%0-+18.60f||\n", f);
-		printf("%0-+18.60f||\n", f);
-		ft_printf("%0-+# 12.2f||\n", f);
-		printf("%0-+# 12.2f||\n", f); //no
+		 //no
 		ft_printf("%015.f||\n", f);
 		printf("%015.f||\n", f);
-		ft_printf("%+- 011f||\n", f);
-		printf("%+- 011f||\n", f);
-		ft_printf("% -018.30f||\n", f);
-		printf("% -018.30f||\n", f);
-		ft_printf("%-050f||\n", f);
-		printf("%-050f||\n", f);
-		ft_printf("%-0# 50f||\n", f);
-		printf("%-0# 50f||\n", f); //no
+
+
 		ft_printf("%0# 45f||\n", f);
 		printf("%0# 45f||\n", f);
 		ft_printf("%0 18f||\n", f);
@@ -598,7 +581,26 @@ printf("%s||\n", NULL);
 		printf("%.2f||\n", f);
 		ft_printf("%.f||\n", 12);
 		printf("%.f||\n", 12);
-*/
+		ft_printf("%-050f||\n", f);
+	  	printf("%-050f||\n", f);
+		ft_printf("%0-+050.5f||\n", f);
+		  printf("%0-+050.5f||\n", f);
+		ft_printf("%0-+050.8f||\n", f);
+  	printf("%0-+050.8f||\n", f);
+		ft_printf("% -018.30f||\n", f);
+		printf("% -018.30f||\n", f);
+		ft_printf("%-050f||\n", f);
+		printf("%-050f||\n", f);
+		ft_printf("%-0# 50f||\n", f);
+		printf("%-0# 50f||\n", f);
+		ft_printf("%- 08.f||\n", f);
+	 	printf("%- 08.f||\n", f);
+		ft_printf("%0-+18.60f||\n", f);
+		printf("%0-+18.60f||\n", f);
+		ft_printf("%0-+# 12.2f||\n", f);
+		printf("%0-+# 12.2f||\n", f);
+		ft_printf("%+- 011f||\n", f);
+		printf("%+- 011f||\n", f);
  ft_printf("%i||\n", i);
  printf("%i||\n", i);
  ft_printf("%hi||\n", h);
@@ -666,5 +668,5 @@ printf("%15f",1.123456);
 		printf("%14+d||\n", 123456789);
 		ft_printf ("ft_printf2:|%#5x||\n", 1);
 		printf ("printf2   :|%#5x||\n", 1);
-	return (0);
+*/	return (0);
 }

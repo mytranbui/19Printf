@@ -24,7 +24,7 @@
 ** L	>>	long (unsigned) double
 */
 
-intmax_t	convert_arg_di(va_list ap, t_print *p)
+intmax_t	convert_arg_dif(va_list ap, t_print *p)
 {
 	intmax_t	arg;
 
@@ -42,20 +42,22 @@ intmax_t	convert_arg_di(va_list ap, t_print *p)
 		else
 			arg = (int)va_arg(ap, int);
 	}
-	if (p->flg.maj_l == 1 && p->type == 'f')
-	{
-	//	printf("F");
-		arg = va_arg(ap, long double);
-	}
-	else if (p->type == 'f')
-	{
-		printf("f");
-		arg = va_arg(ap, double);
-	}
 	return (arg);
 }
 
-uintmax_t	convert_arg_ouxxf(va_list ap, t_print *p)
+long double convert_arg_f(va_list ap, t_print *p)
+{
+	long double	arg;
+
+	arg = 0;
+	if (p->flg.maj_l == 1)
+		arg = va_arg(ap, long double);
+	else
+		arg = (double)va_arg(ap, double);
+	return (arg);
+}
+
+uintmax_t	convert_arg_ouxx(va_list ap, t_print *p)
 {
 	uintmax_t	arg;
 

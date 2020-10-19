@@ -53,7 +53,7 @@ void	convert_di(intmax_t arg, t_print *p)
 	(p->flg.space && p->flg.plus == 0 && n >= 0) ? bigger_len++ : bigger_len;
 	if (p->flg.space && p->flg.plus == 0 && n >= 0)
 		ft_putchar(' ');
-	if (p->flg.minus == 0)
+	if (!p->flg.minus)
 	{
 		padding_space(bigger_len, p);
 		putsign(n, p);
@@ -107,7 +107,7 @@ void	convert_o(uintmax_t arg, t_print *p)
 	(len > p->pres) ? bigger_len = len : bigger_len;
 	if (*s == '0' && !tmp_pres && !p->flg.hash && !p->width)
 		return ;
-	if (p->flg.minus == 0)
+	if (!p->flg.minus)
 	{
 		padding_ze_sp(bigger_len, p);
 		if (p->flg.hash && *s != '0')
@@ -144,7 +144,7 @@ void	convert_u(uintmax_t arg, t_print *p)
 	tmp_pres = p->pres;
 	bigger_len = p->pres;
 	(len > p->pres) ? bigger_len = len : bigger_len;
-	if (p->flg.minus == 0)
+	if (!p->flg.minus)
 	{
 		padding_ze_sp(bigger_len, p);
 		padding_zero(len, p);
@@ -178,13 +178,13 @@ void	convert_x(uintmax_t arg, t_print *p)
 	bigger_len = p->pres;
 	(len > p->pres) ? bigger_len = len : bigger_len;
 	(*s != '0' && p->flg.hash) ? bigger_len += 2 : bigger_len;
-/*	if (p->flg.minus == 0 && p->pres == -1 && p->flg.hash)
+/*	if (!p->flg.minus && p->pres == -1 && p->flg.hash)
 	{
 		putprefix(s, p);
 		padding_ze_sp(bigger_len, p);
 		(*s == '0' && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(s);
 	}
-	else*/ if (p->flg.minus == 0)
+	else*/ if (!p->flg.minus)
 	{
 		padding_ze_sp(bigger_len, p);
 		// while (p->width-- - bigger_len > 0)// && !p->flg.hash)
