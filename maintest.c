@@ -126,7 +126,7 @@ printf("%0#05s||\n", NULL);
 ft_printf("%s||\n", NULL);
 printf("%s||\n", NULL);
 
-	printf("\n-----POINTER-----\n"); //(-, width, pres?) //ok null ok
+*/	printf("\n-----POINTER-----\n"); //(-, width, pres?) //ok null ok
 	// single flag
 	ft_printf("%+p||\n", p);
 	printf("%+p||\n", p);
@@ -196,7 +196,7 @@ printf("%s||\n", NULL);
 	ft_printf("%p||\n", p);
 	printf("%p||\n", p);
 
-	printf("\n-----SIGNED INT-----\n"); //(+, - , ' ', 0 , width, pres)
+/*	printf("\n-----SIGNED INT-----\n"); //(+, - , ' ', 0 , width, pres)
 	// single flag
 	ft_printf("%+i||\n", i);
  	printf("%+i||\n", i);
