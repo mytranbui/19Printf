@@ -45,7 +45,7 @@ int		ft_printf(const char *format, ...)
 		{
 			i++;
 			p = init_flags(p);
-			i = parse_flags(ap, p, i);
+			i = parse(ap, p, i);
 			conversion(ap, p);
 		}
 		else

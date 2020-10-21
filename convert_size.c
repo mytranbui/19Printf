@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:22:40 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/16 17:02:45 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/21 16:17:56 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,18 @@ intmax_t	convert_arg_di(va_list ap, t_print *p)
 	return (arg);
 }
 
-long double convert_arg_f(va_list ap, t_print *p)
+long double	convert_arg_f(va_list ap, t_print *p)
 {
 	long double	arg;
 
 	arg = 0;
-	if (p->flg.maj_l == 1)
-		arg = va_arg(ap, long double);
-	else
-		arg = (double)va_arg(ap, double);
+	if (p->type == 'f')
+	{
+		if (p->flg.maj_l == 1)
+			arg = va_arg(ap, long double);
+			else
+			arg = (double)va_arg(ap, double);
+	}
 	return (arg);
 }
 
@@ -71,25 +74,48 @@ uintmax_t	convert_arg_ouxx(va_list ap, t_print *p)
 		}
 		else if (p->flg.h == 2)
 		{
-printf("B");
-arg = (unsigned char)va_arg(ap, unsigned int);
-}
+			printf("B");
+			arg = (unsigned char)va_arg(ap, unsigned int);
+		}
 		else if (p->flg.l == 1)
 		{
-printf("C");
-arg = (unsigned long int)va_arg(ap, unsigned long int);
-}
+			printf("C");
+			arg = (unsigned long int)va_arg(ap, unsigned long int);
+		}
 		else if (p->flg.l == 2)
 		{
-printf("D");
-arg = (unsigned long long int)va_arg(ap, unsigned long long int);
-}
+			printf("D");
+			arg = (unsigned long long int)va_arg(ap, unsigned long long int);
+		}
 		else
 		{
-//printf("E");
-// arg = (unsigned long long int)va_arg(ap, unsigned long long);
-arg = va_arg(ap, unsigned long long);
+			//printf("E");
+			// arg = (unsigned long long int)va_arg(ap, unsigned long long);
+			arg = va_arg(ap, unsigned long long);
 		}
 	}
 	return (arg);
+}
+
+int			conversion(va_list ap, t_print *p)
+{
+	if (p->type == 'c')
+		convert_c(ap, p);
+	else if (p->type == 's')
+		convert_s(ap, p);
+	else if (p->type == 'p')
+		convert_p(ap, p);
+	else if (p->type == 'd' || p->type == 'i')
+		convert_di(convert_arg_di(ap, p), p);
+	else if (p->type == 'o')
+		convert_o(convert_arg_ouxx(ap, p), p);
+	else if (p->type == 'u')
+		convert_u(convert_arg_ouxx(ap, p), p);
+	else if (p->type == 'x' || p->type == 'X')
+		convert_x(convert_arg_ouxx(ap, p), p);
+	else if (p->type == 'f')
+		convert_f(convert_arg_f(ap, p), p);
+	else if (p->type == '%')
+		convert_percent(ap, p);
+	return (1);
 }

@@ -12,6 +12,11 @@
 
 #include "libftprintf.h"
 
+int		isflag(char c)
+{
+	return (c == '+' || c == '-' || c == ' ' || c == '#' || c == '0');
+}
+
 int		istype(char c)
 {
 	return (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'o'

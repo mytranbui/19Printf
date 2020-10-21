@@ -100,11 +100,10 @@ void	convert_o(uintmax_t arg, t_print *p)
 	if (!(s = ft_utoa_base(arg, 8, 'x')))
 		free_print(&p, 2);
 	len = ft_strlen(s);
-	bigger_len = p->pres;
 	tmp_pres = p->pres;
 	(p->flg.hash) ? len++ : len;
 	(p->flg.hash && *s == '0') ? len-- : len;
-	(len > p->pres) ? bigger_len = len : bigger_len;
+	bigger_len = (len > p->pres) ? len : p->pres;
 	if (*s == '0' && !tmp_pres && !p->flg.hash && !p->width)
 		return ;
 	if (!p->flg.minus)
@@ -142,8 +141,7 @@ void	convert_u(uintmax_t arg, t_print *p)
 		free_print(&p, 2);
 	len = ft_strlen(s);
 	tmp_pres = p->pres;
-	bigger_len = p->pres;
-	(len > p->pres) ? bigger_len = len : bigger_len;
+	bigger_len = (len > p->pres) ? len : p->pres;
 	if (!p->flg.minus)
 	{
 		padding_ze_sp(bigger_len, p);
@@ -175,8 +173,7 @@ void	convert_x(uintmax_t arg, t_print *p)
 		free_print(&p, 2);
 	len = ft_strlen(s);
 	tmp_pres = p->pres;
-	bigger_len = p->pres;
-	(len > p->pres) ? bigger_len = len : bigger_len;
+	bigger_len = (len > p->pres) ? len : p->pres;
 	(*s != '0' && p->flg.hash) ? bigger_len += 2 : bigger_len;
 /*	if (!p->flg.minus && p->pres == -1 && p->flg.hash)
 	{

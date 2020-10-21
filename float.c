@@ -110,12 +110,8 @@ void	convert_f(long double arg, t_print *p)
 	str_flt = get_flt(ft_dabs(arg), p);
 	len = ft_strlen(str_flt);
 	tmp_pres = p->pres;
-	bigger_len = p->pres;
-	//bigger_len = (len > p->pres) ? len : p->pres;
+	bigger_len = (len > p->pres) ? len : p->pres;
 	(arg < 0 || (p->flg.plus && arg >= 0)) ? len++ && bigger_len++ : len;
-	//printf("{biglen=%d}", bigger_len);
-	//bigger_len = (len > p->pres) ? len : p->pres;
-	(len > p->pres) ? bigger_len = len : bigger_len;
 	(p->flg.plus == 0 && arg >= 0) ? len++ : len;
 	(p->flg.space && p->flg.plus == 0 && arg >= 0) ? bigger_len++ : bigger_len;
 	if (p->flg.space && p->flg.plus == 0 && arg >= 0)

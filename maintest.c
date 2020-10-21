@@ -39,7 +39,7 @@ unsigned int *p= &nb;
 	long		l = 42;
 	long long	m = 42;
 //	float		f = 12548645487.15; //kk on first dec '6' instead of '0'
-	float		f = 4346765.8448;
+	float		f = -422222264765.8448;
 
 //	int 	nb = -1564312;
 
@@ -249,8 +249,7 @@ printf("%s||\n", NULL);
 	printf("%+- 011.i||\n", i);
 
 
-	printf("\n-----UNSIGNED OCTAL-----\n"); //(-, 0, #, )
-	ft_printf("%+o||\n", nb);
+*/	ft_printf("%+o||\n", nb);
 	printf("%+o||\n", nb);
 	ft_printf("%0o||\n", nb);
 	printf("%0o||\n", nb);
@@ -314,7 +313,7 @@ printf("%s||\n", NULL);
 	ft_printf("%0# 40.60o||\n", nb);
 	printf("%0# 40.60o||\n", nb); //0-
 
-	printf("\n-----UNSIGNED INT-----\n"); //(-, 0, #, )
+/*	printf("\n-----UNSIGNED INT-----\n"); //(-, 0, #, )
 	// single flag
 	ft_printf("%+u||\n", nb);
 	printf("%+u||\n", nb);
@@ -520,10 +519,10 @@ printf("%s||\n", NULL);
 	ft_printf("%0# 0.30%||\n");
 	printf("%0# 0.30%||\n"); //ok
 
-*/		printf("\n-----FLOAT-----\n"); //(-, 0, #, )
+		printf("\n-----FLOAT-----\n"); //(-, 0, #, )
 		// single flag
 		ft_printf("%.10+ f||\n", f);
-		printf("%.-10+ f||\n", f);
+		printf("%.10+ f||\n", f);
 		ft_printf("%+f||\n", f);
 		printf("%+f||\n", f);
 		ft_printf("%0f||\n", f);
@@ -601,7 +600,7 @@ printf("%s||\n", NULL);
 		printf("%0-+# 12.2f||\n", f);
 		ft_printf("%+- 011f||\n", f);
 		printf("%+- 011f||\n", f);
-/* ft_printf("%i||\n", i);
+ ft_printf("%i||\n", i);
  printf("%i||\n", i);
  ft_printf("%hi||\n", h);
  printf("%hi||\n", h);
