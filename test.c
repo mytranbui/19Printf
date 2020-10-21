@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/16 17:19:57 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/21 18:44:24 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	convert_di(intmax_t arg, t_print *p)
 
 	//v = va_arg(ap, long long);
 	//n = ft_atoi(ft_itoa_base(arg, 10, 'x'));
-//	printf("{arg=%ji}", arg);
+	//	printf("{arg=%ji}", arg);
 	if (!(s = ft_itoa_base(arg, 10, 'x')))
 		free_print(&p, 2);
 	n = ft_atoi(s);
@@ -95,7 +95,7 @@ void	convert_o(uintmax_t arg, t_print *p)
 	int		bigger_len;
 	int		tmp_pres;
 
-// printf("{arg=%ji}", arg);
+	// printf("{arg=%ji}", arg);
 	//s = ft_itoa_base(va_arg(ap, unsigned long long), 8, 'x');
 	if (!(s = ft_utoa_base(arg, 8, 'x')))
 		free_print(&p, 2);
@@ -126,8 +126,8 @@ void	convert_o(uintmax_t arg, t_print *p)
 }
 
 /*
-** %u: undefined behavior with// '+', ' ', '#' ('#' has no effect)
-*/
+ ** %u: undefined behavior with// '+', ' ', '#' ('#' has no effect)
+ */
 
 void	convert_u(uintmax_t arg, t_print *p)
 {
@@ -158,8 +158,8 @@ void	convert_u(uintmax_t arg, t_print *p)
 }
 
 /*
-** %x & %X: undefined behavior with +, '0' and ' '
-*/
+ ** %x & %X: undefined behavior with +, '0' and ' '
+ */
 
 void	convert_x(uintmax_t arg, t_print *p)
 {
@@ -175,13 +175,13 @@ void	convert_x(uintmax_t arg, t_print *p)
 	tmp_pres = p->pres;
 	bigger_len = (len > p->pres) ? len : p->pres;
 	(*s != '0' && p->flg.hash) ? bigger_len += 2 : bigger_len;
-/*	if (!p->flg.minus && p->pres == -1 && p->flg.hash)
-	{
+	/*	if (!p->flg.minus && p->pres == -1 && p->flg.hash)
+		{
 		putprefix(s, p);
 		padding_ze_sp(bigger_len, p);
 		(*s == '0' && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(s);
-	}
-	else*/ if (!p->flg.minus)
+		}
+		else*/ if (!p->flg.minus)
 	{
 		padding_ze_sp(bigger_len, p);
 		// while (p->width-- - bigger_len > 0)// && !p->flg.hash)

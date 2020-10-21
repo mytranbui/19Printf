@@ -6,14 +6,14 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 16:11:13 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/19 16:09:56 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/21 18:46:53 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdio.h>
 
-int	ft_putstr_len_percent(const char *str)
+int		ft_putstr_len_percent(const char *str)
 {
 	int i;
 
@@ -25,7 +25,7 @@ int	ft_putstr_len_percent(const char *str)
 	return (i);
 }
 
-void free_print(t_print **p, int n)
+void	free_print(t_print **p, int n)
 {
 	if (p)
 	{
@@ -37,8 +37,7 @@ void free_print(t_print **p, int n)
 		exit(EXIT_FAILURE);
 }
 
-//hhmmm?
-void free_strprint(char **s)
+void	free_strprint(char **s)
 {
 	if (**s != '0')
 		ft_strdel(s);

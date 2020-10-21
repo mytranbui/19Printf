@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:22:40 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/21 16:17:56 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/21 18:45:06 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ long double	convert_arg_f(va_list ap, t_print *p)
 	{
 		if (p->flg.maj_l == 1)
 			arg = va_arg(ap, long double);
-			else
+		else
 			arg = (double)va_arg(ap, double);
 	}
 	return (arg);
