@@ -73,6 +73,7 @@ void	convert_s(va_list ap, t_print *p)
 
 /*
 ** %p: undefined behavior with +, 0, ' ', # and precision
+** line 102: +2 is the len of the prefix "0x"
 */
 
 void	convert_p2(int len, int bigger_len, t_print *p)

@@ -6,27 +6,15 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 09:39:00 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/19 16:38:26 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/16 17:50:50 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdio.h>
 
-int		istype(char c)
-{
-	return (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'o'
-			|| c == 'u' || c == 'x' || c == 'X' || c == 'f' || c == '%');
-}
-
-int		issize(char c)
-{
-	return (c == 'h' || c == 'l' || c == 'L');
-}
-
 int		get_width_pres(va_list ap, t_print *p, int i)
 {
-	//	printf("WIDTH");
 	if (ft_isdigit(p->fmt[i]))
 	{
 		p->width = ft_atoi(&p->fmt[i]);
@@ -35,7 +23,6 @@ int		get_width_pres(va_list ap, t_print *p, int i)
 	}
 	else if (p->fmt[i] == '*')
 	{
-		//printf("{WILDWIDTH}");
 		p->width = va_arg(ap, int);
 		i++;
 	}
@@ -47,7 +34,6 @@ int		get_width_pres(va_list ap, t_print *p, int i)
 			i++;
 		if (p->fmt[i] == '*')
 		{
-			//	printf("{WILDPRES}");
 			p->pres = va_arg(ap, int);
 			i++;
 		}
@@ -57,7 +43,6 @@ int		get_width_pres(va_list ap, t_print *p, int i)
 
 int		parse_size(t_print *p, int i)
 {
-	//	printf("SIZE");
 	while (p->fmt[i] != '\0' && istype(p->fmt[i]) == 0)
 	{
 		if (p->fmt[i] == 'h' && p->fmt[i + 1] == 'h' && p->flg.h == 0)
@@ -72,15 +57,14 @@ int		parse_size(t_print *p, int i)
 			p->flg.maj_l = 1;
 		i++;
 	}
-	//	printf("h=%d | l=%d | L=%d\n", p->flg.h, p->flg.l, p->flg.maj_l);
 	return (i);
 }
 
 int		parse_flags(va_list ap, t_print *p, int i)
 {
 	while (p->fmt[i] != '\0' && !istype(p->fmt[i]) && (!ft_isdigit(p->fmt[i])
-				|| p->fmt[i] == '0') && p->fmt[i] != '.' && p->fmt[i] != '*' &&
-			!issize(p->fmt[i]))
+	|| p->fmt[i] == '0') && p->fmt[i] != '.' && p->fmt[i] != '*' &&
+	 !issize(p->fmt[i]))
 	{
 		if (p->fmt[i] == '+' && p->flg.plus == 0)
 			p->flg.plus = 1;
@@ -95,14 +79,12 @@ int		parse_flags(va_list ap, t_print *p, int i)
 		i++;
 	}
 	i = get_width_pres(ap, p, i);
-	//	printf("{fmt[i]=%c}",p->fmt[i]);
-	//	if (p->fmt[i] == 'h' || p->fmt[i] == 'l' || p->fmt[i] == 'L')
+//	if (p->fmt[i] == 'h' || p->fmt[i] == 'l' || p->fmt[i] == 'L')
 	i = parse_size(p, i);
-	//	printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d | h=%d | l=%d | L=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres, p->flg.h, p->flg.l, p->flg.maj_l);
-	//printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres);
+	printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d | h=%d | l=%d | L=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres, p->flg.h, p->flg.l, p->flg.maj_l);
 	//	printf("{fmt[i]=%c}",p->fmt[i]);
 	p->type = p->fmt[i];
-	//	printf("TYPE=%c\n", p->type);
+//	printf("TYPE=%c\n", p->type);
 	return (i);
 }
 
@@ -115,7 +97,7 @@ int		conversion(va_list ap, t_print *p)
 	else if (p->type == 'p')
 		convert_p(ap, p);
 	else if (p->type == 'd' || p->type == 'i')
-		convert_di(convert_arg_dif(ap, p), p);
+		convert_di(convert_arg_di(ap, p), p);
 	else if (p->type == 'o')
 		convert_o(convert_arg_ouxx(ap, p), p);
 	else if (p->type == 'u')

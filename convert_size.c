@@ -24,7 +24,7 @@
 ** L	>>	long (unsigned) double
 */
 
-intmax_t	convert_arg_dif(va_list ap, t_print *p)
+intmax_t	convert_arg_di(va_list ap, t_print *p)
 {
 	intmax_t	arg;
 
