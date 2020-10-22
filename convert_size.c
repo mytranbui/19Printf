@@ -60,7 +60,7 @@ long double	convert_arg_f(va_list ap, t_print *p)
 	return (arg);
 }
 
-uintmax_t	convert_arg_ouxx(va_list ap, t_print *p)
+uintmax_t	convert_arg_oux(va_list ap, t_print *p)
 {
 	uintmax_t	arg;
 
@@ -108,11 +108,11 @@ int			conversion(va_list ap, t_print *p)
 	else if (p->type == 'd' || p->type == 'i')
 		convert_di(convert_arg_di(ap, p), p);
 	else if (p->type == 'o')
-		convert_o(convert_arg_ouxx(ap, p), p);
+		convert_o(convert_arg_oux(ap, p), p);
 	else if (p->type == 'u')
-		convert_u(convert_arg_ouxx(ap, p), p);
+		convert_u(convert_arg_oux(ap, p), p);
 	else if (p->type == 'x' || p->type == 'X')
-		convert_x(convert_arg_ouxx(ap, p), p);
+		convert_x(convert_arg_oux(ap, p), p);
 	else if (p->type == 'f')
 		convert_f(convert_arg_f(ap, p), p);
 	else if (p->type == '%')
