@@ -1,0 +1,41 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/05/06 09:43:02 by mbui              #+#    #+#              #
+#    Updated: 2020/10/23 16:21:05 by mbui             ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = libftprintf.a
+FLAGS = -Wall -Wextra -Werror
+SRC =  ft_printf.c parse.c float.c test.c utils.c utils2.c parse_utils.c  \
+	convert_size.c print_csppercent.c
+LIB = libft/libft.a
+OBJ = $(SRC:.c=.o)
+
+all: $(NAME)
+
+$(NAME): getlibft
+	cp $(LIB) $(NAME)
+	gcc -c $(FLAGS) $(SRC) libftprintf.h
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
+
+getlibft:
+	make -C libft
+
+clean:
+	rm -f $(OBJ)
+	make clean -C libft
+
+fclean: clean
+	rm -f $(NAME)
+	make fclean -C libft
+
+re: fclean all
+
+.PHONY: clean fclean all re

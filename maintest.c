@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   maintest.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   created: 2020/01/20 09:26:22 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/12 17:29:56 by mbui             ###   ########.fr       */
+/*   Created: 2020/10/23 08:56:51 by mbui              #+#    #+#             */
+/*   Updated: 2020/10/23 08:57:02 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,24 @@ int main(void)
 //	int	i = -43125345; //4294967295
 	//unsigned int	nb = 4294967296; //kkx kko
 //	unsigned int	nb = 4294967296; //kko kkx
-unsigned int	nb = 135;
+unsigned int	nb = 125935;
 //	unsigned int	nb = 458;
-	int		i = 4646;
+	int		i = 466296;
 	//int		i = 2147483648; //kk on that number + & -
 //	int		i = 2147483648;
 	//int		i =-0;
 //	float f = 5323.1468;
 //int		*p = &i;
 unsigned int *p= &nb;
-	short		h = 42;
-	long		l = 42;
-	long long	m = 42;
+	short		h = 697;
+	long		l = 697;
+	long long	m = 697;
 //	float		f = 12548645487.15; //kk on first dec '6' instead of '0'
 	float		f = -422222264765.8448;
 
 //	int 	nb = -1564312;
 
-/*	// single flag
+	// single flag
 	ft_printf("%+c%-5c||\n", c, 'g');
 	printf("%+c%-5c||\n", c, 'g');
 	ft_printf("%+c||\n", c);
@@ -249,7 +249,7 @@ printf("%s||\n", NULL);
 	printf("%+- 011.i||\n", i);
 
 
-*/	ft_printf("%+o||\n", nb);
+	ft_printf("%+o||\n", nb);
 	printf("%+o||\n", nb);
 	ft_printf("%0o||\n", nb);
 	printf("%0o||\n", nb);
@@ -313,7 +313,7 @@ printf("%s||\n", NULL);
 	ft_printf("%0# 40.60o||\n", nb);
 	printf("%0# 40.60o||\n", nb); //0-
 
-/*	printf("\n-----UNSIGNED INT-----\n"); //(-, 0, #, )
+	printf("\n-----UNSIGNED INT-----\n"); //(-, 0, #, )
 	// single flag
 	ft_printf("%+u||\n", nb);
 	printf("%+u||\n", nb);
@@ -450,8 +450,6 @@ printf("%s||\n", NULL);
 	printf("%0# 45.40X||\n", nb); //no width > pres
 	ft_printf("%0# 40.45X||\n", nb);
 	printf("%0# 40.45X||\n", nb);
-	ft_printf("%hx||\n", 587);
-	printf("%hx||\n", 587);
 
 	printf("\n-----PERCENTS-----\n"); //(-,0,width) xpres x# x' '?
 	// single flag
@@ -667,5 +665,8 @@ printf("%15f",1.123456);
 		printf("%14+d||\n", 123456789);
 		ft_printf ("ft_printf2:|%#5x||\n", 1);
 		printf ("printf2   :|%#5x||\n", 1);
-*/	return (0);
+	unsigned short y = 587;
+	ft_printf("%hx||\n", y);
+	printf("%hx||\n", y);
+	return (0);
 }
