@@ -32,7 +32,7 @@ void	convert_di(intmax_t arg, t_print *p)
 {
 	char		*s;
 	//intmax_t	v;
-	int			n;
+	//int			n;
 	int			len;
 	int			bigger_len;
 	int			tmp_pres;
@@ -40,33 +40,37 @@ void	convert_di(intmax_t arg, t_print *p)
 	//v = va_arg(ap, long long);
 	//n = ft_atoi(ft_itoa_base(arg, 10, 'x'));
 	//	printf("{arg=%ji}", arg);
-	if (!(s = ft_itoa_base(arg, 10, 'x')))
+	if (!(s = ft_utoa_base(arg, 10, 'x')))
 		free_print(&p, 2);
-	n = ft_atoi(s);
+	printf("{arg=%ji}", arg);
+	printf("{s=%s}", s);
+	//if (arg < 0)
+		
+	//arg = ft_atoi(s);
 	len = ft_intlen(ft_dabs(arg));
 	bigger_len = p->pres;
 	tmp_pres = p->pres;
-	(n < 0 || (p->flg.plus && n >= 0)) ? len++ && bigger_len++ : len;
+	(arg < 0 || (p->flg.plus && arg >= 0)) ? len++ && bigger_len++ : len;
 	(len > p->pres) ? bigger_len = len : bigger_len;
 	p->pres++; // why?
-	(p->flg.plus == 0 && n >= 0) ? len++ : len;
-	(p->flg.space && p->flg.plus == 0 && n >= 0) ? bigger_len++ : bigger_len;
-	if (p->flg.space && p->flg.plus == 0 && n >= 0)
+	(p->flg.plus == 0 && arg >= 0) ? len++ : len;
+	(p->flg.space && p->flg.plus == 0 && arg >= 0) ? bigger_len++ : bigger_len;
+	if (p->flg.space && p->flg.plus == 0 && arg >= 0)
 		ft_putchar(' ');
 	if (!p->flg.minus)
 	{
 		padding_space(bigger_len, p);
-		putsign(n, p);
+		putsign(arg, p);
 		padding_zero(len, p);
-		//(n == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbr(ft_abs(arg));
-		(n == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbr(ft_dabs(arg));
+		//(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbr(ft_abs(arg));
+		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbr(arg * -1);
 	}
 	else
 	{
-		putsign(n, p);
+		putsign(arg, p);
 		padding_zero(len, p);
-		//(n == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbr(ft_abs(arg));
-		(n == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbr(ft_dabs(arg));
+		//(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbr(ft_abs(arg));
+		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbr(arg * -1);
 		padding_space(bigger_len, p);
 	}
 	free_strprint(&s);
