@@ -27,31 +27,16 @@
 ** Since 2147483648 is greater than INT_MAX, then abs(-2147483648) is undefined
 */
 
-//all ok except 2147483648
 void	convert_di(intmax_t arg, t_print *p)
 {
-	char		*s;
-	//intmax_t	v;
-	//int			n;
 	int			len;
 	int			bigger_len;
 	int			tmp_pres;
 
-	//v = va_arg(ap, long long);
-	//n = ft_atoi(ft_itoa_base(arg, 10, 'x'));
-	//	printf("{arg=%ji}", arg);
-	if (!(s = ft_utoa_base(arg, 10, 'x')))
-		free_print(&p, 2);
-	printf("{arg=%ji}", arg);
-	printf("{s=%s}", s);
-	//if (arg < 0)
-		
-	//arg = ft_atoi(s);
 	len = ft_intlen(ft_dabs(arg));
-	bigger_len = p->pres;
 	tmp_pres = p->pres;
+	bigger_len = (len > p->pres) ? len : p->pres;
 	(arg < 0 || (p->flg.plus && arg >= 0)) ? len++ && bigger_len++ : len;
-	(len > p->pres) ? bigger_len = len : bigger_len;
 	p->pres++; // why?
 	(p->flg.plus == 0 && arg >= 0) ? len++ : len;
 	(p->flg.space && p->flg.plus == 0 && arg >= 0) ? bigger_len++ : bigger_len;
@@ -62,31 +47,16 @@ void	convert_di(intmax_t arg, t_print *p)
 		padding_space(bigger_len, p);
 		putsign(arg, p);
 		padding_zero(len, p);
-		//(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbr(ft_abs(arg));
-		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbr(arg * -1);
+		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbrmax(ft_dabs(arg));
 	}
 	else
 	{
 		putsign(arg, p);
 		padding_zero(len, p);
-		//(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbr(ft_abs(arg));
-		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbr(arg * -1);
+		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbrmax(ft_dabs(arg));
 		padding_space(bigger_len, p);
 	}
-	free_strprint(&s);
 }
-//	v = v * (-1);
-//	ft_putnbr(2147483647 + 1);
-//	ft_putnbr(n * -1);
-//	//printf("{v =%ju}", v);
-//	//printf("{n =%d}", n);
-//	//printf("{abs(n) =%d}", abs(n));
-//	//printf("{ft_absu(INT_MIN) =%d}", ft_absu(n));
-//	//printf("{len= %d}", len[0]);
-//	//printf("{len[0] = %d}", len[0]);
-//	//printf("{len[2] = %d}", len[2]);
-//	//printf("{printed spaces=%d}\n", i);
-//printf("{pres = %d}", p->pres);
 
 /*
 ** %o: undefined behavior with '+', ' '

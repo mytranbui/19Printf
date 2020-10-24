@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 12:53:43 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/13 10:54:50 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/24 17:12:25 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,4 +111,8 @@ int				nbwords(char const *s, char c);
 t_list			*lstdel_tlist(t_list **head);
 int				ft_listsize(t_list *head);
 double			ft_dabs(double x);
+void			ft_putnbrmax_fd(intmax_t n, int fd);
+void			ft_putnbrmax(intmax_t n);
+void			ft_putnbrumax_fd(uintmax_t n, int fd);
+void			ft_putnbrumax(uintmax_t n);
 #endif
