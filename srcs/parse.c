@@ -90,7 +90,7 @@ int	parse(va_list ap, t_print *p, int i)
 		//  p->fmt[i] != '.' || p->fmt[i] != '*')
 		// 	i++;
 	}
-	//printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d | h=%d | l=%d | L=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres, p->flg.h, p->flg.l, p->flg.maj_l);
+	printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d | h=%d | l=%d | L=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres, p->flg.h, p->flg.l, p->flg.maj_l);
 	//	printf("{fmt[i]=%c}",p->fmt[i]);
 	p->type = p->fmt[i];
 ///	printf("TYPE=%c\n", p->type);

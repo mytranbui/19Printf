@@ -40,13 +40,13 @@ void	putsign(int n, t_print *p)
 void	padding_zero(int len, t_print *p)
 {
 	while (p->pres-- - len > 0)
-		ft_putchar('0');
+		ft_putchar('Z');
 }
 
 void	padding_space(int len, t_print *p)
 {
 	while (p->width-- - len > 0)
-		ft_putchar(' ');
+		ft_putchar('P');
 }
 
 void	padding_ze_sp(int len, t_print *p)

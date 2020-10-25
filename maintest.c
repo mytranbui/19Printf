@@ -28,7 +28,7 @@ int main(void)
 //	unsigned int	nb = 4294967296; //kko kkx
 unsigned int	nb = 125935;
 //	unsigned int	nb = 458;
-	int		i = 704756296;
+	int		i = 0;
 	//int		i = 2147483648; //kk on that number + & -
 //	int		i = 2147483648;
 	//int		i =-0;
@@ -668,5 +668,8 @@ printf("%15f",1.123456);
 	unsigned short y = 587;
 	ft_printf("%hx||\n", y);
 	printf("%hx||\n", y);
-*/	return (0);
+*/
+ft_printf("|111%s333%s555|\n", "222", "444");
+printf("|111%s333%s555|\n", "222", "444");
+	return (0);
 }

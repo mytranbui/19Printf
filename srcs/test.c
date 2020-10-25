@@ -147,13 +147,7 @@ void	convert_x(uintmax_t arg, t_print *p)
 	tmp_pres = p->pres;
 	bigger_len = (len > p->pres) ? len : p->pres;
 	(*s != '0' && p->flg.hash) ? bigger_len += 2 : bigger_len;
-	/*	if (!p->flg.minus && p->pres == -1 && p->flg.hash)
-		{
-		putprefix(s, p);
-		padding_ze_sp(bigger_len, p);
-		(*s == '0' && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(s);
-		}
-		else*/ if (!p->flg.minus)
+	if (!p->flg.minus)
 	{
 		padding_ze_sp(bigger_len, p);
 		// while (p->width-- - bigger_len > 0)// && !p->flg.hash)
