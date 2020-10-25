@@ -217,8 +217,6 @@ printf("%s||\n", NULL);
 	ft_printf("%.50i||\n", i);
   	printf("%.50i||\n", i);
 	// multiple flags
-	ft_printf("%- 100.50i||\n", i);
-  	printf("%- 100.50i||\n", i);
 	ft_printf("% +100.50i||\n", i);
   	printf("% +100.50i||\n", i);
 	ft_printf("%-050i||\n", i);
@@ -245,8 +243,12 @@ printf("%s||\n", NULL);
 	printf("%0-+ 12.2i||\n", i);
 	ft_printf("%015.i||\n", i);
 	printf("%015.i||\n", i); //replace 0 by null // 0 width15 pres0
+	ft_printf("%+ 011.i||\n", i);
+	printf("%+ 011.||\n", i);
 	ft_printf("%+- 011.i||\n", i);
 	printf("%+- 011.i||\n", i);
+	ft_printf("%+- 100.50i||\n", i);
+  	printf("%+- 100.50i||\n", i);
 
 /*	printf("\n-----SIGNED OCTAL-----\n");
 	ft_printf("%+o||\n", nb);

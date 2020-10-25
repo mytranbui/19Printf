@@ -13,6 +13,11 @@
 #include "libftprintf.h"
 #include <stdio.h>
 
+/*
+** '0' ignored when '-' is present
+** ' ' ignored when '+' is present
+*/
+
 int	get_flag(t_print *p, int i)
 {
 	while (isflag(p->fmt[i]))
@@ -29,6 +34,10 @@ int	get_flag(t_print *p, int i)
 			p->flg.zero = 1;
 		i++;
 	}
+	if (p->flg.minus)
+		p->flg.zero = 0;
+	if (p->flg.plus)
+		p->flg.space = 0;
 	return (i);
 }
 

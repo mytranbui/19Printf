@@ -40,6 +40,7 @@ void	convert_di(intmax_t arg, t_print *p)
 	p->pres++; // why?
 	(p->flg.plus == 0 && arg >= 0) ? len++ : len;
 	(p->flg.space && p->flg.plus == 0 && arg >= 0) ? bigger_len++ : bigger_len;
+	(arg == 0) ? bigger_len++ && len++ : len;
 	if (p->flg.space && p->flg.plus == 0 && arg >= 0)
 		ft_putchar(' ');
 	if (!p->flg.minus)
