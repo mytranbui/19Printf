@@ -28,7 +28,7 @@ int main(void)
 //	unsigned int	nb = 4294967296; //kko kkx
 unsigned int	nb = 125935;
 //	unsigned int	nb = 458;
-	int		i = 43;
+	int		i = -54;
 	//int		i = 2147483648; //kk on that number + & -
 //	int		i = 2147483648;
 	//int		i =-0;
@@ -196,7 +196,7 @@ printf("%s||\n", NULL);
 	ft_printf("%p||\n", p);
 	printf("%p||\n", p);
 
-*/	printf("\n-----SIGNED INT-----\n"); //(+, - , ' ', 0 , width, pres)
+*//*	printf("\n-----SIGNED INT-----\n"); //(+, - , ' ', 0 , width, pres)
 	// single flag
 	ft_printf("%+i||\n", i);
  	printf("%+i||\n", i);
@@ -253,8 +253,8 @@ printf("%s||\n", NULL);
   	printf("%+- 100.50i||\n", i);
 	ft_printf("%05d||\n", i);
   	printf("%05d||\n", i);
-	ft_printf("%d||\n", i);
-  	printf("%d||\n", i);
+*/	ft_printf("%07d||\n", i);
+  	printf("%07d||\n", i);
 
 /*	printf("\n-----SIGNED OCTAL-----\n");
 	ft_printf("%+o||\n", nb);
@@ -677,7 +677,7 @@ printf("%15f",1.123456);
 	ft_printf("%hx||\n", y);
 	printf("%hx||\n", y);
 */
-ft_printf("|111%s333%s555|\n", "222", "444");
-printf("|111%s333%s555|\n", "222", "444");
+ft_printf("%07d||\n", -55);
+printf("%07d||\n", -55);
 	return (0);
 }

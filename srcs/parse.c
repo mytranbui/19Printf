@@ -20,7 +20,7 @@
 
 int	get_flag(t_print *p, int i)
 {
-	while (isflag(p->fmt[i]))
+	while (isflag(p->fmt[i]) && p->fmt[i])
 	{
 		if (p->fmt[i] == '+')
 			p->flg.plus = 1;
@@ -38,12 +38,13 @@ int	get_flag(t_print *p, int i)
 		p->flg.zero = 0;
 	if (p->flg.plus)
 		p->flg.space = 0;
+	//printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d | h=%d | l=%d | L=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres, p->flg.h, p->flg.l, p->flg.maj_l);
 	return (i);
 }
 
 int	get_size(t_print *p, int i)
 {
-	while (issize(p->fmt[i]))
+	while (issize(p->fmt[i]) && p->fmt[i])
 	{
 		if (p->fmt[i] == 'h' && p->fmt[i + 1] == 'h' && p->flg.h == 0)
 			p->flg.h = 2;

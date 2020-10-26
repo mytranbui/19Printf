@@ -45,14 +45,30 @@ void	convert_di(intmax_t arg, t_print *p)
 		ft_putchar(' ');
 	if (!p->flg.minus)
 	{
+		//if (p->flg.zero && arg < 0)
+			//putchar('M');
 		padding_ze_sp(bigger_len, p);
-		putsign(arg, p);
+	/*	if (p->flg.plus && arg >= 0)
+			ft_putchar('P');
+		else if (arg < 0 && p->flg.zero == 0)
+			ft_putchar('M');
+	*///	putsign(arg, p);
+	//	while (p->width-- - bigger_len > 0)
+	//		ft_putchar((p->flg.zero && p->pres == -1) ? '0' : ' ');
+		if (p->flg.plus && arg >= 0)
+			ft_putchar('+');
+		else if (arg < 0// && !p->flg.zero)
+			ft_putchar('-');
 		padding_zero(len, p);
 		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbrmax(ft_dabs(arg));
 	}
 	else
 	{
-		putsign(arg, p);
+	/*	if (p->flg.plus && arg >= 0)
+			ft_putchar('p');
+		else if (arg < 0)
+			ft_putchar('m');
+		*/putsign(arg, p);
 		padding_zero(len, p);
 		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbrmax(ft_dabs(arg));
 		padding_space(bigger_len, p);
