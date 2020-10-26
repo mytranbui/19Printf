@@ -40,7 +40,7 @@ void	convert_di(intmax_t arg, t_print *p)
 	//(arg == 0 && !tmp_pres && p->flg.plus) ? bigger_len++ : bigger_len;
 	len--;
 	if (p->flg.space && p->flg.plus == 0 && arg >= 0)
-		ft_putchar(' ');
+		ft_putchar('l');
 	if (!p->flg.minus)
 	{
 		if (arg < 0 && p->flg.zero && p->pres == -1)
@@ -48,13 +48,13 @@ void	convert_di(intmax_t arg, t_print *p)
 		padding_ze_sp(bigger_len, p);
 		putsign(arg, p);
 		padding_zero(len, p);
-		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbrmax(ft_dabs(arg));
+		(arg == 0 && tmp_pres == 0) ? ft_putchar('P') : ft_putnbrmax(ft_dabs(arg));
 	}
 	else
 	{
 		putsign(arg, p);
 		padding_zero(len, p);
-		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbrmax(ft_dabs(arg));
+		(arg == 0 && tmp_pres == 0) ? ft_putchar('p') : ft_putnbrmax(ft_dabs(arg));
 		padding_space(bigger_len, p);
 	}
 }
