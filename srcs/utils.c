@@ -21,20 +21,35 @@ void	putprefix(char *s, t_print *p)
 
 void	putsign(int n, t_print *p)
 {
-	if (p->type == 'f' && !p->flg.minus)
+	
+	if (p->type == 'd' || p->type == 'i')
+	{
+		if (p->flg.plus && n >= 0)
+			ft_putchar('+');
+		else if (n < 0 && p->pres != -1)
+			ft_putchar('-');
+	}
+	else if (!p->flg.minus)
 	{
 		if (p->flg.plus && n >= 0)
 			ft_putchar('+');
 		else if (n < 0 && p->flg.zero == 0)
 			ft_putchar('-');
 	}
-	else
-	{
-		if (p->flg.plus && n >= 0)
-			ft_putchar('+');
-		else if (n < 0)
-			ft_putchar('-');
-	}
+	// if (p->type == 'f' && !p->flg.minus)
+	// {
+	// 	if (p->flg.plus && n >= 0)
+	// 		ft_putchar('+');
+	// 	else if (n < 0 && p->flg.zero == 0)
+	// 		ft_putchar('-');
+	// }
+	// else
+	// {
+	// 	if (p->flg.plus && n >= 0)
+	// 		ft_putchar('+');
+	// 	else if (n < 0)
+	// 		ft_putchar('-');
+	// }
 }
 
 void	padding_zero(int len, t_print *p)
