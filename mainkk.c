@@ -124,6 +124,8 @@ int main(void)
 	printf("\n");
 	ft_printf("|%f|\n", -2147483648);
 	printf("|%f|\n", -2147483648);
+	ft_printf("%05i|\n", 43);
+	printf("%05i|\n", 43);
 	//o u x KK
 	return (0);
 }

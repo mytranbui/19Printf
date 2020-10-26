@@ -28,7 +28,7 @@ int main(void)
 //	unsigned int	nb = 4294967296; //kko kkx
 unsigned int	nb = 125935;
 //	unsigned int	nb = 458;
-	int		i = 0;
+	int		i = 43;
 	//int		i = 2147483648; //kk on that number + & -
 //	int		i = 2147483648;
 	//int		i =-0;
@@ -245,10 +245,16 @@ printf("%s||\n", NULL);
 	printf("%015.i||\n", i); //replace 0 by null // 0 width15 pres0
 	ft_printf("%+ 011.i||\n", i);
 	printf("%+ 011.||\n", i);
-	ft_printf("%+- 011.i||\n", i);
+	ft_printf("%+- 011.i||\n", i); //kk
 	printf("%+- 011.i||\n", i);
+	ft_printf("%+-011.1i||\n", i); //sp+
+	printf("%+-011.1i||\n", i);
 	ft_printf("%+- 100.50i||\n", i);
   	printf("%+- 100.50i||\n", i);
+	ft_printf("%05d||\n", i);
+  	printf("%05d||\n", i);
+	ft_printf("%d||\n", i);
+  	printf("%d||\n", i);
 
 /*	printf("\n-----SIGNED OCTAL-----\n");
 	ft_printf("%+o||\n", nb);

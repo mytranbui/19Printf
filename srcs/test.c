@@ -37,15 +37,15 @@ void	convert_di(intmax_t arg, t_print *p)
 	tmp_pres = p->pres;
 	bigger_len = (len > p->pres) ? len : p->pres;
 	(arg < 0 || (p->flg.plus && arg >= 0)) ? len++ && bigger_len++ : len;
-	p->pres++; // why?
 	(p->flg.plus == 0 && arg >= 0) ? len++ : len;
 	(p->flg.space && p->flg.plus == 0 && arg >= 0) ? bigger_len++ : bigger_len;
 	(arg == 0) ? bigger_len++ && len++ : len;
+	len--;
 	if (p->flg.space && p->flg.plus == 0 && arg >= 0)
 		ft_putchar(' ');
 	if (!p->flg.minus)
 	{
-		padding_space(bigger_len, p);
+		padding_ze_sp(bigger_len, p);
 		putsign(arg, p);
 		padding_zero(len, p);
 		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbrmax(ft_dabs(arg));
