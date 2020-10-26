@@ -48,21 +48,13 @@ void	convert_di(intmax_t arg, t_print *p)
 		if (arg < 0 && p->flg.zero && p->pres == -1)
 				ft_putchar('-');
 		padding_ze_sp(bigger_len, p);
-		if (p->flg.plus && arg >= 0)
-			ft_putchar('+');
-		else if (arg < 0 && (p->pres != -1 || !p->flg.zero))
-			ft_putchar('-');
-		//putsign(arg, p);
+		putsign(arg, p);
 		padding_zero(len, p);
 		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbrmax(ft_dabs(arg));
 	}
 	else
 	{
-		if (p->flg.plus && arg >= 0)
-			ft_putchar('+');
-		else if (arg < 0)
-			ft_putchar('-');
-		//putsign(arg, p);
+		putsign(arg, p);
 		padding_zero(len, p);
 		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbrmax(ft_dabs(arg));
 		padding_space(bigger_len, p);
