@@ -6,18 +6,13 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/21 18:44:24 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/26 18:32:07 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdio.h>
 #include <limits.h>
-
-/*
-** '0' ignored when '-' is present
-** ' ' ignored when '+' is present
-*/
 
 /*
 ** %d & %i: undefined behavior with # (no effect)
@@ -46,7 +41,7 @@ void	convert_di(intmax_t arg, t_print *p)
 	if (!p->flg.minus)
 	{
 		if (arg < 0 && p->flg.zero && p->pres == -1)
-				ft_putchar('-');
+			ft_putchar('-');
 		padding_ze_sp(bigger_len, p);
 		putsign(arg, p);
 		padding_zero(len, p);
@@ -56,7 +51,7 @@ void	convert_di(intmax_t arg, t_print *p)
 	{
 		putsign(arg, p);
 		padding_zero(len, p);
-		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbrmax(ft_dabs(arg));
+		(arg == 0 && tmp_pres == 0) ? ft_putchar('P') : ft_putnbrmax(ft_dabs(arg));
 		padding_space(bigger_len, p);
 	}
 }
@@ -101,8 +96,8 @@ void	convert_o(uintmax_t arg, t_print *p)
 }
 
 /*
- ** %u: undefined behavior with// '+', ' ', '#' ('#' has no effect)
- */
+** %u: undefined behavior with// '+', ' ', '#' ('#' has no effect)
+*/
 
 void	convert_u(uintmax_t arg, t_print *p)
 {
@@ -133,8 +128,8 @@ void	convert_u(uintmax_t arg, t_print *p)
 }
 
 /*
- ** %x & %X: undefined behavior with +, '0' and ' '
- */
+** %x & %X: undefined behavior with +, '0' and ' '
+*/
 
 void	convert_x(uintmax_t arg, t_print *p)
 {
