@@ -34,7 +34,10 @@ void	convert_di(intmax_t arg, t_print *p)
 	(arg < 0 || (p->flg.plus && arg >= 0)) ? len++ && bigger_len++ : len;
 	(p->flg.plus == 0 && arg >= 0) ? len++ : len;
 	(p->flg.space && p->flg.plus == 0 && arg >= 0) ? bigger_len++ : bigger_len;
-	(arg == 0) ? bigger_len++ && len++ : len;
+	(arg == 0) ? len++ && bigger_len++ : len;
+	(arg == 0 && p->width > 0 && p->pres > 0 && !p->flg.plus) ? bigger_len-- : bigger_len;
+	//(arg == 0 && !p->flg.plus && p->pres >= 0) ? bigger_len-- : bigger_len;
+	//(arg == 0 && !tmp_pres && p->flg.plus) ? bigger_len++ : bigger_len;
 	len--;
 	if (p->flg.space && p->flg.plus == 0 && arg >= 0)
 		ft_putchar(' ');
@@ -51,7 +54,7 @@ void	convert_di(intmax_t arg, t_print *p)
 	{
 		putsign(arg, p);
 		padding_zero(len, p);
-		(arg == 0 && tmp_pres == 0) ? ft_putchar('P') : ft_putnbrmax(ft_dabs(arg));
+		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putnbrmax(ft_dabs(arg));
 		padding_space(bigger_len, p);
 	}
 }

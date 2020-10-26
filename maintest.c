@@ -231,7 +231,6 @@ printf("%s||\n", NULL);
 	printf("%-10i||\n", i);
 	ft_printf("%08.i||\n", i);
   	printf("%08.i||\n", i); // 0 width8 pres0
-	
 	ft_printf("%018.i||\n", i);
  	printf("%018.i||\n", i);
 	 // -0 width8 pres0
@@ -241,8 +240,6 @@ printf("%s||\n", NULL);
 	printf("%0-+ 12.2i||\n", i);
 	ft_printf("%015.i||\n", i);
 	printf("%015.i||\n", i); //replace 0 by null // 0 width15 pres0
-	ft_printf("%+ 011.i||\n", i);
-	printf("%+ 011.||\n", i);
 	
 	 ft_printf("%+-011.1i||\n", i); //sp+
 	printf("%+-011.1i||\n", i);
@@ -260,7 +257,12 @@ printf("%s||\n", NULL);
  	printf("%-08.i||\n", i);
 	ft_printf("%+- 011.i||\n", i); //kk
 	printf("%+- 011.i||\n", i);
-	
+	ft_printf("%+ 011.i||\n", i);
+	printf("%+ 011.i||\n", i);
+	ft_printf("%8.5d||\n", i);
+	printf("%8.5d||\n", i);
+	ft_printf("%-8.5d||\n", i);
+	printf("%-8.5d||\n", i);
 
 /*	printf("\n-----SIGNED OCTAL-----\n");
 	ft_printf("%+o||\n", nb);
@@ -683,13 +685,13 @@ printf("%15f",1.123456);
 	ft_printf("%hx||\n", y);
 	printf("%hx||\n", y);
 */
-ft_printf("%07d||\n", -55);
-printf("%07d||\n", -55);
-ft_printf("%010.5d||\n", -216);
-printf("%010.5d||\n", -216);
-ft_printf("%07d||\n", 55);
-printf("%07d||\n", 55);
-ft_printf("%010.5d||\n", 216);
-printf("%010.5d||\n", 216);
+// ft_printf("%07d||\n", -55);
+// printf("%07d||\n", -55);
+// ft_printf("%010.5d||\n", -216);
+// printf("%010.5d||\n", -216);
+// ft_printf("%07d||\n", 55);
+// printf("%07d||\n", 55);
+// ft_printf("%010.5d||\n", 216);
+// printf("%010.5d||\n", 216);
 	return (0);
 }
