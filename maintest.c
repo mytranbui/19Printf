@@ -693,5 +693,9 @@ ft_printf("%07d||\n", 55);
 printf("%07d||\n", 55);
 ft_printf("%010.5d||\n", 216);
 printf("%010.5d||\n", 216);
+ft_printf("%*i||\n", -14, 94827);
+printf("%*i||\n", -14, 94827);
+ft_printf("%0*i||\n", -7, -54);
+printf("%0*i||\n", -7, -54);
 	return (0);
 }

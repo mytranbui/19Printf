@@ -61,6 +61,17 @@ int	get_size(t_print *p, int i)
 	return (i);
 }
 
+int	get_wildcard(va_list ap, t_print *p, int i)
+{
+	int	n;
+
+	n = va_arg(ap, int);
+	if (p->fmt[i] == '*')
+		if (n < 0)
+			p->flg.minus = 1;
+	return (ft_abs(n));
+}
+
 int	get_width_pres(va_list ap, t_print *p, int i)
 {
 	if (ft_isdigit(p->fmt[i]))
@@ -71,7 +82,7 @@ int	get_width_pres(va_list ap, t_print *p, int i)
 	}
 	else if (p->fmt[i] == '*')
 	{
-		p->width = va_arg(ap, int);
+		p->width = get_wildcard(ap, p ,i);
 		i++;
 	}
 	if (p->fmt[i] == '.')
@@ -82,7 +93,7 @@ int	get_width_pres(va_list ap, t_print *p, int i)
 			i++;
 		if (p->fmt[i] == '*')
 		{
-			p->pres = va_arg(ap, int);
+			p->pres = get_wildcard(ap, p ,i);
 			i++;
 		}
 	}
