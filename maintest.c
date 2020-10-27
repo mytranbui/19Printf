@@ -685,13 +685,13 @@ printf("%15f",1.123456);
 	ft_printf("%hx||\n", y);
 	printf("%hx||\n", y);
 */
-// ft_printf("%07d||\n", -55);
-// printf("%07d||\n", -55);
-// ft_printf("%010.5d||\n", -216);
-// printf("%010.5d||\n", -216);
-// ft_printf("%07d||\n", 55);
-// printf("%07d||\n", 55);
-// ft_printf("%010.5d||\n", 216);
-// printf("%010.5d||\n", 216);
+ ft_printf("%07d||\n", -55);
+ printf("%07d||\n", -55);
+ft_printf("%010.5d||\n", -216);
+printf("%010.5d||\n", -216);
+ft_printf("%07d||\n", 55);
+printf("%07d||\n", 55);
+ft_printf("%010.5d||\n", 216);
+printf("%010.5d||\n", 216);
 	return (0);
 }
