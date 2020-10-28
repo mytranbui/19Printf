@@ -13,7 +13,7 @@
 NAME = libftprintf.a
 FLAGS = -Wall -Wextra -Werror
 SRC =  ft_printf.c parse.c float.c test.c utils.c utils2.c parse_utils.c  \
-	convert_size.c print_csppercent.c
+	print_size.c print_csppercent.c
 LIB = libft/libft.a
 OBJ = $(SRC:.c=.o)
 

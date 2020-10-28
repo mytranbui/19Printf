@@ -91,7 +91,7 @@ char	*get_flt(double n, t_print *p)
 	return (str_flt);
 }
 
-void	convert_f2(long double arg, int bigger_len, int len, t_print *p)
+void	print_f2(long double arg, int bigger_len, int len, t_print *p)
 {
 	if (arg < 0 && p->flg.zero)
 		ft_putchar('-');
@@ -100,7 +100,7 @@ void	convert_f2(long double arg, int bigger_len, int len, t_print *p)
 	padding_zero(len, p);
 }
 
-void	convert_f(long double arg, t_print *p)
+void	print_f(long double arg, t_print *p)
 {
 	int		len;
 	int		bigger_len;
@@ -118,7 +118,7 @@ void	convert_f(long double arg, t_print *p)
 		ft_putchar(' ');
 	if (p->flg.minus == 0)
 	{
-		convert_f2(arg, bigger_len, len, p);
+		print_f2(arg, bigger_len, len, p);
 		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(str_flt);
 	}
 	else

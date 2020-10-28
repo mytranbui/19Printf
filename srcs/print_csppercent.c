@@ -22,7 +22,7 @@
 ** %c: undefined behavior with +, 0, ' ', # and precision
 */
 
-void	convert_c(va_list ap, t_print *p)
+void	print_c(va_list ap, t_print *p)
 {
 	long long	c;
 
@@ -34,7 +34,7 @@ void	convert_c(va_list ap, t_print *p)
 		ft_putchar(c);
 }
 
-void	convert_percent(va_list ap, t_print *p)
+void	print_percent(va_list ap, t_print *p)
 {
 	long long	c;
 
@@ -50,7 +50,7 @@ void	convert_percent(va_list ap, t_print *p)
 ** %s: undefined behavior with +, 0, ' ', #
 */
 
-void	convert_s(va_list ap, t_print *p)
+void	print_s(va_list ap, t_print *p)
 {
 	char	*s;
 	int		len;
@@ -73,7 +73,7 @@ void	convert_s(va_list ap, t_print *p)
 ** line 102: +2 is the len of the prefix "0x"
 */
 
-void	convert_p2(int len, int bigger_len, t_print *p)
+void	print_p2(int len, int bigger_len, t_print *p)
 {
 	while (p->width-- - bigger_len > 0 && (p->flg.zero == 0 ||
 				(p->pres == 0 && p->flg.zero)))
@@ -84,7 +84,7 @@ void	convert_p2(int len, int bigger_len, t_print *p)
 	padding_zero(len, p);
 }
 
-void	convert_p(va_list ap, t_print *p)
+void	print_p(va_list ap, t_print *p)
 {
 	char	*s;
 	int		len;
@@ -99,7 +99,7 @@ void	convert_p(va_list ap, t_print *p)
 	bigger_len = (len > p->pres) ? len + 2 : p->pres + 2;
 	if (!p->flg.minus)
 	{
-		convert_p2(len, bigger_len, p);
+		print_p2(len, bigger_len, p);
 		(*s == '0' && tmp_pres == 0) ? s = NULL : ft_putstr(s);
 	}
 	else

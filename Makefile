@@ -6,21 +6,27 @@ SRCS =		srcs/ft_printf.c \
 			srcs/parse.c \
 			srcs/convert_size.c \
 			srcs/print_csppercent.c \
+			srcs/print_di.c \
+			srcs/print_o.c \
+			srcs/print_u.c \
+			srcs/print_x.c \
 			srcs/float.c \
 			srcs/parse_utils.c \
 			srcs/utils.c \
 			srcs/utils2.c \
-			srcs/test.c \
 
 RESULT = 	ft_printf.o \
 			parse.o \
 			convert_size.o \
 			print_csppercent.o \
+			print_di.o \
+			print_o.o \
+			print_u.o \
+			print_x.o \
 			float.o \
 			parse_utils.o \
 			utils.o \
 			utils2.o \
-			test.o \
 
 INCLUDES = srcs/libftprintf.h
 

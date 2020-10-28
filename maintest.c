@@ -26,7 +26,7 @@ int main(void)
 //	int	i = -43125345; //4294967295
 	//unsigned int	nb = 4294967296; //kkx kko
 //	unsigned int	nb = 4294967296; //kko kkx
-unsigned int	nb = 125935;
+unsigned int	nb = 0;
 //	unsigned int	nb = 458;
 	int		i = 0;
 	//int		i = 2147483648; //kk on that number + & -
@@ -196,7 +196,7 @@ printf("%s||\n", NULL);
 	ft_printf("%p||\n", p);
 	printf("%p||\n", p);
 
-*/	printf("\n-----SIGNED INT-----\n"); //(+, - , ' ', 0 , width, pres)
+	printf("\n-----SIGNED INT-----\n"); //(+, - , ' ', 0 , width, pres)
 	// single flag
 	ft_printf("%+i||\n", i);
  	printf("%+i||\n", i);
@@ -264,7 +264,7 @@ printf("%s||\n", NULL);
 	ft_printf("%-8.5d||\n", i);
 	printf("%-8.5d||\n", i);
 
-/*	printf("\n-----SIGNED OCTAL-----\n");
+	printf("\n-----UNSIGNED OCTAL-----\n");
 	ft_printf("%+o||\n", nb);
 	printf("%+o||\n", nb);
 	ft_printf("%0o||\n", nb);
@@ -395,7 +395,7 @@ printf("%s||\n", NULL);
 	ft_printf("%0# 40.60u||\n", nb);
 	printf("%0# 40.60u||\n", nb);
 
-	printf("\n-----UNSIGNED HEX-----\n"); //(-, 0, #, )
+*/	printf("\n-----UNSIGNED HEX-----\n"); //(-, 0, #, )
 	// single flag
 	ft_printf("%+x||\n", nb);
 	printf("%+x||\n", nb);
@@ -467,7 +467,7 @@ printf("%s||\n", NULL);
 	ft_printf("%0# 40.45X||\n", nb);
 	printf("%0# 40.45X||\n", nb);
 
-	printf("\n-----PERCENTS-----\n"); //(-,0,width) xpres x# x' '?
+/*	printf("\n-----PERCENTS-----\n"); //(-,0,width) xpres x# x' '?
 	// single flag
 	ft_printf("%+%||\n");
 	printf("%+%||\n");

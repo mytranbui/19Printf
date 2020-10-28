@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_size.c                                     :+:      :+:    :+:   */
+/*   print_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -24,7 +24,7 @@
 ** L	>>	long (unsigned) double
 */
 
-intmax_t	convert_arg_di(va_list ap, t_print *p)
+intmax_t	print_arg_di(va_list ap, t_print *p)
 {
 	intmax_t	arg;
 
@@ -57,7 +57,7 @@ intmax_t	convert_arg_di(va_list ap, t_print *p)
 	return (arg);
 }
 
-long double	convert_arg_f(va_list ap, t_print *p)
+long double	print_arg_f(va_list ap, t_print *p)
 {
 	long double	arg;
 
@@ -75,7 +75,7 @@ long double	convert_arg_f(va_list ap, t_print *p)
 	return (arg);
 }
 
-uintmax_t	convert_arg_oux(va_list ap, t_print *p)
+uintmax_t	print_arg_oux(va_list ap, t_print *p)
 {
 	uintmax_t	arg;
 
@@ -115,22 +115,22 @@ uintmax_t	convert_arg_oux(va_list ap, t_print *p)
 int			conversion(va_list ap, t_print *p)
 {
 	if (p->type == 'c')
-		convert_c(ap, p);
+		print_c(ap, p);
 	else if (p->type == 's')
-		convert_s(ap, p);
+		print_s(ap, p);
 	else if (p->type == 'p')
-		convert_p(ap, p);
+		print_p(ap, p);
 	else if (p->type == 'd' || p->type == 'i')
-		convert_di(convert_arg_di(ap, p), p);
+		print_di(print_arg_di(ap, p), p);
 	else if (p->type == 'o')
-		convert_o(convert_arg_oux(ap, p), p);
+		print_o(print_arg_oux(ap, p), p);
 	else if (p->type == 'u')
-		convert_u(convert_arg_oux(ap, p), p);
+		print_u(print_arg_oux(ap, p), p);
 	else if (p->type == 'x' || p->type == 'X')
-		convert_x(convert_arg_oux(ap, p), p);
+		print_x(print_arg_oux(ap, p), p);
 	else if (p->type == 'f')
-		convert_f(convert_arg_f(ap, p), p);
+		print_f(print_arg_f(ap, p), p);
 	else if (p->type == '%')
-		convert_percent(ap, p);
+		print_percent(ap, p);
 	return (1);
 }
