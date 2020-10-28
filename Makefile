@@ -1,54 +1,68 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mbui <marvin@42.fr>                        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/10/28 23:45:25 by mbui              #+#    #+#              #
+#    Updated: 2020/10/28 23:45:46 by mbui             ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libftprintf.a
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+FLGS = -Wall -Wextra -Werror
 LIB_DIR = libft
-SRCS =		srcs/ft_printf.c \
-			srcs/parse.c \
-			srcs/convert_size.c \
-			srcs/print_csppercent.c \
-			srcs/print_di.c \
-			srcs/print_o.c \
-			srcs/print_u.c \
-			srcs/print_x.c \
-			srcs/float.c \
-			srcs/parse_utils.c \
-			srcs/utils.c \
-			srcs/utils2.c \
+SRCS =	srcs/ft_printf.c \
+		srcs/parse.c \
+		srcs/parse_utils.c \
+		srcs/convert_size.c \
+		srcs/print_csppercent.c \
+		srcs/print_di.c \
+		srcs/print_o.c \
+		srcs/print_u.c \
+		srcs/print_x.c \
+		srcs/print_f.c \
+		srcs/utils.c \
+		srcs/utils2.c \
 
-RESULT = 	ft_printf.o \
-			parse.o \
-			convert_size.o \
-			print_csppercent.o \
-			print_di.o \
-			print_o.o \
-			print_u.o \
-			print_x.o \
-			float.o \
-			parse_utils.o \
-			utils.o \
-			utils2.o \
+OBJS =	ft_printf.o \
+		parse.o \
+		parse_utils.o \
+		convert_size.o \
+		print_csppercent.o \
+		print_di.o \
+		print_o.o \
+		print_u.o \
+		print_x.o \
+		print_f.o \
+		utils.o \
+		utils2.o \
 
-INCLUDES = srcs/libftprintf.h
+INCS = srcs/libftprintf.h
 
 all: $(NAME)
 
-$(NAME):
-	@make -C $(LIB_DIR)
+$(NAME): getlibft
 	@cp $(LIB_DIR)/libft.a $(NAME)
-	@$(CC) -c $(CFLAGS) $(SRCS) $(INCLUDES)
-	@ar rc $(NAME) $(RESULT)
+	@$(CC) -c $(FLGS) $(SRCS) $(INCS)
+	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@/bin/rm -f srcs/libftprintf.h.gch
 	@echo "compilation ok"
 
+getlibft:
+	@make -C $(LIB_DIR)
+
 clean:
-	@/bin/rm -f $(RESULT)
-	@/bin/rm -f libft/*.o
+	@/bin/rm -f $(OBJS)
+	@/bin/rm -f ft_printf.h.gch
+	@make clean -C libft
 	@printf "Objects are removed correctly.\n"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@/bin/rm -f $(LIB_DIR)/libft.a
+	@make fclean -C libft
 	@printf "$(NAME) and $(LIB) are removed correctly.\n"
 
 re: fclean all
