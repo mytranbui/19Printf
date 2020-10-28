@@ -25,6 +25,12 @@
 // (arg == 0 && p->pres > 0) ? len++ : len;
 // (arg == 0 && p->pres == -1) ? bigger_len++ : bigger_len;
 
+void	print_result(intmax_t arg, int pres)
+{
+	if (arg != 0 || pres != 0)
+			ft_putnbrmax(ft_dabs(arg));
+}
+
 void	print_di2(intmax_t arg, t_print *p, int len, int bigger_len)
 {
 	if (arg < 0 && p->flg.zero && p->pres == -1)
@@ -51,15 +57,17 @@ void	print_di(intmax_t arg, t_print *p)
 	if (!p->flg.minus)
 	{
 		print_di2(arg, p, len, bigger_len);
-		if (arg != 0 || tmp_pres != 0)
-			ft_putnbrmax(ft_dabs(arg));
+		print_result(arg, tmp_pres);
+		// if (arg != 0 || tmp_pres != 0)
+		// 	ft_putnbrmax(ft_dabs(arg));
 	}
 	else
 	{
 		putsign(arg, p);
 		padding_zero(len, p);
-		if (arg != 0 || tmp_pres != 0)
-			ft_putnbrmax(ft_dabs(arg));
+		print_result(arg, tmp_pres);
+		// if (arg != 0 || tmp_pres != 0)
+		// 	ft_putnbrmax(ft_dabs(arg));
 		padding_space(bigger_len, p);
 	}
 }
