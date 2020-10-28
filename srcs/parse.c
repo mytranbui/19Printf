@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 09:39:00 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/16 17:50:50 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/28 22:18:30 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	get_flag(t_print *p, int i)
 		p->flg.zero = 0;
 	if (p->flg.plus)
 		p->flg.space = 0;
-	//printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d | h=%d | l=%d | L=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres, p->flg.h, p->flg.l, p->flg.maj_l);
 	return (i);
 }
 
@@ -69,7 +68,7 @@ int	get_wildcard(va_list ap, t_print *p, int i)
 	if (p->fmt[i] == '*')
 		if (n < 0)
 			p->flg.minus = 1;
-	return (ft_abs(n));
+	return (n);
 }
 
 int	get_width_pres(va_list ap, t_print *p, int i)
@@ -82,7 +81,7 @@ int	get_width_pres(va_list ap, t_print *p, int i)
 	}
 	else if (p->fmt[i] == '*')
 	{
-		p->width = get_wildcard(ap, p ,i);
+		p->width = ft_abs(get_wildcard(ap, p, i));
 		i++;
 	}
 	if (p->fmt[i] == '.')
@@ -93,7 +92,8 @@ int	get_width_pres(va_list ap, t_print *p, int i)
 			i++;
 		if (p->fmt[i] == '*')
 		{
-			p->pres = get_wildcard(ap, p ,i);
+			p->pres = get_wildcard(ap, p, i);
+			(p->pres < -1) ? p->pres = -1 : p->pres;
 			i++;
 		}
 	}
@@ -114,6 +114,5 @@ int	parse(va_list ap, t_print *p, int i)
 	//printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d | h=%d | l=%d | L=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres, p->flg.h, p->flg.l, p->flg.maj_l);
 	//	printf("{fmt[i]=%c}",p->fmt[i]);
 	p->type = p->fmt[i];
-///	printf("TYPE=%c\n", p->type);
 	return (i);
 }

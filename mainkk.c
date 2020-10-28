@@ -127,5 +127,8 @@ int main(void)
 	ft_printf("%05i|\n", 43);
 	printf("%05i|\n", 43);
 	//o u x KK
+	printf("\n");
+	ft_printf("%.*s||\n", -3, "hello");
+	printf("%.*s||\n", -3, "hello");
 	return (0);
 }
