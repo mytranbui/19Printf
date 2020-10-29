@@ -134,7 +134,21 @@ int main(void)
 	ft_printf("%%d 0000042 == |%d|\n", 0000042);
 	printf("%%d 0000042 == |%d|\n", 0000042);
 	printf("\n");
-	ft_printf("%d|\n", 0000042);
-	printf("%d|\n", 0000042);
+	ft_printf("Salut %20.12ld this %0 5d % 5d % 4.8i is not a test\n", 0x11ffaa147, 45, 45, 23);
+	printf("Salut %20.12ld this %0 5d % 5d % 4.8i is not a test\n", 0x11ffaa147, 45, 45, 23);
+	printf("\n");
+	ft_printf("%0 5d|\n", 45);
+	printf("%0 5d|\n", 45);
+	printf("\n");
+	ft_printf("% 5d|\n", 45);
+	printf("% 5d|\n", 45);
+	ft_printf("%+20.12lli|\n", (long long)0x11ffaa141237);
+	printf("%+20.12lli|\n", (long long)0x11ffaa141237);
+	printf("\n");
+	ft_printf("%0+5d|\n", 42);
+	printf("%0+5d|\n", 42);
+	printf("\n");
+	ft_printf("%-.5f %LF\n", 5.00, (long double)5.65);
+	printf("%-.5f %LF\n", 5.00, (long double)5.65);
 	return (0);
 }

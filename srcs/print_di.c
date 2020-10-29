@@ -29,10 +29,11 @@ static void	print_result_di(intmax_t arg, int pres, t_print *p)
 
 static void	print_di2(intmax_t arg, t_print *p, int len, int bigger_len)
 {
-	if (arg < 0 && p->flg.zero && p->pres == -1)
-		ft_putchar('-');
+	if (p->flg.zero && p->pres == -1)
+		putsign(arg, p);
 	padding_ze_sp(bigger_len, p);
-	putsign(arg, p);
+	if (!p->flg.zero || p->pres != -1)
+		putsign(arg, p);
 	padding_zero(len, p);
 }
 
@@ -48,7 +49,8 @@ void		print_di(intmax_t arg, t_print *p)
 	(arg < 0 || (p->flg.plus && arg >= 0)) ? p->width-- : p->width;
 	(arg == 0 && p->pres > 0) ? p->pres-- : p->pres;
 	(arg == 0 && p->pres == -1) ? p->width-- : p->width;
-	if (p->flg.space && p->flg.plus == 0 && arg >= 0)
+	(p->flg.space && !p->flg.plus && arg >= 0) ? p->width-- : p->width;
+	if (p->flg.space && !p->flg.plus && arg >= 0)
 		ft_putchar(' ');
 	if (!p->flg.minus)
 	{

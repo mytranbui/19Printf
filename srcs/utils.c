@@ -22,17 +22,17 @@ void	putprefix(char *s, t_print *p)
 	}
 }
 
-void	putsign(int n, t_print *p)
+void	putsign(intmax_t n, t_print *p)
 {
 	if (p->flg.plus && n >= 0)
 		ft_putchar('+');
-	else if (!p->flg.minus && n < 0)
-	{
-		if (!p->flg.zero && p->type == 'f')
-			ft_putchar('-');
-		else if ((p->pres != -1 || !p->flg.zero) && (p->type == 'd' || p->type == 'i'))
-			ft_putchar('-');
-	}
+	// else if (!p->flg.minus && n < 0)
+	// {
+	// 	if (!p->flg.zero && p->type == 'f')
+	// 		ft_putchar('-');
+	// 	else if ((p->pres != -1 || !p->flg.zero) && (p->type == 'd' || p->type == 'i'))
+	// 		ft_putchar('-');
+	// }
 	else if (n < 0)
 		ft_putchar('-');
 }
