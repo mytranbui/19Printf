@@ -148,7 +148,11 @@ int main(void)
 	ft_printf("%0+5d|\n", 42);
 	printf("%0+5d|\n", 42);
 	printf("\n");
-	ft_printf("%-.5f %LF\n", 5.00, (long double)5.65);
-	printf("%-.5f %LF\n", 5.00, (long double)5.65);
+	ft_printf("{%05.*d}\n", -15, 42);
+	printf("{%05.*d}\n", -15, 42);
+	ft_printf("{%*d}\n", -15, 42);
+	printf("{%*d}\n", -15, 42);
+	// ft_printf("%-.5f %LF\n", 5.00, (long double)5.65);
+	// printf("%-.5f %LF\n", 5.00, (long double)5.65);
 	return (0);
 }
