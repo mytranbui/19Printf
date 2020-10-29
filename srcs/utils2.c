@@ -44,9 +44,10 @@ void	free_strprint(char **s)
 	s = NULL;
 }
 
-//kk
-/*unsigned int	ft_absu(int value)
-  {
-  return (value < 0) ? -((unsigned int)value) : (unsigned int)value;
-  }
- */
+void	print_result(char *s, int pres, t_print *p)
+{
+	if (p->type == 'o' && (*s != '0' || pres != 0 || p->flg.hash))
+			ft_putstr(s);
+	else if (*s != '0' || pres != 0)
+			ft_putstr(s);
+}

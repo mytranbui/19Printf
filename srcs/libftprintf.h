@@ -46,9 +46,9 @@ int				get_size(t_print *p, int i);
 int				get_width_pres(va_list ap, t_print *p, int i);
 int				get_wildcard(va_list ap, t_print *p, int i);
 
-intmax_t		print_arg_di(va_list ap, t_print *p);
-uintmax_t		print_arg_oux(va_list ap, t_print *p);
-long double		print_arg_f(va_list ap, t_print *p);
+intmax_t		convert_arg_di(va_list ap, t_print *p);
+uintmax_t		convert_arg_oux(va_list ap, t_print *p);
+long double		convert_arg_f(va_list ap, t_print *p);
 int				conversion(va_list ap, t_print *p);
 
 void			print_c(va_list ap, t_print *p);
@@ -74,4 +74,5 @@ void			padding_zero(int len, t_print *p);
 void			padding_ze_sp(int len, t_print *p);
 void			free_print(t_print **p, int n);
 void			free_strprint(char **s);
+void			print_result(char *s, int pres, t_print *p);
 #endif

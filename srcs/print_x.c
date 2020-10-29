@@ -17,6 +17,13 @@
 ** %x & %X: undefined behavior with +, '0' and ' '
 */
 
+void	print_x2(char *s, t_print *p, int len, int bigger_len)
+{
+	padding_ze_sp(bigger_len, p);
+	putprefix(s, p);
+	padding_zero(len, p);
+}
+
 void	print_x(uintmax_t arg, t_print *p)
 {
 	char		*s;
@@ -29,22 +36,18 @@ void	print_x(uintmax_t arg, t_print *p)
 	len = ft_strlen(s);
 	tmp_pres = p->pres;
 	bigger_len = (len > p->pres) ? len : p->pres;
-	(*s != '0' && p->flg.hash) ? bigger_len += 2 : bigger_len;
+	(*s != '0' && p->flg.hash) ? p->width -= 2 : p->width;
 	(*s == '0' && !tmp_pres) ? p->width++ : p->width;
 	if (!p->flg.minus)
 	{
-		padding_ze_sp(bigger_len, p);
-		putprefix(s, p);
-		padding_zero(len, p);
-		if (*s != '0' || tmp_pres != 0)
-			ft_putstr(s);
+		print_x2(s, p, len, bigger_len);
+		print_result(s, tmp_pres, p);
 	}
 	else
 	{
 		putprefix(s, p);
 		padding_zero(len, p);
-		if (*s != '0' || tmp_pres != 0)
-			ft_putstr(s);
+		print_result(s, tmp_pres, p);
 		padding_space(bigger_len, p);
 	}
 	free_strprint(&s);

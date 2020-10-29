@@ -17,7 +17,7 @@ LIB_DIR = libft
 SRCS =	srcs/ft_printf.c \
 		srcs/parse.c \
 		srcs/parse_utils.c \
-		srcs/convert_size.c \
+		srcs/convert_length.c \
 		srcs/print_csppercent.c \
 		srcs/print_di.c \
 		srcs/print_o.c \
@@ -30,7 +30,7 @@ SRCS =	srcs/ft_printf.c \
 OBJS =	ft_printf.o \
 		parse.o \
 		parse_utils.o \
-		convert_size.o \
+		convert_length.o \
 		print_csppercent.o \
 		print_di.o \
 		print_o.o \
