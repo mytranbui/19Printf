@@ -59,7 +59,7 @@ void			print_o(uintmax_t arg, t_print *p);
 void			print_u(uintmax_t arg, t_print *p);
 void			print_x(uintmax_t arg, t_print *p);
 void			print_f(long double arg, t_print *p);
-void			print_percent(va_list ap, t_print *p);
+void			print_percent(t_print *p);
 
 int				isflag(char c);
 int				istype(char c);

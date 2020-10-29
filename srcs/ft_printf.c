@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
 t_print	*init_flags(t_print *p)
 {
@@ -56,9 +55,3 @@ int		ft_printf(const char *format, ...)
 	free_print(&p, 1);
 	return (1);
 }
-//memalloc protect needed?
-//else
-//	ft_putendl("not implemented or undefined");
-
-//free p bwtween %
-//fail itoa -> free p then exit

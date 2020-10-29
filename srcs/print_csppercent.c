@@ -34,11 +34,8 @@ void	print_c(va_list ap, t_print *p)
 		ft_putchar(c);
 }
 
-void	print_percent(va_list ap, t_print *p)
+void	print_percent(t_print *p)
 {
-	long long	c;
-
-	c = (char)va_arg(ap, long long);
 	if (p->flg.minus)
 		ft_putchar('%');
 	padding_ze_sp(1, p);

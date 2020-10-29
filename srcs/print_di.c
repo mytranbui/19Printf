@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include <stdio.h>
 
 /*
 ** %d & %i: undefined behavior with # (no effect)

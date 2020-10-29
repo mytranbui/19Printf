@@ -52,7 +52,10 @@ intmax_t	convert_arg_di(va_list ap, t_print *p)
 			arg = (long long int)va_arg(ap, long long int);
 		}
 		else
+		{
+			//printf("{i}");
 			arg = (int)va_arg(ap, int);
+		}
 	}
 	return (arg);
 }
@@ -114,6 +117,7 @@ uintmax_t	convert_arg_oux(va_list ap, t_print *p)
 
 int			conversion(va_list ap, t_print *p)
 {
+	//printf("{type=%c}", p->type);
 	if (p->type == 'c')
 		print_c(ap, p);
 	else if (p->type == 's')
@@ -131,6 +135,6 @@ int			conversion(va_list ap, t_print *p)
 	else if (p->type == 'f')
 		print_f(convert_arg_f(ap, p), p);
 	else if (p->type == '%')
-		print_percent(ap, p);
+		print_percent(p);
 	return (1);
 }

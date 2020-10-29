@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 16:11:13 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/21 18:46:53 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/29 15:19:59 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	free_strprint(char **s)
 void	print_result(char *s, int pres, t_print *p)
 {
 	if (p->type == 'o' && (*s != '0' || pres != 0 || p->flg.hash))
-			ft_putstr(s);
+		ft_putstr(s);
 	else if (*s != '0' || pres != 0)
-			ft_putstr(s);
+		ft_putstr(s);
 }

@@ -130,5 +130,11 @@ int main(void)
 	printf("\n");
 	ft_printf("%.*s||\n", -3, "hello");
 	printf("%.*s||\n", -3, "hello");
+	printf("\n");
+	ft_printf("%%d 0000042 == |%d|\n", 0000042);
+	printf("%%d 0000042 == |%d|\n", 0000042);
+	printf("\n");
+	ft_printf("%d|\n", 0000042);
+	printf("%d|\n", 0000042);
 	return (0);
 }
