@@ -17,14 +17,18 @@
 ** %x & %X: undefined behavior with +, '0' and ' '
 */
 
-void	print_x2(char *s, t_print *p, int len, int bigger_len)
+static void	print_x2(char *s, t_print *p, int bigger_len, int pres)
 {
+	int len;
+
+	len = ft_strlen(s);
 	padding_ze_sp(bigger_len, p);
 	putprefix(s, p);
 	padding_zero(len, p);
+	print_result(s, pres, p);
 }
 
-void	print_x(uintmax_t arg, t_print *p)
+void		print_x(uintmax_t arg, t_print *p)
 {
 	char		*s;
 	int			len;
@@ -39,10 +43,7 @@ void	print_x(uintmax_t arg, t_print *p)
 	(*s != '0' && p->flg.hash) ? p->width -= 2 : p->width;
 	(*s == '0' && !tmp_pres) ? p->width++ : p->width;
 	if (!p->flg.minus)
-	{
-		print_x2(s, p, len, bigger_len);
-		print_result(s, tmp_pres, p);
-	}
+		print_x2(s, p, bigger_len, tmp_pres);
 	else
 	{
 		putprefix(s, p);

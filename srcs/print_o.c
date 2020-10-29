@@ -17,7 +17,18 @@
 ** %o: undefined behavior with '+', ' '
 */
 
-void	print_o(uintmax_t arg, t_print *p)
+static void	print_o2(char *s, t_print *p, int bigger_len, int pres)
+{
+	int len;
+
+	len = ft_strlen(s);
+	padding_ze_sp(bigger_len, p);
+	putprefix(s, p);
+	padding_zero(len, p);
+	print_result(s, pres, p);
+}
+
+void		print_o(uintmax_t arg, t_print *p)
 {
 	char	*s;
 	int		len;
@@ -33,13 +44,7 @@ void	print_o(uintmax_t arg, t_print *p)
 	(p->flg.hash && *s == '0') ? p->pres++ : p->pres;
 	(*s == '0' && !tmp_pres && !p->flg.hash) ? p->width++ : p->width;
 	if (!p->flg.minus)
-	{
-		padding_ze_sp(bigger_len, p);
-		putprefix(s, p);
-		padding_zero(len, p);
-		print_result(s, tmp_pres, p);
-
-	}
+		print_o2(s, p, bigger_len, tmp_pres);
 	else
 	{
 		padding_zero(len, p);

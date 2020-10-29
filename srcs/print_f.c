@@ -129,6 +129,3 @@ void	print_f(long double arg, t_print *p)
 		padding_space(bigger_len, p);
 	}
 }
-
-//printf("{ARGG=%ji}", arg);
-//	printf("{darg=%f}", ft_dabs(arg));

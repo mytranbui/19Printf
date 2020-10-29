@@ -6,13 +6,11 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 15:45:24 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/28 21:18:11 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/29 14:34:13 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libftprintf.h"
-#include <stdio.h>
 
 /*
 ** %d & %i: undefined behavior with # (no effect)
@@ -22,16 +20,13 @@
 ** Since 2147483648 is greater than INT_MAX, then abs(-2147483648) is undefined
 */
 
-// (arg == 0 && p->pres > 0) ? len++ : len;
-// (arg == 0 && p->pres == -1) ? bigger_len++ : bigger_len;
-
-void	print_result_di(intmax_t arg, int pres, t_print *p)
+static void	print_result_di(intmax_t arg, int pres, t_print *p)
 {
 	if ((arg != 0 || pres != 0) && (p->type == 'd' || p->type == 'i'))
-			ft_putnbrmax(ft_dabs(arg));
+		ft_putnbrmax(ft_dabs(arg));
 }
 
-void	print_di2(intmax_t arg, t_print *p, int len, int bigger_len)
+static void	print_di2(intmax_t arg, t_print *p, int len, int bigger_len)
 {
 	if (arg < 0 && p->flg.zero && p->pres == -1)
 		ft_putchar('-');
@@ -40,7 +35,7 @@ void	print_di2(intmax_t arg, t_print *p, int len, int bigger_len)
 	padding_zero(len, p);
 }
 
-void	print_di(intmax_t arg, t_print *p)
+void		print_di(intmax_t arg, t_print *p)
 {
 	int			len;
 	int			bigger_len;
