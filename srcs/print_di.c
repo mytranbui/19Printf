@@ -24,7 +24,10 @@
 static void	print_result_di(intmax_t arg, int pres, t_print *p)
 {
 	if ((arg != 0 || pres != 0) && (p->type == 'd' || p->type == 'i'))
+	{
 		ft_putnbrmax(ft_dabs(arg));
+		//p->ret += ft_intlen(ft_dabs(arg));
+	}
 }
 
 static void	print_di2(intmax_t arg, t_print *p, int len, int bigger_len)
@@ -44,8 +47,6 @@ void		print_di(intmax_t arg, t_print *p)
 	int			tmp_pres;
 
 	len = ft_intlen(ft_dabs(arg));
-	//printf("{len= %d}",len);
-	//printf("{dabs(arg)= %f}", ft_dabs(arg));
 	tmp_pres = p->pres;
 	bigger_len = (len > p->pres) ? len : p->pres;
 	(arg < 0 || (p->flg.plus && arg >= 0)) ? p->width-- : p->width;

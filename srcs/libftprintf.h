@@ -34,6 +34,7 @@ typedef struct	s_print
 	int			width;
 	int			pres;
 	char		type;
+	int			ret;
 	t_flag		flg;
 }				t_print;
 
@@ -65,7 +66,7 @@ int				isflag(char c);
 int				istype(char c);
 int				issize(char c);
 
-int				ft_putstr_len_percent(const char *str);
+int				ft_putstr_len_percent(const char *str, t_print *p);
 void			putprefix(char *s, t_print *p);
 void			putsign(intmax_t n, t_print	*p);
 // void			putsign(int n, t_print	*p, int minus);

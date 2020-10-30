@@ -88,22 +88,22 @@ uintmax_t	convert_arg_oux(va_list ap, t_print *p)
 	{
 		if (p->flg.h == 1)
 		{
-			printf("{ush}");
+			// printf("{ush}");
 			arg = (unsigned short int)va_arg(ap, unsigned int);
 		}
 		else if (p->flg.h == 2)
 		{
-			printf("{uchar}");
+			// printf("{uchar}");
 			arg = (unsigned char)va_arg(ap, unsigned int);
 		}
 		else if (p->flg.l == 1)
 		{
-			printf("{ul}");
+			// printf("{ul}");
 			arg = (unsigned long int)va_arg(ap, unsigned long int);
 		}
 		else if (p->flg.l == 2)
 		{
-			printf("{ull}");
+			// printf("{ull}");
 			arg = (unsigned long long int)va_arg(ap, unsigned long long int);
 		}
 		else

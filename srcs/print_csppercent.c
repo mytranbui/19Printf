@@ -32,6 +32,7 @@ void	print_c(va_list ap, t_print *p)
 	padding_ze_sp(1, p);
 	if (!p->flg.minus)
 		ft_putchar(c);
+	p->ret++;
 }
 
 void	print_percent(t_print *p)
@@ -41,6 +42,7 @@ void	print_percent(t_print *p)
 	padding_ze_sp(1, p);
 	if (!p->flg.minus)
 		ft_putchar('%');
+	p->ret++;
 }
 
 /*
@@ -63,6 +65,7 @@ void	print_s(va_list ap, t_print *p)
 	padding_ze_sp(len, p);
 	if (!p->flg.minus)
 		write(1, s, len);
+	p->ret += len;
 }
 
 /*
@@ -106,5 +109,6 @@ void	print_p(va_list ap, t_print *p)
 		(*s == '0' && tmp_pres == 0) ? s = NULL : ft_putstr(s);
 		padding_space(bigger_len, p);
 	}
+	//p->ret += len;
 	free_strprint(&s);
 }

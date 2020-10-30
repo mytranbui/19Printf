@@ -14,6 +14,7 @@
 
 t_print	*init_flags(t_print *p)
 {
+	p->ret = 0;
 	p->width = 0;
 	p->pres = -1;
 	p->flg.plus = 0;
@@ -48,10 +49,12 @@ int		ft_printf(const char *format, ...)
 			conversion(ap, p);
 		}
 		else
-			i += ft_putstr_len_percent(&p->fmt[i]);
+			i += ft_putstr_len_percent(&p->fmt[i], p);
 		i++;
 	}
 	va_end(ap);
+	i = p->ret;
 	free_print(&p, 1);
-	return (1);
+	//printf("{ret=%d}", p->ret);
+	return (i);
 }
