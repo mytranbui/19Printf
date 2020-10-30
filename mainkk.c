@@ -152,7 +152,19 @@ int main(void)
 	printf("{%05.*d}\n", -15, 42);
 	ft_printf("{%*d}\n", -15, 42);
 	printf("{%*d}\n", -15, 42);
+	printf("\n");
+	ft_printf("ultimate2 %*d|%*s|%*x|%*X|%*i|%*u|\n", 1, 5000, 1, "hey", 10, 54700, 1, 300, 100, -55, 1, -60);
+	printf("ultimate2 %*d|%*s|%*x|%*X|%*i|%*u|\n", 1, 5000, 1, "hey", 10, 54700, 1, 300, 100, -55, 1, -60);
+	printf("\n");
+	ft_printf("%*s|%*x|%*X|%*i|%*u|\n", 1, "hey", 10, 54700, 1, 300, 100, -55, 1, -60);
+	printf("%*s|%*x|%*X|%*i|%*u|\n", 1, "hey", 10, 54700, 1, 300, 100, -55, 1, -60);
+	printf("\n");
+	ft_printf("%*x|%*X|%*i|%*u|\n", 10, 54700, 1, 300, 100, -55, 1, -60);
+	printf("%*x|%*X|%*i|%*u|\n", 10, 54700, 1, 300, 100, -55, 1, -60);
 	// ft_printf("%-.5f %LF\n", 5.00, (long double)5.65);
 	// printf("%-.5f %LF\n", 5.00, (long double)5.65);
+	printf("\n");
+	ft_printf("%+20.12lli|\n", (long long)0x11ffaa141237);
+	printf("%+20.12lli|\n", (long long)0x11ffaa141237);
 	return (0);
 }

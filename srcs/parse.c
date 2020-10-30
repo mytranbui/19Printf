@@ -60,30 +60,8 @@ int	get_size(t_print *p, int i)
 	return (i);
 }
 
-int	get_wildcard(va_list ap, t_print *p, int i)
+int	get_pres(va_list ap, t_print *p, int i)
 {
-	int	n;
-
-	n = va_arg(ap, int);
-	if (p->fmt[i] == '*')
-		if (n < 0)
-			p->flg.minus = 1;
-	return (n);
-}
-
-int	get_width_pres(va_list ap, t_print *p, int i)
-{
-	if (ft_isdigit(p->fmt[i]))
-	{
-		p->width = ft_atoi(&p->fmt[i]);
-		while (ft_isdigit(p->fmt[i]))
-			i++;
-	}
-	else if (p->fmt[i] == '*')
-	{
-		p->width = ft_abs(get_wildcard(ap, p, i));
-		i++;
-	}
 	if (p->fmt[i] == '.')
 	{
 		i++;
@@ -92,11 +70,32 @@ int	get_width_pres(va_list ap, t_print *p, int i)
 			i++;
 		if (p->fmt[i] == '*')
 		{
-			p->pres = get_wildcard(ap, p, i);
+			p->pres = va_arg(ap, int);
 			(p->pres < -1) ? p->pres = -1 : p->pres;
 			i++;
 		}
 	}
+	return (i);
+}
+
+int	get_width_pres(va_list ap, t_print *p, int i)
+{
+	int	n;
+
+	if (ft_isdigit(p->fmt[i]))
+	{
+		p->width = ft_atoi(&p->fmt[i]);
+		while (ft_isdigit(p->fmt[i]))
+			i++;
+	}
+	else if (p->fmt[i] == '*')
+	{
+		n = va_arg(ap, int);
+		(n < 0) ? p->flg.minus = 1 : p->flg.minus;
+		p->width = ft_abs(n);
+		i++;
+	}
+	i = get_pres(ap, p, i);
 	return (i);
 }
 
@@ -111,7 +110,7 @@ int	parse(va_list ap, t_print *p, int i)
 		//  p->fmt[i] != '.' || p->fmt[i] != '*')
 		// 	i++;
 	}
-	printf("plus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d | h=%d | l=%d | L=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres, p->flg.h, p->flg.l, p->flg.maj_l);
+	//printf("\nplus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d | h=%d | l=%d | L=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres, p->flg.h, p->flg.l, p->flg.maj_l);
 	//	printf("{fmt[i]=%c}",p->fmt[i]);
 	p->type = p->fmt[i];
 	return (i);

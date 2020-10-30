@@ -6,13 +6,13 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 11:52:37 by mbui              #+#    #+#             */
-/*   Updated: 2020/09/29 17:36:52 by mbui             ###   ########.fr       */
+/*   Updated: 2020/10/30 14:03:43 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_intlen(int n)
+int	ft_intlen(intmax_t n)
 {
 	int	len;
 

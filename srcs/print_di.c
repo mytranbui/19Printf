@@ -44,6 +44,8 @@ void		print_di(intmax_t arg, t_print *p)
 	int			tmp_pres;
 
 	len = ft_intlen(ft_dabs(arg));
+	//printf("{len= %d}",len);
+	//printf("{dabs(arg)= %f}", ft_dabs(arg));
 	tmp_pres = p->pres;
 	bigger_len = (len > p->pres) ? len : p->pres;
 	(arg < 0 || (p->flg.plus && arg >= 0)) ? p->width-- : p->width;

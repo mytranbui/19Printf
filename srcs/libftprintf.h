@@ -44,7 +44,7 @@ int				parse(va_list ap, t_print *p, int i);
 int				get_flag(t_print *p, int i);
 int				get_size(t_print *p, int i);
 int				get_width_pres(va_list ap, t_print *p, int i);
-int				get_wildcard(va_list ap, t_print *p, int i);
+int				get_pres(va_list ap, t_print *p, int i);
 
 intmax_t		convert_arg_di(va_list ap, t_print *p);
 uintmax_t		convert_arg_oux(va_list ap, t_print *p);
