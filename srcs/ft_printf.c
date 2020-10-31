@@ -14,7 +14,6 @@
 
 t_print	*init_flags(t_print *p)
 {
-	p->ret = 0;
 	p->width = 0;
 	p->pres = -1;
 	p->flg.plus = 0;
@@ -39,9 +38,10 @@ int		ft_printf(const char *format, ...)
 		return (-1);
 	va_start(ap, format);
 	p->fmt = format;
-	while (p->fmt[i])
+	p->ret = 0;
+	while (format[i])
 	{
-		if (p->fmt[i] == '%')
+		if (format[i] == '%')
 		{
 			i++;
 			p = init_flags(p);
@@ -49,7 +49,7 @@ int		ft_printf(const char *format, ...)
 			conversion(ap, p);
 		}
 		else
-			i += ft_putstr_len_percent(&p->fmt[i], p);
+			i += ft_putstr_len_percent(&format[i], p);
 		i++;
 	}
 	va_end(ap);

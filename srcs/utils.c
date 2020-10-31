@@ -11,15 +11,21 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include <stdio.h>
 
 void	putprefix(char *s, t_print *p)
 {
-	if (p->flg.hash && *s != '0')
+	if (p->type == 'p')
+	{
+		ft_putstr("0x");
+		p->ret += 2;
+	}
+	else if (p->flg.hash && *s != '0')
 	{
 		(p->type == 'x') ? ft_putstr("0x") : ft_putstr("0X");
 		if (p->type == 'o')
 			ft_putchar('0');
-		//p->ret = (p->type == 'o') ? +1 : +2;
+		p->ret = (p->type == 'o') ? +1 : +2;
 	}
 }
 
@@ -59,26 +65,30 @@ void	putsign(intmax_t n, t_print *p)
 void	padding_zero(int len, t_print *p)
 {
 	//p->ret += (p->pres - len > 0) ? p->pres - len : p->ret;
+	(p->pres - len > 0) ? p->ret += p->pres - len : p->ret;
 	while (p->pres-- - len > 0)
 	{
 		ft_putchar('0');
-	//	p->ret++;
+		//p->ret++;
 	}
+	// printf("{ZEret=%d}", p->ret);
 }
 
 void	padding_space(int len, t_print *p)
 {
-	//p->ret += (p->width - len > 0) ? p->width - len : p->ret;
+	(p->width - len > 0) ? p->ret += p->width - len : p->ret;
 	while (p->width-- - len > 0)
 	{
 		ft_putchar(' ');
 	//	p->ret++;
 	}
+	// printf("{SPret=%d}", p->ret);
 }
 
 void	padding_ze_sp(int len, t_print *p)
 {
 	//p->ret += (p->width - len > 0) ? p->width - len : p->ret;
+	(p->width - len > 0) ? p->ret += p->width - len : p->ret;
 	if (p->type == 'c' || p->type == 's' || p->type == '%' || p->type == 'f')
 		while (p->width-- - len > 0)
 		{
@@ -92,4 +102,5 @@ void	padding_ze_sp(int len, t_print *p)
 			ft_putchar((p->flg.zero && p->pres == -1) ? '0' : ' ');
 		//	p->ret++;
 		}
+	// printf("{ZESPret=%d}", p->ret);
 }

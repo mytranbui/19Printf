@@ -16,16 +16,15 @@
 int		ft_putstr_len_percent(const char *str, t_print *p)
 {
 	int i;
-	int ret;
 
 	i = 0;
 	while (str[i] && str[i] != '%')
 		i++;
-
+	p->ret += i;
+	// printf("{STRi=%d}", i);
+	// printf("{STRret=%d}", p->ret);
 	write(1, str, i);
 	i--;
-	ret = p->ret;
-	//return (p->ret += i);
 	return (i);
 }
 

@@ -166,5 +166,11 @@ int main(void)
 	printf("\n");
 	ft_printf("%+20.12lli|\n", (long long)0x11ffaa141237);
 	printf("%+20.12lli|\n", (long long)0x11ffaa141237);
+	printf("\n");
+	
+	a = ft_printf("%5.p|\n",NULL);
+	b = printf("%5.p|\n",NULL);
+	printf("a=%d\n", a);
+	printf("b=%d\n", b);
 	return (0);
 }
