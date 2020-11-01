@@ -47,10 +47,21 @@ void	free_strprint(char **s)
 	s = NULL;
 }
 
-void	print_result(char *s, int pres, t_print *p)
+void	print_result(long double arg, char *s, int pres, t_print *p)
 {
-	if (p->type == 'o' && (*s != '0' || pres != 0 || p->flg.hash))
+	if (p->type == 'f' && (arg != 0 || pres != 0))
+	{
 		ft_putstr(s);
+		p->ret += ft_strlen(s);
+	}
+	else if (p->type == 'o' && (*s != '0' || pres != 0 || p->flg.hash))
+	{
+		ft_putstr(s);
+		p->ret += ft_strlen(s);
+	}
 	else if (*s != '0' || pres != 0)
+	{
 		ft_putstr(s);
+		p->ret += ft_strlen(s);
+	}
 }

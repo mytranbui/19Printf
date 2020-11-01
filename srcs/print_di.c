@@ -26,7 +26,7 @@ static void	print_result_di(intmax_t arg, int pres, t_print *p)
 	if ((arg != 0 || pres != 0) && (p->type == 'd' || p->type == 'i'))
 	{
 		ft_putnbrmax(ft_dabs(arg));
-		//p->ret += ft_intlen(ft_dabs(arg));
+		p->ret += (arg == 0) ? 1 : ft_intlen(ft_dabs(arg));
 	}
 }
 
@@ -53,7 +53,7 @@ void		print_di(intmax_t arg, t_print *p)
 	(arg == 0 && p->pres > 0) ? p->pres-- : p->pres;
 	(arg == 0 && p->pres == -1) ? p->width-- : p->width;
 	(p->flg.space && !p->flg.plus && arg >= 0) ? p->width-- : p->width;
-	if (p->flg.space && !p->flg.plus && arg >= 0)
+	if (p->flg.space && !p->flg.plus && arg >= 0 && p->ret++)
 		ft_putchar(' ');
 	if (!p->flg.minus)
 	{

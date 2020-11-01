@@ -35,12 +35,12 @@ void	print_u(uintmax_t arg, t_print *p)
 	{
 		padding_ze_sp(bigger_len, p);
 		padding_zero(len, p);
-		print_result(s, tmp_pres, p);
+		print_result(0, s, tmp_pres, p);
 	}
 	else
 	{
 		padding_zero(len, p);
-		print_result(s, tmp_pres, p);
+		print_result(0, s, tmp_pres, p);
 		padding_space(bigger_len, p);
 	}
 	free_strprint(&s);

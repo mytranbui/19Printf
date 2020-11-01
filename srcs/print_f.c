@@ -119,13 +119,43 @@ void	print_f(long double arg, t_print *p)
 	if (p->flg.minus == 0)
 	{
 		print_f2(arg, bigger_len, len, p);
-		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(str_flt);
+		print_result(arg, str_flt, tmp_pres, p);
 	}
 	else
 	{
 		putsign(arg, p);
 		padding_zero(len, p);
-		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(str_flt);
+		print_result(arg, str_flt, tmp_pres, p);
 		padding_space(bigger_len, p);
 	}
 }
+
+// void	print_f(long double arg, t_print *p)
+// {
+// 	int		len;
+// 	int		bigger_len;
+// 	int		tmp_pres;
+// 	char	*str_flt;
+
+// 	str_flt = get_flt(ft_dabs(arg), p);
+// 	len = ft_strlen(str_flt);
+// 	tmp_pres = p->pres;
+// 	bigger_len = (len > p->pres) ? len : p->pres;
+// 	(arg < 0 || (p->flg.plus && arg >= 0)) ? len++ && bigger_len++ : len;
+// 	(p->flg.plus == 0 && arg >= 0) ? len++ : len;
+// 	(p->flg.space && p->flg.plus == 0 && arg >= 0) ? bigger_len++ : bigger_len;
+// 	if (p->flg.space && p->flg.plus == 0 && arg >= 0)
+// 		ft_putchar(' ');
+// 	if (p->flg.minus == 0)
+// 	{
+// 		print_f2(arg, bigger_len, len, p);
+// 		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(str_flt);
+// 	}
+// 	else
+// 	{
+// 		putsign(arg, p);
+// 		padding_zero(len, p);
+// 		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(str_flt);
+// 		padding_space(bigger_len, p);
+// 	}
+// }

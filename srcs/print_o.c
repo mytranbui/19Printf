@@ -25,7 +25,7 @@ static void	print_o2(char *s, t_print *p, int bigger_len, int pres)
 	padding_ze_sp(bigger_len, p);
 	putprefix(s, p);
 	padding_zero(len, p);
-	print_result(s, pres, p);
+	print_result(0, s, pres, p);
 }
 
 void		print_o(uintmax_t arg, t_print *p)
@@ -49,7 +49,7 @@ void		print_o(uintmax_t arg, t_print *p)
 	{
 		padding_zero(len, p);
 		putprefix(s, p);
-		print_result(s, tmp_pres, p);
+		print_result(0, s, tmp_pres, p);
 		padding_space(bigger_len, p);
 	}
 	free_strprint(&s);

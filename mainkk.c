@@ -172,5 +172,13 @@ int main(void)
 	b = printf("%5.p|\n",NULL);
 	printf("a=%d\n", a);
 	printf("b=%d\n", b);
+	a = ft_printf("%#08x|\n", 42);
+	b = printf("%#08x|\n", 42);
+	printf("a=%d\n", a);
+	printf("b=%d\n", b);
+	printf("%|\n");
+	printf("%5|\n");
+	printf("%05|\n");
+	printf("%-05|\n");
 	return (0);
 }

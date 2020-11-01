@@ -106,53 +106,14 @@ void	print_p(va_list ap, t_print *p)
 	if (!p->flg.minus)
 	{
 		print_p2(len, bigger_len, p);
-		print_result(s, tmp_pres, p);
+		print_result(0, s, tmp_pres, p);
 	}
 	else
 	{
 		putprefix(0, p);
 		padding_zero(len, p);
-		print_result(s, tmp_pres, p);
+		print_result(0, s, tmp_pres, p);
 		padding_space(bigger_len, p);
 	}
 	free_strprint(&s);
 }
-
-// void	print_p(va_list ap, t_print *p)
-// {
-// 	char	*s;
-// 	int		len;
-// 	int		bigger_len;
-// 	int		tmp_pres;
-
-// printf("lol");
-// 	if (!(s = ft_itoa_base(va_arg(ap, long long), 16, 'x')))
-// 		free_print(&p, 2);
-// 		printf("lol");
-// 	len = ft_strlen(s);
-// 	tmp_pres = p->pres;
-// 	(*s == '0' && tmp_pres == 0) ? p->width++ : p->width;
-// 	bigger_len = (len > p->pres) ? len + 2 : p->pres + 2;
-// 	if (!p->flg.minus)
-// 	{
-// 		print_p2(len, bigger_len, p);
-// 		printf("lol");
-// 		(*s == '0' && tmp_pres == 0) ? s = NULL : ft_putstr(s);
-// 		printf("lol");
-// 	}
-// 	else
-// 	{
-// 		putprefix(0, p);
-// 		padding_zero(len, p);
-// 		(*s == '0' && tmp_pres == 0) ? s = NULL : ft_putstr(s);
-// 		padding_space(bigger_len, p);
-// 	}
-// 	printf("lol");
-// 	if (s)
-// 	{
-// 		printf("{ret=%d}", p->ret);
-// 		p->ret += len;
-// 		printf("{ret=%d}", p->ret);
-// 	}
-// 	free_strprint(&s);
-// }
