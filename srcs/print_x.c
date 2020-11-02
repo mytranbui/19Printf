@@ -17,7 +17,7 @@
 ** %x & %X: undefined behavior with +, '0' and ' '
 */
 
-static void	print_x2(char *s, t_print *p, int bigger_len, int pres)
+static void	print_x2(const char *s, t_print *p, int bigger_len, int pres)
 {
 	int len;
 

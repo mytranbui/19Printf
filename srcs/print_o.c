@@ -17,7 +17,7 @@
 ** %o: undefined behavior with '+', ' '
 */
 
-static void	print_o2(char *s, t_print *p, int bigger_len, int pres)
+static void	print_o2(const char *s, t_print *p, int bigger_len, int pres)
 {
 	int len;
 

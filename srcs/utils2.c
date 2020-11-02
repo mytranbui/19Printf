@@ -28,6 +28,13 @@ int		ft_putstr_len_percent(const char *str, t_print *p)
 	return (i);
 }
 
+void	free_strprint(char **s)
+{
+	if (**s != '0')
+		ft_strdel(s);
+	s = NULL;
+}
+
 void	free_print(t_print **p, int n)
 {
 	if (p)
@@ -40,14 +47,7 @@ void	free_print(t_print **p, int n)
 		exit(EXIT_FAILURE);
 }
 
-void	free_strprint(char **s)
-{
-	if (**s != '0')
-		ft_strdel(s);
-	s = NULL;
-}
-
-void	print_result(long double arg, char *s, int pres, t_print *p)
+void	print_result(long double arg, const char *s, int pres, t_print *p)
 {
 	if (p->type == 'f' && (arg != 0 || pres != 0))
 	{

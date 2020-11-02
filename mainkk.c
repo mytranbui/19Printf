@@ -176,9 +176,17 @@ int main(void)
 	b = printf("%#08x|\n", 42);
 	printf("a=%d\n", a);
 	printf("b=%d\n", b);
-	printf("%|\n");
-	printf("%5|\n");
+//	a =ft_printf("%|\n");
+	b = printf("%");
+//	printf("a=%d\n", a);
+	printf("b=%d\n", b);
+//	a = ft_printf("%5|\n");
+	b = printf("%5");
+//	printf("a=%d\n", a);
+	printf("b=%d\n", b);
+	ft_printf("%05|\n");
 	printf("%05|\n");
+	ft_printf("%-05|\n");
 	printf("%-05|\n");
 	return (0);
 }

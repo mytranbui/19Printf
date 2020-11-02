@@ -20,6 +20,7 @@
 
 int	get_flag(t_print *p, int i)
 {
+	//printf("flg");
 	while (isflag(p->fmt[i]) && p->fmt[i])
 	{
 		if (p->fmt[i] == '+')
@@ -43,6 +44,7 @@ int	get_flag(t_print *p, int i)
 
 int	get_size(t_print *p, int i)
 {
+	//printf("size");
 	while (issize(p->fmt[i]) && p->fmt[i])
 	{
 		if (p->fmt[i] == 'h' && p->fmt[i + 1] == 'h' && p->flg.h == 0)
@@ -80,6 +82,7 @@ int	get_pres(va_list ap, t_print *p, int i)
 
 int	get_width_pres(va_list ap, t_print *p, int i)
 {
+	//printf("width");
 	int	n;
 
 	if (ft_isdigit(p->fmt[i]))
@@ -101,14 +104,15 @@ int	get_width_pres(va_list ap, t_print *p, int i)
 
 int	parse(va_list ap, t_print *p, int i)
 {
-	while (!istype(p->fmt[i]) && p->fmt[i] != '\0')
+	//printf("lol");
+	while (!istype(p->fmt[i]) && p->fmt[i])
 	{
 		i = get_flag(p, i);
 		i = get_width_pres(ap, p, i);
 		i = get_size(p, i);
-		// if (!isflag(p->fmt[i]) || !ft_isdigit(p->fmt[i]) || !issize(p->fmt[i]) ||
-		//  p->fmt[i] != '.' || p->fmt[i] != '*')
-		// 	i++;
+	//	printf("{fmt[i]=%c}",p->fmt[i]);
+	//	if (!isflag(p->fmt[i]) && !ft_isdigit(p->fmt[i]) && !issize(p->fmt[i]) && p->fmt[i] != '.' && p->fmt[i] != '*')
+	//		exit (EXIT_FAILURE);
 	}
 	//printf("\nplus=%d | minus=%d | zero=%d | space=%d | hash=%d | width=%d | pres=%d | h=%d | l=%d | L=%d\n", p->flg.plus, p->flg.minus, p->flg.zero, p->flg.space, p->flg.hash, p->width, p->pres, p->flg.h, p->flg.l, p->flg.maj_l);
 	//	printf("{fmt[i]=%c}",p->fmt[i]);
