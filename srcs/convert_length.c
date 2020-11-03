@@ -117,9 +117,14 @@ uintmax_t	convert_arg_oux(va_list ap, t_print *p)
 	return (arg);
 }
 
+void	print_(t_print *p)
+{
+	padding_ze_sp(0, p);
+}
+
 int			conversion(va_list ap, t_print *p)
 {
-	//printf("{type=%c}", p->type);
+	// printf("{type=%c}", p->type);
 	if (p->type == 'c')
 		print_c(ap, p);
 	else if (p->type == 's')
@@ -138,5 +143,7 @@ int			conversion(va_list ap, t_print *p)
 		print_f(convert_arg_f(ap, p), p);
 	else if (p->type == '%')
 		print_percent(p);
+	else
+		print_(p);	
 	return (1);
 }

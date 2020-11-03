@@ -42,6 +42,7 @@ void		print_o(uintmax_t arg, t_print *p)
 	bigger_len = (len > p->pres) ? len : p->pres;
 	p->flg.hash = (*s == '0' && p->pres != 0) ? 0 : p->flg.hash;
 	(p->flg.hash && *s == '0') ? p->pres++ : p->pres;
+	(p->flg.hash && *s != '0') ? p->width-- : p->width;
 	(*s == '0' && !tmp_pres && !p->flg.hash) ? p->width++ : p->width;
 	if (!p->flg.minus)
 		print_o2(s, p, bigger_len, tmp_pres);

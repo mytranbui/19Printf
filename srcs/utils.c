@@ -80,7 +80,7 @@ void	padding_ze_sp(int len, t_print *p)
 {
 	//p->ret += (p->width - len > 0) ? p->width - len : p->ret;
 	(p->width - len > 0) ? p->ret += p->width - len : p->ret;
-	if (p->type == 'c' || p->type == 's' || p->type == '%' || p->type == 'f')
+	if (p->type == 'c' || p->type == 's' || p->type == '%' || p->type == 'f' || !p->type)
 		while (p->width-- - len > 0)
 		{
 			ft_putchar((p->flg.zero && !p->flg.minus) ? '0' : ' ');
