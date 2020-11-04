@@ -27,7 +27,8 @@ static	unsigned long long	find_size(unsigned long long value, int base)
 	return (len);
 }
 
-char				*ft_utoa_base(unsigned long long value, int base, char x)
+char						*ft_utoa_base(unsigned long long value, int base,
+char x)
 {
 	char	*ret;
 	char	*str_base;

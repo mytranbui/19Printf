@@ -6,7 +6,7 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 08:56:07 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/23 08:56:27 by mbui             ###   ########.fr       */
+/*   Updated: 2020/11/04 11:42:00 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFTPRINTF_H
 # include "../libft/libft.h"
 # include <stdarg.h>
+# include <stdio.h>
 
 typedef struct	s_flag
 {

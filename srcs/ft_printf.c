@@ -27,6 +27,15 @@ t_print	*init_flags(t_print *p)
 	return (p);
 }
 
+t_print	*init_print(const char *format, t_print *p)
+{
+	if (!(p = (t_print*)ft_memalloc(sizeof(t_print))))
+		return (NULL);
+	p->fmt = format;
+	p->ret = 0;
+	return (p);
+}
+
 int		ft_printf(const char *format, ...)
 {
 	va_list	ap;
@@ -34,11 +43,9 @@ int		ft_printf(const char *format, ...)
 	int		i;
 
 	i = 0;
-	if (!(p = (t_print*)ft_memalloc(sizeof(t_print))))
-		return (-1);
+	p = NULL;
 	va_start(ap, format);
-	p->fmt = format;
-	p->ret = 0;
+	p = init_print(format, p);
 	while (format[i])
 	{
 		if (format[i] == '%')
@@ -55,6 +62,5 @@ int		ft_printf(const char *format, ...)
 	va_end(ap);
 	i = p->ret;
 	free_print(&p, 1);
-	//printf("{ret=%d}", p->ret);
 	return (i);
 }

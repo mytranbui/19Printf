@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
 /*
 ** %u: undefined behavior with// '+', ' ', '#' ('#' has no effect)

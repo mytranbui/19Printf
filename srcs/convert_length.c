@@ -6,23 +6,22 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:22:40 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/28 23:29:44 by mbui             ###   ########.fr       */
+/*   Updated: 2020/11/04 11:41:39 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
 /*
-** For diouxX
-** h	>>	short (unsigned) int
-** hh	>>	(unsigned) char
-** l	>>	long (unsigned) int
-** ll	>>	long long (unsigned) int
-** For f
-** l	>>	no diff with printf but with scanf it's a double
-** L	>>	long (unsigned) double
-*/
+ ** For diouxX
+ ** h	>>	short (unsigned) int
+ ** hh	>>	(unsigned) char
+ ** l	>>	long (unsigned) int
+ ** ll	>>	long long (unsigned) int
+ ** For f
+ ** l	>>	no diff with printf but with scanf it's a double
+ ** L	>>	long (unsigned) double
+ */
 
 intmax_t	convert_arg_di(va_list ap, t_print *p)
 {

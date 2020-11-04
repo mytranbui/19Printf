@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
+
 
 t_print	*init_flags(t_print *p)
 {

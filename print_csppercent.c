@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
+
 
 /*
 ** '0' ignored when '-' is present

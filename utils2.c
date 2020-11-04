@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
+
 
 int		ft_putstr_len_percent(const char *str)
 {

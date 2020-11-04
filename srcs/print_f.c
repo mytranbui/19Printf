@@ -6,12 +6,11 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 12:41:38 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/28 22:28:00 by mbui             ###   ########.fr       */
+/*   Updated: 2020/11/04 11:40:59 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
 char	*roundup(double n, char *str_flt)
 {
@@ -91,13 +90,21 @@ char	*get_flt(double n, t_print *p)
 	return (str_flt);
 }
 
-void	print_f2(long double arg, int bigger_len, int len, t_print *p)
+void	print_f2(long double arg, int len, int bigger_len, t_print *p)
 {
-	if (arg < 0 && p->flg.zero)
-		ft_putchar('-');
-	padding_ze_sp(bigger_len, p);
-	putsign(arg, p);
-	padding_zero(len, p);
+	if (p->flg.space && !p->flg.plus && arg >= 0)
+	{
+		ft_putchar(' ');
+		p->ret++;
+	}
+	if (!p->flg.minus)
+	{
+		if (arg < 0 && p->flg.zero)
+			ft_putchar('-');
+		padding_ze_sp(bigger_len, p);
+		putsign(arg, p);
+		padding_zero(len, p);
+	}
 }
 
 void	print_f(long double arg, t_print *p)
@@ -114,13 +121,9 @@ void	print_f(long double arg, t_print *p)
 	(arg < 0 || (p->flg.plus && arg >= 0)) ? len++ && bigger_len++ : len;
 	(p->flg.plus == 0 && arg >= 0) ? len++ : len;
 	(p->flg.space && p->flg.plus == 0 && arg >= 0) ? bigger_len++ : bigger_len;
-	if (p->flg.space && p->flg.plus == 0 && arg >= 0)
-		ft_putchar(' ');
-	if (p->flg.minus == 0)
-	{
-		print_f2(arg, bigger_len, len, p);
+	print_f2(arg, len, bigger_len, p);
+	if (!p->flg.minus)
 		print_result(arg, str_flt, tmp_pres, p);
-	}
 	else
 	{
 		putsign(arg, p);
@@ -128,7 +131,15 @@ void	print_f(long double arg, t_print *p)
 		print_result(arg, str_flt, tmp_pres, p);
 		padding_space(bigger_len, p);
 	}
+	printf("{ret=%d}", p->ret);
 }
+
+
+// bigger_len = (len > p->pres) ? len : p->pres;
+// 	(arg < 0 || (p->flg.plus && arg >= 0)) ? p->width-- : p->width;
+// 	(arg == 0 && p->pres > 0) ? p->pres-- : p->pres;
+// 	(arg == 0 && p->pres == -1) ? p->width-- : p->width;
+// 	(p->flg.space && !p->flg.plus && arg >= 0) ? p->width-- : p->width;
 
 // void	print_f(long double arg, t_print *p)
 // {

@@ -6,12 +6,11 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 16:11:13 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/28 23:30:28 by mbui             ###   ########.fr       */
+/*   Updated: 2020/11/03 21:25:08 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
 void	putprefix(const char *s, t_print *p)
 {
@@ -55,14 +54,12 @@ void	putsign(intmax_t n, t_print *p)
 
 void	padding_zero(int len, t_print *p)
 {
-	//p->ret += (p->pres - len > 0) ? p->pres - len : p->ret;
 	(p->pres - len > 0) ? p->ret += p->pres - len : p->ret;
 	while (p->pres-- - len > 0)
 	{
 		ft_putchar('0');
-	//	p->ret++;
+		//	p->ret++;
 	}
-	// printf("{ZEret=%d}", p->ret);
 }
 
 void	padding_space(int len, t_print *p)
@@ -71,27 +68,25 @@ void	padding_space(int len, t_print *p)
 	while (p->width-- - len > 0)
 	{
 		ft_putchar(' ');
-	//	p->ret++;
+		//	p->ret++;
 	}
-	// printf("{SPret=%d}", p->ret);
 }
 
 void	padding_ze_sp(int len, t_print *p)
 {
-	//p->ret += (p->width - len > 0) ? p->width - len : p->ret;
 	(p->width - len > 0) ? p->ret += p->width - len : p->ret;
 	if (p->type == 'c' || p->type == 's' || p->type == '%' || p->type == 'f' || !p->type)
 		while (p->width-- - len > 0)
 		{
 			ft_putchar((p->flg.zero && !p->flg.minus) ? '0' : ' ');
-		//	p->ret++;
+			//	p->ret++;
 		}
 	else if (p->type == 'o' || p->type == 'u' ||
 			p->type == 'x' || p->type == 'X' || p->type == 'd' || p->type == 'i')
 		while (p->width-- - len > 0 && !p->flg.minus)
 		{
 			ft_putchar((p->flg.zero && p->pres == -1) ? '0' : ' ');
-		//	p->ret++;
+			//	p->ret++;
 		}
 	// printf("{ZESPret=%d}", p->ret);
 }

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
 /*
 ** %x & %X: undefined behavior with +, '0' and ' '

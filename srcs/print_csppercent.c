@@ -6,17 +6,11 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 09:38:25 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/20 15:30:57 by mbui             ###   ########.fr       */
+/*   Updated: 2020/11/03 18:26:48 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
-
-/*
-** '0' ignored when '-' is present
-** ' ' ignored when '+' is present
-*/
 
 /*
 ** %c: undefined behavior with +, 0, ' ', # and precision

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
+
 
 char	*roundup(double n, char *str_flt)
 {

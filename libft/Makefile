@@ -6,7 +6,7 @@
 #    By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/04 12:49:35 by mbui              #+#    #+#              #
-#    Updated: 2020/10/24 17:12:00 by mbui             ###   ########.fr        #
+#    Updated: 2020/11/04 16:33:04 by mbui             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ BONUS = ft_abs.c ft_isspace.c ft_max.c ft_min.c ft_islower.c ft_isupper.c \
 		 ft_strspn.c ft_strpbrk.c ft_strjoin_free.c free_tab.c tablen.c \
 		get_next_line.c ft_swap.c sort_int_tab.c tabcpy.c nbwords.c \
 		lstdel_tlist.c ft_listsize.c ft_intlen.c ft_dabs.c \
-		ft_putnbrmax_fd.c ft_putnbrmax.c ft_putnbrumax_fd.c ft_putnbrumax.c \
+		ft_putnbrmax_fd.c ft_putnbrmax.c ft_putnbrumax_fd.c \
+		ft_putnbrumax.c ft_intmaxabs.c\
 
 
 OBJ = $(SRC:.c=.o) $(BONUS:.c=.o)

@@ -26,7 +26,7 @@ int main(void)
 //	int	i = -43125345; //4294967295
 	//unsigned int	nb = 4294967296; //kkx kko
 //	unsigned int	nb = 4294967296; //kko kkx
-unsigned int	nb = 0;
+unsigned int	nb = 78879;
 //	unsigned int	nb = 458;
 	int		i = 0;
 	//int		i = 2147483648; //kk on that number + & -
@@ -264,7 +264,7 @@ printf("%s||\n", NULL);
 	ft_printf("%-8.5d||\n", i);
 	printf("%-8.5d||\n", i);
 
-	printf("\n-----UNSIGNED OCTAL-----\n");
+*/	printf("\n-----UNSIGNED OCTAL-----\n");
 	ft_printf("%+o||\n", nb);
 	printf("%+o||\n", nb);
 	ft_printf("%0o||\n", nb);
@@ -308,28 +308,39 @@ printf("%s||\n", NULL);
  	printf("%- 08.o||\n", nb);
 	ft_printf("%0-+18.60o||\n", nb);
 	printf("%0-+18.60o||\n", nb);
-	ft_printf("%0-+# 12.2o||\n", nb);
-	printf("%0-+# 12.2o||\n", nb); //0-
 	ft_printf("%015.o||\n", nb);
 	printf("%015.o||\n", nb);
 	ft_printf("%+- 011o||\n", nb);
 	printf("%+- 011o||\n", nb);
+	ft_printf("%0 18o||\n", nb);
+	printf("%0 18o||\n", nb);
 	ft_printf("% -018.30o||\n", nb);
 	printf("% -018.30o||\n", nb);
 	ft_printf("%-050o||\n", nb);
 	printf("%-050o||\n", nb);
+
+	ft_printf("%0# 40.o||\n", nb);
+	printf("%0# 40.o||\n", nb); //0-
+	
+	ft_printf("%-0#18.o||\n", nb);
+	printf("%-0#18.o||\n", nb);
+	
+	ft_printf("%0-+# 12.2o||\n", nb);
+	printf("%0-+# 12.2o||\n", nb); //0-
 	ft_printf("%-0# 50o||\n", nb);
 	printf("%-0# 50o||\n", nb); //sp-
 	ft_printf("%0# 45o||\n", nb);
 	printf("%0# 45o||\n", nb); //0-
-	ft_printf("%0 18o||\n", nb);
-	printf("%0 18o||\n", nb);
 	ft_printf("%0# 40.o||\n", nb);
-	printf("%0# 40.o||\n", nb); //0-
+	printf("%0# 40.o||\n", nb);
 	ft_printf("%0# 40.60o||\n", nb);
-	printf("%0# 40.60o||\n", nb); //0-
+	printf("%0# 40.60o||\n", nb);
+	ft_printf("%#5o|\n", 1);
+	printf("%#5o|\n", 1);
+	ft_printf("%#.2o|\n", 1);
+	printf("%#.2o|\n", 1);
 
-	printf("\n-----UNSIGNED INT-----\n"); //(-, 0, #, )
+/*	printf("\n-----UNSIGNED INT-----\n"); //(-, 0, #, )
 	// single flag
 	ft_printf("%+u||\n", nb);
 	printf("%+u||\n", nb);
@@ -395,7 +406,7 @@ printf("%s||\n", NULL);
 	ft_printf("%0# 40.60u||\n", nb);
 	printf("%0# 40.60u||\n", nb);
 
-*/	printf("\n-----UNSIGNED HEX-----\n"); //(-, 0, #, )
+	printf("\n-----UNSIGNED HEX-----\n"); //(-, 0, #, )
 	// single flag
 	ft_printf("%+x||\n", nb);
 	printf("%+x||\n", nb);
@@ -467,7 +478,7 @@ printf("%s||\n", NULL);
 	ft_printf("%0# 40.45X||\n", nb);
 	printf("%0# 40.45X||\n", nb);
 
-/*	printf("\n-----PERCENTS-----\n"); //(-,0,width) xpres x# x' '?
+	printf("\n-----PERCENTS-----\n"); //(-,0,width) xpres x# x' '?
 	// single flag
 	ft_printf("%+%||\n");
 	printf("%+%||\n");
@@ -684,7 +695,7 @@ printf("%15f",1.123456);
 	unsigned short y = 587;
 	ft_printf("%hx||\n", y);
 	printf("%hx||\n", y);
-*/
+
  ft_printf("%07d||\n", -55);
  printf("%07d||\n", -55);
 ft_printf("%010.5d||\n", -216);
@@ -696,6 +707,6 @@ printf("%010.5d||\n", 216);
 ft_printf("%*i||\n", -14, 94827);
 printf("%*i||\n", -14, 94827);
 ft_printf("%0*i||\n", -7, -54);
-printf("%0*i||\n", -7, -54);
+printf("%0*i||\n", -7, -54);*/
 	return (0);
 }

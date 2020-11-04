@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
+
 
 int	get_flag(t_print *p, int i)
 {

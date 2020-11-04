@@ -6,22 +6,20 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 16:11:13 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/29 15:19:59 by mbui             ###   ########.fr       */
+/*   Updated: 2020/11/03 21:25:30 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
 int		ft_putstr_len_percent(const char *str, t_print *p)
 {
-	// printf("STR");
 	int i;
 
 	i = 0;
 	while (str[i] && str[i] != '%')
 		i++;
-		//  printf("{STRi=%d}", p->ret);
+	//  printf("{STRi=%d}", p->ret);
 	p->ret += i;
 	//  printf("{STRi=%d}", p->ret);
 	// printf("{STRret=%d}", p->ret);

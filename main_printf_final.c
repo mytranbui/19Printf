@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+
 #include "printf.h"
 #include <limits.h>
 #include <float.h>
