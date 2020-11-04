@@ -233,6 +233,12 @@ int main(void)
 	b = printf("%X|\n", 4294967296);
 	printf("a=%d\n", a);
 	printf("b=%d\n", b);
+	a = ft_printf("{%f}{%lf}{%Lf}|\n", 1.42, 1.42, 1.42l);
+	b = printf("{%f}{%lf}{%Lf}|\n", 1.42, 1.42, 1.42l);
+	printf("a=%d\n", a);
+	printf("b=%d\n", b);
+	printf("ULMAX=%lu\n", ULONG_MAX);
+	printf("ULLMAX=%llu\n", ULLONG_MAX);
 	printf("LMAX=%ld\n", LONG_MAX);
 	printf("LLMAX=%lld\n", LLONG_MAX);
 	printf("LMIN=%ld\n", LONG_MIN);

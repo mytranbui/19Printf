@@ -111,6 +111,7 @@ int				nbwords(char const *s, char c);
 t_list			*lstdel_tlist(t_list **head);
 int				ft_listsize(t_list *head);
 double			ft_dabs(double x);
+long double		ft_ldabs(long double x);
 intmax_t		ft_intmaxabs(intmax_t x);
 void			ft_putnbrmax_fd(intmax_t n, int fd);
 void			ft_putnbrmax(intmax_t n);

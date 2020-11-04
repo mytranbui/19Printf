@@ -28,7 +28,6 @@ static void	print_result_di(intmax_t arg, int pres, t_print *p)
 			ft_putstr("9223372036854775808");
 		else
 			ft_putnbrmax(ft_intmaxabs(arg));
-		//printf("{dabs arg=%jd}", ft_intmaxabs(arg));
 		p->ret += (arg == 0) ? 1 : ft_intlen(ft_intmaxabs(arg));
 	}
 }

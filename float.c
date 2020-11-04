@@ -131,4 +131,4 @@ void	convert_f(long double arg, t_print *p)
 }
 
 //printf("{ARGG=%ji}", arg);
-//	printf("{darg=%f}", ft_dabs(arg));
+//	printf("{darg=%f}", ft_ldabs(arg));

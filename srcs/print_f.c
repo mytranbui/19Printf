@@ -114,7 +114,7 @@ void	print_f(long double arg, t_print *p)
 	int		tmp_pres;
 	char	*str_flt;
 
-	str_flt = get_flt(ft_dabs(arg), p);
+	str_flt = get_flt(ft_ldabs(arg), p);
 	len = ft_strlen(str_flt);
 	tmp_pres = p->pres;
 	bigger_len = (len > p->pres) ? len : p->pres;
@@ -131,7 +131,7 @@ void	print_f(long double arg, t_print *p)
 		print_result(arg, str_flt, tmp_pres, p);
 		padding_space(bigger_len, p);
 	}
-	printf("{ret=%d}", p->ret);
+	//printf("{ret=%d}", p->ret);
 }
 
 
@@ -148,7 +148,7 @@ void	print_f(long double arg, t_print *p)
 // 	int		tmp_pres;
 // 	char	*str_flt;
 
-// 	str_flt = get_flt(ft_dabs(arg), p);
+// 	str_flt = get_flt(ft_ldabs(arg), p);
 // 	len = ft_strlen(str_flt);
 // 	tmp_pres = p->pres;
 // 	bigger_len = (len > p->pres) ? len : p->pres;
