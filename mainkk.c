@@ -48,62 +48,12 @@ int main(void)
 	long long test_conv_neg = LONG_MIN;
 	unsigned long test_conv_u = ULONG_MAX;
 
-	ft_printf("%----24p et %2p et aussi %12p|\n", &a, &b, NULL);
-	printf("%----24p et %2p et aussi %12p|\n", &a, &b, NULL);
-	printf("\n");
-	ft_printf("Coucou = %#% % .5% %----24p et %5% %2p et aussi %12p %%%%%%\n", &a, &b, NULL);
-	printf("Coucou = %#% % .5% %----24p et %5% %2p et aussi %12p %%%%%%\n", &a, &b, NULL);
-
-
-
- ft_printf ("ft_printf4  :|%07p|%07p|%07p|%07p|%07p|\n", 0,0,0,0,0);
- printf ("printf4     :|%07p|%07p|%07p|%07p|%07p|\n", 0,0,0,0,0);
- ft_printf ("ft_printf4  :|%07p|%07p|%07p|%07p|%07p|\n", 1,1,1,1,1);
- printf ("printf4     :|%07p|%07p|%07p|%07p|%07p|\n", 1,1,1,1,1);
- ft_printf ("ft_printf4  :|%07p|%07p|%07p|%07p|%07p|\n", 999,999,999,999,999);
- printf ("printf4     :|%07p|%07p|%07p|%07p|%07p|\n", 999,999,999,999,999);
- ft_printf ("ft_printf4  :|%06p|%06p|%06p|%06p|%06p|\n", 999,999,999,999,999);
- printf ("printf4     :|%06p|%06p|%06p|%06p|%06p|\n", 999,999,999,999,999);
-
-
-
-	ft_printf("ft_printf5 : %010i-\n", -10);
-	printf( "printf5    : %010i-\n", -10);
-	ft_printf("ft_printf7 : %+#10.4i-\n", 0);
-	printf( "printf7    : %+#10.4i-\n", 0);
-	ft_printf("ft_printf8 : %+-10.4i-\n", 0);
-    printf("printf8    : %+-10.4i-\n", 0);
-    ft_printf("ft_printf9 : %+010.4i-\n", 0);
-    printf( "printf9    : %+010.4i-\n", 0);
-	ft_printf("ft_printf11 : %+-5.3i-\n", 0);
-      printf( "printf11    : %+-5.3i-\n", 0);
-
-	ft_printf("Coucou float %-#15.1f\n", -0);
-  	printf("Coucou float %-#15.1f\n", -0);
-  	printf("\n");
 	ft_printf("Coucou float %f\n", -0.0);
   	printf("Coucou float %f\n", -0.0);
-	printf("\n");
-	ft_printf("%05d\n", -42);
-	printf("%05d\n", -42);
-	printf("\n");
-	ft_printf("%0+5d\n", -42);
-	printf("%0+5d\n", -42);
 
-	ft_printf("%04p||\n", 0);
-	printf("%04p||\n", 0);
 	ft_printf("|%o|%#o|%#o|%#5o|%#5.2o|%o|\n", 42, 42, 89, 42, 89, 00);
 	printf("|%o|%#o|%#o|%#5o|%#5.2o|%o|\n", 42, 42, 89, 42, 89, 00);
-	ft_printf("|%#o|%#o|%#5o|%#5.2o|%.o|%o|%o|%o|%o|%o|\n", 42, 42, 42, 42, 42, 42, 42,42,42,42);
-	printf("|%#o|%#o|%#5o|%#5.2o|%.o|%o|%o|%o|%o|%o|\n", 42, 42, 42, 42, 42, 42, 42,42,42,42);
-	ft_printf("|%#u|%#u|%#5u|%#5.2u|%.u|%u|%u|%u|%u|%u|\n", 42, 42, 42, 42, 42, 42, 42,42,42,42);
-	printf("|%#u|%#u|%#5u|%#5.2u|%.u|%u|%u|%u|%u|%u|\n", 42, 42, 42, 42, 42, 42, 42,42,42,42);
-	ft_printf("|%#d|%#d|%#5d|%#5.2d|%.d|%d|%d|%d|%d|%d|\n", 42, 42, 42, 42, 42, 42, 42,42,42,42);
-	printf("|%#d|%#d|%#5d|%#5.2d|%.d|%d|%d|%d|%d|%d|\n", 42, 42, 42, 42, 42, 42, 42,42,42,42);
 
-	printf("\n");
-	ft_printf("|%#c|%#c|%#5c|%#5.2c|%.c|%c|%c|%c|%c|%c|\n", 42, 42, 42, 42, 42, 42, 42,42,42,42);
-	printf("|%#c|%#c|%#5c|%#5.2c|%.c|%c|%c|%c|%c|%c|\n", 42, 42, 42, 42, 42, 42, 42,42,42,42);
 	ft_printf("|%#s|%#s|%#5s|%#5.2s|%.s|%s|%s|%s|%s|%s|\n", "42", "42", "42", "42", "42", "42", "42","42","42","42");
 	printf("|%#s|%#s|%#5s|%#5.2s|%.s|%s|%s|%s|%s|%s|\n", "42", "42", "42", "42", "42", "42", "42","42","42","42");
 	ft_printf("|%#p|%#p|%#5p|%#5.2p|%.p|%p|%p|%p|%p|%p|\n", &b, &b, &b, &b, &b, &b, &b,&b,&b,&b);
@@ -119,40 +69,10 @@ int main(void)
 	ft_printf("|%#f|%#f|%#5f|%#5.2f|%.f|%f|%f|%f|%f|%f|\n", 42.42, 42.42, 42.42, 42.42, 42.42, 42.42, 42.42,42.42,42.42,42.42);
 	printf("|%#f|%#f|%#5f|%#5.2f|%.f|%f|%f|%f|%f|%f|\n", 42.42, 42.42, 42.42, 42.42, 42.42, 42.42, 42.42,42.42,42.42,42.42);
 	printf("\n---TEST---\n");
-	ft_printf("|%d|\n", -2147483648);
-	printf("|%d|\n", -2147483648);
-	printf("\n");
+
 	ft_printf("|%f|\n", -2147483648);
 	printf("|%f|\n", -2147483648);
-	ft_printf("%05i|\n", 43);
-	printf("%05i|\n", 43);
-	//o u x KK
-	printf("\n");
-	ft_printf("%.*s||\n", -3, "hello");
-	printf("%.*s||\n", -3, "hello");
-	printf("\n");
-	ft_printf("%%d 0000042 == |%d|\n", 0000042);
-	printf("%%d 0000042 == |%d|\n", 0000042);
-	printf("\n");
-	ft_printf("Salut %20.12ld this %0 5d % 5d % 4.8i is not a test\n", 0x11ffaa147, 45, 45, 23);
-	printf("Salut %20.12ld this %0 5d % 5d % 4.8i is not a test\n", 0x11ffaa147, 45, 45, 23);
-	printf("\n");
-	ft_printf("%0 5d|\n", 45);
-	printf("%0 5d|\n", 45);
-	printf("\n");
-	ft_printf("% 5d|\n", 45);
-	printf("% 5d|\n", 45);
-	ft_printf("%+20.12lli|\n", (long long)0x11ffaa141237);
-	printf("%+20.12lli|\n", (long long)0x11ffaa141237);
-	printf("\n");
-	ft_printf("%0+5d|\n", 42);
-	printf("%0+5d|\n", 42);
-	printf("\n");
-	ft_printf("{%05.*d}\n", -15, 42);
-	printf("{%05.*d}\n", -15, 42);
-	ft_printf("{%*d}\n", -15, 42);
-	printf("{%*d}\n", -15, 42);
-	printf("\n");
+e
 	ft_printf("ultimate2 %*d|%*s|%*x|%*X|%*i|%*u|\n", 1, 5000, 1, "hey", 10, 54700, 1, 300, 100, -55, 1, -60);
 	printf("ultimate2 %*d|%*s|%*x|%*X|%*i|%*u|\n", 1, 5000, 1, "hey", 10, 54700, 1, 300, 100, -55, 1, -60);
 	printf("\n");
@@ -243,6 +163,24 @@ int main(void)
 	printf("LLMAX=%lld\n", LLONG_MAX);
 	printf("LMIN=%ld\n", LONG_MIN);
 	printf("LLMIN=%lld\n", LLONG_MIN);
+	a = ft_printf("|%o|%#o|%#o|%#5o|%#5.2o|%.o|\n", 42, 42, 0, 42, 0, 0);
+	b = printf("|%o|%#o|%#o|%#5o|%#5.2o|%.o|\n", 42, 42, 0, 42, 0, 0);
+	printf("a=%d\n", a);
+	printf("b=%d\n", b);
+	a = ft_printf("|%#o|%#o|%#5o|%#5.2o|%.o|\n", 42, 0, 42, 0, 0);
+	b = printf("|%#o|%#o|%#5o|%#5.2o|%.o|\n", 42, 0, 42, 0, 0);
+	printf("a=%d\n", a);
+	printf("b=%d\n", b);
+	printf("\n");
+	a = ft_printf ("|%-0#5.3f|%-0#5.1f|%-0#5.0f|%-0#5.f|\n",0,0,0,0);
+	b = printf ("|%-0#5.3f|%-0#5.1f|%-0#5.0f|%-0#5.f|\n",0,0,0,0);
+	printf("a=%d\n", a);
+	printf("b=%d\n", b);
+	printf("\n");
+	a = ft_printf ("|%-0#5.1f|\n",0);
+	b = printf ("|%-0#5.1f|\n",0);
+	printf("a=%d\n", a);
+	printf("b=%d\n", b);
 	
 	// a =ft_printf("%|\n");
 	// //b = printf("%|\n");

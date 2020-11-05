@@ -109,7 +109,8 @@ uintmax_t	convert_arg_oux(va_list ap, t_print *p)
 		{
 			//printf("{usi}");
 			// arg = (unsigned long long int)va_arg(ap, unsigned long long);
-			arg = va_arg(ap, unsigned long long);
+			//arg = va_arg(ap, unsigned long long);
+			arg = va_arg(ap, unsigned int);
 		}
 	}
 	//printf("{uarg = %ji}", arg);

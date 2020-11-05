@@ -12,7 +12,75 @@
 
 #include "libftprintf.h"
 
-char	*roundup(double n, char *str_flt)
+// static long double	find_size(long double value, int base)
+// {
+// 	int	len;
+
+// 	len = 0;
+// 	while (value)
+// 	{
+// 		len++;
+// 		value /= base;
+// 	}
+// 	return (len);
+// }
+
+// char				*ft_ldtoa_base(long double value, int base, char x)
+// {
+// 	char	*ret;
+// 	char	*str_base;
+// 	int		len;
+// 	int		sign;
+
+// 	sign = 0;
+// 	str_base = "0123456789abcdef";
+// 	x == 'X' ? str_base = "0123456789ABCDEF" : str_base;
+// 	len = find_size(value, base);
+// 	if (base < 2 || base > 16)
+// 		return (0);
+// 	if (value == 0)
+// 		return ("0");
+// 	(base == 10 && value < 0) ? sign = 1 && len++ : len;
+// 	value < 0 ? value = -value : value;
+// 	ret = (char *)malloc(sizeof(char) * (len + 1));
+// 	ret[len] = '\0';
+// 	sign ? (ret[0] = '-') : 0;
+// 	while (value)
+// 	{
+// 		ret[--len] = str_base[value % base];
+// 		value /= base;
+// 	}
+// 	return (ret);
+// }
+
+char	*ft_ltoa_base(long n, int base)
+{
+	char	*s;
+	long	nb;
+	int		len;
+
+	len = 1;
+	n < 0 ? ++len : 0;
+	nb = n < 0 ? -n : n;
+	while (nb >= base)
+	{
+		nb /= base;
+		++len;
+	}
+	s = (char*)malloc(sizeof(char) * (len + 1));
+	s[len] = '\0';
+	n < 0 ? *s = '-' : 0;
+	n < 0 ? n = -n : 0;
+	while (n >= base)
+	{
+		s[--len] = n % base < 10 ? (n % base) + 48 : (n % base) + 55;
+		n /= base;
+	}
+	s[--len] = n % base < 10 ? (n % base) + 48 : (n % base) + 55;
+	return (s);
+}
+
+char	*roundup(long double n, char *str_flt)
 {
 	char	last_num;
 	int		dec;
@@ -41,14 +109,18 @@ char	*roundup(double n, char *str_flt)
 	return (str_flt);
 }
 
-char	*get_int(double n, t_print *p)
+char	*get_int(long double n, t_print *p)
 {
 	char	*s;
 	char	*str_dot;
 	int		len;
 
-	if (!(s = ft_itoa_base(n, 10, 'x')))
+	// if (n == 9223372036854775807)
+	// 	s = ft_strdup("9223372036854775808");
+	if (!(s = ft_ltoa_base(n, 10)))
 		return (0);
+	// printf("{sint=%s}",s);
+	 //printf("{n=%f}",n);
 	len = ft_strlen(s);
 	str_dot = NULL;
 	if (p->pres != 0 || p->flg.hash != 0)
@@ -61,7 +133,7 @@ char	*get_int(double n, t_print *p)
 	return (!str_dot ? s : str_dot);
 }
 
-char	*get_flt(double n, t_print *p)
+char	*get_flt(long double n, t_print *p)
 {
 	char	*str_int;
 	char	*str_dec;
@@ -99,10 +171,11 @@ void	print_f2(long double arg, int len, int bigger_len, t_print *p)
 	}
 	if (!p->flg.minus)
 	{
-		if (arg < 0 && p->flg.zero)
-			ft_putchar('-');
+		if (p->flg.zero)
+			putsign(arg, p);
 		padding_ze_sp(bigger_len, p);
-		putsign(arg, p);
+		if (!p->flg.zero) //&& p->pres == -1)
+			putsign(arg, p);
 		padding_zero(len, p);
 	}
 }
@@ -134,6 +207,17 @@ void	print_f(long double arg, t_print *p)
 	//printf("{ret=%d}", p->ret);
 }
 
+// static void	print_result_di(intmax_t arg, int pres, t_print *p)
+// {
+// 	if ((arg != 0 || pres != 0) && (p->type == 'd' || p->type == 'i'))
+// 	{
+// 		if (arg == -9223372036854775807 - 1)
+// 			ft_putstr("9223372036854775808");
+// 		else
+// 			ft_putnbrmax(ft_intmaxabs(arg));
+// 		p->ret += (arg == 0) ? 1 : ft_intlen(ft_intmaxabs(arg));
+// 	}
+// }
 
 // bigger_len = (len > p->pres) ? len : p->pres;
 // 	(arg < 0 || (p->flg.plus && arg >= 0)) ? p->width-- : p->width;

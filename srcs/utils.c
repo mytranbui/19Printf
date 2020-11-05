@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-void	putprefix(const char *s, t_print *p)
+void	putprefix(char *s, t_print *p)
 {
 	if (p->type == 'p')
 	{

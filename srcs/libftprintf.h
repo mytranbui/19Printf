@@ -68,7 +68,7 @@ int				istype(char c);
 int				issize(char c);
 
 int				ft_putstr_len_percent(const char *str, t_print *p);
-void			putprefix(const char *s, t_print *p);
+void			putprefix(char *s, t_print *p);
 void			putsign(intmax_t n, t_print	*p);
 // void			putsign(int n, t_print	*p, int minus);
 void			padding_space(int len, t_print *p);
@@ -76,5 +76,5 @@ void			padding_zero(int len, t_print *p);
 void			padding_ze_sp(int len, t_print *p);
 void			free_print(t_print **p, int n);
 void			free_strprint(char **s);
-void			print_result(long double arg, const char *s, int pres, t_print *p);
+void			print_result(long double arg, char *s, int pres, t_print *p);
 #endif

@@ -16,7 +16,7 @@
 ** %x & %X: undefined behavior with +, '0' and ' '
 */
 
-static void	print_x2(const char *s, t_print *p, int bigger_len, int pres)
+static void	print_x2(char *s, t_print *p, int bigger_len, int pres)
 {
 	int len;
 
@@ -39,6 +39,8 @@ void		print_x(uintmax_t arg, t_print *p)
 
 	if (!(s = ft_utoa_base(arg, 16, p->type)))
 		free_print(&p, 2);
+	//printf("{s=%s}",s);
+	//printf("{arg=%ju}",arg);
 	len = ft_strlen(s);
 	tmp_pres = p->pres;
 	bigger_len = (len > p->pres) ? len : p->pres;

@@ -47,7 +47,7 @@ void	free_print(t_print **p, int n)
 		exit(EXIT_FAILURE);
 }
 
-void	print_result(long double arg, const char *s, int pres, t_print *p)
+void	print_result(long double arg, char *s, int pres, t_print *p)
 {
 	if (p->type == 'f' && (arg != 0 || pres != 0))
 	{
