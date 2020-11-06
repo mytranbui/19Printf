@@ -117,10 +117,10 @@ char	*get_int(long double n, t_print *p)
 
 	// if (n == 9223372036854775807)
 	// 	s = ft_strdup("9223372036854775808");
-	if (!(s = ft_lltoa_base(n, 10)))
-		return (0);
-	// if (!(s = ft_itoa_base(n, 10, 'x')))
+	// if (!(s = ft_lltoa_base(n, 10)))
 	// 	return (0);
+	if (!(s = ft_itoa_base(n, 10, 'x')))
+		return (0);
 	// printf("{sint=%s}",s);
 	 //printf("{n=%f}",n);
 	len = ft_strlen(s);
@@ -164,14 +164,10 @@ char	*get_flt(long double n, t_print *p)
 	return (str_flt);
 }
 
-void	print_result_f(long double arg, char *s, int pres, t_print *p)
+void	print_result_f(char *s, t_print *p)
 {
-	if (arg != 0 || pres != 0 || p->flg.hash)
-	//if (arg != 0 || pres != 0)
-	{
-		ft_putstr(s);
-		p->ret += ft_strlen(s);
-	}
+	ft_putstr(s);
+	p->ret += ft_strlen(s);
 }
 
 void	print_f2(long double arg, int len, int bigger_len, t_print *p)
@@ -181,6 +177,7 @@ void	print_f2(long double arg, int len, int bigger_len, t_print *p)
 		ft_putchar(' ');
 		p->ret++;
 	}
+	//else if (arg == 0 && )
 	if (!p->flg.minus)
 	{
 		if (p->flg.zero)
@@ -196,27 +193,28 @@ void	print_f(long double arg, t_print *p)
 {
 	int		len;
 	int		bigger_len;
-	int		tmp_pres;
 	char	*str_flt;
 
-	str_flt = get_flt(ft_ldabs(arg), p);
+	//printf("{arg=%Lf}",arg);
+	str_flt = (arg == -0) ? ft_strdup("-0.000000") : get_flt(ft_ldabs(arg), p);
 	len = ft_strlen(str_flt);
-	tmp_pres = p->pres;
 	bigger_len = ft_max(len, p->pres);
 	(arg < 0 || (p->flg.plus && arg >= 0)) ? len++ && bigger_len++ : len;
 	(p->flg.plus == 0 && arg >= 0) ? len++ : len;
 	(p->flg.space && p->flg.plus == 0 && arg >= 0) ? bigger_len++ : bigger_len;
 	print_f2(arg, len, bigger_len, p);
 	if (!p->flg.minus)
-		print_result_f(arg, str_flt, tmp_pres, p);
+		print_result_f(str_flt, p);
+		//print_result(arg, str_flt, tmp_pres, p);
 	else
 	{
 		putsign(arg, p);
 		padding_zero(len, p);
-		print_result_f(arg, str_flt, tmp_pres, p);
+		//print_result(arg, str_flt, tmp_pres, p);
+		print_result_f(str_flt, p);
 		padding_space(bigger_len, p);
 	}
-	//printf("{ret=%d}", p->ret);
+	free_strprint(&str_flt);
 }
 
 // static void	print_result_di(intmax_t arg, int pres, t_print *p)
@@ -236,33 +234,3 @@ void	print_f(long double arg, t_print *p)
 // 	(arg == 0 && p->pres > 0) ? p->pres-- : p->pres;
 // 	(arg == 0 && p->pres == -1) ? p->width-- : p->width;
 // 	(p->flg.space && !p->flg.plus && arg >= 0) ? p->width-- : p->width;
-
-// void	print_f(long double arg, t_print *p)
-// {
-// 	int		len;
-// 	int		bigger_len;
-// 	int		tmp_pres;
-// 	char	*str_flt;
-
-// 	str_flt = get_flt(ft_ldabs(arg), p);
-// 	len = ft_strlen(str_flt);
-// 	tmp_pres = p->pres;
-// 	bigger_len = ft_max(len, p->pres);
-// 	(arg < 0 || (p->flg.plus && arg >= 0)) ? len++ && bigger_len++ : len;
-// 	(p->flg.plus == 0 && arg >= 0) ? len++ : len;
-// 	(p->flg.space && p->flg.plus == 0 && arg >= 0) ? bigger_len++ : bigger_len;
-// 	if (p->flg.space && p->flg.plus == 0 && arg >= 0)
-// 		ft_putchar(' ');
-// 	if (p->flg.minus == 0)
-// 	{
-// 		print_f2(arg, bigger_len, len, p);
-// 		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(str_flt);
-// 	}
-// 	else
-// 	{
-// 		putsign(arg, p);
-// 		padding_zero(len, p);
-// 		(arg == 0 && tmp_pres == 0) ? ft_putchar(' ') : ft_putstr(str_flt);
-// 		padding_space(bigger_len, p);
-// 	}
-// }
