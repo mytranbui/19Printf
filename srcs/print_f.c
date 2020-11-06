@@ -53,7 +53,7 @@
 // 	return (ret);
 // }
 
-char	*ft_ltoa_base(long n, int base)
+char	*ft_lltoa_base(long long n, int base)
 {
 	char	*s;
 	long	nb;
@@ -117,8 +117,10 @@ char	*get_int(long double n, t_print *p)
 
 	// if (n == 9223372036854775807)
 	// 	s = ft_strdup("9223372036854775808");
-	if (!(s = ft_ltoa_base(n, 10)))
+	if (!(s = ft_lltoa_base(n, 10)))
 		return (0);
+	// if (!(s = ft_itoa_base(n, 10, 'x')))
+	// 	return (0);
 	// printf("{sint=%s}",s);
 	 //printf("{n=%f}",n);
 	len = ft_strlen(s);
@@ -162,6 +164,16 @@ char	*get_flt(long double n, t_print *p)
 	return (str_flt);
 }
 
+void	print_result_f(long double arg, char *s, int pres, t_print *p)
+{
+	if (arg != 0 || pres != 0 || p->flg.hash)
+	//if (arg != 0 || pres != 0)
+	{
+		ft_putstr(s);
+		p->ret += ft_strlen(s);
+	}
+}
+
 void	print_f2(long double arg, int len, int bigger_len, t_print *p)
 {
 	if (p->flg.space && !p->flg.plus && arg >= 0)
@@ -196,12 +208,12 @@ void	print_f(long double arg, t_print *p)
 	(p->flg.space && p->flg.plus == 0 && arg >= 0) ? bigger_len++ : bigger_len;
 	print_f2(arg, len, bigger_len, p);
 	if (!p->flg.minus)
-		print_result(arg, str_flt, tmp_pres, p);
+		print_result_f(arg, str_flt, tmp_pres, p);
 	else
 	{
 		putsign(arg, p);
 		padding_zero(len, p);
-		print_result(arg, str_flt, tmp_pres, p);
+		print_result_f(arg, str_flt, tmp_pres, p);
 		padding_space(bigger_len, p);
 	}
 	//printf("{ret=%d}", p->ret);

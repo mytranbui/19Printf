@@ -73,7 +73,7 @@ long double	convert_arg_f(va_list ap, t_print *p)
 			arg = va_arg(ap, long double);
 		}
 		else
-			arg = (double)va_arg(ap, double);
+			arg = va_arg(ap, double);
 	}
 	return (arg);
 }

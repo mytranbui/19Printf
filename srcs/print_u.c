@@ -23,7 +23,6 @@ void	print_u(uintmax_t arg, t_print *p)
 	int		bigger_len;
 	int		tmp_pres;
 
-	//s = ft_itoa_base(va_arg(ap, unsigned int), 10, 'x');
 	if (!(s = ft_utoa_base(arg, 10, 'x')))
 		free_print(&p, 2);
 	len = ft_strlen(s);

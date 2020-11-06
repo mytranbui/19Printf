@@ -18,7 +18,7 @@
 
 static void	print_result_o(char *s, int pres, t_print *p)
 {
-	if(*s != '0' || pres != 0 || p->flg.hash)
+	if (*s != '0' || pres != 0 || p->flg.hash)
 	{
 		ft_putstr(s);
 		p->ret += ft_strlen(s);
@@ -45,14 +45,12 @@ void		print_o(uintmax_t arg, t_print *p)
 
 	if (!(s = ft_utoa_base(arg, 8, 'x')))
 		free_print(&p, 2);
-	//printf("{s=%s}",s);
-	//printf("{arg=%ju}",arg);
 	len = ft_strlen(s);
 	tmp_pres = p->pres;
 	bigger_len = (len > p->pres) ? len : p->pres;
 	p->flg.hash = (*s == '0' && p->pres != 0) ? 0 : p->flg.hash;
 	(p->flg.hash && *s == '0') ? p->pres++ : p->pres;
-	(p->flg.hash && *s != '0') ? p->width-- : p->width;
+	(p->flg.hash && *s != '0' && p->pres <= len) ? p->width-- : p->width;
 	(p->flg.hash && *s != '0' && p->pres > 0) ? p->pres-- : p->pres;
 	(*s == '0' && !tmp_pres && !p->flg.hash) ? p->width++ : p->width;
 	if (!p->flg.minus)
