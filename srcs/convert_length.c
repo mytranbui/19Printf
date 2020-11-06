@@ -6,22 +6,22 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:22:40 by mbui              #+#    #+#             */
-/*   Updated: 2020/11/04 11:41:39 by mbui             ###   ########.fr       */
+/*   Updated: 2020/11/06 18:30:50 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
 /*
- ** For diouxX
- ** h	>>	short (unsigned) int
- ** hh	>>	(unsigned) char
- ** l	>>	long (unsigned) int
- ** ll	>>	long long (unsigned) int
- ** For f
- ** l	>>	no diff with printf but with scanf it's a double
- ** L	>>	long (unsigned) double
- */
+** For diouxX
+** h	>>	short (unsigned) int
+** hh	>>	(unsigned) char
+** l	>>	long (unsigned) int
+** ll	>>	long long (unsigned) int
+** For f
+** l	>>	no diff with printf but with scanf it's a double
+** L	>>	long (unsigned) double
+*/
 
 intmax_t	convert_arg_di(va_list ap, t_print *p)
 {
@@ -31,32 +31,16 @@ intmax_t	convert_arg_di(va_list ap, t_print *p)
 	if (p->type == 'd' || p->type == 'i')
 	{
 		if (p->flg.h == 1)
-		{
-			//printf("{sh}");
 			arg = (short int)va_arg(ap, int);
-		}
 		else if (p->flg.h == 2)
-		{
-			//printf("{ch}");
 			arg = (char)va_arg(ap, int);
-		}
 		else if (p->flg.l == 1)
-		{
-			//printf("{l}");
 			arg = (long int)va_arg(ap, long int);
-		}
 		else if (p->flg.l == 2)
-		{
-			//printf("{ll}");
 			arg = (long long int)va_arg(ap, long long int);
-		}
 		else
-		{
-			//printf("{i}");
 			arg = (int)va_arg(ap, int);
-		}
 	}
-	//printf("{iarg = %ji}", arg);
 	return (arg);
 }
 
@@ -70,11 +54,15 @@ long double	convert_arg_f(va_list ap, t_print *p)
 		if (p->flg.maj_l == 1)
 		{
 			//printf("{Ld}");
-			arg = va_arg(ap, long double);
+			arg = (long double)va_arg(ap, long double);
 		}
 		else
-			arg = va_arg(ap, double);
+		{
+			//printf("{d}");
+			arg = (double)va_arg(ap, double);
+		}
 	}
+	//printf("{arg=%Lf}", arg);
 	return (arg);
 }
 
@@ -86,43 +74,25 @@ uintmax_t	convert_arg_oux(va_list ap, t_print *p)
 	if (p->type == 'o' || p->type == 'u' || p->type == 'x' || p->type == 'X')
 	{
 		if (p->flg.h == 1)
-		{
-			// printf("{ush}");
 			arg = (unsigned short int)va_arg(ap, unsigned int);
-		}
 		else if (p->flg.h == 2)
-		{
-			// printf("{uchar}");
 			arg = (unsigned char)va_arg(ap, unsigned int);
-		}
 		else if (p->flg.l == 1)
-		{
-			// printf("{ul}");
 			arg = (unsigned long int)va_arg(ap, unsigned long int);
-		}
 		else if (p->flg.l == 2)
-		{
-			// printf("{ull}");
 			arg = (unsigned long long int)va_arg(ap, unsigned long long int);
-		}
 		else
-		{
-			//printf("{usi}");
-			// arg = (unsigned long long int)va_arg(ap, unsigned long long);
-			//arg = va_arg(ap, unsigned long long);
 			arg = va_arg(ap, unsigned int);
-		}
 	}
-	//printf("{uarg = %ji}", arg);
 	return (arg);
 }
 
-void	print_(t_print *p)
+void		print_(t_print *p)
 {
 	padding_ze_sp(0, p);
 }
 
-int			conversion(va_list ap, t_print *p)
+void		conversion(va_list ap, t_print *p)
 {
 	// printf("{type=%c}", p->type);
 	if (p->type == 'c')
@@ -144,6 +114,5 @@ int			conversion(va_list ap, t_print *p)
 	else if (p->type == '%')
 		print_percent(p);
 	else
-		print_(p);	
-	return (1);
+		print_(p);
 }

@@ -202,7 +202,7 @@ void	print_f(long double arg, t_print *p)
 	str_flt = get_flt(ft_ldabs(arg), p);
 	len = ft_strlen(str_flt);
 	tmp_pres = p->pres;
-	bigger_len = (len > p->pres) ? len : p->pres;
+	bigger_len = ft_max(len, p->pres);
 	(arg < 0 || (p->flg.plus && arg >= 0)) ? len++ && bigger_len++ : len;
 	(p->flg.plus == 0 && arg >= 0) ? len++ : len;
 	(p->flg.space && p->flg.plus == 0 && arg >= 0) ? bigger_len++ : bigger_len;
@@ -231,7 +231,7 @@ void	print_f(long double arg, t_print *p)
 // 	}
 // }
 
-// bigger_len = (len > p->pres) ? len : p->pres;
+// bigger_len = ft_max(len, p->pres);
 // 	(arg < 0 || (p->flg.plus && arg >= 0)) ? p->width-- : p->width;
 // 	(arg == 0 && p->pres > 0) ? p->pres-- : p->pres;
 // 	(arg == 0 && p->pres == -1) ? p->width-- : p->width;
@@ -247,7 +247,7 @@ void	print_f(long double arg, t_print *p)
 // 	str_flt = get_flt(ft_ldabs(arg), p);
 // 	len = ft_strlen(str_flt);
 // 	tmp_pres = p->pres;
-// 	bigger_len = (len > p->pres) ? len : p->pres;
+// 	bigger_len = ft_max(len, p->pres);
 // 	(arg < 0 || (p->flg.plus && arg >= 0)) ? len++ && bigger_len++ : len;
 // 	(p->flg.plus == 0 && arg >= 0) ? len++ : len;
 // 	(p->flg.space && p->flg.plus == 0 && arg >= 0) ? bigger_len++ : bigger_len;

@@ -6,7 +6,7 @@
 #    By: mbui <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/28 23:45:25 by mbui              #+#    #+#              #
-#    Updated: 2020/11/06 14:26:01 by mbui             ###   ########.fr        #
+#    Updated: 2020/11/06 18:04:34 by mbui             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ SRCS =	srcs/ft_printf.c \
 		srcs/parse.c \
 		srcs/parse_utils.c \
 		srcs/convert_length.c \
-		srcs/print_cspercent.c \
+		srcs/print_percent.c \
+		srcs/print_c.c \
+		srcs/print_s.c \
 		srcs/print_p.c \
 		srcs/print_di.c \
 		srcs/print_o.c \
@@ -32,7 +34,9 @@ OBJS =	ft_printf.o \
 		parse.o \
 		parse_utils.o \
 		convert_length.o \
-		print_cspercent.o \
+		print_percent.o \
+		print_c.o \
+		print_s.o \
 		print_p.o \
 		print_di.o \
 		print_o.o \

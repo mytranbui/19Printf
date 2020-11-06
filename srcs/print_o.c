@@ -47,7 +47,7 @@ void		print_o(uintmax_t arg, t_print *p)
 		free_print(&p, 2);
 	len = ft_strlen(s);
 	tmp_pres = p->pres;
-	bigger_len = (len > p->pres) ? len : p->pres;
+	bigger_len = ft_max(len, p->pres);
 	p->flg.hash = (*s == '0' && p->pres != 0) ? 0 : p->flg.hash;
 	(p->flg.hash && *s == '0') ? p->pres++ : p->pres;
 	(p->flg.hash && *s != '0' && p->pres <= len) ? p->width-- : p->width;

@@ -58,7 +58,7 @@ void		print_di(intmax_t arg, t_print *p)
 
 	len = ft_intlen(ft_intmaxabs(arg));
 	tmp_pres = p->pres;
-	bigger_len = (len > p->pres) ? len : p->pres;
+	bigger_len = ft_max(len, p->pres);
 	(arg < 0 || (p->flg.plus && arg >= 0)) ? p->width-- : p->width;
 	(arg == 0 && p->pres > 0) ? p->pres-- : p->pres;
 	(arg == 0 && p->pres == -1) ? p->width-- : p->width;

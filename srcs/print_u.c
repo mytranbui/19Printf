@@ -27,7 +27,7 @@ void	print_u(uintmax_t arg, t_print *p)
 		free_print(&p, 2);
 	len = ft_strlen(s);
 	tmp_pres = p->pres;
-	bigger_len = (len > p->pres) ? len : p->pres;
+	bigger_len = ft_max(len, p->pres);
 	(*s == '0' && !tmp_pres) ? p->width++ : p->width;
 	if (!p->flg.minus)
 	{

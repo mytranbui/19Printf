@@ -45,8 +45,8 @@ void		print_p(va_list ap, t_print *p)
 		free_print(&p, 2);
 	len = ft_strlen(s);
 	tmp_pres = p->pres;
+	bigger_len = ft_max(len, p->pres) + 2;
 	(*s == '0' && tmp_pres == 0) ? p->width++ : p->width;
-	bigger_len = (len > p->pres) ? len + 2 : p->pres + 2;
 	if (!p->flg.minus)
 	{
 		print_p2(len, bigger_len, p);

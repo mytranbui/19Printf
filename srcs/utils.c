@@ -33,33 +33,27 @@ void	putprefix(char *s, t_print *p)
 
 void	putsign(intmax_t n, t_print *p)
 {
+	((p->flg.plus && n >= 0) || (n < 0)) ? p->ret++ : p->ret;
 	if (p->flg.plus && n >= 0)
-	{
+	//{
 		ft_putchar('+');
-		p->ret++;
-	}
-	// else if (!p->flg.minus && n < 0)
-	// {
-	// 	if (!p->flg.zero && p->type == 'f')
-	// 		ft_putchar('-');
-	// 	else if ((p->pres != -1 || !p->flg.zero) && (p->type == 'd' || p->type == 'i'))
-	// 		ft_putchar('-');
-	// }
+	//	p->ret++;
+	//}
 	else if (n < 0)
-	{
+	//{
 		ft_putchar('-');
-		p->ret++;
-	}
+	//	p->ret++;
+	//}
 }
 
 void	padding_zero(int len, t_print *p)
 {
 	(p->pres - len > 0) ? p->ret += p->pres - len : p->ret;
 	while (p->pres-- - len > 0)
-	{
+	//{
 		ft_putchar('0');
 		//	p->ret++;
-	}
+	//}
 }
 
 void	padding_space(int len, t_print *p)
@@ -77,16 +71,16 @@ void	padding_ze_sp(int len, t_print *p)
 	(p->width - len > 0) ? p->ret += p->width - len : p->ret;
 	if (p->type == 'c' || p->type == 's' || p->type == '%' || p->type == 'f' || !p->type)
 		while (p->width-- - len > 0)
-		{
+		//{
 			ft_putchar((p->flg.zero && !p->flg.minus) ? '0' : ' ');
 			//	p->ret++;
-		}
+		//}
 	else if (p->type == 'o' || p->type == 'u' ||
 			p->type == 'x' || p->type == 'X' || p->type == 'd' || p->type == 'i')
 		while (p->width-- - len > 0 && !p->flg.minus)
-		{
+		//{
 			ft_putchar((p->flg.zero && p->pres == -1) ? '0' : ' ');
 			//	p->ret++;
-		}
+		//}
 	// printf("{ZESPret=%d}", p->ret);
 }

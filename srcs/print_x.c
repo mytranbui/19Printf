@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:28:09 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/28 21:16:51 by mbui             ###   ########.fr       */
+/*   Updated: 2020/11/06 18:29:28 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,9 @@ void		print_x(uintmax_t arg, t_print *p)
 
 	if (!(s = ft_utoa_base(arg, 16, p->type)))
 		free_print(&p, 2);
-	//printf("{s=%s}",s);
-	//printf("{arg=%ju}",arg);
 	len = ft_strlen(s);
 	tmp_pres = p->pres;
-	bigger_len = (len > p->pres) ? len : p->pres;
+	bigger_len = ft_max(len, p->pres);
 	(*s != '0' && p->flg.hash) ? p->width -= 2 : p->width;
 	(*s == '0' && !tmp_pres) ? p->width++ : p->width;
 	if (!p->flg.minus)
