@@ -38,20 +38,32 @@ typedef struct	s_print
 	t_flag		flg;
 }				t_print;
 
+/*
+** ft_printf.c
+*/
 int				ft_printf(const char *format, ...);
 t_print			*init_flags(t_print *p);
 
+/*
+** parse.c
+*/
 int				parse(va_list ap, t_print *p, int i);
 int				get_flag(t_print *p, int i);
 int				get_size(t_print *p, int i);
 int				get_width_pres(va_list ap, t_print *p, int i);
 int				get_pres(va_list ap, t_print *p, int i);
 
+/*
+** convert_length.c
+*/
 void			conversion(va_list ap, t_print *p);
 intmax_t		convert_arg_di(va_list ap, t_print *p);
 uintmax_t		convert_arg_oux(va_list ap, t_print *p);
 long double		convert_arg_f(va_list ap, t_print *p);
 
+/*
+** print_*.c
+*/
 void			print_percent(t_print *p);
 void			print_c(va_list ap, t_print *p);
 void			print_s(va_list ap, t_print *p);
@@ -62,10 +74,16 @@ void			print_u(uintmax_t arg, t_print *p);
 void			print_x(uintmax_t arg, t_print *p);
 void			print_f(long double arg, t_print *p);
 
+/*
+** parse_utils.c
+*/
 int				isflag(char c);
 int				istype(char c);
 int				issize(char c);
 
+/*
+** utils.c & utils2.c
+*/
 int				ft_putstr_len_percent(const char *str, t_print *p);
 void			putprefix(char *s, t_print *p);
 void			putsign(intmax_t n, t_print	*p);
