@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../incs/libftprintf.h"
 
 
 char	*roundup(double n, char *str_flt)

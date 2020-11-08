@@ -30,7 +30,6 @@ typedef struct	s_flag
 
 typedef struct	s_print
 {
-	//	va_list		ap;
 	const char	*fmt;
 	int			width;
 	int			pres;
@@ -75,5 +74,5 @@ void			padding_zero(int len, t_print *p);
 void			padding_ze_sp(int len, t_print *p);
 void			free_print(t_print **p, int n);
 void			free_strprint(char **s);
-void			print_result(long double arg, char *s, int pres, t_print *p);
+void			print_result(char *s, int pres, t_print *p);
 #endif

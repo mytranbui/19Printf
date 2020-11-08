@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../incs/libftprintf.h"
 
 void	putprefix(char *s, t_print *p)
 {

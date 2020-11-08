@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../incs/libftprintf.h"
 
 /*
 ** '0' ignored when '-' is present

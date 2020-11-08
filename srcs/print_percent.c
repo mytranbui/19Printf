@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../incs/libftprintf.h"
 
 void	print_percent(t_print *p)
 {

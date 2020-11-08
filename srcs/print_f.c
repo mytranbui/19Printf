@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../incs/libftprintf.h"
 
 // static long double	find_size(long double value, int base)
 // {

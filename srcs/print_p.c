@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../incs/libftprintf.h"
 
 /*
 ** %p: undefined behavior with +, 0, ' ', # and precision
@@ -50,13 +50,13 @@ void		print_p(va_list ap, t_print *p)
 	if (!p->flg.minus)
 	{
 		print_p2(len, bigger_len, p);
-		print_result(0, s, tmp_pres, p);
+		print_result(s, tmp_pres, p);
 	}
 	else
 	{
 		putprefix(0, p);
 		padding_zero(len, p);
-		print_result(0, s, tmp_pres, p);
+		print_result(s, tmp_pres, p);
 		padding_space(bigger_len, p);
 	}
 	free_strprint(&s);

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../incs/libftprintf.h"
 
 /*
 ** %x & %X: undefined behavior with +, '0' and ' '
@@ -27,7 +27,7 @@ static void	print_x2(char *s, t_print *p, int bigger_len, int pres)
 	if (!p->flg.zero || p->pres != -1)
 		putprefix(s, p);
 	padding_zero(len, p);
-	print_result(0, s, pres, p);
+	print_result(s, pres, p);
 }
 
 void		print_x(uintmax_t arg, t_print *p)
@@ -50,7 +50,7 @@ void		print_x(uintmax_t arg, t_print *p)
 	{
 		putprefix(s, p);
 		padding_zero(len, p);
-		print_result(0, s, tmp_pres, p);
+		print_result(s, tmp_pres, p);
 		padding_space(bigger_len, p);
 	}
 	free_strprint(&s);

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../incs/libftprintf.h"
 
 int		ft_putstr_len_percent(const char *str, t_print *p)
 {
@@ -47,9 +47,9 @@ void	free_print(t_print **p, int n)
 		exit(EXIT_FAILURE);
 }
 
-void	print_result(long double arg, char *s, int pres, t_print *p)
+void	print_result(char *s, int pres, t_print *p)
 {
-	if (p->type == 'f' && (arg != 0 || pres != 0))
+	if (p->type == 'f')
 	{
 		ft_putstr(s);
 		p->ret += ft_strlen(s);
@@ -65,3 +65,31 @@ void	print_result(long double arg, char *s, int pres, t_print *p)
 		p->ret += ft_strlen(s);
 	}
 }
+
+// void	print_result(intmax_t arg, char *s, int pres, t_print *p)
+// {
+// 	 if (p->type == 'f')
+// 	{
+// 		ft_putstr(s);
+// 		p->ret += ft_strlen(s);
+// 	}
+// 	else if ((p->type == 'd' || p->type == 'i') && (arg != 0 || pres != 0))
+// 	{
+// 		if (arg == -9223372036854775807 - 1)
+// 			ft_putstr("9223372036854775808");
+// 		else
+// 			ft_putnbrmax(ft_intmaxabs(arg));
+// 		p->ret += (arg == 0) ? 1 : ft_intlen(ft_intmaxabs(arg));
+// 	}
+// 	else if (p->type == 'o' && (*s != '0' || pres != 0 || p->flg.hash))
+// 	{
+// 		ft_putstr(s);
+// 		p->ret += ft_strlen(s);
+// 	}
+// 	else if ((p->type == 'p' || p->type == 'u' || p->type == 'x'
+// 				|| p->type == 'X') && (*s != '0' || pres != 0))
+// 	{
+// 		ft_putstr(s);
+// 		p->ret += ft_strlen(s);
+// 	}
+// }

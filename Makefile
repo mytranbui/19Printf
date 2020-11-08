@@ -14,62 +14,49 @@ NAME = libftprintf.a
 CC = gcc
 FLGS = -Wall -Wextra -Werror
 LIB_DIR = libft
-SRCS =	srcs/ft_printf.c \
-		srcs/parse.c \
-		srcs/parse_utils.c \
-		srcs/convert_length.c \
-		srcs/print_percent.c \
-		srcs/print_c.c \
-		srcs/print_s.c \
-		srcs/print_p.c \
-		srcs/print_di.c \
-		srcs/print_o.c \
-		srcs/print_u.c \
-		srcs/print_x.c \
-		srcs/print_f.c \
-		srcs/utils.c \
-		srcs/utils2.c \
+SRCS_DIR = srcs/
+SRCS =	ft_printf.c \
+		parse.c \
+		parse_utils.c \
+		convert_length.c \
+		print_percent.c \
+		print_c.c \
+		print_s.c \
+		print_p.c \
+		print_di.c \
+		print_o.c \
+		print_u.c \
+		print_x.c \
+		print_f.c \
+		utils.c \
+		utils2.c \
 
-OBJS =	ft_printf.o \
-		parse.o \
-		parse_utils.o \
-		convert_length.o \
-		print_percent.o \
-		print_c.o \
-		print_s.o \
-		print_p.o \
-		print_di.o \
-		print_o.o \
-		print_u.o \
-		print_x.o \
-		print_f.o \
-		utils.o \
-		utils2.o \
+OBJS =	$(SRCS:.c=.o)
 
-INCS = srcs/libftprintf.h
+INCS = incs/libftprintf.h
 
 all: $(NAME)
 
 $(NAME): getlibft
 	@cp $(LIB_DIR)/libft.a $(NAME)
-	@$(CC) -c $(FLGS) $(SRCS) $(INCS)
+	@$(CC) -c $(FLGS) $(addprefix $(SRCS_DIR)/,$(SRCS)) $(INCS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@echo "compilation ok"
+	@echo "$(NAME) created."
 
 getlibft:
 	@make -C $(LIB_DIR)
 
 clean:
 	@/bin/rm -f $(OBJS)
-	@/bin/rm -f ft_printf.h.gch
+	@/bin/rm -f $(INCS).gch
 	@make clean -C libft
-	@printf "Objects are removed correctly.\n"
+	@printf "Objects and $(INCS).gch removed."
 
 fclean: clean
 	@/bin/rm -f $(NAME)
 	@make fclean -C libft
-	@printf "$(NAME) and $(LIB) are removed correctly.\n"
+	@printf "$(NAME) and libft.a removed."
 
 re: fclean all
 
