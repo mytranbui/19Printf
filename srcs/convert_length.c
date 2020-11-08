@@ -94,7 +94,6 @@ void		print_(t_print *p)
 
 void		conversion(va_list ap, t_print *p)
 {
-	// printf("{type=%c}", p->type);
 	if (p->type == 'c')
 		print_c(ap, p);
 	else if (p->type == 's')

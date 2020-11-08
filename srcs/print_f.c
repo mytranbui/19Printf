@@ -183,7 +183,7 @@ void	print_f2(long double arg, int len, int bigger_len, t_print *p)
 		if (p->flg.zero)
 			putsign(arg, p);
 		padding_ze_sp(bigger_len, p);
-		if (!p->flg.zero) //&& p->pres == -1)
+		if (!p->flg.zero)
 			putsign(arg, p);
 		padding_zero(len, p);
 	}
@@ -196,7 +196,8 @@ void	print_f(long double arg, t_print *p)
 	char	*str_flt;
 
 	//printf("{arg=%Lf}",arg);
-	str_flt = (arg == -0) ? ft_strdup("-0.000000") : get_flt(ft_ldabs(arg), p);
+	//str_flt = (arg == -0) ? ft_strdup("-0.000000") : get_flt(ft_ldabs(arg), p);
+	str_flt = get_flt(ft_ldabs(arg), p);
 	len = ft_strlen(str_flt);
 	bigger_len = ft_max(len, p->pres);
 	(arg < 0 || (p->flg.plus && arg >= 0)) ? len++ && bigger_len++ : len;
@@ -205,32 +206,19 @@ void	print_f(long double arg, t_print *p)
 	print_f2(arg, len, bigger_len, p);
 	if (!p->flg.minus)
 		print_result_f(str_flt, p);
-		//print_result(arg, str_flt, tmp_pres, p);
+		//print_result(str_flt, tmp_pres, p);
 	else
 	{
 		putsign(arg, p);
 		padding_zero(len, p);
-		//print_result(arg, str_flt, tmp_pres, p);
+		//print_result(str_flt, tmp_pres, p);
 		print_result_f(str_flt, p);
 		padding_space(bigger_len, p);
 	}
 	free_strprint(&str_flt);
 }
 
-// static void	print_result_di(intmax_t arg, int pres, t_print *p)
-// {
-// 	if ((arg != 0 || pres != 0) && (p->type == 'd' || p->type == 'i'))
-// 	{
-// 		if (arg == -9223372036854775807 - 1)
-// 			ft_putstr("9223372036854775808");
-// 		else
-// 			ft_putnbrmax(ft_intmaxabs(arg));
-// 		p->ret += (arg == 0) ? 1 : ft_intlen(ft_intmaxabs(arg));
-// 	}
-// }
-
-// bigger_len = ft_max(len, p->pres);
-// 	(arg < 0 || (p->flg.plus && arg >= 0)) ? p->width-- : p->width;
+// (arg < 0 || (p->flg.plus && arg >= 0)) ? p->width-- : p->width;
 // 	(arg == 0 && p->pres > 0) ? p->pres-- : p->pres;
 // 	(arg == 0 && p->pres == -1) ? p->width-- : p->width;
 // 	(p->flg.space && !p->flg.plus && arg >= 0) ? p->width-- : p->width;
