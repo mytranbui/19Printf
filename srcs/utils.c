@@ -36,7 +36,7 @@ void	putsign(intmax_t n, t_print *p)
 	((p->flg.plus && n >= 0) || (n < 0)) ? p->ret++ : p->ret;
 	if (p->flg.plus && n >= 0)
 		ft_putchar('+');
-	else if (n < 0)
+	else if (n < 0) //|| (n == -0 && p->type == 'f'))
 		ft_putchar('-');
 }
 

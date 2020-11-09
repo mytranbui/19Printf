@@ -98,7 +98,15 @@ char	*roundup(long double n, char *str_flt)
 		{
 			(str_flt[i] == '.') ? i-- : i;
 			if (str_flt[i] == '9')
+			{
 				str_flt[i] = '0';
+				if (i == 0)
+				{
+					if (!(str_flt = ft_strjoin_free("1", str_flt, 2)))
+							return (NULL);
+					boolean = 1;
+				}
+			}
 			else
 			{
 				str_flt[i]++;
@@ -159,7 +167,8 @@ char	*get_flt(long double n, t_print *p)
 		i++;
 		p->pres--;
 	}
-	str_flt = ft_strjoin_free(str_int, str_dec, 2);
+	if (!(str_flt = ft_strjoin_free(str_int, str_dec, 2)))
+		return (NULL);
 	str_flt = roundup(n, str_flt);
 	return (str_flt);
 }
