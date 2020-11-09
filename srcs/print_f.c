@@ -173,12 +173,6 @@ char	*get_flt(long double n, t_print *p)
 	return (str_flt);
 }
 
-void	print_result_f(char *s, t_print *p)
-{
-	ft_putstr(s);
-	p->ret += ft_strlen(s);
-}
-
 void	print_f2(long double arg, int len, int bigger_len, t_print *p)
 {
 	if (p->flg.space && !p->flg.plus && arg >= 0)
@@ -214,14 +208,12 @@ void	print_f(long double arg, t_print *p)
 	(p->flg.space && p->flg.plus == 0 && arg >= 0) ? bigger_len++ : bigger_len;
 	print_f2(arg, len, bigger_len, p);
 	if (!p->flg.minus)
-		print_result_f(str_flt, p);
-		//print_result(str_flt, tmp_pres, p);
+		print_result(str_flt, 0, p);
 	else
 	{
 		putsign(arg, p);
 		padding_zero(len, p);
-		//print_result(str_flt, tmp_pres, p);
-		print_result_f(str_flt, p);
+		print_result(str_flt, 0, p);
 		padding_space(bigger_len, p);
 	}
 	free_strprint(&str_flt);
