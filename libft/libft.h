@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 12:53:43 by mbui              #+#    #+#             */
-/*   Updated: 2020/11/04 16:34:55 by mbui             ###   ########.fr       */
+/*   Updated: 2020/11/10 14:26:51 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ char			*ft_itoa_base(long long value, int base, char x);
 char			*ft_utoa_base(unsigned long long value, int base, char x);
 size_t			ft_strspn(const char *s1, const char *s2);
 char			*ft_strpbrk(const char *s1, const char *s2);
-char			*ft_strjoin_free(char *s1, char *s2, int free);
+char			*ft_strjoin_free(char *s1, char *s2, int opt);
 int				get_next_line(const int fd, char **line);
 char			**free_tab(char **tab, int i);
 int				tablen(char **tab);

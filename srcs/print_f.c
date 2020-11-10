@@ -12,31 +12,68 @@
 
 #include "../incs/libftprintf.h"
 
-char	*ft_lltoa_base(long long n, int base)
+static int	set_size_array(int number, int base, int is_negative)
 {
-	char	*s;
-	long	nb;
-	int		len;
-
-	len = 1;
-	n < 0 ? ++len : 0;
-	nb = n < 0 ? -n : n;
-	while (nb >= base)
-	{
-		nb /= base;
-		++len;
-	}
-	s = (char*)malloc(sizeof(char) * (len + 1));
-	s[len] = '\0';
-	n < 0 ? *s = '-' : 0;
-	n < 0 ? n = -n : 0;
-	while (n >= base)
-	{
-		s[--len] = n % base < 10 ? (n % base) + 48 : (n % base) + 55;
-		n /= base;
-	}
-	s[--len] = n % base < 10 ? (n % base) + 48 : (n % base) + 55;
-	return (s);
+	int size_array;
+	size_array = 0;
+	if (is_negative == 0)
+		while (number > 0)
+		{
+			number /= base;
+			size_array++;
+		}
+	else
+		while (number < 0)
+		{
+			number /= base;
+			size_array++;
+		}
+	return (size_array + is_negative);
+}
+static void	convert(char *nbr, int number, int base, int is_negative)
+{
+	int length;
+	length = set_size_array(number, base, is_negative);
+	if (is_negative == 0)
+		while (number > 0)
+		{
+			if (number % base >= 10)
+				nbr[length - 1] = ((number % base) + 'a') - 10;
+			else
+				nbr[length - 1] = (number % base) + 48;
+			number /= base;
+			length--;
+		}
+	else
+		while (number < 0)
+		{
+			if (((number % base) * -1) >= 10)
+				nbr[length - 1] = (((number % base) * -1) + 'a') - 10;
+			else
+				nbr[length - 1] = ((number % base) * -1) + 48;
+			number /= base;
+			length--;
+		}
+	if (is_negative == 1)
+		nbr[0] = '-';
+}
+char		*ft_itoa_base2(int number, int base)
+{
+	char	*nbr;
+	int		length;
+	int		is_negative;
+	is_negative = 0;
+	if (number == 0)
+		return (ft_strdup("0"));
+	if (base < 2)
+		return (NULL);
+	if (number < 0)
+		is_negative = 1;
+	length = set_size_array(number, base, is_negative);
+	if ((nbr = ft_strnew(length)) == NULL)
+		return (NULL);
+	convert(nbr, number, base, is_negative);
+	return (nbr);
 }
 
 char	*roundup(long double n, char *str_flt)
@@ -78,15 +115,35 @@ char	*get_int(long double n, t_print *p)
 	char	*s;
 	char	*str_dot;
 
-	if (!(s = ft_itoa_base(n, 10, 'x')))
+	if (!(s = ft_itoa_base2(n, 10)))
 		return (NULL);
-	// printf("{sint=%s}",s);
-	 //printf("{n=%f}",n);
+	// if (!(s = ft_itoa_base((long long)n, 10, 'x')))
+	// 	return (NULL);
 	str_dot = NULL;
+	// printf("{p=%p}\n", s);
+	// printf("{s=%s}\n", s);
+	// printf("{s=%d}\n", s[0]);
 	if (p->pres != 0 || p->flg.hash != 0)
-		if (!(str_dot = ft_strjoin(s, ".")))
+	{
+		// ft_putendl("LOL");
+		// printf("{p=%p}\n", s);
+		// printf("{s=%s}\n", s);
+		if (!(str_dot = ft_strjoin_free(s, ".", 1)))
+		{
+
+			//ft_strdel(&s);
 			return (NULL);
-	return (!str_dot ? s : str_dot);
+		}
+		// ft_putendl("HOHO");
+		// printf("{p=%p}\n", s);
+		// printf("{s=%s}\n", s);
+			//ft_strdel(&s);
+		return (str_dot);
+	}
+	return (s);
+	//if (s)
+	//	ft_strdel(&s);
+	//return (!str_dot ? s : str_dot);
 }
 
 char	*get_flt(long double n, t_print *p)
@@ -96,16 +153,11 @@ char	*get_flt(long double n, t_print *p)
 	char	*str_flt;
 	int		dec;
 	int		i;
-	int lol;
 
 	i = 0;
 	(p->pres == -1) ? p->pres = 6 : p->pres;
 	if (!(str_int = get_int(n, p)))
-		return (0);
-	lol = (unsigned long long)n;
-	// printf("{lol=%d}", lol);
-	// printf("{n=%Lf}", n);
-	// printf("{str_int=%s}", str_int);
+		return (NULL);
 	if (!(str_dec = ft_strnew(p->pres + 1)))
 		return (0);
 	while (p->pres > 0)
@@ -118,8 +170,16 @@ char	*get_flt(long double n, t_print *p)
 		i++;
 		p->pres--;
 	}
-	if (!(str_flt = ft_strjoin_free(str_int, str_dec, 2)))
+	if (!(str_flt = ft_strjoin_free(str_int, str_dec, 3)))
 		return (NULL);
+	if (str_int)
+		printf("intE");
+	if (!str_int)
+		printf("intXX");
+	if (str_dec)
+		printf("decE");
+	if (!str_dec)
+		printf("decXX");
 	str_flt = roundup(n, str_flt);
 	return (str_flt);
 }
@@ -131,7 +191,6 @@ void	print_f2(long double arg, int len, int bigger_len, t_print *p)
 		ft_putchar(' ');
 		p->ret++;
 	}
-	//else if (arg == 0 && )
 	if (!p->flg.minus)
 	{
 		if (p->flg.zero)
@@ -149,8 +208,6 @@ void	print_f(long double arg, t_print *p)
 	int		bigger_len;
 	char	*str_flt;
 
-	//printf("{arg=%Lf}",arg);
-	//str_flt = (arg == -0) ? ft_strdup("-0.000000") : get_flt(ft_ldabs(arg), p);
 	str_flt = get_flt(ft_ldabs(arg), p);
 	len = ft_strlen(str_flt);
 	bigger_len = ft_max(len, p->pres);
@@ -167,10 +224,5 @@ void	print_f(long double arg, t_print *p)
 		print_result(str_flt, 0, p);
 		padding_space(bigger_len, p);
 	}
-	free_strprint(&str_flt);
+	ft_strdel(&str_flt);
 }
-
-// (arg < 0 || (p->flg.plus && arg >= 0)) ? p->width-- : p->width;
-// 	(arg == 0 && p->pres > 0) ? p->pres-- : p->pres;
-// 	(arg == 0 && p->pres == -1) ? p->width-- : p->width;
-// 	(p->flg.space && !p->flg.plus && arg >= 0) ? p->width-- : p->width;
