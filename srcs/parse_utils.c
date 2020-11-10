@@ -27,3 +27,14 @@ int		issize(char c)
 {
 	return (c == 'h' || c == 'l' || c == 'L');
 }
+
+int		validtype(t_print *p, int i)
+{
+	while (p->fmt[i])
+	{
+		if (istype(p->fmt[i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}

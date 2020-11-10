@@ -82,6 +82,7 @@ void			print_(t_print *p);
 int				isflag(char c);
 int				istype(char c);
 int				issize(char c);
+int				validtype(t_print *p, int i);
 
 /*
 ** utils.c & utils2.c

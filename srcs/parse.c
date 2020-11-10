@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 09:39:00 by mbui              #+#    #+#             */
-/*   Updated: 2020/11/06 18:37:48 by mbui             ###   ########.fr       */
+/*   Updated: 2020/11/10 18:15:11 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,17 +100,18 @@ int	get_width_pres(va_list ap, t_print *p, int i)
 
 int	parse(va_list ap, t_print *p, int i)
 {
-	while (!istype(p->fmt[i]) && p->fmt[i] != '\0')
-	{
-		if (isflag(p->fmt[i]))
-			i = get_flag(p, i);
-		else if (ft_isdigit(p->fmt[i]) || p->fmt[i] == '.' || p->fmt[i] == '*')
-			i = get_width_pres(ap, p, i);
-		else if (issize(p->fmt[i]))
-			i = get_size(p, i);
-		else
-			i++;
-	}
+	if (validtype(p, i))
+		while (!istype(p->fmt[i]) && p->fmt[i] != '\0')
+		{
+			if (isflag(p->fmt[i]))
+				i = get_flag(p, i);
+			else if (ft_isdigit(p->fmt[i]) || p->fmt[i] == '.' || p->fmt[i] == '*')
+				i = get_width_pres(ap, p, i);
+			else if (issize(p->fmt[i]))
+				i = get_size(p, i);
+			else
+				i++;
+		}
 	p->type = p->fmt[i];
 	return (i);
 }
