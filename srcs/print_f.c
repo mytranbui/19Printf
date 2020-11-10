@@ -6,47 +6,46 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 12:41:38 by mbui              #+#    #+#             */
-/*   Updated: 2020/11/04 11:40:59 by mbui             ###   ########.fr       */
+/*   Updated: 2020/11/10 16:44:44 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/libftprintf.h"
 
-char	*roundup(long double n, char *str_flt)
+/*
+** last_num of str_flt = (unsigned long long)n % 10 + 48
+*/
+
+static char	*roundup(long double n, char *str_flt, int i)
 {
-	char	last_num;
-	int		i;
 	int		boolean;
 
 	boolean = 0;
 	n *= 10;
-	last_num = (unsigned long long)n % 10 + 48;
-	i = ft_strlen(str_flt) - 1;
-	if (last_num >= '5')
-		while (boolean == 0 && str_flt[i])
+	while (((unsigned long long)n % 10 + 48) >= '5' && !boolean && str_flt[i])
+	{
+		(str_flt[i] == '.') ? i-- : i;
+		if (str_flt[i] == '9')
 		{
-			(str_flt[i] == '.') ? i-- : i;
-			if (str_flt[i] == '9')
+			str_flt[i] = '0';
+			if (i == 0)
 			{
-				str_flt[i] = '0';
-				if (i == 0)
-				{
-					if (!(str_flt = ft_strjoin_free("1", str_flt, 2)))
-							return (NULL);
-					boolean = 1;
-				}
-			}
-			else
-			{
-				str_flt[i]++;
+				if (!(str_flt = ft_strjoin_free("1", str_flt, 2)))
+					return (NULL);
 				boolean = 1;
 			}
-			i--;
 		}
+		else
+		{
+			str_flt[i]++;
+			boolean = 1;
+		}
+		i--;
+	}
 	return (str_flt);
 }
 
-char	*get_int(long double n, t_print *p)
+static char	*get_int(long double n, t_print *p)
 {
 	char	*str_int;
 	char	*str_intdot;
@@ -55,16 +54,12 @@ char	*get_int(long double n, t_print *p)
 		return (NULL);
 	str_intdot = NULL;
 	if (p->pres != 0 || p->flg.hash != 0)
-	{
 		if (!(str_intdot = ft_strjoin_free(str_int, ".", 1)))
 			return (NULL);
-		return (str_intdot);
-	}
-	return (str_int);
-	//return (!str_intdot ? s : str_dot);
+	return (!str_intdot ? str_int : str_intdot);
 }
 
-char	*get_flt(long double n, t_print *p)
+static char	*get_flt(long double n, t_print *p)
 {
 	char	*str_int;
 	char	*str_dec;
@@ -83,18 +78,17 @@ char	*get_flt(long double n, t_print *p)
 		n *= 10;
 		dec = (unsigned long long)n;
 		n -= dec;
-		dec %= 10;
-		str_dec[i] = dec + 48;
+		str_dec[i] = dec % 10 + 48;
 		i++;
 		p->pres--;
 	}
 	if (!(str_flt = ft_strjoin_free(str_int, str_dec, 3)))
 		return (NULL);
-	str_flt = roundup(n, str_flt);
+	str_flt = roundup(n, str_flt, ft_strlen(str_flt) - 1);
 	return (str_flt);
 }
 
-void	print_f2(long double arg, int len, int bigger_len, t_print *p)
+static void	print_f2(long double arg, int len, int bigger_len, t_print *p)
 {
 	if (p->flg.space && !p->flg.plus && arg >= 0)
 	{
@@ -112,7 +106,7 @@ void	print_f2(long double arg, int len, int bigger_len, t_print *p)
 	}
 }
 
-void	print_f(long double arg, t_print *p)
+void		print_f(long double arg, t_print *p)
 {
 	int		len;
 	int		bigger_len;

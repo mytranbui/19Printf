@@ -19,10 +19,7 @@ int		ft_putstr_len_percent(const char *str, t_print *p)
 	i = 0;
 	while (str[i] && str[i] != '%')
 		i++;
-	//  printf("{STRi=%d}", p->ret);
 	p->ret += i;
-	//  printf("{STRi=%d}", p->ret);
-	// printf("{STRret=%d}", p->ret);
 	write(1, str, i);
 	i--;
 	return (i);
@@ -42,17 +39,12 @@ void	free_print(t_print **p, int n)
 
 void	print_result(char *s, int pres, t_print *p)
 {
-	if (p->type == 'f')
+	if (p->type == 'o' && (*s != '0' || pres != 0 || p->flg.hash))
 	{
 		ft_putstr(s);
 		p->ret += ft_strlen(s);
 	}
-	else if (p->type == 'o' && (*s != '0' || pres != 0 || p->flg.hash))
-	{
-		ft_putstr(s);
-		p->ret += ft_strlen(s);
-	}
-	else if (*s != '0' || pres != 0)
+	else if (*s != '0' || pres != 0 || p->type == 'f')
 	{
 		ft_putstr(s);
 		p->ret += ft_strlen(s);

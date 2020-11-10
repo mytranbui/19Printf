@@ -52,17 +52,10 @@ long double	convert_arg_f(va_list ap, t_print *p)
 	if (p->type == 'f')
 	{
 		if (p->flg.maj_l == 1)
-		{
-			//printf("{Ld}");
 			arg = (long double)va_arg(ap, long double);
-		}
 		else
-		{
-			//printf("{d}");
 			arg = (double)va_arg(ap, double);
-		}
 	}
-	//printf("{arg=%Lf}", arg);
 	return (arg);
 }
 

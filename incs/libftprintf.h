@@ -42,6 +42,7 @@ typedef struct	s_print
 ** ft_printf.c
 */
 int				ft_printf(const char *format, ...);
+t_print			*init_print(const char *format, t_print *p);
 t_print			*init_flags(t_print *p);
 
 /*
@@ -73,6 +74,7 @@ void			print_o(uintmax_t arg, t_print *p);
 void			print_u(uintmax_t arg, t_print *p);
 void			print_x(uintmax_t arg, t_print *p);
 void			print_f(long double arg, t_print *p);
+void			print_(t_print *p);
 
 /*
 ** parse_utils.c

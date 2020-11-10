@@ -12,7 +12,7 @@
 
 #include "../incs/libftprintf.h"
 
-t_print	*init_flags(t_print *p)
+t_print		*init_flags(t_print *p)
 {
 	p->width = 0;
 	p->pres = -1;
@@ -27,7 +27,7 @@ t_print	*init_flags(t_print *p)
 	return (p);
 }
 
-t_print	*init_print(const char *format, t_print *p)
+t_print		*init_print(const char *format, t_print *p)
 {
 	if (!(p = (t_print*)ft_memalloc(sizeof(t_print))))
 		return (NULL);
@@ -36,7 +36,15 @@ t_print	*init_print(const char *format, t_print *p)
 	return (p);
 }
 
-int		ft_printf(const char *format, ...)
+static int	ft_printf2(va_list ap, t_print *p, int i)
+{
+	va_end(ap);
+	i = p->ret;
+	free_print(&p, 1);
+	return (i);
+}
+
+int			ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	t_print	*p;
@@ -61,8 +69,5 @@ int		ft_printf(const char *format, ...)
 			i += ft_putstr_len_percent(&format[i], p);
 		i++;
 	}
-	va_end(ap);
-	i = p->ret;
-	free_print(&p, 1);
-	return (i);
+	return (ft_printf2(ap, p, i));
 }
