@@ -18,6 +18,7 @@
 
 /*
 ** Since 2147483648 is greater than INT_MAX, then abs(-2147483648) is undefined
+** LLONG_MIN = −9223372036854775807
 */
 
 static void	print_result_di(intmax_t arg, int pres, t_print *p)

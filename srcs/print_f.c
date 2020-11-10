@@ -12,70 +12,6 @@
 
 #include "../incs/libftprintf.h"
 
-static int	set_size_array(int number, int base, int is_negative)
-{
-	int size_array;
-	size_array = 0;
-	if (is_negative == 0)
-		while (number > 0)
-		{
-			number /= base;
-			size_array++;
-		}
-	else
-		while (number < 0)
-		{
-			number /= base;
-			size_array++;
-		}
-	return (size_array + is_negative);
-}
-static void	convert(char *nbr, int number, int base, int is_negative)
-{
-	int length;
-	length = set_size_array(number, base, is_negative);
-	if (is_negative == 0)
-		while (number > 0)
-		{
-			if (number % base >= 10)
-				nbr[length - 1] = ((number % base) + 'a') - 10;
-			else
-				nbr[length - 1] = (number % base) + 48;
-			number /= base;
-			length--;
-		}
-	else
-		while (number < 0)
-		{
-			if (((number % base) * -1) >= 10)
-				nbr[length - 1] = (((number % base) * -1) + 'a') - 10;
-			else
-				nbr[length - 1] = ((number % base) * -1) + 48;
-			number /= base;
-			length--;
-		}
-	if (is_negative == 1)
-		nbr[0] = '-';
-}
-char		*ft_itoa_base2(int number, int base)
-{
-	char	*nbr;
-	int		length;
-	int		is_negative;
-	is_negative = 0;
-	if (number == 0)
-		return (ft_strdup("0"));
-	if (base < 2)
-		return (NULL);
-	if (number < 0)
-		is_negative = 1;
-	length = set_size_array(number, base, is_negative);
-	if ((nbr = ft_strnew(length)) == NULL)
-		return (NULL);
-	convert(nbr, number, base, is_negative);
-	return (nbr);
-}
-
 char	*roundup(long double n, char *str_flt)
 {
 	char	last_num;
@@ -112,38 +48,20 @@ char	*roundup(long double n, char *str_flt)
 
 char	*get_int(long double n, t_print *p)
 {
-	char	*s;
-	char	*str_dot;
+	char	*str_int;
+	char	*str_intdot;
 
-	if (!(s = ft_itoa_base2(n, 10)))
+	if (!(str_int = ft_itoa_base(n, 10, 'x')))
 		return (NULL);
-	// if (!(s = ft_itoa_base((long long)n, 10, 'x')))
-	// 	return (NULL);
-	str_dot = NULL;
-	// printf("{p=%p}\n", s);
-	// printf("{s=%s}\n", s);
-	// printf("{s=%d}\n", s[0]);
+	str_intdot = NULL;
 	if (p->pres != 0 || p->flg.hash != 0)
 	{
-		// ft_putendl("LOL");
-		// printf("{p=%p}\n", s);
-		// printf("{s=%s}\n", s);
-		if (!(str_dot = ft_strjoin_free(s, ".", 1)))
-		{
-
-			//ft_strdel(&s);
+		if (!(str_intdot = ft_strjoin_free(str_int, ".", 1)))
 			return (NULL);
-		}
-		// ft_putendl("HOHO");
-		// printf("{p=%p}\n", s);
-		// printf("{s=%s}\n", s);
-			//ft_strdel(&s);
-		return (str_dot);
+		return (str_intdot);
 	}
-	return (s);
-	//if (s)
-	//	ft_strdel(&s);
-	//return (!str_dot ? s : str_dot);
+	return (str_int);
+	//return (!str_intdot ? s : str_dot);
 }
 
 char	*get_flt(long double n, t_print *p)
@@ -172,14 +90,6 @@ char	*get_flt(long double n, t_print *p)
 	}
 	if (!(str_flt = ft_strjoin_free(str_int, str_dec, 3)))
 		return (NULL);
-	if (str_int)
-		printf("intE");
-	if (!str_int)
-		printf("intXX");
-	if (str_dec)
-		printf("decE");
-	if (!str_dec)
-		printf("decXX");
 	str_flt = roundup(n, str_flt);
 	return (str_flt);
 }

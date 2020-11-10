@@ -48,13 +48,15 @@ int		ft_printf(const char *format, ...)
 	p = init_print(format, p);
 	while (format[i])
 	{
-		if (format[i] == '%')
+		if (format[i] == '%' && format[i + 1])
 		{
 			i++;
 			p = init_flags(p);
 			i = parse(ap, p, i);
 			conversion(ap, p);
 		}
+		else if (format[i] == '%' && !format[i + 1])
+			return (i);
 		else
 			i += ft_putstr_len_percent(&format[i], p);
 		i++;

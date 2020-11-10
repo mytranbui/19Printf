@@ -16,15 +16,6 @@
 ** %o: undefined behavior with '+', ' '
 */
 
-// static void	print_result_o(char *s, int pres, t_print *p)
-// {
-// 	if (*s != '0' || pres != 0 || p->flg.hash)
-// 	{
-// 		ft_putstr(s);
-// 		p->ret += ft_strlen(s);
-// 	}
-// }
-
 static void	print_o2(char *s, t_print *p, int bigger_len, int pres)
 {
 	int len;
@@ -62,5 +53,5 @@ void		print_o(uintmax_t arg, t_print *p)
 		print_result(s, tmp_pres, p);
 		padding_space(bigger_len, p);
 	}
-	free_strprint(&s);
+	ft_strdel(&s);
 }

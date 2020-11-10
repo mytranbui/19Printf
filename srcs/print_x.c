@@ -53,5 +53,5 @@ void		print_x(uintmax_t arg, t_print *p)
 		print_result(s, tmp_pres, p);
 		padding_space(bigger_len, p);
 	}
-	free_strprint(&s);
+	ft_strdel(&s);
 }

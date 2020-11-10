@@ -6,18 +6,16 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 10:59:47 by mbui              #+#    #+#             */
-/*   Updated: 2020/03/05 18:24:30 by mbui             ###   ########.fr       */
+/*   Updated: 2020/11/10 15:57:48 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	unsigned long long	find_size(unsigned long long value, int base)
+static int	find_size(unsigned long long value, int base)
 {
-	int		len;
+	int	len;
 
-	if (value == 0)
-		return (1);
 	len = 0;
 	while (value)
 	{
@@ -27,8 +25,7 @@ static	unsigned long long	find_size(unsigned long long value, int base)
 	return (len);
 }
 
-char						*ft_utoa_base(unsigned long long value, int base,
-char x)
+char		*ft_utoa_base(unsigned long long value, int base, char x)
 {
 	char	*ret;
 	char	*str_base;
@@ -40,8 +37,9 @@ char x)
 	if (base < 2 || base > 16)
 		return (0);
 	if (value == 0)
-		return ("0");
-	ret = (char *)malloc(sizeof(char) * (len + 1));
+		return (ft_strdup("0"));
+	if (!(ret = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
 	ret[len] = '\0';
 	while (value)
 	{
