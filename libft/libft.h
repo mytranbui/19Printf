@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 12:53:43 by mbui              #+#    #+#             */
-/*   Updated: 2020/11/10 14:26:51 by mbui             ###   ########.fr       */
+/*   Updated: 2020/11/11 10:06:41 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,13 @@ t_list			*lstdel_tlist(t_list **head);
 int				ft_listsize(t_list *head);
 double			ft_dabs(double x);
 long double		ft_ldabs(long double x);
+long long		ft_llabs(long long i);
 intmax_t		ft_intmaxabs(intmax_t x);
 void			ft_putnbrmax_fd(intmax_t n, int fd);
 void			ft_putnbrmax(intmax_t n);
 void			ft_putnbrumax_fd(uintmax_t n, int fd);
 void			ft_putnbrumax(uintmax_t n);
+double			ft_pow(double x, double y);
+long double		ft_powl(long double x, long double y);
+float			ft_powf(float x, float y);
 #endif

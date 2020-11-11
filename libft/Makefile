@@ -6,7 +6,7 @@
 #    By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/04 12:49:35 by mbui              #+#    #+#              #
-#    Updated: 2020/11/10 15:00:34 by mbui             ###   ########.fr        #
+#    Updated: 2020/11/11 19:23:16 by mbui             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ BONUS = ft_abs.c ft_isspace.c ft_max.c ft_min.c ft_islower.c ft_isupper.c \
 		get_next_line.c ft_swap.c sort_int_tab.c tabcpy.c nbwords.c \
 		lstdel_tlist.c ft_listsize.c ft_intlen.c ft_dabs.c \
 		ft_putnbrmax_fd.c ft_putnbrmax.c ft_putnbrumax_fd.c \
-		ft_putnbrumax.c ft_intmaxabs.c ft_ldabs.c\
+		ft_putnbrumax.c ft_intmaxabs.c ft_ldabs.c ft_llabs.c ft_pow.c ft_powl.c \
+		ft_powf.c
 
 
 OBJ = $(SRC:.c=.o) $(BONUS:.c=.o)
@@ -37,15 +38,18 @@ OBJ = $(SRC:.c=.o) $(BONUS:.c=.o)
 all: $(NAME)
 
 $(NAME):
-	gcc -c -Wall -Wextra -Werror $(SRC) $(BONUS)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@gcc -c -Wall -Wextra -Werror $(SRC) $(BONUS)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
+	@echo "$(NAME) created.\n"
 
 clean:
-	rm -f $(OBJ) libft.h.gch
+	@rm -f $(OBJ) libft.h.gch
+	@printf "objects and libft.h.gch removed.\n"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@printf "$(NAME) removed.\n"
 
 re: fclean all
 
