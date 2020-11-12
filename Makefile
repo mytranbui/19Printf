@@ -42,7 +42,7 @@ $(NAME): getlibft
 	@$(CC) -c $(FLGS) $(addprefix $(SRCS_DIR)/,$(SRCS)) $(INCS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@echo "$(NAME) created."
+	@echo "$(NAME) created.\n"
 
 getlibft:
 	@make -C $(LIB_DIR)
@@ -51,12 +51,12 @@ clean:
 	@/bin/rm -f $(OBJS)
 	@/bin/rm -f $(INCS).gch
 	@make clean -C libft
-	@printf "Objects and $(INCS).gch removed."
+	@printf "Objects and $(INCS).gch removed.\n"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
 	@make fclean -C libft
-	@printf "$(NAME) and libft.a removed."
+	@printf "$(NAME) removed.\n"
 
 re: fclean all
 
