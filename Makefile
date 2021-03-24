@@ -6,7 +6,7 @@
 #    By: mbui <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/28 23:45:25 by mbui              #+#    #+#              #
-#    Updated: 2020/11/10 15:00:19 by mbui             ###   ########.fr        #
+#    Updated: 2020/11/17 15:46:30 by mbui             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ clean:
 	@/bin/rm -f $(OBJS)
 	@/bin/rm -f $(INCS).gch
 	@make clean -C libft
-	@printf "Objects and $(INCS).gch removed.\n"
+	@printf "objects and $(INCS).gch removed.\n"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
