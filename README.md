@@ -1,2 +1,2 @@
 # Printf
-Recreating the function Printf
+Recreating the function printf
